@@ -1,0 +1,913 @@
+from django.shortcuts import render
+# Create your views here.
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
+from django.contrib.auth.decorators import permission_required,login_required
+import google.cloud.storage
+import uuid
+import psycopg2
+import json
+import re
+import datetime
+import time
+from datetime import timedelta
+from accounts.views import conn
+############################################################################################################################################################################3
+#Establishing conection with Database
+#conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
+#conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
+cur = conn.cursor()
+
+###############################################################HIRANYAGARBHA#######################################
+@api_view(['GET'])
+def check_update(request):
+    cur.execute("SELECT * FROM patient_level WHERE high_risk_check = 'true' and notified = False")
+    records = cur.fetchall()
+    if len(records)>0:
+        print(records[0][0])
+        cur.execute("UPDATE patient_level SET notified = %s WHERE patient_id = %s", ( True, records[0][0],))
+        #conn.commit()
+        return Response({'patient_details' : records[0]})
+    return Response("No Update")
+
+@api_view(['POST'])
+def set_visit(request):
+    relevant_data = json.loads(request.body)
+    patient_id = relevant_data['patient_id']
+    s_date = relevant_data['date']
+    s_time = relevant_data['time']
+    cur.execute("SELECT row_to_json(patient_record) FROM (SELECT v_1_date, v_2_date, v_3_date FROM patient_level WHERE patient_id = %s) patient_record", (patient_id,))
+    records = cur.fetchall()
+    print(records)
+    if (records[0][0]["v_1_date"] == None):
+
+        cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
+        cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", ( patient_id,))
+        conn.commit()
+        return Response("Visit  1 Scheduled")
+    if (records[0][0]["v_2_date"] == None):
+        cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
+        cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", (patient_id,))
+        conn.commit()
+        return Response("Visit 2 Scheduled")
+
+    if (records[0][0]["v_2_date"] == None):
+        cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
+        cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", (patient_id,))
+        conn.commit()
+        return Response("Visit 3 Scheduled")
+
+
+    return Response("3 visits already sceduled")
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def update_patient_data(request):
+    relevant_data = json.loads(request.body)
+    visit_number = relevant_data["visit_no"]
+    patient_id = relevant_data["patient_id"]
+    new_weight = relevant_data["weight"]
+    new_bp1 = relevant_data["bp1"]
+    new_bp2 = relevant_data["bp2"]
+    new_sugar = relevant_data["sugar"]
+    new_dietary_advice = relevant_data["dietary_advice"]
+    new_haemoglobin = relevant_data["haemoglobin"]
+    new_date = relevant_data["date"]
+
+    if (visit_number == 1):
+        cur.execute("UPDATE patient_level SET v_1_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
+        cur.execute("UPDATE patient_level SET v_1_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
+        cur.execute("UPDATE patient_level SET v_1_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
+        cur.execute("UPDATE patient_level SET v_1_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
+        cur.execute("UPDATE patient_level SET v_1_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
+        cur.execute("UPDATE patient_level SET v_1_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
+        conn.commit()
+        return Response("Visit 1 data saved successfully")
+
+    if (visit_number == 2):
+        cur.execute("UPDATE patient_level SET v_2_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
+        cur.execute("UPDATE patient_level SET v_2_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
+        cur.execute("UPDATE patient_level SET v_2_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
+        cur.execute("UPDATE patient_level SET v_2_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
+        cur.execute("UPDATE patient_level SET v_2_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
+        cur.execute("UPDATE patient_level SET v_2_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
+        conn.commit()
+        return Response("Visit 2 data saved successfully")
+
+    if (visit_number == 3):
+        cur.execute("UPDATE patient_level SET v_3_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
+        cur.execute("UPDATE patient_level SET v_3_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
+        cur.execute("UPDATE patient_level SET v_3_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
+        cur.execute("UPDATE patient_level SET v_3_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
+        cur.execute("UPDATE patient_level SET v_3_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
+        cur.execute("UPDATE patient_level SET v_3_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
+        conn.commit()
+        return Response("Visit 3 data saved successfully")
+
+    return Response("Data not saved for this visit!!")
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def app_data(request):
+    cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    smo_id = records_bmo[0]
+    print("get " ,request.GET)
+    start = int(request.GET.get('start',1))
+    patients = []
+    cur.execute(
+        "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' ) patient_record",( smo_id,))
+    records = cur.fetchall()
+    for r in records:
+        patients.append(r[0])
+    print(len(records))
+    end = (start+5)
+    return Response({"patients" : patients[start:end]})
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def village_create(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+
+    v_name = relevant_data['name']
+    print(v_name)
+    print( " data is  : " ,request.data)
+    user_id = request.user.id
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    print(h_records)
+    state = h_records[0][0]
+    division = h_records[0][1]
+    block = h_records[0][2]
+    district = h_records[0][3]
+    #v_name = request.data['name']
+
+    cur.execute("INSERT INTO village_level(village,bmo_id,state,division,block,district) VALUES(%s,%s,%s,%s,%s,%s)",(v_name ,bmo_id,state,division,block,district) )
+    conn.commit()
+    return Response('village added')
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def agbdi_create(request):
+
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    v_name = relevant_data['anganbadi']
+    worker_name = relevant_data['username']
+    print(request.user)
+    print( " data is  : " ,request.data)
+    user_id = request.user.id
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    cdpo_id = records_1[0][0]
+    #v_name = request.data['name']
+    cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    print(h_records)
+    state = h_records[0][0]
+    division = h_records[0][1]
+    block = h_records[0][2]
+    district = h_records[0][3]
+    cur.execute("INSERT INTO anganbadi_level(agbdi,cdpo_id,worker,state,division,block,district) VALUES(%s,%s,%s,%s,%s,%s,%s)",(v_name , cdpo_id,worker_name,state,division,block,district,) )
+    conn.commit()
+    return Response('anganbadi added')
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def smo_dropdown(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            smo_level.smo
+                            FROM
+                            bmo_level
+                            INNER JOIN smo_level ON smo_level.bmo_id = bmo_level.bmo_id """)
+
+    records = cur.fetchall()
+    dropdown_data = []
+    for i in range(len(records)):
+        if records[i][0] == bmo_id:
+            print(records[i])
+            dropdown_data.append(records[i][1])
+
+    result = {"smo_list" : dropdown_data}
+    return Response(result)
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def anm_dropdown(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            anm_level.anm
+                            FROM
+                            bmo_level
+                            INNER JOIN anm_level ON anm_level.bmo_id = bmo_level.bmo_id """)
+
+    records = cur.fetchall()
+    print(records)
+    dropdown_data = []
+
+    for i in range(0,len(records)):
+        if records[i][0] == bmo_id:
+            dropdown_data.append(records[i][1])
+
+    result = {"anm_list": dropdown_data}
+    return Response(result)
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def village_dropdown(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            village_level.village
+                            FROM
+                            bmo_level
+                            INNER JOIN village_level ON village_level.bmo_id = bmo_level.bmo_id """)
+
+    records = cur.fetchall()
+    dropdown_data = []
+
+    for i in range(len(records)):
+        if records[i][0] == bmo_id:
+            dropdown_data.append(records[i][1])
+
+    result = {"village_list": dropdown_data}
+    return Response(result)
+    return Response(result)
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def all_drop_down(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            smo_level.smo
+                            FROM
+                            bmo_level
+                            INNER JOIN smo_level ON smo_level.bmo_id = bmo_level.bmo_id """)
+
+    records_smo = cur.fetchall()
+    dropdown_data_smo = []
+    for i in range(len(records_smo)):
+        if records_smo[i][0] == bmo_id:
+            print(records_smo[i])
+            dropdown_data_smo.append(records_smo[i][1])
+
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            anm_level.smo_id,
+                            anm_level.anm
+                            FROM
+                            bmo_level
+                            INNER JOIN anm_level ON anm_level.bmo_id = bmo_level.bmo_id """)
+
+
+    records_anm = cur.fetchall()
+    print(records_anm)
+    dropdown_data_anm = []
+
+    for i in range(0,len(records_anm)):
+        if records_anm[i][0] == bmo_id:# and records_anm[i][1] == None:
+            dropdown_data_anm.append(records_anm[i][2])
+
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            village_level.anm_id,
+                            village_level.village
+                            FROM
+                            bmo_level
+                            INNER JOIN village_level ON village_level.bmo_id = bmo_level.bmo_id """)
+
+    records_village = cur.fetchall()
+    dropdown_data_village = []
+
+    for i in range(len(records_village)):
+        if records_village[i][0] == bmo_id : #and records_village[i][1] == None:
+            dropdown_data_village.append(records_village[i][2])
+    result= {"smo_list" : dropdown_data_smo , "anm_list" : dropdown_data_anm , "village_list" : dropdown_data_village}
+
+    return Response(result)
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def link_smo_anm(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    smo = relevant_data['smo']
+    anm = relevant_data['anm']
+    #smo = 'Dr. Maha Shankar'
+    #anm = ['sunita', 'Bharti Devi']
+    cur.execute("SELECT smo_id FROM smo_level WHERE smo=%s", (smo,))
+    records = cur.fetchall()
+    smo_id = records[0][0]
+    print(smo_id)
+    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+    for i in range(0,len(anm)):
+        cur.execute("UPDATE anm_level SET smo_id = %s WHERE anm = %s", (smo_id, anm[i],))
+    conn.commit()
+    return Response('Anm Linked With Smo')
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def link_anm_village(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    villages = relevant_data['village']
+    anm = relevant_data['anm']
+    #smo = 'Dr. Maha Shankar'
+    #anm = ['sunita', 'Bharti Devi']
+    cur.execute("SELECT anm_id FROM anm_level WHERE anm=%s", (anm,))
+    records = cur.fetchall()
+    anm_id = records[0][0]
+    print(anm_id)
+    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+    for i in range(0,len(villages)):
+        cur.execute("UPDATE village_level SET anm_id = %s WHERE village = %s", (anm_id, villages[i],))
+    conn.commit()
+    return Response('Villages Linked With Anm')
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def check_link(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+    cur.execute(""" SELECT  bmo_level.bmo_id,
+                            bmo_level.bmo,
+                            smo_level.smo,
+                            anm_level.anm,
+                            village_level.village
+                            FROM
+                            bmo_level
+                            INNER JOIN smo_level ON smo_level.bmo_id = bmo_level.bmo_id
+                            INNER JOIN anm_level ON anm_level.smo_id = smo_level.smo_id
+                            INNER JOIN village_level ON village_level.anm_id = anm_level.anm_id""")
+
+    records = cur.fetchall()
+    links = []
+    for i in range(0,len(records)):
+        if (records[i][0] == bmo_id):
+            links.append(records[i])
+
+    print(records)
+    result = {"links" : links}
+
+    return Response(result)
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def link_sup_village(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    villages = relevant_data['villages']
+    sup = relevant_data['sup']
+    #smo = 'Dr. Maha Shankar'
+    #anm = ['sunita', 'Bharti Devi']
+    cur.execute("SELECT sup_id FROM supervisor_level WHERE supervisor=%s", (sup,))
+    records = cur.fetchall()
+    sup_id = records[0][0]
+    print(sup_id)
+    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+    for i in range(0,len(villages)):
+        cur.execute("UPDATE village_level SET sup_id = %s WHERE village = %s", (sup_id, villages[i],))
+    conn.commit()
+    return Response('Villages Linked With supervisor')
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def link_village_agbdi(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    agbdis = relevant_data['agbdis']
+    village = relevant_data['village']
+    #smo = 'Dr. Maha Shankar'
+    #anm = ['sunita', 'Bharti Devi']
+    cur.execute("SELECT village_id FROM village_level WHERE village=%s", (village,))
+    records = cur.fetchall()
+    village_id = records[0][0]
+    print(village_id)
+    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+    for i in range(0,len(agbdis)):
+        cur.execute("UPDATE anganbadi_level SET village_id = %s WHERE agbdi = %s", (village_id, agbdis[i],))
+    conn.commit()
+    return Response('Anganbadi Linked With Village')
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def link_agbdi_worker(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    agbdi = relevant_data['agbdi']
+    workers = relevant_data['workers']
+    #smo = 'Dr. Maha Shankar'
+    #anm = ['sunita', 'Bharti Devi']
+    cur.execute("SELECT agbdi_id FROM anganbadi_level WHERE agbdi=%s", (agbdi,))
+    records = cur.fetchall()
+    agbdi_id = records[0][0]
+    print(agbdi_id)
+    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+    for i in range(0,len(workers)):
+        cur.execute("UPDATE worker_level SET agbdi_id = %s WHERE worker = %s", (agbdi_id, workers[i],))
+    conn.commit()
+    return Response('Workers Linked With Anganbadi')
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def drop_down_icds(request):
+    user_id = request.user.id
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    cdpo_id = records_1[0][0]
+    cur.execute(""" SELECT  cdpo_level.cdpo_id,
+                            supervisor_level.supervisor
+                            FROM
+                            cdpo_level
+                            INNER JOIN supervisor_level ON supervisor_level.cdpo_id = cdpo_level.cdpo_id """)
+
+    cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    print(h_records)
+    block = h_records[0][2]
+    records_sup = cur.fetchall()
+    dropdown_data_sup = []
+    for i in range(len(records_sup)):
+        if records_sup[i][0] == cdpo_id:
+            print(records_sup[i])
+            dropdown_data_sup.append(records_sup[i][1])
+
+    cur.execute("""SELECT village from village_level WHERE block = %s""" , (block,))
+    records_village = cur.fetchall()
+    dropdown_data_village = []
+    for i in range(len(records_village)):
+        dropdown_data_village.append(records_village[i][0])
+    print(records_village)
+
+    cur.execute("""SELECT agbdi FROM anganbadi_level WHERE block = %s""" , (block,))
+    records_agbdi = cur.fetchall()
+    dropdown_data_agbdi = []
+    for i in range(len(records_agbdi)):
+        dropdown_data_agbdi.append(records_agbdi[i][0])
+
+    #cur.execute("""SELECT cdpo_level.cdpo_id,
+    #                worker_level.worker
+    #                FROM
+    #                cdpo_level
+    #                INNER JOIN worker_level ON worker_level.cdpo_id = cdpo_level.cdpo_id""")
+    #records_worker = cur.fetchall()
+    #dropdown_data_worker = []
+    #for i in range(len(records_worker)):
+    #    dropdown_data_worker.append(records_worker[i][1])
+
+    result = {"supervisors" : dropdown_data_sup , "villages" : dropdown_data_village , "anganbadis" : dropdown_data_agbdi}
+
+    return Response(result)
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def check_link_icds(request):
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    records_1 = cur.fetchall()
+    cdpo_id = records_1[0][0]
+    cur.execute(""" SELECT  cdpo_level.cdpo_id,
+                            cdpo_level.cdpo,
+                            supervisor_level.supervisor,
+                            village_level.village,
+                            anganbadi_level.agbdi,
+                            worker_level.worker
+                            FROM
+                            cdpo_level
+                            INNER JOIN supervisor_level ON supervisor_level.cdpo_id = cdpo_level.cdpo_id
+                            INNER JOIN village_level ON village_level.sup_id = supervisor_level.sup_id
+                            INNER JOIN anganbadi_level ON anganbadi_level.village_id = village_level.village_id
+                            INNER JOIN worker_level ON worker_level.agbdi_id = anganbadi_level.agbdi_id""")
+
+    records = cur.fetchall()
+    links = []
+    for i in range(0,len(records)):
+        if (records[i][0] == cdpo_id):
+            links.append(records[i])
+
+    print(records)
+    result = {"links" : links}
+
+    return Response(result)
+
+
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def patient_data(request):
+    print( " body is : " , request.body)
+    relevant_data = json.loads(request.body)
+    print("id is " , request.user)
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    bmo_id = records_bmo[0]
+
+    cur.execute("SELECT block FROM auth_user WHERE username = %s" ,(str(request.user),) )
+    records_block = cur.fetchall()
+    block = records_block[0]
+
+    high_risk_check = relevant_data['high_risk_check']
+    print(high_risk_check)
+    reg_date = datetime.date.today()
+    aadhar_number = relevant_data['aadhar_number'] # 1
+    patient_name = relevant_data['patient_name']   # 2
+    husband_name = relevant_data['husband_name']   # 3
+    mobile_number = relevant_data['mobile_number'] # 4
+    date_of_birth = relevant_data['date_of_birth'] # 5
+    age = relevant_data['age']   # 6
+    male_child = int(relevant_data['male_child'])
+    female_child = int(relevant_data['female_child'])
+    economic_status = relevant_data['economic_status'] # 8
+    cast = relevant_data['cast']                       # 9
+    relegion = relevant_data['relegion']               # 10
+    lmp_date = relevant_data['lmp_date']               # 11
+    weight = relevant_data['weight']                   # 12
+    edd_date = relevant_data['edd_date']               # 13
+    officer = relevant_data['officer']                 # 14
+    agbdi_name = relevant_data['agbdi_name']           # 15
+    abortion_miscarriage = relevant_data['abortion_miscarriage'] # 16
+    #blood_pressure = relevant_data['blood_pressure']             # 17
+    bp1 = int(relevant_data['bp1'])
+    bp2 = int(relevant_data['bp2'])
+    sugar = relevant_data['sugar']                               # 18
+    haemoglobin = relevant_data['haemoglobin']                   # 19
+    pregnancy_number = relevant_data['pregnancy_number']         # 20
+    high_risk = []
+    if(high_risk_check == True):
+        print("yes high risk")
+        for i in range(0,len (relevant_data['high_risk'])):
+            high_risk.append(str(relevant_data['high_risk'][i]))# 21, array of strings
+    dietary_advice = relevant_data['dietary_advice']             # 22
+    notified = False
+
+    cur.execute("SELECT agbdi_id FROM anganbadi_level WHERE agbdi = %s" , (agbdi_name,))
+    agbdi_id = cur.fetchall()[0]
+
+    cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (officer,))
+    smo_id = cur.fetchall()[0]
+
+    cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
+                    male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
+                    male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
+                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block))
+
+    conn.commit()
+    return Response('entry made')
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def last_entry(request):
+    cur.execute("SELECT * FROM patient_data ORDER BY id DESC LIMIT 1")
+    records = cur.fetchall()
+    if(len(records)>0):
+        return Response({"last entry" : records[0]})
+    return Response("last entry not found")
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def users_record(request):
+    cur.execute("SELECT row_to_json(user_record) FROM (SELECT id,state,block,division,district, username, role, mobile FROM auth_user) user_record ")
+    records = cur.fetchall()
+    print(records[0][0])
+    users = []
+    for r in records:
+        users.append(r[0])
+    return Response({"users" : users})
+
+##########################api for dashboard###########################3
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def dashboard_data(request) :
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    if(len(records_bmo)>0):
+        bmo_id = records_bmo[0]
+    date_1 = datetime.date.today()
+    date_2 = datetime.date.today() + timedelta(30)
+    print(request.GET)
+    #date_1 = datetime.date.today()
+    #date_2 = datetime.date.today()
+    x_axis = ["High BP" , "Convulsions" , "Vaginal Bleeding" , "Foul Smell Discharge" , "Severe Anemia" , "Diabetes" , "Twins" , "Any Others"]
+    y_axis = [0,0,0,0,0,0,0,0]
+    time_period = request.GET.get('time_period', None)
+    officer_names = request.GET.get('officers', "")
+    officer_names = re.sub("\[" , "", officer_names)
+    officer_names = re.sub("\]", "", officer_names)
+    sample = officer_names.split(',')
+    print(sample)
+    officer = sample
+
+    if (time_period == 'today' or time_period == None):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today()
+
+    elif(time_period == 'this week'):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today() - timedelta(7)
+
+    elif(time_period == 'this month'):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today() - timedelta(30)
+    #officer = ["badshah"]
+    #officer = []
+    if (len(records_bmo) > 0):
+        officer_ids = []
+        if(len(officer)>0):
+            for o in officer:
+                cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (o,))
+                off_records = cur.fetchall()
+                if(len(off_records)>0):
+                    officer_ids.append(off_records[0])
+
+
+    #date 1, date 2, officers
+        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
+        records = cur.fetchall()
+        patients = []
+        for r in records:
+            patients.append(r[0])
+
+        if (len(officer_ids) == 0):
+            total_number = 0
+            high_risk = 0
+            not_high_risk = 0
+            total_number = len(patients)
+            for p in patients:
+                print("data in check is", " ", p["high_risk_check"])
+                if (str(p["high_risk_check"]) == "true"):
+                    high_risk+=1
+                    for i in range(0,len(x_axis)):
+                        if x_axis[i] in p["high_risk"] :
+                            y_axis[i]+=1
+
+                else:
+                    not_high_risk+=1
+
+        #result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk , "x_axis" : x_axis, "y-axis": y_axis}
+            stacked_data = [{"name": "High BP", "female": y_axis[0]}, {"name": "Convulsions", "female": y_axis[1]},
+                        {"name": "Vaginal Bleeding", "female": y_axis[2]},
+                        {"name": "Foul Smell Discharge", "female": y_axis[3]},
+                        {"name": "Severe Anemia", "female": y_axis[4]}, {"name": "Diabetes", "female": y_axis[5]},
+                        {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
+
+            result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
+                  "stacked_data": stacked_data}
+            return Response(result)
+        else:
+            filter_patients = []
+            total_number = 0
+            high_risk = 0
+            not_high_risk = 0
+            for p in patients :
+                print(p["officer"])
+                if(p["officer"] in officer):
+                    filter_patients.append(p)
+
+            total_number = len(filter_patients)
+            for p in filter_patients:
+                print("data in check is", " ", p["high_risk_check"])
+                if (p["high_risk_check"] == "true"):
+                    high_risk+=1
+                    for i in range(0,len(x_axis)):
+                        if x_axis[i] in p["high_risk"] :
+                            y_axis[i]+=1
+                else:
+                    not_high_risk+=1
+
+            stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} , {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} , {"name" : "Any Others" , "female" :y_axis[7]} ]
+
+            result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data}
+
+            return Response(result)
+
+    else:
+        cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+        records_cdpo = cur.fetchall()
+        cdpo_id = records_cdpo[0]
+        cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
+        records_block = cur.fetchall()
+        block = records_block[0]
+        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and block = %s) patient_record" , (date_1, date_2,block))
+        records = cur.fetchall()
+        patients = []
+        for r in records:
+            patients.append(r[0])
+
+        high_risk = 0
+        not_high_risk = 0
+        total_number = len(patients)
+        for p in patients:
+            print("data in check is")
+            if (str(p["high_risk_check"]) == "true"):
+                high_risk += 1
+                for i in range(0, len(x_axis)):
+                    if x_axis[i] in p["high_risk"]:
+                        y_axis[i] += 1
+
+            else:
+                not_high_risk += 1
+
+        # result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk , "x_axis" : x_axis, "y-axis": y_axis}
+        stacked_data = [{"name": "High BP", "female": y_axis[0]}, {"name": "Convulsions", "female": y_axis[1]},
+                        {"name": "Vaginal Bleeding", "female": y_axis[2]},
+                        {"name": "Foul Smell Discharge", "female": y_axis[3]},
+                        {"name": "Severe Anemia", "female": y_axis[4]}, {"name": "Diabetes", "female": y_axis[5]},
+                        {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
+
+        result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
+                  "stacked_data": stacked_data}
+        return Response(result)
+
+
+
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def delete_user(request):
+    relevant_data = json.loads(request.body)
+    id_del = relevant_data["id"]
+    from django.contrib.auth.models import User
+    user = User.objects.filter(id = id_del)
+    user.delete()
+    print(request)
+    print(request.body)
+    return Response("User Deleted")
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def get_high_risk_patient_data(request):
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    if(len(records_bmo)>0):
+        bmo_id = records_bmo[0]
+        patients = []
+        cur.execute(
+            "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE high_risk_check = 'true' and bmo_id = %s) user_record ", (bmo_id,))
+        records = cur.fetchall()
+        users = []
+        for r in records:
+            users.append(r[0])
+        print(len(records))
+        for rec in records :
+            r = rec[0]
+            print("1")
+            p_id = (r["agbdi_id"])
+            if(p_id == None):
+                p_id = 8
+            cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_id = %s" ,(int(p_id),))
+            v_records = cur.fetchall()
+            if (len(v_records)>0):
+                v_id = v_records[0][0]
+            else:
+                v_id = 8
+
+            cur.execute("SELECT sup_id FROM village_level WHERE village_id = %s" , (v_id,))
+            s_records = cur.fetchall()
+            print(s_records)
+            if len(s_records)>0:
+                s_id = s_records[0][0]
+            else:
+                s_id = 2
+            print(s_id)
+            cur.execute("SELECT supervisor FROM supervisor_level WHERE sup_id = %s" , (s_id,))
+
+            sup_records = cur.fetchall()
+            supervisor = sup_records[0][0]
+
+            cur.execute("SELECT anm_id FROM village_level WHERE village_id = %s" , (v_id,))
+            a_records = cur.fetchall()
+            if(len(a_records)>0):
+                a_id = a_records[0][0]
+            else:
+                a_id = 35
+
+            cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s" , (a_id,))
+            anm_records = cur.fetchall()
+            anm = anm_records[0][0]
+
+
+            r["supervisor"] = supervisor
+            r["status"] = 0
+            r["visits"] = 0
+            r["anm"] = anm
+
+            patients.append(r)
+
+        return Response({"patients" : patients})
+    else:
+        cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+        records_cdpo = cur.fetchall()
+        cdpo_id = records_cdpo[0]
+        cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
+        records_block = cur.fetchall()
+        block = records_block[0]
+        patients = []
+        cur.execute(
+            "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE high_risk_check = 'true' and block = %s) user_record ",
+            (block,))
+        records = cur.fetchall()
+        users = []
+        for r in records:
+            users.append(r[0])
+        print(len(records))
+        for rec in records:
+            r = rec[0]
+            print("1")
+            p_id = (r["agbdi_id"])
+            if (p_id == None):
+                p_id = 8
+            cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_id = %s", (int(p_id),))
+            v_records = cur.fetchall()
+            if (len(v_records) > 0):
+                v_id = v_records[0][0]
+            else:
+                v_id = 8
+
+            cur.execute("SELECT sup_id FROM village_level WHERE village_id = %s", (v_id,))
+            s_records = cur.fetchall()
+            if len(s_records) > 0:
+                s_id = s_records[0][0]
+            else:
+                s_id = 2
+            cur.execute("SELECT supervisor FROM supervisor_level WHERE sup_id = %s", (s_id,))
+
+            sup_records = cur.fetchall()
+            supervisor = sup_records[0][0]
+
+            cur.execute("SELECT anm_id FROM village_level WHERE village_id = %s", (v_id,))
+            a_records = cur.fetchall()
+            if (len(a_records) > 0):
+                a_id = a_records[0][0]
+            else:
+                a_id = 35
+
+            cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s", (a_id,))
+            anm_records = cur.fetchall()
+            anm = anm_records[0][0]
+
+            r["supervisor"] = supervisor
+            r["status"] = 0
+            r["visits"] = 0
+            r["anm"] = anm
+
+            patients.append(r)
+
+        return Response({"patients": patients})
+
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def full_patient_details(request):
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data["id"]
+    cur.execute(
+        "SELECT row_to_json(user_record) FROM (SELECT *  FROM patient_level WHERE patient_id = %s) user_record ", (int(p_id),))
+    records = cur.fetchall()
+    print(records[0][0])
+    return Response( records[0][0])

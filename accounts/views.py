@@ -18,7 +18,7 @@ import psycopg2
 from django.contrib.auth.models import User
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
-conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0'")
+conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0 host='ec2-54-83-50-145.compute-1.amazonaws.com'")
 cur = conn.cursor()
 
 

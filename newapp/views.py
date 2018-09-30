@@ -644,11 +644,11 @@ def dashboard_data(request) :
         date_1 = datetime.date.today()
         date_2 = datetime.date.today()
 
-    elif(time_period == 'this week'):
+    elif(time_period == 'this_week'):
         date_1 = datetime.date.today()
         date_2 = datetime.date.today() - timedelta(7)
 
-    elif(time_period == 'this month'):
+    elif(time_period == 'this_month'):
         date_1 = datetime.date.today()
         date_2 = datetime.date.today() - timedelta(30)
     #officer = ["badshah"]

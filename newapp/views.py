@@ -626,7 +626,7 @@ def dashboard_data(request) :
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
     date_1 = datetime.date.today()
-    date_2 = datetime.date.today() + timedelta(30)
+    date_2 = datetime.date.today() - timedelta(30)
     print(request.GET)
     #date_1 = datetime.date.today()
     #date_2 = datetime.date.today()
@@ -662,11 +662,20 @@ def dashboard_data(request) :
                 if(len(off_records)>0):
                     officer_ids.append(off_records[0])
 
-
     #date 1, date 2, officers
-        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
-        records = cur.fetchall()
+        if(not(time_period == 'all')):
+            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
+            records = cur.fetchall()
+
+        else:
+            cur.execute(
+                "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
+                ( bmo_id,))
+            records = cur.fetchall()
+
+
         patients = []
+
         for r in records:
             patients.append(r[0])
 

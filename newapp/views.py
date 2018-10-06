@@ -141,6 +141,8 @@ def village_create(request):
     relevant_data = json.loads(request.body)
 
     v_name = relevant_data['name']
+    v_pop = relevant_data['population']
+    v_pop = int(v_pop)
     print(v_name)
     print( " data is  : " ,request.data)
     user_id = request.user.id
@@ -156,7 +158,7 @@ def village_create(request):
     district = h_records[0][3]
     #v_name = request.data['name']
 
-    cur.execute("INSERT INTO village_level(village,bmo_id,state,division,block,district) VALUES(%s,%s,%s,%s,%s,%s)",(v_name ,bmo_id,state,division,block,district) )
+    cur.execute("INSERT INTO village_level(village,bmo_id,state,division,block,district,population) VALUES(%s,%s,%s,%s,%s,%s,%s)",(v_name ,bmo_id,state,division,block,district,v_pop) )
     conn.commit()
     return Response('village added')
 
@@ -575,6 +577,7 @@ def patient_data(request):
         for i in range(0,len (relevant_data['high_risk'])):
             high_risk.append(str(relevant_data['high_risk'][i]))# 21, array of strings
     dietary_advice = relevant_data['dietary_advice']             # 22
+    samagra_id = relevant_data['samagra_id']                     #23
     notified = False
 
     cur.execute("SELECT agbdi_id FROM anganbadi_level WHERE agbdi = %s" , (agbdi_name,))
@@ -585,10 +588,10 @@ def patient_data(request):
 
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block))
+                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id))
 
     conn.commit()
     return Response('entry made')
@@ -920,3 +923,192 @@ def full_patient_details(request):
     records = cur.fetchall()
     print(records[0][0])
     return Response( records[0][0])
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def search_record(request):
+    relevant_data = json.loads(request.body)
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    records_bmo = cur.fetchall()
+    if (len(records_bmo) > 0):
+
+        bmo_id = records_bmo[0]
+        patients = []
+        if ("aadhar" in relevant_data):
+            aadhar_number = relevant_data["aadhar"]
+            cur.execute(
+                "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and aadhar_number = %s) user_record ",
+                (bmo_id,aadhar_number))
+            records = cur.fetchall()
+            if(len(records)==0):
+                return Response("Invalid Aadhar Number")
+            users = []
+            for r in records:
+                users.append(r[0])
+            print(len(records))
+            for rec in records :
+                r = rec[0]
+                print("1")
+                p_id = (r["agbdi_id"])
+                if(p_id == None):
+                    p_id = 8
+                cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_id = %s" ,(int(p_id),))
+                v_records = cur.fetchall()
+                if (len(v_records)>0):
+                    v_id = v_records[0][0]
+                else:
+                    v_id = 8
+
+                cur.execute("SELECT sup_id FROM village_level WHERE village_id = %s" , (v_id,))
+                s_records = cur.fetchall()
+                print(s_records)
+                if len(s_records)>0:
+                    s_id = s_records[0][0]
+                else:
+                    s_id = 2
+                print(s_id)
+                cur.execute("SELECT supervisor FROM supervisor_level WHERE sup_id = %s" , (s_id,))
+
+                sup_records = cur.fetchall()
+                supervisor = sup_records[0][0]
+
+                cur.execute("SELECT anm_id FROM village_level WHERE village_id = %s" , (v_id,))
+                a_records = cur.fetchall()
+                if(len(a_records)>0):
+                    a_id = a_records[0][0]
+                else:
+                    a_id = 35
+
+                cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s" , (a_id,))
+                anm_records = cur.fetchall()
+                anm = anm_records[0][0]
+
+
+                r["supervisor"] = supervisor
+                r["status"] = 0
+                r["visits"] = 0
+                r["anm"] = anm
+
+                patients.append(r)
+
+            return Response({"patients" : patients})
+
+        if ("patient_id" in relevant_data):
+            patient_id = relevant_data["patient_id"]
+            cur.execute(
+                "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and patient_id = %s) user_record ",
+                (bmo_id, patient_id))
+            records = cur.fetchall()
+            if (len(records) == 0):
+                return Response("Invalid Patient ID")
+            users = []
+            for r in records:
+                users.append(r[0])
+            print(len(records))
+            for rec in records:
+                r = rec[0]
+                print("1")
+                p_id = (r["agbdi_id"])
+                if (p_id == None):
+                    p_id = 8
+                cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_id = %s", (int(p_id),))
+                v_records = cur.fetchall()
+                if (len(v_records) > 0):
+                    v_id = v_records[0][0]
+                else:
+                    v_id = 8
+
+                cur.execute("SELECT sup_id FROM village_level WHERE village_id = %s", (v_id,))
+                s_records = cur.fetchall()
+                print(s_records)
+                if len(s_records) > 0:
+                    s_id = s_records[0][0]
+                else:
+                    s_id = 2
+                print(s_id)
+                cur.execute("SELECT supervisor FROM supervisor_level WHERE sup_id = %s", (s_id,))
+
+                sup_records = cur.fetchall()
+                supervisor = sup_records[0][0]
+
+                cur.execute("SELECT anm_id FROM village_level WHERE village_id = %s", (v_id,))
+                a_records = cur.fetchall()
+                if (len(a_records) > 0):
+                    a_id = a_records[0][0]
+                else:
+                    a_id = 35
+
+                cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s", (a_id,))
+                anm_records = cur.fetchall()
+                anm = anm_records[0][0]
+
+                r["supervisor"] = supervisor
+                r["status"] = 0
+                r["visits"] = 0
+                r["anm"] = anm
+
+                patients.append(r)
+
+            return Response({"patients": patients})
+
+        if ("samagra_id" in relevant_data):
+            samagra_id = relevant_data["samagra_id"]
+            cur.execute(
+                "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and samagra_id= %s) user_record ",
+                (bmo_id, samagra_id))
+            records = cur.fetchall()
+            if (len(records) == 0):
+                return Response("Invalid Samagra ID")
+            users = []
+            for r in records:
+                users.append(r[0])
+            print(len(records))
+            for rec in records:
+                r = rec[0]
+                print("1")
+                p_id = (r["agbdi_id"])
+                if (p_id == None):
+                    p_id = 8
+                cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_id = %s", (int(p_id),))
+                v_records = cur.fetchall()
+                if (len(v_records) > 0):
+                    v_id = v_records[0][0]
+                else:
+                    v_id = 8
+
+                cur.execute("SELECT sup_id FROM village_level WHERE village_id = %s", (v_id,))
+                s_records = cur.fetchall()
+                print(s_records)
+                if len(s_records) > 0:
+                    s_id = s_records[0][0]
+                else:
+                    s_id = 2
+                print(s_id)
+                cur.execute("SELECT supervisor FROM supervisor_level WHERE sup_id = %s", (s_id,))
+
+                sup_records = cur.fetchall()
+                supervisor = sup_records[0][0]
+
+                cur.execute("SELECT anm_id FROM village_level WHERE village_id = %s", (v_id,))
+                a_records = cur.fetchall()
+                if (len(a_records) > 0):
+                    a_id = a_records[0][0]
+                else:
+                    a_id = 35
+
+                cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s", (a_id,))
+                anm_records = cur.fetchall()
+                anm = anm_records[0][0]
+
+                r["supervisor"] = supervisor
+                r["status"] = 0
+                r["visits"] = 0
+                r["anm"] = anm
+
+                patients.append(r)
+
+            return Response({"patients": patients})
+
+        else:
+            return Response("Invalid Request")

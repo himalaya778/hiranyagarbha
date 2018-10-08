@@ -779,16 +779,14 @@ def dashboard_data(request) :
             cur.execute("SELECT village FROM village_level");
             v_Records = cur.fetchall()
             if (len(v_Records)>0):
-                for v in v_Records:
-                    villages.append(v)
+                villages.append(v_Records[0])
 
 
         for v in villages:
             cur.execute("SELECT smo_id FROM anm_level");
             anm_records = cur.fetchall()
             if (len(anm_records) > 0):
-                for a in anm_records:
-                    officer_ids.append(a)
+                officer_ids.append(anm_records[0])
         print("officer ids" , officer_ids)
 
         smo = []
@@ -796,8 +794,7 @@ def dashboard_data(request) :
             cur.execute("SELECT smo FROM smo_level");
             smo_records = cur.fetchall()
             if (len(smo_records) > 0):
-                for a in smo_records:
-                    smo.append(a[0])
+                    smo.append(smo_records[0])
 
         #print("finalo officers are : ", smo)
 

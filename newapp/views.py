@@ -836,6 +836,7 @@ def dashboard_data(request) :
             not_high_risk = 0
             for p in patients :
                 #print(p["officer"])
+                print(p["officer"])
                 if(p["officer"] in smo):
                     print("officer found")
                     filter_patients.append(p)

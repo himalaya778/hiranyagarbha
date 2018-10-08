@@ -758,8 +758,17 @@ def dashboard_data(request) :
         else:
             return Response("error in dashboard_data")
 
-        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
-        records = cur.fetchall()
+        if (not (time_period == 'all')):
+            cur.execute(
+                "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
+                (date_1, date_2, bmo_id))
+            records = cur.fetchall()
+
+        else:
+            cur.execute(
+                "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
+                (bmo_id,))
+            records = cur.fetchall()
         #print(records)
         patients = []
         for r in records:

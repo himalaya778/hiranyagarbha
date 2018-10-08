@@ -748,18 +748,19 @@ def dashboard_data(request) :
 
         cur.execute("SELECT username FROM auth_user WHERE block = %s", (str(block),))
         records_user = cur.fetchall()
-        print("records user : " , records_user)
+        #print("records user : " , records_user)
         bmo_name = records_user[0][0]
-
+        print("bmo is " , bmo_name)
         cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(bmo_name),))
         records_bmo = cur.fetchall()
         if (len(records_bmo) > 0):
             bmo_id = records_bmo[0]
         else:
             return Response("error in dashboard_data")
+
         cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
         records = cur.fetchall()
-        print(records)
+        #print(records)
         patients = []
         for r in records:
             patients.append(r[0])

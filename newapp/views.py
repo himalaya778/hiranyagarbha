@@ -86,7 +86,7 @@ def update_patient_data(request):
     visit_number = records[0][0]
     if(visit_number == None):
         print("first visit")
-        visit_number == 1
+        visit_number = 1
     print("visit number" , visit_number)
 
     if (visit_number == 1):
@@ -96,6 +96,7 @@ def update_patient_data(request):
         cur.execute("UPDATE patient_level SET v_1_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
         cur.execute("UPDATE patient_level SET v_1_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
         cur.execute("UPDATE patient_level SET v_1_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
+        cur.execute("UPDATE patient_level SET visit_number = %s WHERE patient_id = %s" , (2,patient_id,))
         conn.commit()
         return Response("Visit 1 data saved successfully")
 
@@ -106,6 +107,7 @@ def update_patient_data(request):
         cur.execute("UPDATE patient_level SET v_2_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
         cur.execute("UPDATE patient_level SET v_2_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
         cur.execute("UPDATE patient_level SET v_2_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
+        cur.execute("UPDATE patient_level SET visit_number = %s WHERE patient_id = %s", (3, patient_id,))
         conn.commit()
         return Response("Visit 2 data saved successfully")
 

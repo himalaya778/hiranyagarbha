@@ -736,14 +736,27 @@ def dashboard_data(request) :
             return Response(result)
 
     else:
+
         cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
         records_cdpo = cur.fetchall()
         cdpo_id = records_cdpo[0]
+
         cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
         records_block = cur.fetchall()
         block = records_block[0]
         print("block is : " , block)
-        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and block = %s) patient_record" , (date_1, date_2,block))
+
+        cur.execute("SELECT username FROM auth_user WHERE block = %s", (str(block),))
+        records_user = cur.fetchall()
+        bmo_name = records_user[0][0]
+
+        cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(bmo_name),))
+        records_bmo = cur.fetchall()
+        if (len(records_bmo) > 0):
+            bmo_id = records_bmo[0]
+        else:
+            return Response("error in dashboard_data")
+        cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
         records = cur.fetchall()
         print(records)
         patients = []

@@ -458,12 +458,12 @@ def drop_down_icds(request):
                             FROM
                             cdpo_level
                             INNER JOIN supervisor_level ON supervisor_level.cdpo_id = cdpo_level.cdpo_id """)
-
+    records_sup = cur.fetchall()
     cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
     h_records = cur.fetchall()
     print(h_records)
     block = h_records[0][2]
-    records_sup = cur.fetchall()
+
     dropdown_data_sup = []
     for i in range(len(records_sup)):
         if records_sup[i][0] == cdpo_id:

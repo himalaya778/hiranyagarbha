@@ -835,13 +835,14 @@ def dashboard_data(request) :
             high_risk = 0
             not_high_risk = 0
             for p in patients :
-                print(p["officer"])
+                #print(p["officer"])
                 if(p["officer"] in smo):
+                    print("officer found")
                     filter_patients.append(p)
 
             total_number = len(filter_patients)
             for p in filter_patients:
-                print("data in check is", " ", p["high_risk_check"])
+                #print("data in check is", " ", p["high_risk_check"])
                 if (p["high_risk_check"] == "true"):
                     high_risk+=1
                     for i in range(0,len(x_axis)):

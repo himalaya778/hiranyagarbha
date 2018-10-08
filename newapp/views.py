@@ -736,7 +736,7 @@ def dashboard_data(request) :
             return Response(result)
 
     else:
-
+        officer_ids = []
         cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
         records_cdpo = cur.fetchall()
         cdpo_id = records_cdpo[0]
@@ -773,6 +773,7 @@ def dashboard_data(request) :
                     supervisor_ids.append(off_records[0])
 
         villages = []
+
         for sup in supervisor_ids:
             cur.execute("SELECT village FROM village_level");
             v_Records = cur.fetchall()
@@ -780,7 +781,7 @@ def dashboard_data(request) :
                 for v in v_Records:
                     villages.append(v)
 
-            officer_ids = []
+
             for v in villages:
                 cur.execute("SELECT smo_id FROM anm_level");
                 anm_records = cur.fetchall()

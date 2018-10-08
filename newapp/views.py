@@ -38,27 +38,27 @@ def set_visit(request):
     relevant_data = json.loads(request.body)
     patient_id = relevant_data['patient_id']
     s_date = relevant_data['date']
-    s_time = relevant_data['time']
+    #s_time = relevant_data['time']
     cur.execute("SELECT row_to_json(patient_record) FROM (SELECT v_1_date, v_2_date, v_3_date FROM patient_level WHERE patient_id = %s) patient_record", (patient_id,))
     records = cur.fetchall()
     print(records)
     if (records[0][0]["v_1_date"] == None):
 
         cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
-        cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        #cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
         cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", ( patient_id,))
         conn.commit()
         return Response("Visit  1 Scheduled")
     if (records[0][0]["v_2_date"] == None):
         cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-        cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        #cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
         cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
         conn.commit()
         return Response("Visit 2 Scheduled")
 
     if (records[0][0]["v_2_date"] == None):
         cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-        cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+        #cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
         cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
         conn.commit()
         return Response("Visit 3 Scheduled")
@@ -80,6 +80,11 @@ def update_patient_data(request):
     new_dietary_advice = relevant_data["dietary_advice"]
     new_haemoglobin = relevant_data["haemoglobin"]
     new_date = relevant_data["date"]
+
+    cur.execute("SELECT visit_no FROM patient_level WHERE patient_id = %s", (patient_id,))
+    records = cur.fetchall()
+    visit_number = records[0][0]
+    print("visit number" , visit_number)
 
     if (visit_number == 1):
         cur.execute("UPDATE patient_level SET v_1_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))

@@ -46,20 +46,20 @@ def set_visit(request):
 
         cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
         cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", ( patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", ( patient_id,))
         conn.commit()
         return Response("Visit  1 Scheduled")
     if (records[0][0]["v_2_date"] == None):
         cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
         cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", (patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
         conn.commit()
         return Response("Visit 2 Scheduled")
 
     if (records[0][0]["v_2_date"] == None):
         cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
         cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  true WHERE patient_id = %s ", (patient_id,))
+        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
         conn.commit()
         return Response("Visit 3 Scheduled")
 

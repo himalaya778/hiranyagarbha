@@ -798,7 +798,7 @@ def dashboard_data(request) :
 
         #print("finalo officers are : ", smo)
 
-        print("number of officers is : " , len(smo))
+        print("number of officers is : " , smo)
 
 
         if (len(officer_ids) == 0):

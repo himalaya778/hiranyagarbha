@@ -794,7 +794,7 @@ def dashboard_data(request) :
             cur.execute("SELECT smo FROM smo_level");
             smo_records = cur.fetchall()
             if (len(smo_records) > 0):
-                    smo.append(smo_records[0])
+                    smo.append(smo_records[0][0])
 
         #print("finalo officers are : ", smo)
 

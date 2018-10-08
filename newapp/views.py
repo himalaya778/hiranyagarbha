@@ -772,7 +772,7 @@ def dashboard_data(request) :
                 off_records = cur.fetchall()
                 if (len(off_records) > 0):
                     supervisor_ids.append(off_records[0])
-
+        print("supervisor ids : " , supervisor_ids)
         villages = []
 
         for sup in supervisor_ids:

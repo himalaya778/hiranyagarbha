@@ -779,14 +779,14 @@ def dashboard_data(request) :
             cur.execute("SELECT anm_id FROM village_level WHERE sup_id = %s" , (sup,));
             v_Records = cur.fetchall()
             if (len(v_Records)>0):
-                anms.append(v_Records[0])
+                anms.append(v_Records[0][0])
         print("villages are " , anms)
 
         for a in anms:
             cur.execute("SELECT smo_id FROM anm_level WHERE anm_id = %s" , (a,));
             anm_records = cur.fetchall()
             if (len(anm_records) > 0):
-                officer_ids.append(anm_records[0])
+                officer_ids.append(anm_records[0][0])
         print("officer ids" , officer_ids)
 
         smo = []

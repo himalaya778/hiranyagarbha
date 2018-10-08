@@ -71,7 +71,7 @@ def set_visit(request):
 @permission_classes((IsAuthenticated,))
 def update_patient_data(request):
     relevant_data = json.loads(request.body)
-    visit_number = relevant_data["visit_no"]
+    #visit_number = relevant_data["visit_no"]
     patient_id = relevant_data["patient_id"]
     new_weight = relevant_data["weight"]
     new_bp1 = relevant_data["bp1"]
@@ -116,7 +116,7 @@ def update_patient_data(request):
         conn.commit()
         return Response("Visit 3 data saved successfully")
 
-    return Response("Data not saved for this visit!!")
+    return Response("Data already saved for 3 visits!!")
 
 
 @api_view(['GET'])

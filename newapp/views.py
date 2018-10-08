@@ -797,10 +797,11 @@ def dashboard_data(request) :
             smo_records = cur.fetchall()
             if (len(smo_records) > 0):
                 for a in smo_records:
-                    smo.append(a)
+                    smo.append(a[0])
 
-        print("finalo officers are : ", smo)
+        #print("finalo officers are : ", smo)
 
+        print("number of officers is : " , len(smo))
 
 
         if (len(officer_ids) == 0):

@@ -925,8 +925,8 @@ def full_patient_details(request):
     return Response( records[0][0])
 
 @api_view(['POST'])
-#@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
-#@permission_classes((IsAuthenticated,))
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def search_record(request):
     relevant_data = json.loads(request.body)
     print(relevant_data)

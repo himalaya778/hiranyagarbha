@@ -771,16 +771,16 @@ def dashboard_data(request) :
                 cur.execute("SELECT sup_id FROM supervisor_level WHERE supervisor = %s", (o,))
                 off_records = cur.fetchall()
                 if (len(off_records) > 0):
-                    supervisor_ids.append(off_records[0])
+                    supervisor_ids.append(off_records[0][0])
         print("supervisor ids : " , supervisor_ids)
         villages = []
 
         for sup in supervisor_ids:
-            cur.execute("SELECT village FROM village_level");
+            cur.execute("SELECT village FROM village_level WHERE sup_id = %s" , (sup));
             v_Records = cur.fetchall()
             if (len(v_Records)>0):
                 villages.append(v_Records[0])
-
+        print("villages are " , villages)
 
         for v in villages:
             cur.execute("SELECT smo_id FROM anm_level");

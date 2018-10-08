@@ -743,12 +743,12 @@ def dashboard_data(request) :
 
         cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
         records_block = cur.fetchall()
-        block = records_block[0]
+        block = records_block[0][0]
         print("block is : " , block)
 
         cur.execute("SELECT username FROM auth_user WHERE block = %s", (str(block),))
         records_user = cur.fetchall()
-        print(records_user)
+        print("records user : " , records_user)
         bmo_name = records_user[0][0]
 
         cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(bmo_name),))

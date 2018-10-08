@@ -782,13 +782,24 @@ def dashboard_data(request) :
                     villages.append(v)
 
 
-            for v in villages:
-                cur.execute("SELECT smo_id FROM anm_level");
-                anm_records = cur.fetchall()
-                if (len(anm_records) > 0):
-                    for a in anm_records:
-                        officer_ids.append(a)
-            print("officer ids" , officer_ids)
+        for v in villages:
+            cur.execute("SELECT smo_id FROM anm_level");
+            anm_records = cur.fetchall()
+            if (len(anm_records) > 0):
+                for a in anm_records:
+                    officer_ids.append(a)
+        print("officer ids" , officer_ids)
+
+        smo = []
+        for o in officer_ids:
+            cur.execute("SELECT smo FROM smo_level");
+            smo_records = cur.fetchall()
+            if (len(smo_records) > 0):
+                for a in smo_records:
+                    smo.append(a)
+
+        print("finalo officers are : ", smo)
+
 
 
         if (len(officer_ids) == 0):
@@ -826,7 +837,7 @@ def dashboard_data(request) :
             not_high_risk = 0
             for p in patients :
                 print(p["officer"])
-                if(p["officer"] in officer):
+                if(p["officer"] in smo):
                     filter_patients.append(p)
 
             total_number = len(filter_patients)

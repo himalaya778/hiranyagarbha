@@ -929,6 +929,7 @@ def full_patient_details(request):
 @permission_classes((IsAuthenticated,))
 def search_record(request):
     relevant_data = json.loads(request.body)
+    print(relevant_data)
     cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
     records_bmo = cur.fetchall()
     s_value = relevant_data["selectvalue"]

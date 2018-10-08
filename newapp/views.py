@@ -792,6 +792,7 @@ def dashboard_data(request) :
 
 
         if (len(officer_ids) == 0):
+            print("filter not working")
             total_number = 0
             high_risk = 0
             not_high_risk = 0
@@ -818,6 +819,7 @@ def dashboard_data(request) :
                   "stacked_data": stacked_data}
             return Response(result)
         else:
+            print("filter working")
             filter_patients = []
             total_number = 0
             high_risk = 0

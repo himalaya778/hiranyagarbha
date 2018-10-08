@@ -742,8 +742,10 @@ def dashboard_data(request) :
         cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
         records_block = cur.fetchall()
         block = records_block[0]
+        print("block is : " , block)
         cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and block = %s) patient_record" , (date_1, date_2,block))
         records = cur.fetchall()
+        print(records)
         patients = []
         for r in records:
             patients.append(r[0])
@@ -772,8 +774,6 @@ def dashboard_data(request) :
         result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
                   "stacked_data": stacked_data}
         return Response(result)
-
-
 
 
 @api_view(['POST'])

@@ -84,9 +84,9 @@ def update_patient_data(request):
     cur.execute("SELECT visit_no FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
     visit_number = records[0][0]
-    #if(visit_number == None):
-
-    #    visit_number ==1
+    if(visit_number == None):
+        print("first visit")
+        visit_number == 1
     print("visit number" , visit_number)
 
     if (visit_number == 1):

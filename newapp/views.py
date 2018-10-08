@@ -764,30 +764,86 @@ def dashboard_data(request) :
         for r in records:
             patients.append(r[0])
 
-        high_risk = 0
-        not_high_risk = 0
-        total_number = len(patients)
-        for p in patients:
-            print("data in check is")
-            if (str(p["high_risk_check"]) == "true"):
-                high_risk += 1
-                for i in range(0, len(x_axis)):
-                    if x_axis[i] in p["high_risk"]:
-                        y_axis[i] += 1
+        supervisor_ids = []
+        if (len(officer) > 0):
+            for o in officer:
+                cur.execute("SELECT sup_id FROM supervisor_level WHERE supervisor = %s", (o,))
+                off_records = cur.fetchall()
+                if (len(off_records) > 0):
+                    supervisor_ids.append(off_records[0])
 
-            else:
-                not_high_risk += 1
+        villages = []
+        for sup in supervisor_ids:
+            cur.execute("SELECT village FROM village_level");
+            v_Records = cur.fetchall()
+            if (len(v_Records)>0):
+                for v in v_Records:
+                    villages.append(v)
 
-        # result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk , "x_axis" : x_axis, "y-axis": y_axis}
-        stacked_data = [{"name": "High BP", "female": y_axis[0]}, {"name": "Convulsions", "female": y_axis[1]},
+            officer_ids = []
+            for v in villages:
+                cur.execute("SELECT smo_id FROM anm_level");
+                anm_records = cur.fetchall()
+                if (len(anm_records) > 0):
+                    for a in anm_records:
+                        officer_ids.append(a)
+            print("officer ids" , officer_ids)
+
+
+        if (len(officer_ids) == 0):
+            total_number = 0
+            high_risk = 0
+            not_high_risk = 0
+            total_number = len(patients)
+            for p in patients:
+                print("data in check is", " ", p["high_risk_check"])
+                if (str(p["high_risk_check"]) == "true"):
+                    high_risk+=1
+                    for i in range(0,len(x_axis)):
+                        if x_axis[i] in p["high_risk"] :
+                            y_axis[i]+=1
+
+                else:
+                    not_high_risk+=1
+
+        #result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk , "x_axis" : x_axis, "y-axis": y_axis}
+            stacked_data = [{"name": "High BP", "female": y_axis[0]}, {"name": "Convulsions", "female": y_axis[1]},
                         {"name": "Vaginal Bleeding", "female": y_axis[2]},
                         {"name": "Foul Smell Discharge", "female": y_axis[3]},
                         {"name": "Severe Anemia", "female": y_axis[4]}, {"name": "Diabetes", "female": y_axis[5]},
                         {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
 
-        result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
+            result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
                   "stacked_data": stacked_data}
-        return Response(result)
+            return Response(result)
+        else:
+            filter_patients = []
+            total_number = 0
+            high_risk = 0
+            not_high_risk = 0
+            for p in patients :
+                print(p["officer"])
+                if(p["officer"] in officer):
+                    filter_patients.append(p)
+
+            total_number = len(filter_patients)
+            for p in filter_patients:
+                print("data in check is", " ", p["high_risk_check"])
+                if (p["high_risk_check"] == "true"):
+                    high_risk+=1
+                    for i in range(0,len(x_axis)):
+                        if x_axis[i] in p["high_risk"] :
+                            y_axis[i]+=1
+                else:
+                    not_high_risk+=1
+
+            stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} , {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} , {"name" : "Any Others" , "female" :y_axis[7]} ]
+
+            result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data}
+
+            return Response(result)
+
+
 
 
 @api_view(['POST'])

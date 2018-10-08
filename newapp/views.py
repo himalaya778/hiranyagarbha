@@ -773,17 +773,17 @@ def dashboard_data(request) :
                 if (len(off_records) > 0):
                     supervisor_ids.append(off_records[0][0])
         print("supervisor ids : " , supervisor_ids)
-        villages = []
+        anms = []
 
         for sup in supervisor_ids:
-            cur.execute("SELECT village FROM village_level WHERE sup_id = %s" , (sup));
+            cur.execute("SELECT anm_id FROM village_level WHERE sup_id = %s" , (sup,));
             v_Records = cur.fetchall()
             if (len(v_Records)>0):
-                villages.append(v_Records[0])
-        print("villages are " , villages)
+                anms.append(v_Records[0])
+        print("villages are " , anms)
 
-        for v in villages:
-            cur.execute("SELECT smo_id FROM anm_level");
+        for a in anms:
+            cur.execute("SELECT smo_id FROM anm_level WHERE anm_id = %s" , (a,));
             anm_records = cur.fetchall()
             if (len(anm_records) > 0):
                 officer_ids.append(anm_records[0])
@@ -791,7 +791,7 @@ def dashboard_data(request) :
 
         smo = []
         for o in officer_ids:
-            cur.execute("SELECT smo FROM smo_level");
+            cur.execute("SELECT smo FROM smo_level WHERE smo_id = %s" , (o,));
             smo_records = cur.fetchall()
             if (len(smo_records) > 0):
                     smo.append(smo_records[0][0])

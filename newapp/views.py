@@ -931,12 +931,13 @@ def search_record(request):
     relevant_data = json.loads(request.body)
     cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
     records_bmo = cur.fetchall()
+    s_value = relevant_data["selectvalue"]
     if (len(records_bmo) > 0):
 
         bmo_id = records_bmo[0]
         patients = []
-        if ("aadhar" in relevant_data):
-            aadhar_number = relevant_data["aadhar"]
+        if (s_value == "aadhar" ):
+            aadhar_number = relevant_data["search"]
             cur.execute(
                 "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and aadhar_number = %s) user_record ",
                 (bmo_id,aadhar_number))
@@ -994,8 +995,8 @@ def search_record(request):
 
             return Response({"patients" : patients})
 
-        if ("patient_id" in relevant_data):
-            patient_id = relevant_data["patient_id"]
+        if (s_value == "patient_id" ):
+            patient_id = relevant_data["search"]
             cur.execute(
                 "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and patient_id = %s) user_record ",
                 (bmo_id, patient_id))
@@ -1052,8 +1053,8 @@ def search_record(request):
 
             return Response({"patients": patients})
 
-        if ("samagra_id" in relevant_data):
-            samagra_id = relevant_data["samagra_id"]
+        if (s_value == "samagra_id"):
+            samagra_id = relevant_data["search"]
             cur.execute(
                 "SELECT row_to_json(user_record) FROM (SELECT patient_id,patient_name,officer,agbdi_id,high_risk,edd_date  FROM patient_level WHERE bmo_id = %s and samagra_id= %s) user_record ",
                 (bmo_id, samagra_id))

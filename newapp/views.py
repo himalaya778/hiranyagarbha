@@ -590,7 +590,7 @@ def patient_data(request):
         high_risk_check  = True
         const_reasons.append("age")
     print("abortion value", abortion_miscarriage)
-    if(abortion_miscarriage == "yes"):
+    if(abortion_miscarriage == True):
         const_check = "yes"
         high_risk_check  = True
         const_reasons.append("abortion")
@@ -618,7 +618,7 @@ def patient_data(request):
         var_reasons.append("sugar")
 
 
-    if(high_risk_check == True):
+    if(high_risk_check == True and (var_check=="no" and const_check=="no")):
         print("yes high risk")
         for i in range(0,len (relevant_data['high_risk'])):
             high_risk.append(str(relevant_data['high_risk'][i]))# 21, array of strings

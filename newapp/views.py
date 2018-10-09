@@ -634,7 +634,7 @@ def patient_data(request):
 
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_status) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state))
@@ -1277,8 +1277,8 @@ def final_entry(request):
         f_outcome = relevant_data["foetal_outcome"]
         d_date = relevant_data["date"]
         d_status = "delivered"
-        cur.execute("UPDATE patient_level SET b_weight = %s,d_type=%s,f_outcome=%s,d_date=%s,d_status=%s WHERE patient_id = %s" ,
-                    (int(b_weight), d_type, f_outcome, d_date, d_status, patient_id))
+        cur.execute("UPDATE patient_level SET b_weight = %s,d_type=%s,f_outcome=%s,d_date=%s,d_status=%s,pregnancy_status=%s WHERE patient_id = %s" ,
+                    (int(b_weight), d_type, f_outcome, d_date, d_status, patient_id,"inactive",))
         return Response("Final data entered")
 
     if value == "not_delivered":

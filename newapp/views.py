@@ -589,7 +589,7 @@ def patient_data(request):
         const_check = "yes"
         high_risk_check  = True
         const_reasons.append("age")
-
+    print("abortion value", abortion_miscarriage)
     if(abortion_miscarriage == "yes"):
         const_check = "yes"
         high_risk_check  = True

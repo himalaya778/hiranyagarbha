@@ -1229,14 +1229,14 @@ def final_entry(request):
     relevant_data = json.loads(request.body)
     print(relevant_data)
     value = relevant_data["value"]
-    patient_id = relevant_data["patien_id"]
+    patient_id = relevant_data["patient_id"]
     if value == "delivered":
         b_weight = relevant_data["baby_weight"]
         d_type = relevant_data["delivery_type"]
         f_outcome = relevant_data["foetal_outcome"]
         d_date = relevant_data["date"]
         d_status = "delivered"
-        cur.execute("UPDATE TABLE patient_level SET baby_weight = %s,delivery_type=%s,foetal_outcome=%s,date=%s,d_status=%s WHERE patient_id = %s" ,
+        cur.execute("UPDATE patient_level SET baby_weight = %s,delivery_type=%s,foetal_outcome=%s,date=%s,d_status=%s WHERE patient_id = %s" ,
                     (b_weight, d_type, f_outcome, d_date, d_status, patient_id))
         return Response("Final data entered")
 
@@ -1244,7 +1244,7 @@ def final_entry(request):
         cause = relevant_data["cause"]
         reason = relevant_data["reason"]
         d_status = "not_delivered"
-        cur.execute("UPDATE TABLE patient_level SET cause = %s, reason=%s, d_status=%s WHERE patient_id=%s" , (cause, reason, d_status, patient_id))
+        cur.execute("UPDATE patient_level SET cause = %s, reason=%s, d_status=%s WHERE patient_id=%s" , (cause, reason, d_status, patient_id))
         return Response("Final data entered")
 
     return  Response("Entry could not be made")

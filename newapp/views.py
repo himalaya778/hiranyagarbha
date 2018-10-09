@@ -625,7 +625,7 @@ def patient_data(request):
     dietary_advice = relevant_data['dietary_advice']             # 22
     samagra_id = relevant_data['samagra_id']                     #23
     notified = False
-
+    pregnancy_state = "active"
     cur.execute("SELECT agbdi_id FROM anganbadi_level WHERE agbdi = %s" , (agbdi_name,))
     agbdi_id = cur.fetchall()[0]
 
@@ -634,10 +634,10 @@ def patient_data(request):
 
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons))
+                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state))
 
     conn.commit()
     return Response('entry made')
@@ -1285,7 +1285,7 @@ def final_entry(request):
         cause = relevant_data["cause"]
         reason = relevant_data["reason"]
         d_status = "not_delivered"
-        cur.execute("UPDATE patient_level SET cause = %s, reason=%s, d_status=%s WHERE patient_id=%s" , (cause, reason, d_status, patient_id))
+        cur.execute("UPDATE patient_level SET cause = %s, reason=%s, d_status=%s WHERE patient_id=%s, pregnancy_status = %s" , (cause, reason, d_status, patient_id,"inactive"))
         return Response("Final data entered")
 
     return  Response("Entry could not be made")

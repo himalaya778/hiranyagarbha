@@ -1236,7 +1236,7 @@ def final_entry(request):
         f_outcome = relevant_data["foetal_outcome"]
         d_date = relevant_data["date"]
         d_status = "delivered"
-        cur.execute("UPDATE patient_level SET baby_weight = %s,delivery_type=%s,foetal_outcome=%s,date=%s,d_status=%s WHERE patient_id = %s" ,
+        cur.execute("UPDATE patient_level SET b_weight = %s,delivery_type=%s,foetal_outcome=%s,date=%s,d_status=%s WHERE patient_id = %s" ,
                     (int(b_weight), d_type, f_outcome, d_date, d_status, patient_id))
         return Response("Final data entered")
 

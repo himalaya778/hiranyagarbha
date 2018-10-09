@@ -983,7 +983,11 @@ def get_high_risk_patient_data(request):
 
             cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s" , (a_id,))
             anm_records = cur.fetchall()
-            anm = anm_records[0][0]
+            if(len(anm_records)>0):
+
+                anm = anm_records[0][0]
+            else:
+                anm="test_anm"
 
 
             r["supervisor"] = supervisor

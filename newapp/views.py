@@ -660,10 +660,13 @@ def dashboard_data(request) :
     elif(time_period == 'this_week'):
         date_1 = datetime.date.today()
         date_2 = datetime.date.today() - timedelta(7)
-
+        print("date 1 is : " , date_1 )
+        print("date 2 is : ", date_2)
     elif(time_period == 'this_month'):
         date_1 = datetime.date.today()
         date_2 = datetime.date.today() - timedelta(30)
+        print("date 1 is : ", date_1)
+        print("date 2 is : ", date_2)
     #officer = ["badshah"]
     #officer = []
     if (len(records_bmo) > 0):
@@ -677,7 +680,7 @@ def dashboard_data(request) :
 
     #date 1, date 2, officers
         if(not(time_period == 'all')):
-            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_1, date_2,bmo_id))
+            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_2, date_1,bmo_id))
             records = cur.fetchall()
 
         else:
@@ -771,7 +774,7 @@ def dashboard_data(request) :
         if (not (time_period == 'all')):
             cur.execute(
                 "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
-                (date_1, date_2, bmo_id))
+                (date_2, date_1, bmo_id))
             records = cur.fetchall()
 
         else:

@@ -581,6 +581,42 @@ def patient_data(request):
     haemoglobin = relevant_data['haemoglobin']                   # 19
     pregnancy_number = relevant_data['pregnancy_number']         # 20
     high_risk = []
+
+    #constant checks
+    const_reasons = []
+    if (age<18 or age>35):
+        const_check = "yes"
+        high_risk_check  = True
+        const_reasons.append("age")
+
+    if(abortion_miscarriage == "yes"):
+        const_check = "yes"
+        high_risk_check  = True
+        const_reasons.append("abortion")
+
+    #if (height<152.4):
+     #   const_check = True
+      #  high_risk_check  = True
+      #  const_reasons.append("height")
+
+    var_reasons = []
+
+    if(haemoglobin<10):
+        var_check = "yes"
+        high_risk_check = True
+        var_reasons.append("haemoglobin")
+
+    if(bp1>130 or bp2>90):
+        var_check = "yes"
+        high_risk_check = True
+        var_reasons.append("bp")
+
+    if(sugar<100):
+        var_check = "yes"
+        high_risk_check = True
+        var_reasons.append("sugar")
+
+
     if(high_risk_check == True):
         print("yes high risk")
         for i in range(0,len (relevant_data['high_risk'])):
@@ -597,10 +633,10 @@ def patient_data(request):
 
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id))
+                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons))
 
     conn.commit()
     return Response('entry made')

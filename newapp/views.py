@@ -581,7 +581,8 @@ def patient_data(request):
     haemoglobin = relevant_data['haemoglobin']                   # 19
     pregnancy_number = relevant_data['pregnancy_number']         # 20
     high_risk = []
-
+    const_check="no"
+    var_check="no"
     #constant checks
     const_reasons = []
     if (age<18 or age>35):

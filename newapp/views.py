@@ -581,6 +581,10 @@ def patient_data(request):
     haemoglobin = relevant_data['haemoglobin']                   # 19
     pregnancy_number = relevant_data['pregnancy_number']         # 20
     height = relevant_data["height"]
+    gravita = relevant_data["gravita"]
+    para = relevant_data["para"]
+    live = relevant_data["live"]
+    abortion = relevant_data["abortion"]
     high_risk = []
     const_check="no"
     var_check="no"
@@ -641,10 +645,14 @@ def patient_data(request):
 
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_status,officers_at_visit,height) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,
+                      var_check,var_reasons,pregnancy_status,officers_at_visit,height,gravita,para,live,abortion) 
+                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
-                    male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
-                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state,officers_at_visit,height))
+                    male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer,
+                 agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
+                      pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,
+                 block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state,officers_at_visit,height,gravita,para,live,abortion))
 
     conn.commit()
     return Response('entry made')

@@ -1426,3 +1426,5 @@ def report_data(request):
     result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
               "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage}
 
+    return Response(result)
+

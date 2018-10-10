@@ -1414,7 +1414,7 @@ def report_data(request):
         if(p["var_check"] == "yes"):
             var_cause+=1
 
-    total = 0
+    total = 10
     for c in cases:
         total+=int(c)
 

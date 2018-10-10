@@ -687,6 +687,8 @@ def dashboard_data(request) :
     records_bmo = cur.fetchall()
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
+
+
     date_1 = datetime.date.today()
     date_2 = datetime.date.today() - timedelta(30)
     print(request.GET)
@@ -720,6 +722,12 @@ def dashboard_data(request) :
     #officer = []
     if (len(records_bmo) > 0):
         officer_ids = []
+        #village population
+        cur.execute("SELECT population FROM village_level WHERE bmo_id = %s" , (bmo_id))
+        v_records = cur.fetchall()
+        print("v_records are : " , v_records)
+
+
         if(len(officer)>0):
             for o in officer:
                 cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (o,))

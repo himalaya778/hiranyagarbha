@@ -541,6 +541,8 @@ def check_link_icds(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def patient_data(request):
+    const_check="no"
+    var_check="no"
     print( " body is : " , request.body)
     relevant_data = json.loads(request.body)
     print("id is " , request.user)
@@ -584,8 +586,7 @@ def patient_data(request):
     live = relevant_data["live"]
     abortion = relevant_data["abortion"]
     high_risk = []
-    const_check="no"
-    var_check="no"
+
     #constant checks
     const_reasons = []
     if (age<18 or age>35):
@@ -640,7 +641,7 @@ def patient_data(request):
 
     cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (officer,))
     smo_id = cur.fetchall()[0]
-
+    print(var_check , const_check , high_risk_check)
     cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,

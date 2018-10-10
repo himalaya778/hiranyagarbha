@@ -1394,10 +1394,11 @@ def report_data(request):
     total_reg = len(patients)
 
     for p in patients :
-        print(p["high_risk_check"])
-        if(p["high_risk_check"] == True ):
+        
+        if(str(p["high_risk_check"]) == "true" ):
             t_high_risk+=1
             for i in range (0,len(causes)) :
+                print(p["high_risk"])
                 if causes[i] in p["high_risk"]:
                     cases[i]+=1
 

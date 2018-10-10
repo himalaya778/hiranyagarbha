@@ -991,7 +991,6 @@ def dashboard_data(request) :
 
 
 
-
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
@@ -1120,7 +1119,10 @@ def get_high_risk_patient_data(request):
 
             cur.execute("SELECT anm FROM anm_level WHERE anm_id = %s", (a_id,))
             anm_records = cur.fetchall()
-            anm = anm_records[0][0]
+            if(len(anm_records)>0):
+                anm = anm_records[0][0]
+            else:
+                anm = "shyama"
 
             r["supervisor"] = supervisor
             r["status"] = 0

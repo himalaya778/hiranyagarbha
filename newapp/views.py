@@ -723,10 +723,6 @@ def dashboard_data(request) :
     if (len(records_bmo) > 0):
         officer_ids = []
         #village population
-        cur.execute("SELECT population FROM village_level WHERE bmo_id = %s" , (bmo_id))
-        v_records = cur.fetchall()
-        print("v_records are : " , v_records)
-
 
         if(len(officer)>0):
             for o in officer:
@@ -734,6 +730,8 @@ def dashboard_data(request) :
                 off_records = cur.fetchall()
                 if(len(off_records)>0):
                     officer_ids.append(off_records[0])
+
+
 
     #date 1, date 2, officers
         if(not(time_period == 'all')):
@@ -753,6 +751,16 @@ def dashboard_data(request) :
             patients.append(r[0])
 
         if (len(officer_ids) == 0):
+            cur.execute("SELECT village,population FROM village_level WHERE bmo_id = %s", (bmo_id))
+            v_records = cur.fetchall()
+            print("v_records are : ", v_records)
+            v_pop = 0
+            for v in v_records:
+                if not (v[0] == None):
+                    v_pop += v[0]
+
+            approx_registrations = (0.15 * v_pop)
+            approx_high_risk = (0.015 * approx_registrations)
             total_number = 0
             high_risk = 0
             not_high_risk = 0
@@ -776,9 +784,34 @@ def dashboard_data(request) :
                         {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
 
             result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
-                  "stacked_data": stacked_data}
+                  "stacked_data": stacked_data, "total _pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk}
             return Response(result)
         else:
+            #villages after filter
+            anm_ids = []
+            for o in officer_ids :
+
+                cur.execute("SELECT anm_id FROM anm_level WHERE smo_id =%s" , (o,))
+                records = cur.fetchall()
+                if(len(records)>0):
+                    anm_ids.append(records[0][0])
+
+            pop_list = []
+            for a in anm_ids :
+                cur.execute("SELECT population FROM village_level WHERE anm_id = %s",(a,))
+                records = cur.fetchall()
+                if (len(records)>0):
+                    if not (records[0][0] == None):
+                        pop_list.append(records[0][0])
+
+            v_pop = 0
+            for v in pop_list:
+                if not(v == None):
+                    v_pop +=v
+
+            approx_registrations = (0.15 * v_pop)
+            approx_high_risk = (0.015 * approx_registrations)
+
             filter_patients = []
             total_number = 0
             high_risk = 0
@@ -799,9 +832,12 @@ def dashboard_data(request) :
                 else:
                     not_high_risk+=1
 
-            stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} , {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} , {"name" : "Any Others" , "female" :y_axis[7]} ]
+            stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} ,
+                             {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} ,
+                             {"name" : "Any Others" , "female" :y_axis[7]} ]
 
-            result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data}
+            result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data,
+                      "total _pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk}
 
             return Response(result)
 

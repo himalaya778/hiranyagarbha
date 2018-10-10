@@ -751,13 +751,13 @@ def dashboard_data(request) :
             patients.append(r[0])
 
         if (len(officer_ids) == 0):
-            cur.execute("SELECT village,population FROM village_level WHERE bmo_id = %s", (bmo_id))
+            cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
             v_records = cur.fetchall()
             print("v_records are : ", v_records)
             v_pop = 0
             for v in v_records:
                 if not (v[0] == None):
-                    v_pop += v[0]
+                    v_pop += int(v[0])
 
             approx_registrations = (0.15 * v_pop)
             approx_high_risk = (0.015 * approx_registrations)
@@ -807,7 +807,7 @@ def dashboard_data(request) :
             v_pop = 0
             for v in pop_list:
                 if not(v == None):
-                    v_pop +=v
+                    v_pop +=int(v)
 
             approx_registrations = (0.15 * v_pop)
             approx_high_risk = (0.015 * approx_registrations)

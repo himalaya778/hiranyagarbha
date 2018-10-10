@@ -1394,6 +1394,7 @@ def report_data(request):
     total_reg = len(patients)
 
     for p in patients :
+        print(p["high_risk_check"])
         if(p["high_risk_check"] == True ):
             t_high_risk+=1
             for i in range (0,len(causes)) :

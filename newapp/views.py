@@ -1370,5 +1370,59 @@ def final_entry(request):
 @api_view(['GET'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
-def final_entry(request):
+def report_data(request):
+    total_reg = 0
+    t_high_risk = 0
+    con_risk = 0
+    n_con_risk = 0
+    const_cause = 0
+    var_cause = 0
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    if(len(records_bmo)>0):
+        bmo_id = records_bmo[0]
+    causes = ["High BP" , "Convulsions" , "Vaginal Bleeding" , "Foul Smell Discharge" , "Severe Anemia" , "Diabetes" , "Twins" , "Any Others"]
+    cases = [0,0,0,0,0,0,0,0]
+    cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
+        (bmo_id,))
+    records = cur.fetchall()
+    patients = []
+
+    for r in records:
+        patients.append(r[0])
+
+    total_reg = len(patients)
+
+    for p in patients :
+        if(p["high_risk_check"] == True ):
+            t_high_risk+=1
+            for i in range (0,len(causes)) :
+                if causes[i] in p["high_risk"]:
+                    cases[i]+=1
+
+
+
+        if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
+            con_risk+=1
+
+        if(p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
+            n_con_risk+=1
+
+        if(p["const_check"] == "yes"):
+            const_cause+=1
+
+        if(p["var_check"] == "yes"):
+            var_cause+=1
+
+    total = 0
+    for c in cases:
+        total+=int(c)
+
+    percentage = []
+    for c in cases:
+        percentage.append((c*100)/total)
+
+
+    result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
+              "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage}
 

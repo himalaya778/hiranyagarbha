@@ -819,8 +819,8 @@ def dashboard_data(request) :
                 if not(v == None):
                     v_pop +=int(v)
 
-            approx_registrations = (0.015 * v_pop)
-            approx_high_risk = (0.15 * approx_registrations)
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
 
             filter_patients = []
             total_number = 0
@@ -1394,7 +1394,7 @@ def report_data(request):
     total_reg = len(patients)
 
     for p in patients :
-        
+
         if(str(p["high_risk_check"]) == "true" ):
             t_high_risk+=1
             for i in range (0,len(causes)) :
@@ -1422,7 +1422,7 @@ def report_data(request):
 
     percentage = []
     for c in cases:
-        percentage.append((c*100)/total)
+        percentage.append(int((c*100)/total))
 
 
     result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,

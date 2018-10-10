@@ -759,11 +759,13 @@ def dashboard_data(request) :
                 if not (v[0] == None):
                     v_pop += int(v[0])
 
-            approx_registrations = (0.15 * v_pop)
-            approx_high_risk = (0.015 * approx_registrations)
+            approx_registrations = (0.015 * v_pop)
+            approx_high_risk = (0.15 * approx_registrations)
             total_number = 0
             high_risk = 0
             not_high_risk = 0
+            const_cause = 0
+            var_cause = 0
             total_number = len(patients)
             for p in patients:
                 print("data in check is", " ", p["high_risk_check"])
@@ -776,6 +778,11 @@ def dashboard_data(request) :
                 else:
                     not_high_risk+=1
 
+                if(p["const_check"] == "yes"):
+                    const_cause+=1
+                if(p["var_check"] == "yes"):
+                    var_cause +=1
+
         #result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk , "x_axis" : x_axis, "y-axis": y_axis}
             stacked_data = [{"name": "High BP", "female": y_axis[0]}, {"name": "Convulsions", "female": y_axis[1]},
                         {"name": "Vaginal Bleeding", "female": y_axis[2]},
@@ -784,11 +791,14 @@ def dashboard_data(request) :
                         {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
 
             result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
-                  "stacked_data": stacked_data, "total _pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk}
+                  "stacked_data": stacked_data, "total_pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk,
+                      "const_cause" : const_cause,"var_cause" : var_cause}
             return Response(result)
         else:
             #villages after filter
             anm_ids = []
+            const_cause = 0
+            var_cause = 0
             for o in officer_ids :
 
                 cur.execute("SELECT anm_id FROM anm_level WHERE smo_id =%s" , (o,))
@@ -809,8 +819,8 @@ def dashboard_data(request) :
                 if not(v == None):
                     v_pop +=int(v)
 
-            approx_registrations = (0.15 * v_pop)
-            approx_high_risk = (0.015 * approx_registrations)
+            approx_registrations = (0.015 * v_pop)
+            approx_high_risk = (0.15 * approx_registrations)
 
             filter_patients = []
             total_number = 0
@@ -832,12 +842,18 @@ def dashboard_data(request) :
                 else:
                     not_high_risk+=1
 
+                if(p["const_check"] == "yes"):
+                    const_cause+=1
+                if(p["var_check"] == "yes"):
+                    var_cause +=1
+
             stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} ,
                              {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} ,
                              {"name" : "Any Others" , "female" :y_axis[7]} ]
 
             result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data,
-                      "total _pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk}
+                      "total_pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk,"const_cause" : const_cause,
+                      "var_cause" : var_cause}
 
             return Response(result)
 
@@ -1349,4 +1365,10 @@ def final_entry(request):
 
 
 
+################report###########################
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def final_entry(request):
 

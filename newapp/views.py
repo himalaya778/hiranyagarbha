@@ -586,7 +586,7 @@ def patient_data(request):
     live = relevant_data["live"]
     abortion = relevant_data["abortion"]
     high_risk = []
-
+    high_risk_check = False
     #constant checks
     const_reasons = []
     if (age<18 or age>35):

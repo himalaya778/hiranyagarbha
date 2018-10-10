@@ -759,8 +759,8 @@ def dashboard_data(request) :
                 if not (v[0] == None):
                     v_pop += int(v[0])
 
-            approx_registrations = (0.015 * v_pop)
-            approx_high_risk = (0.15 * approx_registrations)
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
             total_number = 0
             high_risk = 0
             not_high_risk = 0

@@ -543,7 +543,11 @@ def check_link_icds(request):
 def patient_data(request):
     const_check="no"
     var_check="no"
-    print( " body is : " , request.body)
+    high_risk_check = False
+    print("const check : " , const_check)
+    print("var check : " , var_check)
+    print(" high risk check : " , high_risk_check)
+    #print( " body is : " , request.body)
     relevant_data = json.loads(request.body)
     print("id is " , request.user)
     cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
@@ -586,45 +590,50 @@ def patient_data(request):
     live = relevant_data["live"]
     abortion = relevant_data["abortion"]
     high_risk = []
-    high_risk_check = False
+
     #constant checks
     const_reasons = []
     if (age<18 or age>35):
+        print("age is the reason")
         const_check = "yes"
         high_risk_check  = True
         const_reasons.append("age")
     print("abortion value", abortion_miscarriage)
     if(abortion_miscarriage == True):
+        print("abortion is the reason")
         const_check = "yes"
         high_risk_check  = True
         const_reasons.append("abortion")
 
     if(height<154):
+        print("height is the reason")
         const_check = "yes"
         high_risk_check = True
         const_reasons.append("height")
-    #if (height<152.4):
-     #   const_check = True
-      #  high_risk_check  = True
-      #  const_reasons.append("height")
 
     var_reasons = []
 
     if(haemoglobin<10):
+        print("haemoglobin is the reason")
         var_check = "yes"
         high_risk_check = True
         var_reasons.append("haemoglobin")
 
     if(bp1>130 or bp2>90):
+        print("bp is the reason")
         var_check = "yes"
         high_risk_check = True
         var_reasons.append("bp")
 
     if(sugar<100):
+        print("sugar is the reason")
         var_check = "yes"
         high_risk_check = True
         var_reasons.append("sugar")
 
+    print("const check : " , const_check)
+    print("var check : " , var_check)
+    print(" high risk check : " , high_risk_check)
 
     if(high_risk_check == True and (var_check=="no" and const_check=="no")):
         print("yes high risk")

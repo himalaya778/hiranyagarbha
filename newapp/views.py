@@ -84,6 +84,7 @@ def update_patient_data(request):
     patient_id = relevant_data["patient_id"]
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
+    print("records " , records)
     if(records == None):
         visit_number = 0
     else:

@@ -84,7 +84,10 @@ def update_patient_data(request):
     patient_id = relevant_data["patient_id"]
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
-    visit_number = 0  #len(records[0][0])
+    if(records == None):
+        visit_number = 0
+    else:
+        visit_number = len(records[0][0])
     sample.append(visit_number)
     new_weight = relevant_data["weight"]
     sample.append(new_weight)

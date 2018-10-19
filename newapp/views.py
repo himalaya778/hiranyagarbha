@@ -92,9 +92,9 @@ def update_patient_data(request):
 
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
-    print("visit data length: " , len(records))
-    print("visit_data[0] length " , len(records[0]))
-    print("visit data[0][0] length " ,len(records[0][0]))
+    #print("visit data length: " , len(records))
+    #print("visit_data[0] length " , len(records[0]))
+    #print("visit data[0][0] length " ,len(records[0][0]))
     visit_data = records[0][0]
     var_reasons = []
 

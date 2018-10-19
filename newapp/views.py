@@ -39,6 +39,9 @@ def set_visit(request):
     patient_id = relevant_data['patient_id']
     s_date = relevant_data['date']
     #s_time = relevant_data['time']
+
+    cur.execute("UPDATE patient_level  SET visit_schedule = array_cat(visit_schedule,%s) WHERE patient_id = %s ", (s_date, patient_id,))
+
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
     print("dates array ", records)

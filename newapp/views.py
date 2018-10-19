@@ -15,6 +15,7 @@ import datetime
 import time
 from datetime import timedelta
 from accounts.views import conn
+from pyfcm import FCMNotification
 ############################################################################################################################################################################3
 #Establishing conection with Database
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
@@ -729,6 +730,20 @@ def patient_data(request):
                  block,samagra_id,const_check,const_reasons,var_check,pregnancy_state,officers_at_visit,height,gravita,para,live,abortion,var_reasons))
 
     conn.commit()
+
+    if(high_risk_check == True):
+        # sending push notification to mobile device******
+        push_service = FCMNotification(
+            api_key="AAAAzxkjakU:APA91bExsgDBynVUmONLnKrm31hTOuN_aKSIwiHwOhCMfNPzANWb2sRdtp7SHHVuoop4BQ34ihUqmv95NH4XMFsQNvzMHqX7V1wEhYXhyncphoaFg94hNrrUa22XTLgHzu4QJU2zQGiX")
+
+        registration_id = "cBRosMLnkgk:APA91bFjDgRkW4wpieK_6kXGg-cx7ueMt514qnhL6Oksi40FcaU4McGXKYBLLQKNLWfv41y4MXwEmwcMFDJgc45HgJi93IL2X-ZONDDx99AKGi7CfLxZgmZvcC8jhKAtluO0DVmtibBi"
+        message_title = "New Patient Added!"
+        message_body = "Tap to see details."
+        result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title,
+                                                   message_body=message_body)
+        print(result)
+    # push notification snippet end *****************
+
     return Response('entry made')
 
 @api_view(['GET'])

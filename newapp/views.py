@@ -46,7 +46,7 @@ def set_visit(request):
 
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
-    print("dates array ", records[0][0][1])
+    print("dates array ", records[0][0])
 
     #if (records[0][0] == None):
 

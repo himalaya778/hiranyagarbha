@@ -78,56 +78,36 @@ def set_visit(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def update_patient_data(request):
+    sample = []
     relevant_data = json.loads(request.body)
     #visit_number = relevant_data["visit_no"]
+    cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
+    records = cur.fetchall()
+    visit_number = len(records[0][0])
+    sample.append(visit_number)
     patient_id = relevant_data["patient_id"]
     new_weight = relevant_data["weight"]
+    sample.append(new_weight)
     new_bp1 = relevant_data["bp1"]
+    sample.append(new_bp1)
     new_bp2 = relevant_data["bp2"]
+    sample.append(new_bp2)
     new_sugar = relevant_data["sugar"]
+    sample.append(new_sugar)
     new_dietary_advice = relevant_data["dietary_advice"]
     new_haemoglobin = relevant_data["haemoglobin"]
-    new_date = relevant_data["date"]
+    sample.append(new_haemoglobin)
+    sample.append(new_dietary_advice)
+    #new_date = relevant_data["date"]
 
-    cur.execute("SELECT visit_no FROM patient_level WHERE patient_id = %s", (patient_id,))
+
+
+    cur.execute("UPDATE patient_level SET visit_data = visit_data || %s::TEXT[] WHERE patient_id = %s" , (sample,patient_id,))
+    cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , patient_id)
     records = cur.fetchall()
-    visit_number = records[0][0]
-    if(visit_number == None):
-        print("first visit")
-        visit_number = 1
-    print("visit number" , visit_number)
-
-    if (visit_number == 1):
-        cur.execute("UPDATE patient_level SET v_1_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
-        cur.execute("UPDATE patient_level SET v_1_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
-        cur.execute("UPDATE patient_level SET v_1_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
-        cur.execute("UPDATE patient_level SET v_1_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
-        cur.execute("UPDATE patient_level SET v_1_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
-        cur.execute("UPDATE patient_level SET v_1_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
-        cur.execute("UPDATE patient_level SET visit_no = %s WHERE patient_id = %s" , (2,patient_id,))
-        conn.commit()
-        return Response("Visit 1 data saved successfully")
-
-    if (visit_number == 2):
-        cur.execute("UPDATE patient_level SET v_2_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
-        cur.execute("UPDATE patient_level SET v_2_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
-        cur.execute("UPDATE patient_level SET v_2_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
-        cur.execute("UPDATE patient_level SET v_2_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
-        cur.execute("UPDATE patient_level SET v_2_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
-        cur.execute("UPDATE patient_level SET v_2_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
-        cur.execute("UPDATE patient_level SET visit_no = %s WHERE patient_id = %s", (3, patient_id,))
-        conn.commit()
-        return Response("Visit 2 data saved successfully")
-
-    if (visit_number == 3):
-        cur.execute("UPDATE patient_level SET v_3_weight = %s WHERE patient_id = %s" , (new_weight,patient_id,))
-        cur.execute("UPDATE patient_level SET v_3_bp1 = %s WHERE patient_id = %s", (new_bp1,patient_id,))
-        cur.execute("UPDATE patient_level SET v_3_bp2 = %s WHERE patient_id = %s", (new_bp2,patient_id,))
-        cur.execute("UPDATE patient_level SET v_3_sugar = %s WHERE patient_id = %s", (new_sugar,patient_id,))
-        cur.execute("UPDATE patient_level SET v_3_dietary_advice = %s WHERE patient_id = %s", (new_dietary_advice,patient_id,))
-        cur.execute("UPDATE patient_level SET v_3_haemoglobin = %s WHERE patient_id = %s", (new_haemoglobin,patient_id,))
-        conn.commit()
-        return Response("Visit 3 data saved successfully")
+    print("visit data length: " , len(records))
+    print("visit_data[0] length " , len(records[0]))
+    print("visit data[0][0] length " ,len(records[0][0]))
 
     return Response("Data already saved for 3 visits!!")
 

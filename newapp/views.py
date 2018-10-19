@@ -39,29 +39,30 @@ def set_visit(request):
     patient_id = relevant_data['patient_id']
     s_date = relevant_data['date']
     #s_time = relevant_data['time']
-    cur.execute("SELECT row_to_json(patient_record) FROM (SELECT v_1_date, v_2_date, v_3_date FROM patient_level WHERE patient_id = %s) patient_record", (patient_id,))
+    cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
-    print(records)
-    if (records[0][0]["v_1_date"] == None):
+    print("dates array ", records)
 
-        cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
-        #cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", ( patient_id,))
-        conn.commit()
-        return Response("Visit  1 Scheduled")
-    if (records[0][0]["v_2_date"] == None):
-        cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-        #cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
-        conn.commit()
-        return Response("Visit 2 Scheduled")
+    #if (records[0][0] == None):
 
-    if (records[0][0]["v_2_date"] == None):
-        cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-        #cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-        cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
-        conn.commit()
-        return Response("Visit 3 Scheduled")
+     #   cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
+     #   #cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", ( patient_id,))
+     #   conn.commit()
+     #   return Response("Visit  1 Scheduled")
+    #if (records[0][0]["v_2_date"] == None):
+     #   cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
+     #   #cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
+     #   conn.commit()
+     #   return Response("Visit 2 Scheduled")
+
+    #if (records[0][0]["v_2_date"] == None):
+     #   cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
+     #   #cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
+     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
+     #   conn.commit()
+     #   return Response("Visit 3 Scheduled")
 
     return Response("3 visits already sceduled")
 
@@ -558,6 +559,18 @@ def patient_data(request):
     records_block = cur.fetchall()
     block = records_block[0]
 
+    cur.execute("SELECT state FROM auth_user WHERE username = %s" ,(str(request.user),) )
+    records_state = cur.fetchall()
+    state = records_state[0]
+
+    cur.execute("SELECT district FROM auth_user WHERE username = %s" ,(str(request.user),) )
+    records_district = cur.fetchall()
+    district = records_district[0]
+
+    cur.execute("SELECT division FROM auth_user WHERE username = %s" ,(str(request.user),) )
+    records_division = cur.fetchall()
+    division = records_division[0]
+
     high_risk_check = relevant_data['high_risk_check']
     print(high_risk_check)
     reg_date = datetime.date.today()
@@ -651,12 +664,12 @@ def patient_data(request):
     cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (officer,))
     smo_id = cur.fetchall()[0]
     print(var_check , const_check , high_risk_check)
-    cur.execute("""INSERT into patient_level(bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
+    cur.execute("""INSERT into patient_level(state,district,division,bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,
                       var_check,var_reasons,patient_status,officers_at_visit,height,gravita,para,live,abortion) 
-                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                (bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
+                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                (state,district,division,bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer,
                  agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,

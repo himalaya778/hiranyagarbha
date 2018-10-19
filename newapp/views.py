@@ -103,7 +103,7 @@ def update_patient_data(request):
 
 
     cur.execute("UPDATE patient_level SET visit_data = visit_data || %s::TEXT[] WHERE patient_id = %s" , (sample,patient_id,))
-    cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , patient_id,)
+    cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
     print("visit data length: " , len(records))
     print("visit_data[0] length " , len(records[0]))

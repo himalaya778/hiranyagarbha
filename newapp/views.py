@@ -49,7 +49,7 @@ def set_visit(request):
     print("records length : " , len(records))
     print("records[0] length : " , len(records[0]))
     print("records [0][0] length " , len(records[0][0]))
-    print("dates array ", records[0][0])
+    print("dates array ", records)
 
     #if (records[0][0] == None):
 

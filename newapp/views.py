@@ -136,7 +136,7 @@ def update_patient_data(request):
 
     visit_data.append(sample)
 
-    cur.execute("UPDATE patient_level SET visit_data = %s, var_reasons = var_reasons|| %s::TEXT[][] WHERE patient_id = %s"
+    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = var_reasons|| %s::TEXT[][] WHERE patient_id = %s"
                 , (visit_data,var_reasons,patient_id,))
 
     #testing output

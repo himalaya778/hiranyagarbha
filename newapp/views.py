@@ -40,7 +40,7 @@ def set_visit(request):
     s_date = relevant_data['date']
     array_date = []
     array_date.append(s_date)
-    s_time = relevant_data['time']
+    #s_time = relevant_data['time']
 
     cur.execute("UPDATE patient_level  SET visit_schedule = visit_schedule || %s::DATE[] WHERE patient_id = %s ", (array_date, patient_id,))
 

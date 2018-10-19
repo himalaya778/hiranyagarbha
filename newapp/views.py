@@ -143,6 +143,7 @@ def update_patient_data(request):
     print("var_reasons length: " , len(records))
     print("var_reasons[0] length " , len(records[0]))
     print("var_reasons[0][0] length " ,len(records[0][0]))
+    print(records[0][0])
 
     return Response("Data already saved for 3 visits!!")
 

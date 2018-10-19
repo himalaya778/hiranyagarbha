@@ -79,6 +79,7 @@ def set_visit(request):
 @permission_classes((IsAuthenticated,))
 def update_patient_data(request):
     sample = []
+    var_sample = []
     relevant_data = json.loads(request.body)
     #visit_number = relevant_data["visit_no"]
     patient_id = relevant_data["patient_id"]
@@ -92,14 +93,19 @@ def update_patient_data(request):
 
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
-    #print("visit data length: " , len(records))
-    #print("visit_data[0] length " , len(records[0]))
-    #print("visit data[0][0] length " ,len(records[0][0]))
     if(records[0][0] == None):
         visit_data = []
     else:
         visit_data = records[0][0]
-    var_reasons = []
+
+    cur.execute("SELECT var_reasons FROM patient_level WHERE patient_id = %s" , (patient_id,))
+    records = cur.fetchall()
+    if(records[0][0] == None):
+        var_reasons = []
+    else:
+        var_reasons = records[0][0]
+    #var_reasons = []
+
 
     sample.append(visit_number)
     new_weight = relevant_data["weight"]
@@ -113,14 +119,14 @@ def update_patient_data(request):
         print("bp is the reason")
         var_check = "yes"
 
-        var_reasons.append("bp")
+        var_sample.append("bp")
 
     new_sugar = int(relevant_data["sugar"])
     sample.append(new_sugar)
     if (new_sugar < 100):
         print("sugar is the reason")
         var_check = "yes"
-        var_reasons.append("sugar")
+        var_sample.append("sugar")
 
     new_haemoglobin = int(relevant_data["haemoglobin"])
     sample.append(new_haemoglobin)
@@ -128,15 +134,15 @@ def update_patient_data(request):
         print("haemoglobin is the reason")
         var_check = "yes"
         #high_risk_check = True
-        var_reasons.append("haemoglobin")
+        var_sample.append("haemoglobin")
 
     new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
     #new_date = relevant_data["date"]
 
     visit_data.append(sample)
-
-    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = var_reasons|| %s::TEXT[][] WHERE patient_id = %s"
+    var_reasons.append(var_sample)
+    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][] WHERE patient_id = %s"
                 , (visit_data,var_reasons,patient_id,))
 
     #testing output

@@ -81,11 +81,11 @@ def update_patient_data(request):
     sample = []
     relevant_data = json.loads(request.body)
     #visit_number = relevant_data["visit_no"]
+    patient_id = relevant_data["patient_id"]
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
     visit_number = len(records[0][0])
     sample.append(visit_number)
-    patient_id = relevant_data["patient_id"]
     new_weight = relevant_data["weight"]
     sample.append(new_weight)
     new_bp1 = relevant_data["bp1"]

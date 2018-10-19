@@ -239,8 +239,6 @@ class ObtainAuthToken(APIView):
                     if (records_worker[i][0] == cdpo_id):
                         worker.append(records_worker[i][1])
 
-
-
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
                     'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , "supervisor" : supervisor,
@@ -248,30 +246,11 @@ class ObtainAuthToken(APIView):
                 }
 
                 return Response(content)
-
-
-            if(records[0][11] == "smo"):
-                print("smo login")
-                content = {
-                    'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
-                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4]
-                }
-
-                return Response(content)
-
             content = {
-                    'status': 'success', 'token': str(token.key), 'role': (records[0][11]), 'state': 'Madhya Pradesh'
-                }
-            # print(content)
+                'status': 'success', 'token': str(token.key), 'role': (records[0][11]), 'state': 'Madhya Pradesh'
+            }
+        #print(content)
             return Response(content)
-
-
-
-
-
-
-
-
 
         else:
 

@@ -96,9 +96,9 @@ def update_patient_data(request):
     new_weight = relevant_data["weight"]
     sample.append(new_weight)
 
-    new_bp1 = relevant_data["bp1"]
+    new_bp1 = int(relevant_data["bp1"])
     sample.append(new_bp1)
-    new_bp2 = relevant_data["bp2"]
+    new_bp2 = int(relevant_data["bp2"])
     sample.append(new_bp2)
     if (new_bp1 > 130 or new_bp2 > 90):
         print("bp is the reason")
@@ -106,14 +106,14 @@ def update_patient_data(request):
 
         var_reasons.append("bp")
 
-    new_sugar = relevant_data["sugar"]
+    new_sugar = int(relevant_data["sugar"])
     sample.append(new_sugar)
     if (new_sugar < 100):
         print("sugar is the reason")
         var_check = "yes"
         var_reasons.append("sugar")
 
-    new_haemoglobin = relevant_data["haemoglobin"]
+    new_haemoglobin = int(relevant_data["haemoglobin"])
     sample.append(new_haemoglobin)
     if (new_haemoglobin < 10):
         print("haemoglobin is the reason")

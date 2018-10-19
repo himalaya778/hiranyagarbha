@@ -89,29 +89,60 @@ def update_patient_data(request):
         visit_number = 0
     else:
         visit_number = len(records[0][0])
+
+    var_reasons = []
+
     sample.append(visit_number)
     new_weight = relevant_data["weight"]
     sample.append(new_weight)
+
     new_bp1 = relevant_data["bp1"]
     sample.append(new_bp1)
     new_bp2 = relevant_data["bp2"]
     sample.append(new_bp2)
+    if (new_bp1 > 130 or new_bp2 > 90):
+        print("bp is the reason")
+        var_check = "yes"
+
+        var_reasons.append("bp")
+
     new_sugar = relevant_data["sugar"]
     sample.append(new_sugar)
-    new_dietary_advice = relevant_data["dietary_advice"]
+    if (new_sugar < 100):
+        print("sugar is the reason")
+        var_check = "yes"
+        var_reasons.append("sugar")
+
     new_haemoglobin = relevant_data["haemoglobin"]
     sample.append(new_haemoglobin)
+    if (new_haemoglobin < 10):
+        print("haemoglobin is the reason")
+        var_check = "yes"
+        #high_risk_check = True
+        var_reasons.append("haemoglobin")
+
+    new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
     #new_date = relevant_data["date"]
 
 
 
-    cur.execute("UPDATE patient_level SET visit_data = visit_data || %s::TEXT[] WHERE patient_id = %s" , (sample,patient_id,))
+    cur.execute("UPDATE patient_level SET visit_data = visit_data || %s::TEXT[], var_reasons = var_reasons|| %s::TEXT[] WHERE patient_id = %s"
+                , (sample,var_reasons,patient_id,))
+
+    #testing output
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
     print("visit data length: " , len(records))
     print("visit_data[0] length " , len(records[0]))
     print("visit data[0][0] length " ,len(records[0][0]))
+    ##
+
+    cur.execute("SELECT var_reasons FROM patient_level WHERE patient_id = %s" , (patient_id,))
+    records = cur.fetchall()
+    print("var_reasons length: " , len(records))
+    print("var_reasons[0] length " , len(records[0]))
+    print("var_reasons[0][0] length " ,len(records[0][0]))
 
     return Response("Data already saved for 3 visits!!")
 
@@ -595,7 +626,8 @@ def patient_data(request):
     live = relevant_data["live"]
     abortion = relevant_data["abortion"]
     high_risk = []
-
+    bp_check = "no"
+    sugar_check = "no"
     #constant checks
     const_reasons = []
     if (age<18 or age>35):
@@ -628,12 +660,14 @@ def patient_data(request):
         print("bp is the reason")
         var_check = "yes"
         high_risk_check = True
+        bp_check = "yes"
         var_reasons.append("bp")
 
     if(sugar<100):
         print("sugar is the reason")
         var_check = "yes"
         high_risk_check = True
+        sugar_check = "yes"
         var_reasons.append("sugar")
 
     print("const check : " , const_check)
@@ -644,6 +678,15 @@ def patient_data(request):
         print("yes high risk")
         for i in range(0,len (relevant_data['high_risk'])):
             high_risk.append(str(relevant_data['high_risk'][i]))# 21, array of strings
+
+    if (high_risk_check == True):
+        if (sugar_check=="yes" and not("Diabetes" in high_risk)) :
+            high_risk.append("Diabetes")
+
+        if (bp_check == "yes" and not("High BP" in high_risk)):
+            high_risk.append("High BP")
+
+
     dietary_advice = relevant_data['dietary_advice']             # 22
     samagra_id = relevant_data['samagra_id']                     #23
     officers_at_visit = relevant_data["officers_at_visit"]
@@ -660,12 +703,13 @@ def patient_data(request):
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer, agbdi_name, abortion_miscarriage,bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified,high_risk_check,agbdi_id,smo_id,block,samagra_id,const_check,const_reasons,
                       var_check,var_reasons,patient_status,officers_at_visit,height,gravita,para,live,abortion) 
-                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
+                      %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::TEXT[])""",
                 (state,district,division,bmo_id,reg_date,aadhar_number, patient_name, husband_name, mobile_number, date_of_birth, age,
                     male_child,female_child, economic_status, relegion, lmp_date, weight, edd_date, officer,
                  agbdi_name, abortion_miscarriage, bp1,bp2,sugar,haemoglobin,
                       pregnancy_number, high_risk, dietary_advice,notified, high_risk_check,agbdi_id,smo_id,
-                 block,samagra_id,const_check,const_reasons,var_check,var_reasons,pregnancy_state,officers_at_visit,height,gravita,para,live,abortion))
+                 block,samagra_id,const_check,const_reasons,var_check,pregnancy_state,officers_at_visit,height,gravita,para,live,abortion,var_reasons))
 
     conn.commit()
     return Response('entry made')

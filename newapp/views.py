@@ -1500,6 +1500,9 @@ def report_data_high_risk(request):
     officer_names = re.sub("\]", "", officer_names)
     sample = officer_names.split(',')
     print(sample)
+    if(sample[0] == ''):
+        sample = []
+
     officer = sample
 
     if (time_period == 'today' or time_period == None):

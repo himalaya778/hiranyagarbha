@@ -1982,11 +1982,3 @@ def report_data_high_risk(request):
                       "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
             return Response(result)
-
-
-
-
-
-
-
-

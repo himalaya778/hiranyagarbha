@@ -1536,12 +1536,12 @@ def report_data_high_risk(request):
     n_con_risk = 0
     const_cause = 0
     var_cause = 0
-    causes = ["High BP", "Convulsions", "Vaginal Bleeding", "Foul Smell Discharge", "Severe Anemia", "Diabetes",
-              "Twins", "Any Others"]
-    cases = [0, 0, 0, 0, 0, 0, 0, 0]
-    improv2 = [0, 0, 0, 0, 0, 0, 0, 0]
-    improv3 = [0, 0, 0, 0, 0, 0, 0, 0]
-    improv4 = [0, 0, 0, 0, 0, 0, 0, 0]
+    causes_1 = ["bp","sugar","haemoglobin"]
+    causes_2 = ["High BP" , "Diabetes" , "Haemoglobin"]
+    cases = [0, 0, 0]
+    improv2 = [0, 0, 0]
+    improv3 = [0, 0, 0]
+    improv4 = [0, 0, 0]
     cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
     if(len(records_bmo)>0):
@@ -1583,19 +1583,19 @@ def report_data_high_risk(request):
 
                 if(str(p["high_risk_check"]) == "true" ):
                     t_high_risk+=1
-                    for i in range (0,len(causes)) :
+                    for i in range (0,len(causes_1)) :
                         print(p["high_risk"])
-                        if causes[i] in p["high_risk"]:
+                        if causes_2[i] in p["high_risk"]:
                             cases[i]+=1
                         print("improv2", p["improv2"])
                         if not(p["improv2"] == None):
-                            if causes[i] in p["improv2"]:
+                            if causes_1[i] in p["improv2"]:
                                 improv2[i]+=1
                         if not (p["improv2"] == None):
-                            if causes[i] in p["improv3"]:
+                            if causes_1[i] in p["improv3"]:
                                 improv3[i]+=1
                         if not (p["improv2"] == None):
-                            if causes[i] in p["improv4"]:
+                            if causes_1[i] in p["improv4"]:
                                 improv4[i]+=1
 
                 if(p["d_status"] == "delivered" and "patient_status" == "inactive"):

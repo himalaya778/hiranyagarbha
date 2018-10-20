@@ -1534,6 +1534,7 @@ def report_data_high_risk(request):
         bmo_id = records_bmo[0]
 
         if(len(officer) == 0):
+            print("no smo filter applied yet")
             cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
             v_records = cur.fetchall()
             print("v_records are : ", v_records)
@@ -1619,6 +1620,7 @@ def report_data_high_risk(request):
             return Response(result)
 
         else:
+            print("smo filter applied")
             officer_ids = []
             anm_ids = []
             #smo ids and population of villages

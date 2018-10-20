@@ -1598,10 +1598,10 @@ def report_data_high_risk(request):
                             print(improv2)
                             if causes_1[i] in p["improv2"]:
                                 improv2[i]+=1
-                        if not (p["improv2"] == None):
+                        if not (p["improv3"] == None):
                             if causes_1[i] in p["improv3"]:
                                 improv3[i]+=1
-                        if not (p["improv2"] == None):
+                        if not (p["improv4"] == None):
                             if causes_1[i] in p["improv4"]:
                                 improv4[i]+=1
 
@@ -1701,16 +1701,20 @@ def report_data_high_risk(request):
 
                 if (str(p["high_risk_check"]) == "true"):
                     t_high_risk += 1
-                    for i in range(0, len(causes)):
+                    for i in range(0, len(causes_1)):
                         print(p["high_risk"])
-                        if causes[i] in p["high_risk"]:
+                        if causes_2[i] in p["high_risk"]:
                             cases[i] += 1
-                        if causes[i] in p["improv2"]:
-                            improv2[i] += 1
-                        if causes[i] in p["improv3"]:
-                            improv3[i] += 1
-                        if causes[i] in p["improv4"]:
-                            improv4[i] += 1
+                        if not(p["improv2"] == None):
+                            print(improv2)
+                            if causes_1[i] in p["improv2"]:
+                                improv2[i]+=1
+                        if not (p["improv3"] == None):
+                            if causes_1[i] in p["improv3"]:
+                                improv3[i]+=1
+                        if not (p["improv4"] == None):
+                            if causes_1[i] in p["improv4"]:
+                                improv4[i]+=1
 
                 if (p["d_status"] == "delivered" and "patient_status" == "inactive"):
                     con_risk += 1
@@ -1744,7 +1748,7 @@ def report_data_high_risk(request):
 
             result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
                       "not_convertible": n_con_risk,
-                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
+                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes_2, "cases": cases,
                       "percentage": percentage,"improv2": improv2, "improv3": improv3, "improv4": improv4,
                       "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
@@ -1807,16 +1811,20 @@ def report_data_high_risk(request):
 
                 if(str(p["high_risk_check"]) == "true" ):
                     t_high_risk+=1
-                    for i in range (0,len(causes)) :
+                    for i in range (0,len(causes_1)) :
                         print(p["high_risk"])
-                        if causes[i] in p["high_risk"]:
+                        if causes_2[i] in p["high_risk"]:
                             cases[i]+=1
-                        if causes[i] in p["improv2"]:
-                            improv2[i]+=1
-                        if causes[i] in p["improv3"]:
-                            improv3[i]+=1
-                        if causes[i] in p["improv4"]:
-                            improv4[i]+=1
+                        if not(p["improv2"] == None):
+                            print(improv2)
+                            if causes_1[i] in p["improv2"]:
+                                improv2[i]+=1
+                        if not (p["improv3"] == None):
+                            if causes_1[i] in p["improv3"]:
+                                improv3[i]+=1
+                        if not (p["improv4"] == None):
+                            if causes_1[i] in p["improv4"]:
+                                improv4[i]+=1
 
                 if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
                     con_risk+=1
@@ -1852,7 +1860,7 @@ def report_data_high_risk(request):
 
 
             result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
-                      "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage,
+                      "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes_2 , "cases" : cases , "percentage" : percentage,
                       "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4,
                       "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
@@ -1922,16 +1930,20 @@ def report_data_high_risk(request):
 
                 if (str(p["high_risk_check"]) == "true"):
                     t_high_risk += 1
-                    for i in range(0, len(causes)):
+                    for i in range(0, len(causes_1)):
                         print(p["high_risk"])
-                        if causes[i] in p["high_risk"]:
+                        if causes_2[i] in p["high_risk"]:
                             cases[i] += 1
-                        if causes[i] in p["improv2"]:
-                            improv2[i] += 1
-                        if causes[i] in p["improv3"]:
-                            improv3[i] += 1
-                        if causes[i] in p["improv4"]:
-                            improv4[i] += 1
+                        if not(p["improv2"] == None):
+                            print(improv2)
+                            if causes_1[i] in p["improv2"]:
+                                improv2[i]+=1
+                        if not (p["improv3"] == None):
+                            if causes_1[i] in p["improv3"]:
+                                improv3[i]+=1
+                        if not (p["improv4"] == None):
+                            if causes_1[i] in p["improv4"]:
+                                improv4[i]+=1
 
                 if (p["d_status"] == "delivered" and "patient_status" == "inactive"):
                     con_risk += 1
@@ -1965,7 +1977,7 @@ def report_data_high_risk(request):
 
             result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
                       "not_convertible": n_con_risk,
-                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
+                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes_2, "cases": cases,
                       "percentage": percentage,"improv2": improv2, "improv3": improv3, "improv4": improv4,
                       "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 

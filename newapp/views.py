@@ -1577,12 +1577,15 @@ def report_data_high_risk(request):
                         if causes[i] in p["high_risk"]:
                             cases[i]+=1
                         print("improv2", p["improv2"])
-                        if causes[i] in p["improv2"]:
-                            improv2[i]+=1
-                        if causes[i] in p["improv3"]:
-                            improv3[i]+=1
-                        if causes[i] in p["improv4"]:
-                            improv4[i]+=1
+                        if not(p["improv2"] == None):
+                            if causes[i] in p["improv2"]:
+                                improv2[i]+=1
+                        if not (p["improv2"] == None):
+                            if causes[i] in p["improv3"]:
+                                improv3[i]+=1
+                        if not (p["improv2"] == None):
+                            if causes[i] in p["improv4"]:
+                                improv4[i]+=1
 
                 if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
                     con_risk+=1

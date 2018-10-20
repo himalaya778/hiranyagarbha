@@ -144,7 +144,6 @@ def update_patient_data(request):
 
     new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
-    #new_date = relevant_data["date"]
     visit_number+=1
     visit_data.append(sample)
 
@@ -248,7 +247,6 @@ def village_create(request):
     division = h_records[0][1]
     block = h_records[0][2]
     district = h_records[0][3]
-    #v_name = request.data['name']
 
     cur.execute("INSERT INTO village_level(village,bmo_id,state,division,block,district,population) VALUES(%s,%s,%s,%s,%s,%s,%s)",(v_name ,bmo_id,state,division,block,district,v_pop) )
     conn.commit()
@@ -269,7 +267,7 @@ def agbdi_create(request):
     cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
     records_1 = cur.fetchall()
     cdpo_id = records_1[0][0]
-    #v_name = request.data['name']
+
     cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
     h_records = cur.fetchall()
     print(h_records)
@@ -387,7 +385,7 @@ def all_drop_down(request):
     dropdown_data_anm = []
 
     for i in range(0,len(records_anm)):
-        if records_anm[i][0] == bmo_id:# and records_anm[i][1] == None:
+        if records_anm[i][0] == bmo_id:
             dropdown_data_anm.append(records_anm[i][2])
 
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -401,7 +399,7 @@ def all_drop_down(request):
     dropdown_data_village = []
 
     for i in range(len(records_village)):
-        if records_village[i][0] == bmo_id : #and records_village[i][1] == None:
+        if records_village[i][0] == bmo_id :
             dropdown_data_village.append(records_village[i][2])
     result= {"smo_list" : dropdown_data_smo , "anm_list" : dropdown_data_anm , "village_list" : dropdown_data_village}
 

@@ -46,7 +46,7 @@ urlpatterns = [
     url('update_visit_data' , views.update_patient_data),
     url('search_record', views.search_record),
     url('final_entry' , views.final_entry),
-    url('report_data' , views.report_data)
+    url('report_data' , views.report_data_high_risk)
 
 
 ]

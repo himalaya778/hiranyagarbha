@@ -141,8 +141,40 @@ def update_patient_data(request):
     visit_number+=1
     visit_data.append(sample)
     var_reasons.append(var_sample)
-    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s WHERE patient_id = %s"
-                , (visit_data,var_reasons,visit_number,patient_id,))
+
+    improv2 = []
+    if(visit_number==2):
+        for v in var_reasons[0]:
+            if(not v in var_sample):
+                improv2.append(v)
+
+        cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s,improv2=%s::TEXT[] WHERE patient_id = %s"
+                    , (visit_data,var_reasons,visit_number,improv2,patient_id,))
+
+    if (visit_number == 3):
+        improv3 = []
+        for v in var_reasons[0]:
+            if(not v in var_sample):
+                improv3.append(v)
+
+        cur.execute(
+            "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s,improv3=%s::TEXT[] WHERE patient_id = %s"
+            , (visit_data, var_reasons, visit_number, improv3, patient_id,))
+
+    if (visit_number == 4):
+        improv4 = []
+        for v in var_reasons[0]:
+            if(not v in var_sample):
+                improv4.append(v)
+
+        cur.execute(
+            "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s,improv4=%s::TEXT[] WHERE patient_id = %s"
+            , (visit_data, var_reasons, visit_number, improv4, patient_id,))
+
+    cur.execute(
+        "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s WHERE patient_id = %s"
+        , (visit_data, var_reasons, visit_number, patient_id,))
+
 
     #testing output
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
@@ -821,7 +853,6 @@ def dashboard_data(request) :
                     officer_ids.append(off_records[0])
 
 
-
     #date 1, date 2, officers
         if(not(time_period == 'all')):
             cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record" , (date_2, date_1,bmo_id))
@@ -1456,68 +1487,464 @@ def final_entry(request):
 
 
 
-################report###########################
+###############################################################report###########################
 
+##############hiGH RISK ANALYSIS###############################################################
 @api_view(['GET'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
-def report_data(request):
+def report_data_high_risk(request):
+    time_period = request.GET.get('time_period', None)
+    officer_names = request.GET.get('officers', "")
+    officer_names = re.sub("\[", "", officer_names)
+    officer_names = re.sub("\]", "", officer_names)
+    sample = officer_names.split(',')
+    print(sample)
+    officer = sample
+
+    if (time_period == 'today' or time_period == None):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today()
+
+    elif (time_period == 'this_week'):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today() - timedelta(7)
+
+    elif (time_period == 'this_month'):
+        date_1 = datetime.date.today()
+        date_2 = datetime.date.today() - timedelta(30)
+
+
+
     total_reg = 0
     t_high_risk = 0
     con_risk = 0
     n_con_risk = 0
     const_cause = 0
     var_cause = 0
+    causes = ["High BP", "Convulsions", "Vaginal Bleeding", "Foul Smell Discharge", "Severe Anemia", "Diabetes",
+              "Twins", "Any Others"]
+    cases = [0, 0, 0, 0, 0, 0, 0, 0]
+    improv2 = [0, 0, 0, 0, 0, 0, 0, 0]
+    improv3 = [0, 0, 0, 0, 0, 0, 0, 0]
+    improv4 = [0, 0, 0, 0, 0, 0, 0, 0]
     cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
-    causes = ["High BP" , "Convulsions" , "Vaginal Bleeding" , "Foul Smell Discharge" , "Severe Anemia" , "Diabetes" , "Twins" , "Any Others"]
-    cases = [0,0,0,0,0,0,0,0]
-    cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
-        (bmo_id,))
-    records = cur.fetchall()
-    patients = []
 
-    for r in records:
-        patients.append(r[0])
+        if(len(officer) == 0):
+            cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
+            v_records = cur.fetchall()
+            print("v_records are : ", v_records)
+            v_pop = 0
+            for v in v_records:
+                if not (v[0] == None):
+                    v_pop += int(v[0])
 
-    total_reg = len(patients)
-
-    for p in patients :
-
-        if(str(p["high_risk_check"]) == "true" ):
-            t_high_risk+=1
-            for i in range (0,len(causes)) :
-                print(p["high_risk"])
-                if causes[i] in p["high_risk"]:
-                    cases[i]+=1
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
 
 
+            if not(time_period == 'all'):
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active) patient_record",
+                    (date_2,date_1,bmo_id,))
+                records = cur.fetchall()
 
-        if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
-            con_risk+=1
+            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active) patient_record",
+                (bmo_id,))
+            records = cur.fetchall()
 
-        if(p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
-            n_con_risk+=1
+            patients = []
 
-        if(p["const_check"] == "yes"):
-            const_cause+=1
+            for r in records:
+                patients.append(r[0])
 
-        if(p["var_check"] == "yes"):
-            var_cause+=1
+            total_reg = len(patients)
 
-    total = 10
-    for c in cases:
-        total+=int(c)
+            for p in patients :
 
-    percentage = []
-    for c in cases:
-        percentage.append(int((c*100)/total))
+                if(str(p["high_risk_check"]) == "true" ):
+                    t_high_risk+=1
+                    for i in range (0,len(causes)) :
+                        print(p["high_risk"])
+                        if causes[i] in p["high_risk"]:
+                            cases[i]+=1
+                        if causes[i] in p["improv2"]:
+                            improv2[i]+=1
+                        if causes[i] in p["improv3"]:
+                            improv3[i]+=1
+                        if causes[i] in p["improv4"]:
+                            improv4[i]+=1
+
+                if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
+                    con_risk+=1
+
+                if(p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
+                    n_con_risk+=1
+
+                if(p["const_check"] == "yes"):
+                    const_cause+=1
+
+                if(p["var_check"] == "yes"):
+                    var_cause+=1
+
+            total = 1
+            for c in cases:
+                total+=int(c)
+
+            percentage = []
+            for c in cases:
+                percentage.append(int((c*100)/total))
 
 
-    result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
-              "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage}
+            ###########improvement##################
+            for i in range(0,len(improv2)):
+                improv2[i] = int((improv2[i]*100)/total)
 
-    return Response(result)
+            for i in range(0,len(improv3)):
+                improv3[i] = int((improv3[i]*100)/total)
+
+            for i in range(0,len(improv4)):
+                improv4[i] = int((improv4[i]*100)/total)
+
+
+
+            result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
+                      "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage,
+                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4}
+
+            return Response(result)
+
+        else:
+            officer_ids = []
+            anm_ids = []
+            #smo ids and population of villages
+            for o in officer:
+                cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s", (o,))
+                off_records = cur.fetchall()
+                if (len(off_records) > 0):
+                    officer_ids.append(off_records[0])
+
+            for o in officer_ids:
+
+                cur.execute("SELECT anm_id FROM anm_level WHERE smo_id =%s", (o,))
+                records = cur.fetchall()
+                if (len(records) > 0):
+                    anm_ids.append(records[0][0])
+
+            pop_list = []
+            for a in anm_ids:
+                cur.execute("SELECT population FROM village_level WHERE anm_id = %s", (a,))
+                records = cur.fetchall()
+                if (len(records) > 0):
+                    if not (records[0][0] == None):
+                        pop_list.append(records[0][0])
+
+            v_pop = 0
+            for v in pop_list:
+                if not (v == None):
+                    v_pop += int(v)
+
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
+
+            if not (time_period == 'all'):
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    (date_2, date_1, bmo_id,tuple(officer_ids)))
+                records = cur.fetchall()
+            else:
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    (bmo_id,tuple(officer_ids)))
+                records = cur.fetchall()
+
+            patients = []
+
+            for r in records:
+                patients.append(r[0])
+
+            total_reg = len(patients)
+
+            for p in patients:
+
+                if (str(p["high_risk_check"]) == "true"):
+                    t_high_risk += 1
+                    for i in range(0, len(causes)):
+                        print(p["high_risk"])
+                        if causes[i] in p["high_risk"]:
+                            cases[i] += 1
+                        if causes[i] in p["improv2"]:
+                            improv2[i] += 1
+                        if causes[i] in p["improv3"]:
+                            improv3[i] += 1
+                        if causes[i] in p["improv4"]:
+                            improv4[i] += 1
+
+                if (p["d_status"] == "delivered" and "patient_status" == "inactive"):
+                    con_risk += 1
+
+                if (p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
+                    n_con_risk += 1
+
+                if (p["const_check"] == "yes"):
+                    const_cause += 1
+
+                if (p["var_check"] == "yes"):
+                    var_cause += 1
+
+            total = 1
+            for c in cases:
+                total += int(c)
+
+            percentage = []
+            for c in cases:
+                percentage.append(int((c * 100) / total))
+
+            ###########improvement##################
+            for i in range(0, len(improv2)):
+                improv2[i] = int((improv2[i] * 100) / total)
+
+            for i in range(0, len(improv3)):
+                improv3[i] = int((improv3[i] * 100) / total)
+
+            for i in range(0, len(improv4)):
+                improv4[i] = int((improv4[i] * 100) / total)
+
+            result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
+                      "not_convertible": n_con_risk,
+                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
+                      "percentage": percentage,
+                      "improv2": improv2, "improv3": improv3, "improv4": improv4}
+
+            return Response(result)
+
+    #cdpo
+    else:
+
+        officer_ids = []
+        cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+        records_cdpo = cur.fetchall()
+        cdpo_id = records_cdpo[0]
+
+        cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
+        records_block = cur.fetchall()
+        block = records_block[0][0]
+        print("block is : " , block)
+
+        cur.execute("SELECT username FROM auth_user WHERE block = %s", (str(block),))
+        records_user = cur.fetchall()
+        #print("records user : " , records_user)
+        bmo_name = records_user[0][0]
+        print("bmo is " , bmo_name)
+        cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(bmo_name),))
+        records_bmo = cur.fetchall()
+        if (len(records_bmo) > 0):
+            bmo_id = records_bmo[0]
+        else:
+            return Response("error in dashboard_data")
+
+        if(len(officer)==0):
+            cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
+            v_records = cur.fetchall()
+            print("v_records are : ", v_records)
+            v_pop = 0
+            for v in v_records:
+                if not (v[0] == None):
+                    v_pop += int(v[0])
+
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
+            if not(time_period == 'all'):
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active) patient_record",
+                    (date_2,date_1,bmo_id,))
+                records = cur.fetchall()
+
+            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active) patient_record",
+                (bmo_id,))
+            records = cur.fetchall()
+
+            patients = []
+
+            for r in records:
+                patients.append(r[0])
+
+            total_reg = len(patients)
+
+            for p in patients :
+
+                if(str(p["high_risk_check"]) == "true" ):
+                    t_high_risk+=1
+                    for i in range (0,len(causes)) :
+                        print(p["high_risk"])
+                        if causes[i] in p["high_risk"]:
+                            cases[i]+=1
+                        if causes[i] in p["improv2"]:
+                            improv2[i]+=1
+                        if causes[i] in p["improv3"]:
+                            improv3[i]+=1
+                        if causes[i] in p["improv4"]:
+                            improv4[i]+=1
+
+                if(p["d_status"] == "delivered" and "patient_status" == "inactive"):
+                    con_risk+=1
+
+                if(p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
+                    n_con_risk+=1
+
+                if(p["const_check"] == "yes"):
+                    const_cause+=1
+
+                if(p["var_check"] == "yes"):
+                    var_cause+=1
+
+            total = 1
+            for c in cases:
+                total+=int(c)
+
+            percentage = []
+            for c in cases:
+                percentage.append(int((c*100)/total))
+
+
+            ###########improvement##################
+            for i in range(0,len(improv2)):
+                improv2[i] = int((improv2[i]*100)/total)
+
+            for i in range(0,len(improv3)):
+                improv3[i] = int((improv3[i]*100)/total)
+
+            for i in range(0,len(improv4)):
+                improv4[i] = int((improv4[i]*100)/total)
+
+
+
+            result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
+                      "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage,
+                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4}
+
+            return Response(result)
+
+        else:
+            supervisor_ids = []
+            if (len(officer) > 0):
+                for o in officer:
+                    cur.execute("SELECT sup_id FROM supervisor_level WHERE supervisor = %s", (o,))
+                    off_records = cur.fetchall()
+                    if (len(off_records) > 0):
+                        supervisor_ids.append(off_records[0][0])
+            print("supervisor ids : ", supervisor_ids)
+
+            pop_list = []
+            for s in supervisor_ids:
+                cur.execute("SELECT population FROM village_level WHERE sup_id = %s", (s,))
+                records = cur.fetchall()
+                if (len(records) > 0):
+                    if not (records[0][0] == None):
+                        pop_list.append(records[0][0])
+
+            v_pop = 0
+            for v in pop_list:
+                if not (v == None):
+                    v_pop += int(v)
+
+            approx_registrations = int((0.015 * v_pop))
+            approx_high_risk = int((0.15 * approx_registrations))
+
+
+            anms = []
+            for sup in supervisor_ids:
+                cur.execute("SELECT anm_id FROM village_level WHERE sup_id = %s", (sup,));
+                v_Records = cur.fetchall()
+                if (len(v_Records) > 0):
+                    anms.append(v_Records[0][0])
+            print("villages are ", anms)
+
+            for a in anms:
+                cur.execute("SELECT smo_id FROM anm_level WHERE anm_id = %s", (a,));
+                anm_records = cur.fetchall()
+                if (len(anm_records) > 0):
+                    officer_ids.append(anm_records[0][0])
+            print("officer ids", officer_ids)
+
+            if not (time_period == 'all'):
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    (date_2, date_1, bmo_id,tuple(officer_ids)))
+                records = cur.fetchall()
+            else:
+                cur.execute(
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    (bmo_id,tuple(officer_ids)))
+                records = cur.fetchall()
+
+            patients = []
+
+            for r in records:
+                patients.append(r[0])
+
+            total_reg = len(patients)
+
+            for p in patients:
+
+                if (str(p["high_risk_check"]) == "true"):
+                    t_high_risk += 1
+                    for i in range(0, len(causes)):
+                        print(p["high_risk"])
+                        if causes[i] in p["high_risk"]:
+                            cases[i] += 1
+                        if causes[i] in p["improv2"]:
+                            improv2[i] += 1
+                        if causes[i] in p["improv3"]:
+                            improv3[i] += 1
+                        if causes[i] in p["improv4"]:
+                            improv4[i] += 1
+
+                if (p["d_status"] == "delivered" and "patient_status" == "inactive"):
+                    con_risk += 1
+
+                if (p["d_status"] == "not_delivered" and "patient_status" == "inactive"):
+                    n_con_risk += 1
+
+                if (p["const_check"] == "yes"):
+                    const_cause += 1
+
+                if (p["var_check"] == "yes"):
+                    var_cause += 1
+
+            total = 1
+            for c in cases:
+                total += int(c)
+
+            percentage = []
+            for c in cases:
+                percentage.append(int((c * 100) / total))
+
+            ###########improvement##################
+            for i in range(0, len(improv2)):
+                improv2[i] = int((improv2[i] * 100) / total)
+
+            for i in range(0, len(improv3)):
+                improv3[i] = int((improv3[i] * 100) / total)
+
+            for i in range(0, len(improv4)):
+                improv4[i] = int((improv4[i] * 100) / total)
+
+            result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
+                      "not_convertible": n_con_risk,
+                      "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
+                      "percentage": percentage,
+                      "improv2": improv2, "improv3": improv3, "improv4": improv4}
+
+            return Response(result)
+
+
+
+
+
+
+
 

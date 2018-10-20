@@ -1589,6 +1589,7 @@ def report_data_high_risk(request):
                             cases[i]+=1
                         print("improv2", p["improv2"])
                         if not(p["improv2"] == None):
+                            print(improv2)
                             if causes_1[i] in p["improv2"]:
                                 improv2[i]+=1
                         if not (p["improv2"] == None):

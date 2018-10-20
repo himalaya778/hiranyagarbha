@@ -1576,6 +1576,7 @@ def report_data_high_risk(request):
                         print(p["high_risk"])
                         if causes[i] in p["high_risk"]:
                             cases[i]+=1
+                        print("improv2", p["improv2"])
                         if causes[i] in p["improv2"]:
                             improv2[i]+=1
                         if causes[i] in p["improv3"]:

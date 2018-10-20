@@ -154,7 +154,7 @@ def update_patient_data(request):
     improv2 = []
     if(visit_number==2):
         print("visit 2 improvement being checked")
-        for v in var_reasons[0]:
+        for v in var_reasons[1]:
             print(v)
             if(not v in var_sample):
                 improv2.append(v)
@@ -164,7 +164,7 @@ def update_patient_data(request):
 
     if (visit_number == 3):
         improv3 = []
-        for v in var_reasons[0]:
+        for v in var_reasons[2]:
             if(not v in var_sample):
                 improv3.append(v)
 
@@ -174,7 +174,7 @@ def update_patient_data(request):
 
     if (visit_number == 4):
         improv4 = []
-        for v in var_reasons[0]:
+        for v in var_reasons[3]:
             if(not v in var_sample):
                 improv4.append(v)
 
@@ -725,7 +725,7 @@ def patient_data(request):
         var_reasons[0].append("bp")
     else:
         var_reasons[0].append('')
-        
+
     if(sugar<100):
         print("sugar is the reason")
         var_check = "yes"

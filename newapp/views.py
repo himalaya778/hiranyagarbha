@@ -94,7 +94,7 @@ def update_patient_data(request):
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
     if(records[0][0] == None):
-        visit_data = [['','','']]
+        visit_data = []
     else:
         visit_data = records[0][0]
 
@@ -150,7 +150,7 @@ def update_patient_data(request):
 
     #var_sample.append('')
     var_reasons.append(var_sample)
-
+    print("var reasons is " , var_reasons)
     improv2 = []
     if(visit_number==2):
         print("visit 2 improvement being checked")
@@ -186,7 +186,7 @@ def update_patient_data(request):
         "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s WHERE patient_id = %s"
         , (visit_data, var_reasons, visit_number, patient_id,))
 
-
+    conn.commit()
     #testing output
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()

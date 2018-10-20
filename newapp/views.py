@@ -119,6 +119,8 @@ def update_patient_data(request):
         var_check = "yes"
 
         var_sample.append("bp")
+    else:
+        var_sample.append('')
 
     new_sugar = int(relevant_data["sugar"])
     sample.append(new_sugar)
@@ -126,6 +128,8 @@ def update_patient_data(request):
         print("sugar is the reason")
         var_check = "yes"
         var_sample.append("sugar")
+    else:
+        var_sample.append('')
 
     new_haemoglobin = int(relevant_data["haemoglobin"])
     sample.append(new_haemoglobin)
@@ -134,6 +138,8 @@ def update_patient_data(request):
         var_check = "yes"
         #high_risk_check = True
         var_sample.append("haemoglobin")
+    else:
+        var_sample.append('')
 
     new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
@@ -141,7 +147,7 @@ def update_patient_data(request):
     visit_number+=1
     visit_data.append(sample)
 
-    var_sample.append('')
+    #var_sample.append('')
     var_reasons.append(var_sample)
 
     improv2 = []

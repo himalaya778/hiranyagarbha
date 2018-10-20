@@ -707,27 +707,27 @@ def patient_data(request):
         high_risk_check = True
         const_reasons.append("height")
 
-    var_reasons = []
+    var_reasons = [[]]
 
     if(haemoglobin<10):
         print("haemoglobin is the reason")
         var_check = "yes"
         high_risk_check = True
-        var_reasons.append("haemoglobin")
+        var_reasons[0].append("haemoglobin")
 
     if(bp1>130 or bp2>90):
         print("bp is the reason")
         var_check = "yes"
         high_risk_check = True
         bp_check = "yes"
-        var_reasons.append("bp")
+        var_reasons[0].append("bp")
 
     if(sugar<100):
         print("sugar is the reason")
         var_check = "yes"
         high_risk_check = True
         sugar_check = "yes"
-        var_reasons.append("sugar")
+        var_reasons[0].append("sugar")
 
     print("const check : " , const_check)
     print("var check : " , var_check)

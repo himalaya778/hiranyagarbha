@@ -87,10 +87,8 @@ def update_patient_data(request):
     cur.execute(" SELECT doctor_visits FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
     print("visit number " , records[0][0])
-    if(records[0][0] == None):
-        visit_number = 0
-    else:
-        visit_number = int(records[0][0])
+
+    visit_number = int(records[0][0])
 
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
@@ -140,11 +138,11 @@ def update_patient_data(request):
     new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
     #new_date = relevant_data["date"]
-
+    visit_number+=1
     visit_data.append(sample)
     var_reasons.append(var_sample)
-    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][] WHERE patient_id = %s"
-                , (visit_data,var_reasons,patient_id,))
+    cur.execute("UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits WHERE patient_id = %s"
+                , (visit_data,var_reasons,patient_id,visit_number,))
 
     #testing output
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))

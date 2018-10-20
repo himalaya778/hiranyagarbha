@@ -84,13 +84,13 @@ def update_patient_data(request):
     relevant_data = json.loads(request.body)
     #visit_number = relevant_data["visit_no"]
     patient_id = relevant_data["patient_id"]
-    cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
+    cur.execute(" SELECT doctor_visits FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
-    print("records " , records[0][0])
+    print("visit number " , records[0][0])
     if(records[0][0] == None):
         visit_number = 0
     else:
-        visit_number = len(records[0][0])
+        visit_number = int(records[0][0])
 
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()

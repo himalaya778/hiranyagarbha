@@ -32,6 +32,7 @@ def check_update(request):
         cur.execute("UPDATE patient_level SET notified = %s WHERE patient_id = %s", ( True, records[0][0],))
         #conn.commit()
         return Response({'patient_details' : records[0]})
+    conn.commit()
     return Response("No Update")
 
 @api_view(['POST'])
@@ -72,7 +73,7 @@ def set_visit(request):
      #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
      #   conn.commit()
      #   return Response("Visit 3 Scheduled")
-
+    conn.commit()
     return Response("3 visits already sceduled")
 
 @api_view(['POST'])
@@ -201,7 +202,7 @@ def update_patient_data(request):
     print("var_reasons[0] length " , len(records[0]))
     print("var_reasons[0][0] length " ,len(records[0][0]))
     print(records[0][0])
-
+    conn.commit()
     return Response("Data already saved for 3 visits!!")
 
 

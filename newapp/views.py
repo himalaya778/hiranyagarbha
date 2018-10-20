@@ -152,7 +152,9 @@ def update_patient_data(request):
 
     improv2 = []
     if(visit_number==2):
+        print("visit 2 improvement being checked")
         for v in var_reasons[0]:
+            print(v)
             if(not v in var_sample):
                 improv2.append(v)
 

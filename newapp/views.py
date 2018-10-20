@@ -140,6 +140,8 @@ def update_patient_data(request):
     #new_date = relevant_data["date"]
     visit_number+=1
     visit_data.append(sample)
+
+    var_sample.append('')
     var_reasons.append(var_sample)
 
     improv2 = []

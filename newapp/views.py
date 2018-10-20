@@ -1613,7 +1613,8 @@ def report_data_high_risk(request):
 
             result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
                       "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage,
-                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4}
+                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4,"total_pop" : v_pop , "approx_reg" : approx_registrations ,
+                      "approx_high_risk" : approx_high_risk}
 
             return Response(result)
 
@@ -1716,8 +1717,8 @@ def report_data_high_risk(request):
             result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
                       "not_convertible": n_con_risk,
                       "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
-                      "percentage": percentage,
-                      "improv2": improv2, "improv3": improv3, "improv4": improv4}
+                      "percentage": percentage,"improv2": improv2, "improv3": improv3, "improv4": improv4,
+                      "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
             return Response(result)
 
@@ -1824,7 +1825,8 @@ def report_data_high_risk(request):
 
             result = {"total_reg" : total_reg , "total_high_risk" : t_high_risk , "convertible" : con_risk , "not_convertible" : n_con_risk,
                       "const_cause" : const_cause , "var_cause" : var_cause , "causes" : causes , "cases" : cases , "percentage" : percentage,
-                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4}
+                      "improv2" : improv2 , "improv3" : improv3 , "improv4" : improv4,
+                      "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
             return Response(result)
 
@@ -1936,8 +1938,8 @@ def report_data_high_risk(request):
             result = {"total_reg": total_reg, "total_high_risk": t_high_risk, "convertible": con_risk,
                       "not_convertible": n_con_risk,
                       "const_cause": const_cause, "var_cause": var_cause, "causes": causes, "cases": cases,
-                      "percentage": percentage,
-                      "improv2": improv2, "improv3": improv3, "improv4": improv4}
+                      "percentage": percentage,"improv2": improv2, "improv3": improv3, "improv4": improv4,
+                      "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
             return Response(result)
 

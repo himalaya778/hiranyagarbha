@@ -94,7 +94,7 @@ def update_patient_data(request):
     cur.execute("SELECT visit_data FROM patient_level WHERE patient_id = %s" , (patient_id,))
     records = cur.fetchall()
     if(records[0][0] == None):
-        visit_data = []
+        visit_data = [['','','']]
     else:
         visit_data = records[0][0]
 
@@ -1584,10 +1584,10 @@ def report_data_high_risk(request):
                 if(str(p["high_risk_check"]) == "true" ):
                     t_high_risk+=1
                     for i in range (0,len(causes_1)) :
-                        print(p["high_risk"])
+                        #print(p["high_risk"])
                         if causes_2[i] in p["high_risk"]:
                             cases[i]+=1
-                        print("improv2", p["improv2"])
+                        #print("improv2", p["improv2"])
                         if not(p["improv2"] == None):
                             print(improv2)
                             if causes_1[i] in p["improv2"]:

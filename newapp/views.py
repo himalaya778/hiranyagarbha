@@ -796,21 +796,6 @@ def patient_data(request):
 
 
     if(high_risk_check == True):
-        # sending text message notification to bmo
-        cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (str(request.user),))
-        records = cur.fetchall()
-        print(records)
-        bmo_mobile = records[0][0]
-        conn_1 = http.client.HTTPConnection("api.msg91.com")
-        conn_1.request("GET",
-                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                           bmo_mobile, "High Risk Patient Added",))
-
-        res = conn_1.getresponse()
-        data = res.read()
-
-        print(data.decode("utf-8"))
-
         # sending text message notification to smo
         cur.execute("SELECT mobile FROM auth_user WHERE username = %s" , (officer,))
         records = cur.fetchall()
@@ -826,6 +811,22 @@ def patient_data(request):
         data = res.read()
 
         print(data.decode("utf-8"))
+        # sending text message notification to bmo
+        cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (str(request.user),))
+        records = cur.fetchall()
+        print(records)
+        bmo_mobile = records[0][0]
+        conn_1 = http.client.HTTPConnection("api.msg91.com")
+        conn_1.request("GET",
+                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                           bmo_mobile, "High Risk Patient Added",))
+
+        res = conn_1.getresponse()
+        data = res.read()
+
+        print(data.decode("utf-8"))
+
+
 
         #sending text message notification to supervisor
         cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (officer,))
@@ -852,7 +853,7 @@ def patient_data(request):
             print("supervisor mobile is " , sup_mobile)
             conn_1.request("GET",
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" %
-                           (smo_mobile, "High Risk Patient Added",))
+                           (sup_mobile, "High Risk Patient Added",))
 
             res = conn_1.getresponse()
             data = res.read()

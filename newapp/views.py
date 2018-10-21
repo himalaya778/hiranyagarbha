@@ -837,7 +837,7 @@ def patient_data(request):
             records = cur.fetchall()
             anm_id = records[0][0]
 
-            cur.execute("SELECT sup_id FROM village_level WHERE anm_id = %s" , (anm_id))
+            cur.execute("SELECT sup_id FROM village_level WHERE anm_id = %s" , (anm_id,))
             records = cur.fetchall()
             sup_id = records[0][0]
 

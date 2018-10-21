@@ -814,7 +814,7 @@ def patient_data(request):
 
         fix =  "High Risk Identified ! " \
                ""
-        var = "Patient Name : " + patient_name + " from Village : " + village_name
+        var = "Patient Name : " + patient_name + " from Village : " + village_name + " and Anganbadi : " + agbdi_name
         message = fix+var
         conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
@@ -849,7 +849,7 @@ def patient_data(request):
             sup_mobile = records[0][0]
             fix = "High Risk Identified ! " \
                   ""
-            var = "Patient Name : " + patient_name + " from Village : " + village_name
+            var = "Patient Name : " + patient_name + " from Village : " + village_name + " and Anganbadi : " + agbdi_name
             message = fix + var
 
             print("supervisor mobile is " , sup_mobile)

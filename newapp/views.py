@@ -796,7 +796,7 @@ def patient_data(request):
 
 
     if(high_risk_check == True):
-        cur.execute("SELECT village_id FROM agbdi_level WHERE agbdi_name = %s", (agbdi_name,))
+        cur.execute("SELECT village_id FROM anganbadi_level WHERE agbdi_name = %s", (agbdi_name,))
         records = cur.fetchall()
         village_id = records[0][0]
 

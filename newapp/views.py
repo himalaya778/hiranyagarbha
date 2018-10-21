@@ -1675,7 +1675,7 @@ def report_data_high_risk(request):
                 records = cur.fetchall()
             else:
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and and smo_id in %s) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and smo_id in %s) patient_record",
                     (bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
 

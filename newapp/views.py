@@ -857,7 +857,7 @@ def patient_data(request):
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" %
                            (sup_mobile, "High Risk Patient Added",))
 
-            res = conn_1.getresponse()
+            res = conn_2.getresponse()
             data = res.read()
             print("message sent to supervisor")
             print(data.decode("utf-8"))

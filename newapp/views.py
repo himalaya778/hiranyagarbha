@@ -17,6 +17,7 @@ from datetime import timedelta
 from accounts.views import conn
 from pyfcm import FCMNotification
 from notify.signals import notify
+from django.contrib import messages
 ############################################################################################################################################################################3
 #Establishing conection with Database
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
@@ -825,6 +826,8 @@ def dashboard_data(request) :
 
     user = request.user
     notify.send(request.user, recipient=user, actor=request.user,verb = 'followed you.', nf_type = 'followed_by_one_user')
+
+    messages.info(request, 'Your password has been changed successfully!')
 
     date_1 = datetime.date.today()
     date_2 = datetime.date.today() - timedelta(30)

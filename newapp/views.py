@@ -1769,7 +1769,7 @@ def report_data_high_risk(request):
         else:
             return Response("error in dashboard_data")
 
-        if(len(officer)==0):
+        if(len(officer)==0 or officer[0] == 'All'):
             cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
             v_records = cur.fetchall()
             print("v_records are : ", v_records)
@@ -1780,7 +1780,7 @@ def report_data_high_risk(request):
 
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
-            if not(start == 'All'):
+            if not(start == 'All' ):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 cur.execute(

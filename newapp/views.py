@@ -1666,7 +1666,7 @@ def report_data_high_risk(request):
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
 
-            if not (start == 'All'):
+            if not (start == 'All' and len(officer_ids)>0):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 cur.execute(

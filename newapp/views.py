@@ -1669,12 +1669,12 @@ def report_data_high_risk(request):
                 date_2 = request.GET.get('0', None)
                 date_1 = request.GET.get('1', None)
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
             else:
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and and smo_id in %s) patient_record",
                     (bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
 
@@ -1782,11 +1782,11 @@ def report_data_high_risk(request):
                 date_2 = request.GET.get('0', None)
                 date_1 = request.GET.get('1', None)
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
                     (date_2,date_1,bmo_id,))
                 records = cur.fetchall()
 
-            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active) patient_record",
+            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and) patient_record",
                 (bmo_id,))
             records = cur.fetchall()
 
@@ -1902,12 +1902,12 @@ def report_data_high_risk(request):
                 date_2 = request.GET.get('0', None)
                 date_1 = request.GET.get('1', None)
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s  and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
             else:
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s  and smo_id in %s) patient_record",
                     (bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
 

@@ -1552,8 +1552,8 @@ def report_data_high_risk(request):
 
 
             if not(time_period == 'all'):
-                date_2 = request.GET.get('0', None)
-                date_1 = request.GET.get('1', None)
+                date_2 = request.GET.get('start', None)
+                date_1 = request.GET.get('end', None)
                 print("active patients records")
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=%s) patient_record",
@@ -1667,8 +1667,8 @@ def report_data_high_risk(request):
             approx_high_risk = int((0.15 * approx_registrations))
 
             if not (time_period == 'all'):
-                date_2 = request.GET.get('0', None)
-                date_1 = request.GET.get('1', None)
+                date_2 = request.GET.get('start', None)
+                date_1 = request.GET.get('start', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))
@@ -1780,8 +1780,8 @@ def report_data_high_risk(request):
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
             if not(time_period == 'all'):
-                date_2 = request.GET.get('0', None)
-                date_1 = request.GET.get('1', None)
+                date_2 = request.GET.get('start', None)
+                date_1 = request.GET.get('start', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
                     (date_2,date_1,bmo_id,))
@@ -1900,8 +1900,8 @@ def report_data_high_risk(request):
             print("officer ids", officer_ids)
 
             if not (time_period == 'all'):
-                date_2 = request.GET.get('0', None)
-                date_1 = request.GET.get('1', None)
+                date_2 = request.GET.get('start', None)
+                date_1 = request.GET.get('start', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s  and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))

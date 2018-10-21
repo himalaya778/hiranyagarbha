@@ -1508,7 +1508,7 @@ def final_entry(request):
 @permission_classes((IsAuthenticated,))
 def report_data_high_risk(request):
     print(request)
-    time_period = request.GET.get('time_period', None)
+    start = request.GET.get('start', None)
 
     officer_names = request.GET.get('officers', "")
     officer_names = re.sub("\[", "", officer_names)
@@ -1551,7 +1551,7 @@ def report_data_high_risk(request):
             approx_high_risk = int((0.15 * approx_registrations))
 
 
-            if not(time_period == 'all'):
+            if not(start == 'all'):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 print("active patients records")
@@ -1666,7 +1666,7 @@ def report_data_high_risk(request):
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
 
-            if not (time_period == 'all'):
+            if not (start == 'all'):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('start', None)
                 cur.execute(
@@ -1779,7 +1779,7 @@ def report_data_high_risk(request):
 
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
-            if not(time_period == 'all'):
+            if not(start == 'all'):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('start', None)
                 cur.execute(
@@ -1899,7 +1899,7 @@ def report_data_high_risk(request):
                     officer_ids.append(anm_records[0][0])
             print("officer ids", officer_ids)
 
-            if not (time_period == 'all'):
+            if not (start == 'all'):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('start', None)
                 cur.execute(

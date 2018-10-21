@@ -796,6 +796,7 @@ def patient_data(request):
 
 
     if(high_risk_check == True):
+        conn_1 = http.client.HTTPConnection("api.msg91.com")
         # sending text message notification to smo
         cur.execute("SELECT mobile FROM auth_user WHERE username = %s" , (officer,))
         records = cur.fetchall()
@@ -816,7 +817,7 @@ def patient_data(request):
         records = cur.fetchall()
         print(records)
         bmo_mobile = records[0][0]
-        conn_1 = http.client.HTTPConnection("api.msg91.com")
+
         conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
                            bmo_mobile, "High Risk Patient Added",))

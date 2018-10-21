@@ -796,6 +796,14 @@ def patient_data(request):
 
 
     if(high_risk_check == True):
+        cur.execute("SELECT village_id FROM agbdi_level WHERE agbdi_name = %s", (agbdi_name,))
+        records = cur.fetchall()
+        village_id = records[0][0]
+
+        cur.execute("SELECT village FROM village_level WHERE village_id = %s", (village_id,))
+        records = cur.fetchall()
+        village_name = records[0][0]
+
         conn_1 = http.client.HTTPConnection("api.msg91.com")
         # sending text message notification to smo
         cur.execute("SELECT mobile FROM auth_user WHERE username = %s" , (officer,))
@@ -804,30 +812,17 @@ def patient_data(request):
         smo_mobile = records[0][0]
 
 
+        fix =  "High Risk Identified ! "
+        var = patient_name + " from " + village_name
+        message = fix+var
         conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                       smo_mobile, "High Risk Patient Added",))
+                       smo_mobile, message,))
 
         res = conn_1.getresponse()
         data = res.read()
 
         print(data.decode("utf-8"))
-        # sending text message notification to bmo
-        cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (str(request.user),))
-        records = cur.fetchall()
-        print(records)
-        bmo_mobile = records[0][0]
-
-        conn_1.request("GET",
-                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                           bmo_mobile, "High Risk Patient Added",))
-
-        res = conn_1.getresponse()
-        data = res.read()
-
-        print(data.decode("utf-8"))
-
-
 
         #sending text message notification to supervisor
         cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (officer,))
@@ -851,11 +846,15 @@ def patient_data(request):
             records = cur.fetchall()
             print(records)
             sup_mobile = records[0][0]
+            fix = "High Risk Identified ! "
+            var = patient_name + " from " + village_name
+            message = fix + var
+
             print("supervisor mobile is " , sup_mobile)
             conn_2 = http.client.HTTPConnection("api.msg91.com")
             conn_2.request("GET",
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" %
-                           (sup_mobile, "High Risk Patient Added",))
+                           (sup_mobile, message,))
 
             res = conn_2.getresponse()
             data = res.read()

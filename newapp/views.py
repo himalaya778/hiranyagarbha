@@ -14,6 +14,7 @@ import re
 import datetime
 import time
 from datetime import timedelta
+from webpush import send_user_notification
 from accounts.views import conn
 from pyfcm import FCMNotification
 ############################################################################################################################################################################3
@@ -822,6 +823,10 @@ def dashboard_data(request) :
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
 
+
+        payload = {"head": "Welcome!", "body": "Hello World"}
+        user = request.user
+        send_user_notification(user=user, payload=payload, ttl=1000)
 
     date_1 = datetime.date.today()
     date_2 = datetime.date.today() - timedelta(30)

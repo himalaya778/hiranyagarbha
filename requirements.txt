@@ -9,3 +9,4 @@ dj-database-url
 django-postgresql
 django-cors-headers
 pyfcm
+webpush

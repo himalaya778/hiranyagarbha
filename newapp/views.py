@@ -14,9 +14,9 @@ import re
 import datetime
 import time
 from datetime import timedelta
-from webpush import send_user_notification
 from accounts.views import conn
 from pyfcm import FCMNotification
+from notify.signals import notify
 ############################################################################################################################################################################3
 #Establishing conection with Database
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
@@ -823,10 +823,8 @@ def dashboard_data(request) :
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
 
-
-        payload = {"head": "Welcome!", "body": "Hello World"}
-        user = request.user
-        send_user_notification(user=user, payload=payload, ttl=1000)
+    user = request.user
+    notify.send(request.user, recipient=user, actor=request.user,verb = 'followed you.', nf_type = 'followed_by_one_user')
 
     date_1 = datetime.date.today()
     date_2 = datetime.date.today() - timedelta(30)

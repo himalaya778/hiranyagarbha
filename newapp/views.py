@@ -1642,7 +1642,7 @@ def report_data_high_risk(request):
                 off_records = cur.fetchall()
                 if (len(off_records) > 0):
                     officer_ids.append(off_records[0])
-
+            print(officer_ids)
             for o in officer_ids:
 
                 cur.execute("SELECT anm_id FROM anm_level WHERE smo_id =%s", (o,))
@@ -1679,6 +1679,7 @@ def report_data_high_risk(request):
                     (bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
 
+            print(records)
             patients = []
 
             for r in records:

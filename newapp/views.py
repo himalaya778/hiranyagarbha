@@ -812,7 +812,8 @@ def patient_data(request):
         smo_mobile = records[0][0]
 
 
-        fix =  "High Risk Identified ! "
+        fix =  "High Risk Identified ! " \
+               ""
         var = "Patient Name : " + patient_name + " from Village : " + village_name
         message = fix+var
         conn_1.request("GET",
@@ -846,7 +847,8 @@ def patient_data(request):
             records = cur.fetchall()
             print(records)
             sup_mobile = records[0][0]
-            fix = "High Risk Identified !"
+            fix = "High Risk Identified ! " \
+                  ""
             var = "Patient Name : " + patient_name + " from Village : " + village_name
             message = fix + var
 

@@ -1495,7 +1495,7 @@ def final_entry(request):
         d_status = "not_delivered"
         cur.execute("UPDATE patient_level SET cause = %s, reason=%s, d_status=%s WHERE patient_id=%s, patient_status = %s" , (cause, reason, d_status, patient_id,"inactive"))
         return Response("Final data entered")
-
+    conn.commit()
     return  Response("Entry could not be made")
 
 

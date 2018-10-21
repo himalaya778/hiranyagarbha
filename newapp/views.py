@@ -1679,7 +1679,7 @@ def report_data_high_risk(request):
                     (bmo_id,tuple(officer_ids)))
                 records = cur.fetchall()
 
-            print(records)
+            print("records are " , records)
             patients = []
 
             for r in records:

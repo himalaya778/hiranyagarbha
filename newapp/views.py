@@ -1507,6 +1507,7 @@ def final_entry(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def report_data_high_risk(request):
+    print(request)
     time_period = request.GET.get('time_period', None)
 
     officer_names = request.GET.get('officers', "")

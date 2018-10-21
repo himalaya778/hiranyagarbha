@@ -12,6 +12,7 @@ import psycopg2
 import json
 import re
 import datetime
+import http.client
 import time
 from datetime import timedelta
 from accounts.views import conn
@@ -776,6 +777,8 @@ def patient_data(request):
 
     conn.commit()
 
+
+
     if(high_risk_check == True):
         # sending push notification to mobile device******
         push_service = FCMNotification(
@@ -788,6 +791,23 @@ def patient_data(request):
                                                    message_body=message_body)
         print(result)
     # push notification snippet end *****************
+
+     #sending text message notification to smo
+    if(high_risk_check == True):
+        cur.execute("SELECT mobile FROM auth_user WHERE username = %s" , (officer,))
+        records = cur.fetchall()
+        print(records)
+        smo_mobile = records[0][0]
+        conn_1 = http.client.HTTPConnection("api.msg91.com")
+
+        conn_1.request("GET",
+                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                       smo_mobile, "High Risk Patient Added",))
+
+        res = conn_1.getresponse()
+        data = res.read()
+
+        print(data.decode("utf-8"))
 
     return Response('entry made')
 

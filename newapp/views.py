@@ -1785,8 +1785,8 @@ def report_data_high_risk(request):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 cur.execute(
-                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
-                    (date_2,date_1,bmo_id,))
+                    "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status =%s) patient_record",
+                    (date_2,date_1,bmo_id,"active"))
                 records = cur.fetchall()
 
             else:

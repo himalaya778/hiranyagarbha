@@ -812,8 +812,8 @@ def patient_data(request):
         smo_mobile = records[0][0]
 
 
-        fix =  "High Risk Identified ! \n"
-        var = "Patient Name : " + patient_name + " from Village : " + village_name 
+        fix =  "High Risk Identified ! "
+        var = "Patient Name : " + patient_name + " from Village : " + village_name
         message = fix+var
         conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
@@ -846,7 +846,7 @@ def patient_data(request):
             records = cur.fetchall()
             print(records)
             sup_mobile = records[0][0]
-            fix = "High Risk Identified ! \n"
+            fix = "High Risk Identified !"
             var = "Patient Name : " + patient_name + " from Village : " + village_name
             message = fix + var
 

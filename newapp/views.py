@@ -1537,7 +1537,7 @@ def report_data_high_risk(request):
     if(len(records_bmo)>0):
         bmo_id = records_bmo[0]
 
-        if(len(officer) == 0):
+        if(len(officer) == 0 or officer[0] == 'All'):
             print("no smo filter applied yet")
             cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
             v_records = cur.fetchall()
@@ -1666,7 +1666,7 @@ def report_data_high_risk(request):
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
 
-            if not (start == 'All' and len(officer_ids)>0):
+            if not (start == 'All' ):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 cur.execute(

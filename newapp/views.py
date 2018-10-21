@@ -1551,7 +1551,7 @@ def report_data_high_risk(request):
             approx_high_risk = int((0.15 * approx_registrations))
 
 
-            if not(start == 'all'):
+            if not(start == 'All'):
                 date_2 = request.GET.get('start', None)
                 date_1 = request.GET.get('end', None)
                 print("active patients records")

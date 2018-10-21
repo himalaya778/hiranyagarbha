@@ -849,10 +849,10 @@ def patient_data(request):
             records = cur.fetchall()
             print(records)
             sup_mobile = records[0][0]
-            print("supervisor mobile is ")
+            print("supervisor mobile is " , sup_mobile)
             conn_1.request("GET",
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" %
-                           (sup_mobile, "High Risk Patient Added",))
+                           (smo_mobile, "High Risk Patient Added",))
 
             res = conn_1.getresponse()
             data = res.read()

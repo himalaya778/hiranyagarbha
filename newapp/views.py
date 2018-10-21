@@ -797,7 +797,7 @@ def patient_data(request):
 
     if(high_risk_check == True):
         # sending text message notification to bmo
-        cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (request.user,))
+        cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (str(request.user),))
         records = cur.fetchall()
         print(records)
         bmo_mobile = records[0][0]

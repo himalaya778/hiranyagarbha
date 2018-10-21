@@ -1764,6 +1764,7 @@ def report_data_high_risk(request):
         print("bmo is " , bmo_name)
         cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(bmo_name),))
         records_bmo = cur.fetchall()
+
         if (len(records_bmo) > 0):
             bmo_id = records_bmo[0]
         else:
@@ -1788,9 +1789,10 @@ def report_data_high_risk(request):
                     (date_2,date_1,bmo_id,))
                 records = cur.fetchall()
 
-            cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
-                (bmo_id,))
-            records = cur.fetchall()
+            else:
+                cur.execute("SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE bmo_id = %s) patient_record",
+                    (bmo_id,))
+                records = cur.fetchall()
 
             patients = []
 

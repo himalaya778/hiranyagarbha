@@ -106,7 +106,6 @@ def update_patient_data(request):
         var_reasons = records[0][0]
     #var_reasons = []
 
-
     sample.append(visit_number)
     new_weight = relevant_data["weight"]
     sample.append(new_weight)
@@ -203,7 +202,6 @@ def update_patient_data(request):
     print(records[0][0])
     conn.commit()
     return Response("Data already saved for 3 visits!!")
-
 
 @api_view(['GET'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
@@ -1510,6 +1508,7 @@ def final_entry(request):
 @permission_classes((IsAuthenticated,))
 def report_data_high_risk(request):
     time_period = request.GET.get('time_period', None)
+
     officer_names = request.GET.get('officers', "")
     officer_names = re.sub("\[", "", officer_names)
     officer_names = re.sub("\]", "", officer_names)
@@ -1519,20 +1518,6 @@ def report_data_high_risk(request):
         sample = []
 
     officer = sample
-
-    if (time_period == 'today' or time_period == None):
-        date_1 = datetime.date.today()
-        date_2 = datetime.date.today()
-
-    elif (time_period == 'this_week'):
-        date_1 = datetime.date.today()
-        date_2 = datetime.date.today() - timedelta(7)
-
-    elif (time_period == 'this_month'):
-        date_1 = datetime.date.today()
-        date_2 = datetime.date.today() - timedelta(30)
-
-
 
     total_reg = 0
     t_high_risk = 0
@@ -1566,6 +1551,8 @@ def report_data_high_risk(request):
 
 
             if not(time_period == 'all'):
+                date_2 = request.GET.get('0', None)
+                date_1 = request.GET.get('1', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s) patient_record",
                     (date_2,date_1,bmo_id,))
@@ -1678,6 +1665,8 @@ def report_data_high_risk(request):
             approx_high_risk = int((0.15 * approx_registrations))
 
             if not (time_period == 'all'):
+                date_2 = request.GET.get('0', None)
+                date_1 = request.GET.get('1', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))
@@ -1789,6 +1778,8 @@ def report_data_high_risk(request):
             approx_registrations = int((0.015 * v_pop))
             approx_high_risk = int((0.15 * approx_registrations))
             if not(time_period == 'all'):
+                date_2 = request.GET.get('0', None)
+                date_1 = request.GET.get('1', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active) patient_record",
                     (date_2,date_1,bmo_id,))
@@ -1907,6 +1898,8 @@ def report_data_high_risk(request):
             print("officer ids", officer_ids)
 
             if not (time_period == 'all'):
+                date_2 = request.GET.get('0', None)
+                date_1 = request.GET.get('1', None)
                 cur.execute(
                     "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE reg_date>=%s and reg_date<=%s and bmo_id = %s and patient_status=active and smo_id in %s) patient_record",
                     (date_2, date_1, bmo_id,tuple(officer_ids)))

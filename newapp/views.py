@@ -1486,7 +1486,7 @@ def final_entry(request):
         d_date = relevant_data["date"]
         d_status = "delivered"
         cur.execute("UPDATE patient_level SET b_weight = %s,d_type=%s,f_outcome=%s,d_date=%s,d_status=%s,patientstatus=%s WHERE patient_id = %s" ,
-                    (int(b_weight), d_type, f_outcome, d_date, d_status, patient_id,"inactive",))
+                    (int(b_weight), d_type, f_outcome, d_date, d_status,"inactive" ,patient_id,))
         return Response("Final data entered")
 
     if value == "not_delivered":

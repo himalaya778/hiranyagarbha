@@ -1106,9 +1106,44 @@ def dashboard_data(request) :
                 (bmo_id,))
             records = cur.fetchall()
         #print(records)
+
+
         patients = []
         for r in records:
             patients.append(r[0])
+
+        # population data
+        cur.execute("SELECT population FROM village_level WHERE bmo_id = %s", (bmo_id))
+        v_records = cur.fetchall()
+        print("v_records are : ", v_records)
+        v_pop = 0
+        for v in v_records:
+            if not (v[0] == None):
+                v_pop += int(v[0])
+
+        approx_registrations = int((0.015 * v_pop))
+        approx_high_risk = int((0.15 * approx_registrations))
+        total_number = 0
+        high_risk = 0
+        not_high_risk = 0
+        const_cause = 0
+        var_cause = 0
+        total_number = len(patients)
+        for p in patients:
+            print("data in check is", " ", p["high_risk_check"])
+            if (str(p["high_risk_check"]) == "true"):
+                high_risk += 1
+                for i in range(0, len(x_axis)):
+                    if x_axis[i] in p["high_risk"]:
+                        y_axis[i] += 1
+
+            else:
+                not_high_risk += 1
+
+            if (p["const_check"] == "yes"):
+                const_cause += 1
+            if (p["var_check"] == "yes"):
+                var_cause += 1
 
         supervisor_ids = []
         if (len(officer) > 0):
@@ -1171,7 +1206,8 @@ def dashboard_data(request) :
                         {"name": "Twins", "female": y_axis[6]}, {"name": "Any Others", "female": y_axis[7]}]
 
             result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
-                  "stacked_data": stacked_data}
+                  "stacked_data": stacked_data, "total_pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk,
+                      "const_cause" : const_cause,"var_cause" : var_cause}
             return Response(result)
         else:
             print("filter working")
@@ -1199,7 +1235,9 @@ def dashboard_data(request) :
 
             stacked_data = [ {"name" : "High BP"  ,"female": y_axis[0]} ,{ "name":"Convulsions" ,"female": y_axis[1]} ,{ "name" : "Vaginal Bleeding" ,"female": y_axis[2]} , {"name" : "Foul Smell Discharge" ,"female": y_axis[3]} , {"name" : "Severe Anemia" ,"female": y_axis[4] }, {"name" : "Diabetes" ,"female": y_axis[5]} , {"name":"Twins" , "female":y_axis[6]} , {"name" : "Any Others" , "female" :y_axis[7]} ]
 
-            result = {"total_number" : total_number , "high_risk" : high_risk , "not_high_risk" : not_high_risk,"stacked_data" : stacked_data}
+            result = {"total_number": total_number, "high_risk": high_risk, "not_high_risk": not_high_risk,
+                  "stacked_data": stacked_data, "total_pop" : v_pop , "approx_reg" : approx_registrations , "approx_high_risk" : approx_high_risk,
+                      "const_cause" : const_cause,"var_cause" : var_cause}
 
             return Response(result)
 

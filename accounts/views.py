@@ -73,6 +73,7 @@ class UserCreate(APIView):
                             (relevant_data['role'], block, division,
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
+
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
                         cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s' , (user_id,))
                         i_records = cur.fetchall()
@@ -87,6 +88,34 @@ class UserCreate(APIView):
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
 
+
+                if(relevant_data['role'] == 'district'):
+                    state = relevant_data['state']
+                    division = relevant_data['division']
+                    block = relevant_data['block']
+                    district = relevant_data['district']
+                    mobile = relevant_data['mobile']
+                    cur.execute(
+                        "UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
+                        (relevant_data['role'], block, division,
+                         district, state, mobile,
+                         relevant_data['name'], json_data['id']))
+
+                    cur.execute("INSERT INTO district_level(officer,district) VALUES(%s)", (relevant_data['username'],district))
+
+                if(relevant_data['role'] == 'division'):
+                    state = relevant_data['state']
+                    division = relevant_data['division']
+                    block = relevant_data['block']
+                    district = relevant_data['district']
+                    mobile = relevant_data['mobile']
+                    cur.execute(
+                        "UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
+                        (relevant_data['role'], block, division,
+                         district, state, mobile,
+                         relevant_data['name'], json_data['id']))
+
+                    cur.execute("INSERT INTO division_level(officer,division) VALUES(%s)", (relevant_data['username'],division))
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):

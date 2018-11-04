@@ -101,7 +101,7 @@ class UserCreate(APIView):
                          district, state, mobile,
                          relevant_data['name'], json_data['id']))
 
-                    cur.execute("INSERT INTO district_level(officer,district) VALUES(%s,%s)", (relevant_data['username'],district))
+                    cur.execute("INSERT INTO district_officer(officer,district) VALUES(%s,%s)", (relevant_data['username'],district))
 
                 if(relevant_data['role'] == 'division'):
                     state = relevant_data['state']
@@ -115,7 +115,7 @@ class UserCreate(APIView):
                          district, state, mobile,
                          relevant_data['name'], json_data['id']))
 
-                    cur.execute("INSERT INTO division_level(officer,division) VALUES(%s,%s)", (relevant_data['username'],division,))
+                    cur.execute("INSERT INTO division_officer(officer,division) VALUES(%s,%s)", (relevant_data['username'],division,))
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):

@@ -2151,6 +2151,12 @@ def user_data(request):
         for r in records:
             supervisor.append(r[0])
 
+    cur.execute("SELECT agbdi FROM anganbadi_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            agbdi.append(r[0])
+
     result = {"bmo":bmo, "smo":smo, "anm":anm, "village":village, "cdpo":cdpo, "supervisor":supervisor, "agbdi" : agbdi}
 
     return  Response(result)

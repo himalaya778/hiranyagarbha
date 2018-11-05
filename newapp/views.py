@@ -2122,7 +2122,7 @@ def user_data(request):
 
     #cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block,))
     cur.execute(
-        "SELECT row_to_json(smo_record) FROM (SELECT * FROM auth_user WHERE block = %s ) smo_record",
+        "SELECT row_to_json(smo_record) FROM (SELECT * FROM auth_user WHERE block = %s and role = 'smo' ) smo_record",
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
@@ -2130,31 +2130,39 @@ def user_data(request):
 
     print("smo list " , smo)
 
-    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'anm'" , (block,))
+    #cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'anm'" , (block,))
+    cur.execute(
+        "SELECT row_to_json(anm_record) FROM (SELECT * FROM auth_user WHERE block = %s and role='anm') anm_record",
+        (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            anm.append(r[0])
+        anm = records
 
-    cur.execute("SELECT village FROM village_level WHERE block = %s" , (block,))
+    #cur.execute("SELECT village FROM village_level WHERE block = %s" , (block,))
+    cur.execute(
+        "SELECT row_to_json(village_record) FROM (SELECT * FROM village_level WHERE block = %s ) smo_record",
+        (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            village.append(r[0])
+            village = records
 
 
 
-    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'supervisor'" , (block,))
+    #cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'supervisor'" , (block,))
+    cur.execute(
+        "SELECT row_to_json(sup_record) FROM (SELECT * FROM auth_user WHERE block = %s and role='supervisor' ) sup_record",
+        (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            supervisor.append(r[0])
+        supervisor = records
 
-    cur.execute("SELECT agbdi FROM anganbadi_level WHERE block = %s" ,(block,))
+    #cur.execute("SELECT agbdi FROM anganbadi_level WHERE block = %s" ,(block,))
+    cur.execute(
+        "SELECT row_to_json(agbdi_record) FROM (SELECT * FROM anganbadi_level WHERE block = %s ) agbdi_record",
+        (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            agbdi.append(r[0])
+        agbdi = records
 
     result = { "smo":smo, "anm":anm, "village":village, "supervisor":supervisor, "agbdi" : agbdi}
 

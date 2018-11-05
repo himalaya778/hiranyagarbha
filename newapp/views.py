@@ -2112,7 +2112,7 @@ def user_data(request):
     supervisor = []
     agbdi = []
 
-    cur.execute("SELECT bmo FROM bmo_evel")
+    cur.execute("SELECT bmo FROM bmo_level")
     records = cur.fetchall()
     bmo = records[0]
     print("bmo list " , bmo)

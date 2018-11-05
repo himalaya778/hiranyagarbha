@@ -2140,7 +2140,7 @@ def user_data(request):
 
     #cur.execute("SELECT village FROM village_level WHERE block = %s" , (block,))
     cur.execute(
-        "SELECT row_to_json(village_record) FROM (SELECT * FROM village_level WHERE block = %s ) smo_record",
+        "SELECT row_to_json(village_record) FROM (SELECT * FROM village_level WHERE block = %s ) village_record",
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :

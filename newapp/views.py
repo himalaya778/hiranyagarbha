@@ -2128,31 +2128,27 @@ def user_data(request):
 
     print("smo list " , smo)
 
-    cur.execute("SELECT anm FROM anm_level")
+    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'anm'" , (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:
             anm.append(r[0])
 
-    cur.execute("SELECT village FROM village_level")
+    cur.execute("SELECT village FROM village_level WHERE block = %s" , (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:
             village.append(r[0])
 
-    cur.execute("SELECT cdpo FROM cdpo_level")
-    records = cur.fetchall()
-    if (not(len(records)==0)) :
-        for r in records:
-            cdpo.append(r[0])
 
-    cur.execute("SELECT supervisor FROM supervisor_level")
+
+    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'supervisor'" , (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:
             supervisor.append(r[0])
 
-    cur.execute("SELECT agbdi FROM anganbadi_level")
+    cur.execute("SELECT agbdi FROM anganbadi_level WHERE block = %s" ,(block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:

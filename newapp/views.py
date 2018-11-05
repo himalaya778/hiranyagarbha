@@ -2114,7 +2114,10 @@ def user_data(request):
 
     cur.execute("SELECT bmo FROM bmo_level")
     records = cur.fetchall()
-    bmo = records
+    if (not(len(records)==0)) :
+        for r in records:
+            bmo.append(r[0])
+
     print("bmo list " , bmo)
 
     result = {"bmo":bmo, "smo":smo, "anm":anm, "village":village, "cdpo":cdpo, "supervisor":supervisor, "agbdi" : agbdi}

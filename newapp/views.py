@@ -2112,20 +2112,21 @@ def user_data(request):
     supervisor = []
     agbdi = []
 
-    cur.execute("SELECT bmo FROM bmo_level")
+    block = ''
+    cur.execute("SELECT block FROM auth_user WHERE username = %s", (str(request.user),))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            bmo.append(r[0])
+        block = records[0][0]
+        print("block is " , block)
 
 
-    cur.execute("SELECT smo FROM smo_level")
+    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:
             smo.append(r[0])
 
-    print("bmo list " , smo)
+    print("smo list " , smo)
 
     cur.execute("SELECT anm FROM anm_level")
     records = cur.fetchall()

@@ -2118,7 +2118,38 @@ def user_data(request):
         for r in records:
             bmo.append(r[0])
 
-    print("bmo list " , bmo)
+
+    cur.execute("SELECT smo FROM smo_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            smo.append(r[0])
+
+    print("bmo list " , smo)
+
+    cur.execute("SELECT anm FROM anm_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            anm.append(r[0])
+
+    cur.execute("SELECT village FROM village_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            village.append(r[0])
+
+    cur.execute("SELECT cdpo FROM cdpo_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            cdpo.append(r[0])
+
+    cur.execute("SELECT supervisor FROM supervisor_level")
+    records = cur.fetchall()
+    if (not(len(records)==0)) :
+        for r in records:
+            supervisor.append(r[0])
 
     result = {"bmo":bmo, "smo":smo, "anm":anm, "village":village, "cdpo":cdpo, "supervisor":supervisor, "agbdi" : agbdi}
 

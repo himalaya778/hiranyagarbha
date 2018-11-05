@@ -2097,3 +2097,27 @@ def report_data_high_risk(request):
                       "total_pop": v_pop, "approx_reg": approx_registrations, "approx_high_risk": approx_high_risk}
 
             return Response(result)
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def user_data(request):
+    bmo = []
+    smo = []
+    anm = []
+    village = []
+
+    cdpo = []
+    supervisor = []
+    agbdi = []
+
+    cur.execute("SELECT bmo FROM bmo_evel")
+    records = cur.fetchall()
+    bmo = records[0]
+    print("bmo list " , bmo)
+
+    result = {"bmo":bmo, "smo":smo, "anm":anm, "village":village, "cdpo":cdpo, "supervisor":supervisor, "agbdi" : agbdi}
+
+    return  Response(result)
+

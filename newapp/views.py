@@ -2137,7 +2137,8 @@ def user_data(request):
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        anm = records
+        for r in records:
+            anm.append(r[0])
 
     #cur.execute("SELECT village FROM village_level WHERE block = %s" , (block,))
     cur.execute(
@@ -2145,7 +2146,8 @@ def user_data(request):
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-            village = records
+        for r in records:
+            village.append(r[0])
 
 
 
@@ -2155,7 +2157,8 @@ def user_data(request):
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        supervisor = records
+        for r in records:
+            supervisor.append(r[0])
 
     #cur.execute("SELECT agbdi FROM anganbadi_level WHERE block = %s" ,(block,))
     cur.execute(
@@ -2163,7 +2166,8 @@ def user_data(request):
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        agbdi = records
+        for r in records:
+            agbdi.append(r[0])
 
     result = { "smo":smo, "anm":anm, "village":village, "supervisor":supervisor, "agbdi" : agbdi}
 

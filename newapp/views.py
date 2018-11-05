@@ -2154,7 +2154,47 @@ def user_data(request):
         for r in records:
             agbdi.append(r[0])
 
-    result = {"bmo":bmo, "smo":smo, "anm":anm, "village":village, "cdpo":cdpo, "supervisor":supervisor, "agbdi" : agbdi}
+    result = { "smo":smo, "anm":anm, "village":village, "supervisor":supervisor, "agbdi" : agbdi}
 
     return  Response(result)
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def delete_data(request):
+    relevant_data = json.loads(request.body)
+    type = relevant_data["type"]
+    name = relevant_data["name"]
+
+    if (type == "user"):
+        #delete smo,anm,supervisor
+        cur.execute("SELECT id FROM auth_user WHERE username = %s" , (str(name),))
+        records = cur.fetchall()
+        if(len(records)>0):
+            id_del = re[0][0]
+        else:
+            return  Response("User does not exist")
+        from django.contrib.auth.models import User
+        user = User.objects.filter(id=id_del)
+        user.delete()
+        print(request)
+        print(request.body)
+        return Response("User Deleted")
+
+
+    if(type == "village"):
+        #delete village
+        cur.execute("DELETE FROM village_level WHERE village = %s" , (str(name),))
+        return Response("Village Deleted")
+
+    if(type == "anganbadi"):
+        #delete anganbadi
+        cur.execute("DELETE FROM anganbadi_level WHERE agbdi = %s" , (str(name)))
+        return Response("Anganbadi Deleted")
+
+    else:
+        return Response("Invalid User or Place")
+
+
+
 

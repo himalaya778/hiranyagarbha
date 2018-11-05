@@ -2122,7 +2122,7 @@ def user_data(request):
 
     #cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block,))
     cur.execute(
-        "SELECT row_to_json(smo_record) FROM (SELECT * FROM patient_level WHERE block = %s ) smo_record",
+        "SELECT row_to_json(smo_record) FROM (SELECT * FROM auth_user WHERE block = %s ) smo_record",
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :

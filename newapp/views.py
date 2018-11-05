@@ -2120,7 +2120,7 @@ def user_data(request):
         print("block is " , block)
 
 
-    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block))
+    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
         for r in records:

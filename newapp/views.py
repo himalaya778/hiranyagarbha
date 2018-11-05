@@ -2126,7 +2126,8 @@ def user_data(request):
         (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        smo = records
+        for r in records:
+            smo.append(r[0])
 
     print("smo list " , smo)
 

@@ -2120,11 +2120,13 @@ def user_data(request):
         print("block is " , block)
 
 
-    cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block,))
+    #cur.execute("SELECT username FROM auth_user WHERE block = %s and role = 'smo'" , (block,))
+    cur.execute(
+        "SELECT row_to_json(smo_record) FROM (SELECT * FROM patient_level WHERE block = %s ) smo_record",
+        (block,))
     records = cur.fetchall()
     if (not(len(records)==0)) :
-        for r in records:
-            smo.append(r[0])
+        smo = records[0]
 
     print("smo list " , smo)
 

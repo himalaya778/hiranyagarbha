@@ -2189,7 +2189,7 @@ def delete_data(request):
 
     if(type == "anganbadi"):
         #delete anganbadi
-        cur.execute("DELETE FROM anganbadi_level WHERE agbdi = %s" , (str(name)))
+        cur.execute("DELETE FROM anganbadi_level WHERE agbdi = %s" , (str(name),))
         return Response("Anganbadi Deleted")
 
     else:

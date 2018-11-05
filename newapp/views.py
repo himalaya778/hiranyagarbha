@@ -2171,7 +2171,7 @@ def delete_data(request):
         cur.execute("SELECT id FROM auth_user WHERE username = %s" , (str(name),))
         records = cur.fetchall()
         if(len(records)>0):
-            id_del = re[0][0]
+            id_del = records[0][0]
         else:
             return  Response("User does not exist")
         from django.contrib.auth.models import User

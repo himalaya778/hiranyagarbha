@@ -37,6 +37,18 @@ def check_update(request):
         return Response({'patient_details' : records[0]})
     conn.commit()
     return Response("No Update")
+#refer to hospital
+@api_view(['POST'])
+def refer_patient(request):
+    relevant_data = json.loads((request.body))
+    patient_id = relevant_data['patient_id']
+    reason = relevant_data['reason']
+    hospital = relevant_data['hospital']
+
+    cur.execute("UPDATE patient_level SET refer_check = 'true', r_reason = %s, r_hospital = %s WHERE patient_id = %s",(reason,hospital,patient_id))
+    print("updated")
+    return Response("Patient Referred")
+
 
 @api_view(['POST'])
 def set_visit(request):

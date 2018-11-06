@@ -2191,32 +2191,27 @@ def user_data(request):
 def delete_data(request):
     relevant_data = json.loads(request.body)
     type = relevant_data["type"]
-    name = relevant_data["name"]
+    id_del = relevant_data["id"]
 
     if (type == "user"):
         #delete smo,anm,supervisor
-        cur.execute("SELECT id FROM auth_user WHERE username = %s" , (str(name),))
-        records = cur.fetchall()
-        if(len(records)>0):
-            id_del = records[0][0]
-        else:
-            return  Response("User does not exist")
         from django.contrib.auth.models import User
         user = User.objects.filter(id=id_del)
         user.delete()
         print(request)
         print(request.body)
+
         return Response("User Deleted")
 
 
     if(type == "village"):
         #delete village
-        cur.execute("DELETE FROM village_level WHERE village = %s" , (str(name),))
+        cur.execute("DELETE FROM village_level WHERE village_id = %s" , (id_del,))
         return Response("Village Deleted")
 
     if(type == "anganbadi"):
         #delete anganbadi
-        cur.execute("DELETE FROM anganbadi_level WHERE agbdi = %s" , (str(name),))
+        cur.execute("DELETE FROM anganbadi_level WHERE agbdi = %s" , (id_del,))
         return Response("Anganbadi Deleted")
 
     else:

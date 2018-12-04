@@ -8,3 +8,5 @@ django-rest-framework==0.1.0
 dj-database-url
 django-postgresql
 django-cors-headers
+pyfcm
+django-notify-x

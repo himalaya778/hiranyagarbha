@@ -16,8 +16,9 @@ from rest_framework.authtoken.models import Token
 import json
 import psycopg2
 from django.contrib.auth.models import User
-conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
+#conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
+conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0 host='ec2-54-83-50-145.compute-1.amazonaws.com'")
 cur = conn.cursor()
 
 
@@ -72,6 +73,7 @@ class UserCreate(APIView):
                             (relevant_data['role'], block, division,
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
+
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
                         cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s' , (user_id,))
                         i_records = cur.fetchall()
@@ -86,6 +88,34 @@ class UserCreate(APIView):
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
 
+
+                if(relevant_data['role'] == 'district'):
+                    state = relevant_data['state']
+                    division = relevant_data['division']
+                    block = relevant_data['block']
+                    district = relevant_data['district']
+                    mobile = relevant_data['mobile']
+                    cur.execute(
+                        "UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
+                        (relevant_data['role'], block, division,
+                         district, state, mobile,
+                         relevant_data['name'], json_data['id']))
+
+                    cur.execute("INSERT INTO district_officer(officer,district) VALUES(%s,%s)", (relevant_data['username'],district))
+
+                if(relevant_data['role'] == 'division'):
+                    state = relevant_data['state']
+                    division = relevant_data['division']
+                    block = relevant_data['block']
+                    district = relevant_data['district']
+                    mobile = relevant_data['mobile']
+                    cur.execute(
+                        "UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
+                        (relevant_data['role'], block, division,
+                         district, state, mobile,
+                         relevant_data['name'], json_data['id']))
+
+                    cur.execute("INSERT INTO division_officer(officer,division) VALUES(%s,%s)", (relevant_data['username'],division,))
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
@@ -238,8 +268,6 @@ class ObtainAuthToken(APIView):
                     if (records_worker[i][0] == cdpo_id):
                         worker.append(records_worker[i][1])
 
-
-
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
                     'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , "supervisor" : supervisor,
@@ -247,6 +275,15 @@ class ObtainAuthToken(APIView):
                 }
 
                 return Response(content)
+
+            if (records[0][11] == "smo"):
+                content = {
+                    'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
+                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4]
+                }
+
+                return Response(content)
+
             content = {
                 'status': 'success', 'token': str(token.key), 'role': (records[0][11]), 'state': 'Madhya Pradesh'
             }

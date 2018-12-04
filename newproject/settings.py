@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'notify',
 ]
 
 MIDDLEWARE = [
@@ -86,10 +87,10 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lewjwtyv',
-        'USER': 'lewjwtyv',
-        'PASSWORD': 'mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5',
-       'HOST': 'baasu.db.elephantsql.com',
+        'NAME': 'd6033pklmp2aij',
+        'USER': 'kchzgyvpypnnkk',
+        'PASSWORD': 'b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0',
+       'HOST': 'ec2-54-83-50-145.compute-1.amazonaws.com',
 #        'PORT': '5432',
     },
 

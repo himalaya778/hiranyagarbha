@@ -1,1 +1,1 @@
-web: gunicorn hiranyagarbha.wsgi
+web: gunicorn newproject.wsgi

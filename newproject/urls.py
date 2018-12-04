@@ -20,6 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls) , url('^users/', include('accounts.urls')),
+    url(r'^notifications/', include('notify.urls', 'notifications')),
     url('add_village' , views.village_create),
     url('add_agbdi' , views.agbdi_create),
     url('dropdown_smo' , views.smo_dropdown),
@@ -43,7 +44,13 @@ urlpatterns = [
     url('delete_user' , views.delete_user),
     url('full_patient_data' , views.full_patient_details),
     url('get_app_data' , views.app_data),
-    url('update_visit_data' , views.update_patient_data)
+    url('update_visit_data' , views.update_patient_data),
+    url('search_record', views.search_record),
+    url('final_entry' , views.final_entry),
+    url('report_data' , views.report_data_high_risk),
+    url('user_data' , views.user_data),
+    url('delete_data' , views.delete_data),
+    url('refer_patient' , views.refer_patient)
 
 
 ]

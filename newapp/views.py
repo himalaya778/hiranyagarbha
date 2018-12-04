@@ -139,7 +139,11 @@ def update_patient_data(request):
 
     new_sugar = int(relevant_data["sugar"])
     sample.append(new_sugar)
+<<<<<<< HEAD
     if (new_sugar > 139):
+=======
+    if (new_sugar > 100):
+>>>>>>> d35f7e410bb99fcdb84b96fa34d18f7be55888bb
         print("sugar is the reason")
         var_check = "yes"
         var_sample.append("sugar")

@@ -1413,6 +1413,18 @@ def full_patient_details(request):
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
+def full_patient_details_app(request):
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data["id"]
+    cur.execute(
+        "SELECT row_to_json(user_record) FROM (SELECT *  FROM patient_level WHERE patient_id = %s) user_record ", (int(p_id),))
+    records = cur.fetchall()
+    print(records[0][0])
+    return Response( records[0])
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def search_record(request):
     relevant_data = json.loads(request.body)
     print(relevant_data)

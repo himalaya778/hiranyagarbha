@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/newproject/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="65" column="45" lean-forward="true" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+            <state relative-caret-position="428">
+              <caret line="1415" column="4" lean-forward="true" selection-start-line="1415" selection-start-column="4" selection-end-line="1415" selection-end-column="28" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -71,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newproject/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+            <state relative-caret-position="450">
+              <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -91,36 +91,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chart_t</find>
-      <find>image_ur</find>
       <find>stacked</find>
-      <find />
+      <find>def stac</find>
       <find>fail</find>
-      <find />
+      <find>def tota</find>
       <find>image_url</find>
       <find>charts</find>
-      <find />
+      <find>def char</find>
       <find>brands</find>
-      <find />
-      <find />
+      <find>def chart</find>
+      <find>def to</find>
       <find>uplo</find>
-      <find />
+      <find>def file_up</find>
       <find>filter</find>
       <find>def</find>
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
+      <find>def charts</find>
+      <find>def charts_region</find>
+      <find>def image_url</find>
+      <find>def url</find>
+      <find>def ima</find>
+      <find>def filt</find>
+      <find>records = file</find>
+      <find>def imae</find>
+      <find>def image</find>
       <find>startdate</find>
       <find>100</find>
       <find>app_data</find>
       <find>full_patient</find>
       <find>set_</find>
+      <find>patient_data</find>
+      <find>patient_deta</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,13 +134,13 @@
         <option value="$PROJECT_DIR$/accounts/urls.py" />
         <option value="$PROJECT_DIR$/newproject/wsgi.py" />
         <option value="$USER_HOME$/Desktop/FINAL FOLDER/Mobile App API/gcloud_api/main.py" />
-        <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/newproject/settings.py" />
         <option value="$PROJECT_DIR$/accounts/models.py" />
         <option value="$PROJECT_DIR$/newapp/models.py" />
         <option value="$PROJECT_DIR$/newsite/models.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
+        <option value="$PROJECT_DIR$/newproject/urls.py" />
       </list>
     </option>
   </component>
@@ -210,6 +210,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16666667" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -494,13 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newproject/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newproject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -510,11 +504,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="65" column="45" lean-forward="true" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+        <state relative-caret-position="428">
+          <caret line="1415" column="4" lean-forward="true" selection-start-line="1415" selection-start-column="4" selection-end-line="1415" selection-end-column="28" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newproject/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
         </state>
       </provider>
     </entry>

@@ -43,6 +43,7 @@ urlpatterns = [
     url('get_h_risk_data' , views.get_high_risk_patient_data),
     url('delete_user' , views.delete_user),
     url('full_patient_data' , views.full_patient_details),
+    url('full_data_app' , views.full_patient_details_app),
     url('get_app_data' , views.app_data),
     url('update_visit_data' , views.update_patient_data),
     url('search_record', views.search_record),

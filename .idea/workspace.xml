@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/newproject/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="1415" column="4" lean-forward="true" selection-start-line="1415" selection-start-column="4" selection-end-line="1415" selection-end-column="28" />
+            <state relative-caret-position="180">
+              <caret line="1421" column="24" lean-forward="true" selection-start-line="1421" selection-start-column="24" selection-end-line="1421" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -71,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newproject/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
@@ -91,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stacked</find>
       <find>def stac</find>
       <find>fail</find>
       <find>def tota</find>
@@ -121,6 +119,7 @@
       <find>set_</find>
       <find>patient_data</find>
       <find>patient_deta</find>
+      <find>full_patient_details_app</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,8 +138,8 @@
         <option value="$PROJECT_DIR$/newapp/models.py" />
         <option value="$PROJECT_DIR$/newsite/models.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
-        <option value="$PROJECT_DIR$/newapp/views.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
+        <option value="$PROJECT_DIR$/newapp/views.py" />
       </list>
     </option>
   </component>
@@ -502,20 +501,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="1415" column="4" lean-forward="true" selection-start-line="1415" selection-start-column="4" selection-end-line="1415" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newproject/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="1421" column="24" lean-forward="true" selection-start-line="1421" selection-start-column="24" selection-end-line="1421" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

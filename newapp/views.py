@@ -121,7 +121,7 @@ def update_patient_data(request):
         var_reasons = records[0][0]
     #var_reasons = []
 
-    sample.append(visit_number)
+    sample.append(str(datetime.date.today()))
     new_weight = relevant_data["weight"]
     sample.append(new_weight)
 
@@ -235,7 +235,7 @@ def app_data(request):
     for r in records:
         patients.append(r[0])
     print(len(records))
-    end = (start+5)
+    end = (start+25)
     return Response({"patients" : patients[start:end]})
 
 @api_view(['POST'])

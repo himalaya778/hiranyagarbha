@@ -91,6 +91,17 @@ def set_visit(request):
     conn.commit()
     return Response("3 visits already sceduled")
 
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def device_registeration(request):
+    relevant_data = json.loads(request.body)
+    device_id = relevant_data["reg_token"]
+    cur.execute("UPDATE auth_user SET device_id = %s WHERE username = s" , (device_id ,str(request.user) ))
+    conn.commit()
+    return Response("Registeration Token Saved")
+
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))

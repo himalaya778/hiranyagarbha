@@ -51,7 +51,8 @@ urlpatterns = [
     url('report_data' , views.report_data_high_risk),
     url('user_data' , views.user_data),
     url('delete_data' , views.delete_data),
-    url('refer_patient' , views.refer_patient)
+    url('refer_patient' , views.refer_patient),
+    url('device_reg' , views.device_registeration)
 
 
 ]

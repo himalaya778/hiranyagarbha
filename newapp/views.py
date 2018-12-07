@@ -98,7 +98,7 @@ def set_visit(request):
 def device_registeration(request):
     relevant_data = json.loads(request.body)
     device_id = relevant_data["reg_token"]
-    cur.execute("UPDATE auth_user SET device_id = %s WHERE username = s" , (device_id ,str(request.user) ))
+    cur.execute("UPDATE auth_user SET device_id = %s WHERE username = %s" , (device_id ,str(request.user), ))
     conn.commit()
     return Response("Registeration Token Saved")
 

@@ -57,6 +57,7 @@ def set_visit(request):
     s_date = relevant_data['date']
     array_date = []
     array_date.append(s_date)
+    print(array_date)
     #s_time = relevant_data['time']
 
     cur.execute("UPDATE patient_level  SET visit_schedule = visit_schedule || %s::DATE[] , v_scheduled = 'true' WHERE patient_id = %s ", (array_date, patient_id,))
@@ -748,7 +749,7 @@ def patient_data(request):
     else:
         var_reasons[0].append('')
 
-    if(sugar>100):
+    if(sugar>139):
         print("sugar is the reason")
         var_check = "yes"
         high_risk_check = True

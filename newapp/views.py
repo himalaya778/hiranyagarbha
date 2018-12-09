@@ -678,6 +678,9 @@ def patient_data(request):
 
     high_risk_check = relevant_data['high_risk_check']
     print(high_risk_check)
+    high_risk = []
+    if(high_risk_check == True ):
+        high_risk = relevant_data["high_risk"]
     reg_date = datetime.date.today()
     aadhar_number = relevant_data['aadhar_number'] # 1
     patient_name = relevant_data['patient_name']   # 2
@@ -707,7 +710,7 @@ def patient_data(request):
     para = relevant_data["para"]
     live = relevant_data["live"]
     abortion = relevant_data["abortion"]
-    high_risk = []
+
     bp_check = "no"
     sugar_check = "no"
     #constant checks
@@ -762,10 +765,7 @@ def patient_data(request):
     print("var check : " , var_check)
     print(" high risk check : " , high_risk_check)
 
-    if(high_risk_check == True and (var_check=="no" and const_check=="no")):
-        print("yes high risk")
-        for i in range(0,len (relevant_data['high_risk'])):
-            high_risk.append(str(relevant_data['high_risk'][i]))# 21, array of strings
+
 
     if (high_risk_check == True):
         if (sugar_check=="yes" and not("Diabetes" in high_risk)) :

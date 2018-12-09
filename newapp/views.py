@@ -939,7 +939,7 @@ def dashboard_data(request) :
     print(request.GET)
     #date_1 = datetime.date.today()
     #date_2 = datetime.date.today()
-    x_axis = ["High BP" , "Convulsions" , "Vaginal Bleeding" , "Foul Smell Discharge" , "Severe Anemia" , "Diabetes" , "Twins" , "Any Others"]
+    x_axis = ["High BP" , "Convulsions" , "Vaginal Bleeding" , "Foul Smell Discharge" ,"Mild Anemia","Moderate Anemia", "Severe Anemia" , "Diabetes" , "Twins" , "Any Others"]
     y_axis = [0,0,0,0,0,0,0,0]
     time_period = request.GET.get('time_period', None)
     officer_names = request.GET.get('officers', "")

@@ -212,6 +212,7 @@ def update_patient_data(request):
             "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s,improv4=%s::TEXT[] WHERE patient_id = %s"
             , (visit_data, var_reasons, visit_number, improv4, patient_id,))
 
+    print("visit data is " , visit_data)
     cur.execute(
         "UPDATE patient_level SET visit_data = %s::TEXT[][], var_reasons = %s::TEXT[][],doctor_visits=%s WHERE patient_id = %s"
         , (visit_data, var_reasons, visit_number, patient_id,))

@@ -171,6 +171,10 @@ def update_patient_data(request):
 
     new_dietary_advice = relevant_data["dietary_advice"]
     sample.append(new_dietary_advice)
+
+    new_image_link = relevant_data["image_url"]
+    sample.append(new_image_link)
+
     visit_number+=1
     visit_data.append(sample)
 

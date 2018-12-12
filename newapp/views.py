@@ -732,7 +732,7 @@ def patient_data(request):
         high_risk_check  = True
         const_reasons.append("abortion")
 
-    if(height<154):
+    if(height<139):
         print("height is the reason")
         const_check = "yes"
         high_risk_check = True
@@ -754,6 +754,21 @@ def patient_data(request):
         high_risk_check = True
         bp_check = "yes"
         var_reasons[0].append("bp")
+    else:
+        var_reasons[0].append('')
+
+    if(weight>70):
+        print("overweight is the reason")
+        var_check = "yes"
+        high_risk_check = True
+        sugar_check = "yes"
+        var_reasons[0].append("overweight")
+    elif(weight<39):
+        print("underweight is the reason")
+        var_check = "yes"
+        high_risk_check = True
+        sugar_check = "yes"
+        var_reasons[0].append("unerweight")
     else:
         var_reasons[0].append('')
 

@@ -51,11 +51,11 @@ def patient_registry(request):
     address = relevant_data["address"]
     agbdi_name = relevant_data['agbdi_name'] #13
 
-    res = cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
+    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
                    date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING * """ , (state,block,division,district,officer,
                     agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
     conn.commit()
-    a = res.fetchall()
+    a = cur.fetchall()
     print(a)
     #patient_id = res[0]['patient_id']
 

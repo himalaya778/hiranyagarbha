@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import add_on_methods
+from .add_on_methods import *
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -56,7 +56,7 @@ def patient_registry(request):
                     agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,officer,address))
     patient_id = res[0]['id']
 
-
+    return Response({'patient_id' : patient_id})
 
 
 @api_view(['POST'])
@@ -143,7 +143,7 @@ def anc_visit(request):
 
 
 
-
+    return Response ('data saved')
 
 
 

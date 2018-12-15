@@ -59,7 +59,7 @@ def patient_registry(request):
     print(res)
     patient_id = res[0]['patient_id']
 
-    return Response({'patient_id' : 10})
+    return Response({'patient_id' : patient_id})
 
 
 @api_view(['POST'])

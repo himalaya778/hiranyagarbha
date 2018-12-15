@@ -57,7 +57,7 @@ def patient_registry(request):
     conn.commit()
     res = cur.fetchall()
     print(res)
-    patient_id = res[0]['patient_id']
+    patient_id = res[0][0]
 
     return Response({'patient_id' : patient_id})
 

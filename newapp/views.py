@@ -25,7 +25,6 @@ from django.contrib import messages
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
 cur = conn.cursor()
 
-###############################################################HIRANYAGARBHA#######################################
 @api_view(['GET'])
 def check_update(request):
     cur.execute("SELECT * FROM patient_level WHERE high_risk_check = 'true' and notified = False")
@@ -37,6 +36,7 @@ def check_update(request):
         return Response({'patient_details' : records[0]})
     conn.commit()
     return Response("No Update")
+
 #refer to hospital
 @api_view(['POST'])
 def refer_patient(request):
@@ -69,26 +69,6 @@ def set_visit(request):
     print("records [0][0] length " , len(records[0][0]))
     print("dates array ", records[0][0])
 
-    #if (records[0][0] == None):
-
-     #   cur.execute("UPDATE patient_level  SET v_1_date = %s WHERE patient_id = %s " , (s_date,patient_id,))
-     #   #cur.execute("UPDATE patient_level SET visit_time[0] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", ( patient_id,))
-     #   conn.commit()
-     #   return Response("Visit  1 Scheduled")
-    #if (records[0][0]["v_2_date"] == None):
-     #   cur.execute("UPDATE patient_level  SET v_2_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-     #   #cur.execute("UPDATE patient_level SET visit_time[1] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
-     #   conn.commit()
-     #   return Response("Visit 2 Scheduled")
-
-    #if (records[0][0]["v_2_date"] == None):
-     #   cur.execute("UPDATE patient_level  SET v_3_date = %s WHERE patient_id = %s ", (s_date, patient_id,))
-     #   #cur.execute("UPDATE patient_level SET visit_time[2] =  %s WHERE patient_id = %s ", (s_time, patient_id,))
-     #   cur.execute("UPDATE patient_level SET v_scheduled =  'true' WHERE patient_id = %s ", (patient_id,))
-     #   conn.commit()
-     #   return Response("Visit 3 Scheduled")
     conn.commit()
     return Response("3 visits already sceduled")
 
@@ -254,6 +234,19 @@ def app_data(request):
     print(len(records))
     end = (start+25)
     return Response({"patients" : patients[start:end]})
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def full_patient_details_app(request):
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data["id"]
+    cur.execute(
+        "SELECT row_to_json(user_record) FROM (SELECT *  FROM patient_level WHERE patient_id = %s) user_record ", (int(p_id),))
+    records = cur.fetchall()
+    print(records[0][0])
+    return Response({"patients" :  records[0]})
+##############################################
 
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
@@ -1448,17 +1441,7 @@ def full_patient_details(request):
     print(records[0][0])
     return Response( records[0][0])
 
-@api_view(['POST'])
-@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
-@permission_classes((IsAuthenticated,))
-def full_patient_details_app(request):
-    relevant_data = json.loads(request.body)
-    p_id = relevant_data["id"]
-    cur.execute(
-        "SELECT row_to_json(user_record) FROM (SELECT *  FROM patient_level WHERE patient_id = %s) user_record ", (int(p_id),))
-    records = cur.fetchall()
-    print(records[0][0])
-    return Response({"patients" :  records[0]})
+
 
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))

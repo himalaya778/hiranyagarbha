@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: django-postgresql
+Version: 0.0.3
+Summary: Postgres-specific django goodness.
+Home-page: UNKNOWN
+Author: Matthew Schinckel
+Author-email: matt@schinckel.net
+License: UNKNOWN
+Description: Postgres-specific django goodness. Edited setup.py to upload it to pypi.
+Platform: UNKNOWN

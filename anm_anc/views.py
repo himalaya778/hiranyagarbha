@@ -52,12 +52,12 @@ def patient_registry(request):
     agbdi_name = relevant_data['agbdi_name'] #13
 
     cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
-                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING * """ , (state,block,division,district,officer,
+                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING patient_id """ , (state,block,division,district,officer,
                     agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
     conn.commit()
-    a = cur.fetchall()
-    print(a)
-    #patient_id = res[0]['patient_id']
+    res = cur.fetchall()
+    print(res)
+    patient_id = res[0]['patient_id']
 
     return Response({'patient_id' : 10})
 

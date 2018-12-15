@@ -51,8 +51,8 @@ def patient_registry(request):
     address = relevant_data["address"]
     agbdi_name = relevant_data['agbdi_name'] #13
 
-    res = cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,
-                   date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) returning id """ , (state,block,division,district,officer,
+    res = cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
+                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) returning id """ , (state,block,division,district,officer,
                     agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
     patient_id = res[0]['id']
 

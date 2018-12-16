@@ -91,52 +91,52 @@ def anc_visit(request):
         c_ctr+=1
         const_factors.append('height')
 
-    previous_lscs = relevant_data['previous_lscs']
+    previous_lscs = relevant_data['previous_lscs']#3
     if (previous_lscs == True):
         c_ctr+=1
         const_factors.append('previous_lscs')
 
-    bgroup = relevant_data['bgroup']
+    bgroup = relevant_data['bgroup']#4
     if(bgroup in hrisk_bgroups):
         c_ctr+=1
         const_factors.append('blood group')
 
-    disability = relevant_data['disablity']
+    disability = relevant_data['disablity']#5
     if (not (disability == 'None')):
         c_ctr+=1
         const_factors.append('disability')
 
-    blood_disease = relevant_data['blood_disease']
+    blood_disease = relevant_data['blood_disease']#6
     if( not(blood_disease == 'Normal' )):
         c_ctr+=1
         const_factors.append('blood disease')
 
-    hiv = relevant_data['hiv']
+    hiv = relevant_data['hiv']#7
     if( hiv == True):
         c_ctr+=1
         const_factors.append('hiv')
 
-    hbsag = relevant_data['hbsag']
+    hbsag = relevant_data['hbsag']#8
     if( hbsag == True):
         c_ctr+=1
         const_factors.append('HbsAg')
 
-    cardiac = relevant_data['cardiac']
+    cardiac = relevant_data['cardiac']#9
     if( cardiac == True):
         c_ctr+=1
         const_factors.append('cardiac disease')
 
-    p_uterus = relevant_data['p_uterus']
+    p_uterus = relevant_data['p_uterus']#10
     if( p_uterus == True):
         c_ctr+=1
         const_factors.append('prolapse uterus')
 
-    asthama = relevant_data['asthama']
+    asthama = relevant_data['asthama']#11
     if( asthama == True):
         c_ctr+=1
         const_factors.append('asthama')
 
-    twin_delivery = relevant_data['twin_delivery']
+    twin_delivery = relevant_data['twin_delivery']#12
     if( twin_delivery == True):
         c_ctr+=1
         const_factors.append('twin delivery')
@@ -145,62 +145,62 @@ def anc_visit(request):
 
     #variable high risk factors check
 
-    weight = relevant_data['weight']
+    weight = relevant_data['weight']#13
     if (weight<40 or weight>90):
         v_ctr+=1
         variable_factors.append('weight')
 
-    bp1 = relevant_data['bp1']
-    bp2 = relevant_data['bp2']
+    bp1 = relevant_data['bp1']#14
+    bp2 = relevant_data['bp2']#15
     if (bp1>90 or bp2>140):
         v_ctr+=1
         variable_factors.append('bp')
 
-    malrep = relevant_data['malrep']
+    malrep = relevant_data['malrep']#16
     if (not (malrep == None)):
         v_ctr+=1
         variable_factors.append('malrepresentation')
 
-    gdm = relevant_data['gdm']
+    gdm = relevant_data['gdm']#17
     if (gdm>139):
         v_ctr+=1
         variable_factors.append('gdm')
 
-    anemia = relevant_data['anemia']
+    anemia = relevant_data['anemia']#18
     if (not(anemia==None)):
         v_ctr+=1
         variable_factors.append('anemia')
 
-    hb = relevant_data['hb']
+    hb = relevant_data['hb']#19
     if (hb<8):
         v_ctr+=1
         variable_factors.append('haemoglobin')
 
-    thyroid = relevant_data['thyroid']
+    thyroid = relevant_data['thyroid']#20
     if (not (thyroid == 'Normal')):
         v_ctr+=1
         variable_factors.append('thyroid')
 
-    tobacohol = relevant_data['alcohol_tobacco']
+    tobacohol = relevant_data['alcohol_tobacco']#21
     if(tobacohol == True):
         v_ctr+=1
         variable_factors.append('alcohol/tobacco')
 
-    vdrl = relevant_data['vdrl']
+    vdrl = relevant_data['vdrl']#22
     if(tobacohol == True):
         v_ctr+=1
         variable_factors.append('vdrl')
 
-    preg_disease = relevant_data['preg_disease']
+    preg_disease = relevant_data['preg_disease']#23
     if(not(preg_disease=='Adequate')):
         v_ctr+=1
         variable_factors.append('preg_disease')
 
-    bleeding_check = relevant_data['bleeding_check']
+    bleeding_check = relevant_data['bleeding_check']#24
     if(bleeding_check == True):
         variable_factors.append('bleeding')
 
-    iugr = relevant_data['iugr']
+    iugr = relevant_data['iugr']#25
     if(iugr == True):
         variable_factors.append('iugr')
 
@@ -218,7 +218,20 @@ def anc_visit(request):
         hrisk_factors = relevant_data['hrisk_factors']
 
 
-    cur.execute("INSERT INTO anm_anc ()")
+    cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
+    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,weight,bp1,bp2,malrepresentation,gdm,anemia,
+    haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,hrisk_factors,
+    constant_factors, variable_factors) 
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s),
+    (patient_id,age,height, previous_lscs, b_group,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
+    twin_delivery,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
+    hrisk_check,hrisk_factors,constant_factors, variable_factors)""")
+
+    conn.commit()
+
+    return Response("visit data saved")
+
+
 
 
 

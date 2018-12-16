@@ -241,7 +241,7 @@ def anc_visit(request):
 
     conn.commit()
 
-    return Response("visit data saved")
+    return Response({"high_risk" : hrisk_check})
 
 
 

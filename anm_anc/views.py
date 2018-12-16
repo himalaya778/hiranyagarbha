@@ -144,9 +144,9 @@ def anc_visit(request):
     ########################################################
 
     #variable high risk factors check
-
-    weight = relevant_data['weight']#13
-    if (weight<40 or weight>90):
+    weight = []
+    weight.append(relevant_data['weight'])#13
+    if (weight[0]<40 or weight[0]>90):
         v_ctr+=1
         variable_factors.append('weight')
 

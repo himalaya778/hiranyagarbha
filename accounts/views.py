@@ -288,14 +288,14 @@ class ObtainAuthToken(APIView):
                 print(str(request.user.username))
                 cur.execute("SELECT smo_id,anm_id FROM anm_level WHERE anm = %s" , (str(records[0][4]),))
                 records_officers = cur.fetchall()
-                smo = records_officers[0]
+                smo = records_officers
                 #anm_id = records[1]
                 #cur.execute("SELECT village FROM village_level WHERE anm_id = %s" , (anm_id))
                 #records_villages = cur.fetchall()
                 #villages = records_villages[0]
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
-                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'officer' : str(request.user.username) , 'villages' : ['bankhedi']
+                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'officer' : smo , 'villages' : ['bankhedi']
                 }
 
                 return Response(content)

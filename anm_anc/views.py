@@ -78,9 +78,9 @@ def anc_visit(request):
     variable_factors = []
 
     #constant high risk factors check
-    cur.execute("SELECT age FROM patient_level WHERE patient_id = %s" , (p_id))
+    cur.execute("SELECT age FROM patient_level WHERE patient_id = %s" , (p_id,))
     age_rec = cur.fetchall()
-    age = int(age_rec[0][0]) #1
+    age = age_rec[0][0] #1
     #age = relevant_data['age']
     if (age<18 or age>35):
         c_ctr+=1

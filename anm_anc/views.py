@@ -215,7 +215,8 @@ def anc_visit(request):
 
     if(hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']
-        hrisk_factors = relevant_data['hrisk_factors']
+        if (hrisk_check == True):
+            hrisk_factors = relevant_data['hrisk_factors']
 
 
     cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,

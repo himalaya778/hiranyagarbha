@@ -39,7 +39,6 @@ def patient_registry(request):
     aadhar_number = relevant_data['aadhar_number'] #1
     patient_name = relevant_data['patient_name']   # 2
     husband_name = relevant_data['husband_name']   # 3
-    age = relevant_data['age']
     #husband_age = relevant_data["husband_age"] #4
     mobile_number = relevant_data['mobile_number'] # 5
     date_of_birth = relevant_data['date_of_birth']  # 6
@@ -53,10 +52,10 @@ def patient_registry(request):
     address = relevant_data["address"]
     #agbdi_name = relevant_data['agbdi_name'] #13
 
-    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,age,mobile_number,
-                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
+    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,mobile_number,
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
                    RETURNING patient_id """ , (state,block,division,district,officer,
-                     aadhar_number,patient_name,husband_name,age,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,))
+                     aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,))
     conn.commit()
     res = cur.fetchall()
     print(res)

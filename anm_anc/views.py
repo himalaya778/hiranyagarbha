@@ -49,11 +49,11 @@ def patient_registry(request):
     edd_date = relevant_data['edd_date']  # 11
     officer = relevant_data['officer']  # 12
     address = relevant_data["address"]
-    agbdi_name = relevant_data['agbdi_name'] #13
+    #agbdi_name = relevant_data['agbdi_name'] #13
 
-    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,agbdi_name,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
-                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING patient_id """ , (state,block,division,district,officer,
-                    agbdi_name, aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
+    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
+                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING patient_id """ , (state,block,division,district,officer,
+                     aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
     conn.commit()
     res = cur.fetchall()
     print(res)
@@ -69,7 +69,8 @@ def anc_visit(request):
     id = request.user.id
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
-    ctr = 0
+    c_ctr = 0
+    v_ctr = 0
     hrisk_check = False
     hrisk_factors = []
     const_factors = []
@@ -79,67 +80,148 @@ def anc_visit(request):
 
     age = relevant_data['age'] #1
     if (age<18 or age>35):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('age')
 
     height = relevant_data['height'] #2
     if (height<145) :
-        ctr+=1
+        c_ctr+=1
         const_factors.append('height')
 
     previous_lscs = relevant_data['previous_lscs']
     if (previous_lscs == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('previous_lscs')
 
     bgroup = relevant_data['bgroup']
     if(bgroup in hrisk_bgroups):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('blood group')
 
     disability = relevant_data['disablity']
     if (not (disability == 'None')):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('disability')
 
     blood_disease = relevant_data['blood_disease']
     if( not(blood_disease == 'Normal' )):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('blood disease')
 
     hiv = relevant_data['hiv']
     if( hiv == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('hiv')
 
     hbsag = relevant_data['hbsag']
     if( hbsag == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('HbsAg')
 
     cardiac = relevant_data['cardiac']
     if( cardiac == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('cardiac disease')
 
     p_uterus = relevant_data['p_uterus']
     if( p_uterus == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('prolapse uterus')
 
     asthama = relevant_data['asthama']
     if( asthama == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('asthama')
 
     twin_delivery = relevant_data['twin_delivery']
     if( twin_delivery == True):
-        ctr+=1
+        c_ctr+=1
         const_factors.append('twin delivery')
 
     ########################################################
 
     #variable high risk factors check
+
+    weight = relevant_data['weight']
+    if (weight<40 or weight>90):
+        v_ctr+=1
+        variable_factors.append('weight')
+
+    bp1 = relevant_data['bp1']
+    bp2 = relevant_data['bp2']
+    if (bp1>90 or bp2>140):
+        v_ctr+=1
+        variable_factors.append('bp')
+
+    malrep = relevant_data['malrep']
+    if (not (malrep == None)):
+        v_ctr+=1
+        variable_factors.append('malrepresentation')
+
+    gdm = relevant_data['gdm']
+    if (gdm>139):
+        v_ctr+=1
+        variable_factors.append('gdm')
+
+    anemia = relevant_data['anemia']
+    if (not(anemia==None)):
+        v_ctr+=1
+        variable_factors.append('anemia')
+
+    hb = relevant_data['hb']
+    if (hb<8):
+        v_ctr+=1
+        variable_factors.append('haemoglobin')
+
+    thyroid = relevant_data['thyroid']
+    if (not (thyroid == 'Normal')):
+        v_ctr+=1
+        variable_factors.append('thyroid')
+
+    tobacohol = relevant_data['alcohol_tobacco']
+    if(tobacohol == True):
+        v_ctr+=1
+        variable_factors.append('alcohol/tobacco')
+
+    vdrl = relevant_data['vdrl']
+    if(tobacohol == True):
+        v_ctr+=1
+        variable_factors.append('vdrl')
+
+    preg_disease = relevant_data['preg_disease']
+    if(not(preg_disease=='Adequate')):
+        v_ctr+=1
+        variable_factors.append('preg_disease')
+
+    bleeding_check = relevant_data['bleeding_check']
+    if(bleeding_check == True):
+        variable_factors.append('bleeding')
+
+    iugr = relevant_data['iugr']
+    if(iugr == True):
+        variable_factors.append('iugr')
+
+
+    if (c_ctr>0 or v_ctr>0):
+        hrisk_check = True
+        hrisk_factors.append(const_factors)
+        hrisk_factors.append(variable_factors)
+        factors = []
+        factors = relevant_data['hrisk_factors']
+        hrisk_factors.append(factors)
+
+    if(hrisk_check == False):
+        hrisk_check = relevant_data['hrisk_check']
+        hrisk_factors = relevant_data['hrisk_factors']
+
+
+    cur.execute("INSERT INTO anm_anc ()")
+
+
+
+
+
+
 
 
 
@@ -147,6 +229,8 @@ def anc_visit(request):
 
 
     return Response ('data saved')
+
+
 
 
 

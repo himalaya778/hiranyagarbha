@@ -285,7 +285,8 @@ class ObtainAuthToken(APIView):
                 return Response(content)
 
             if (records[0][11] == "anm"):
-                cur.execute("SELECT smo_id,anm_id FROM anm_level WHERE anm = %s" , (request.user.username,))
+                print(str(request.user.username))
+                cur.execute("SELECT smo_id,anm_id FROM anm_level WHERE anm = %s" , (str(request.user.username),))
                 records = cur.fetchall()
                 smo = records[0][0]
                 anm_id = records[0][1]

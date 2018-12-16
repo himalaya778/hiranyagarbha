@@ -16,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="148" column="33" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="33" />
+            <state relative-caret-position="-684">
+              <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -60,8 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>def image</find>
-      <find>startdate</find>
       <find>100</find>
       <find>app_data</find>
       <find>full_patient</find>
@@ -90,6 +88,8 @@
       <find>constant_</find>
       <find>array_</find>
       <find>weight</find>
+      <find>malrep</find>
+      <find>gdm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -491,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="148" column="33" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="33" />
+        <state relative-caret-position="-684">
+          <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

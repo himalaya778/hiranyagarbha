@@ -149,59 +149,70 @@ def anc_visit(request):
     if (weight[0]<40 or weight[0]>90):
         v_ctr+=1
         variable_factors.append('weight')
-
-    bp1 = relevant_data['bp1']#14
-    bp2 = relevant_data['bp2']#15
-    if (bp1>90 or bp2>140):
+    bp1 = []
+    bp2 = []
+    bp1.append(relevant_data['bp1'])#14
+    bp2.append(relevant_data['bp2'])#15
+    if (bp1[0]>90 or bp2[0]>140):
         v_ctr+=1
         variable_factors.append('bp')
 
-    malrep = relevant_data['malrep']#16
-    if (not (malrep == None)):
+    malrep = []
+    malrep.append(relevant_data["malrep"])
+    if (not (malrep[0]==None)):
         v_ctr+=1
         variable_factors.append('malrepresentation')
 
-    gdm = relevant_data['gdm']#17
+    gdm = []
+    gdm.append(relevant_data["gdm"])
     if (gdm>139):
         v_ctr+=1
-        variable_factors.append('gdm')
+        variable_factors.append("gdm")
 
-    anemia = relevant_data['anemia']#18
-    if (not(anemia==None)):
+    anemia = []
+    anemia.append(relevant_data['anemia'])#18
+    if (not(anemia[0]==None)):
         v_ctr+=1
         variable_factors.append('anemia')
 
-    hb = relevant_data['hb']#19
-    if (hb<8):
+    hb = []
+    hb.append(relevant_data['hb'])#19
+    if (hb[0]<8):
         v_ctr+=1
         variable_factors.append('haemoglobin')
 
-    thyroid = relevant_data['thyroid']#20
-    if (not (thyroid == 'Normal')):
+    thyroid = []
+    thyroid.append(relevant_data['thyroid'])#20
+    if (not (thyroid[0] == 'Normal')):
         v_ctr+=1
         variable_factors.append('thyroid')
 
-    tobacohol = relevant_data['alcohol_tobacco']#21
-    if(tobacohol == True):
+    tobacohol = []
+    tobacohol.append(relevant_data['alcohol_tobacco'])#21
+    if(tobacohol[0] == True):
         v_ctr+=1
         variable_factors.append('alcohol/tobacco')
 
-    vdrl = relevant_data['vdrl']#22
-    if(tobacohol == True):
+    vdrl = []
+    vdrl.append(relevant_data['vdrl'])#22
+    if(vdrl[0] == True):
         v_ctr+=1
         variable_factors.append('vdrl')
 
-    preg_disease = relevant_data['preg_disease']#23
-    if(not(preg_disease=='Adequate')):
+    preg_disease = []
+    preg_disease.append(relevant_data['preg_disease'])#23
+    if(not(preg_disease[0]=='Adequate')):
         v_ctr+=1
         variable_factors.append('preg_disease')
 
-    bleeding_check = relevant_data['bleeding_check']#24
-    if(bleeding_check == True):
+    bleeding_check = []
+    bleeding_check.append(relevant_data['bleeding_check'])#24
+    if(bleeding_check[0] == True):
         variable_factors.append('bleeding')
 
-    iugr = relevant_data['iugr']#25
-    if(iugr == True):
+    iugr = []
+    iugr.append(relevant_data['iugr'])#25
+    if(iugr[0] == True):
         variable_factors.append('iugr')
 
 

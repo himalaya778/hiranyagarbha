@@ -225,7 +225,7 @@ def anc_visit(request):
     constant_factors, variable_factors) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
     (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
     twin_delivery,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
-    hrisk_check,hrisk_factors,const_factors, variable_factors,))
+    hrisk_check,hrisk_factors,const_factors, variable_factors))
 
     conn.commit()
 

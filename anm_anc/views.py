@@ -101,7 +101,7 @@ def anc_visit(request):
         c_ctr+=1
         const_factors.append('blood group')
 
-    disability = relevant_data['disablity']#5
+    disability = relevant_data['disability']#5
     if (not (disability == 'None')):
         c_ctr+=1
         const_factors.append('disability')

@@ -295,7 +295,7 @@ class ObtainAuthToken(APIView):
                 #villages = records_villages[0]
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
-                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'officer' : smo , 'villages' : ['bankhedi']
+                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'officer' : str(request.user.username) , 'villages' : ['bankhedi']
                 }
 
                 return Response(content)

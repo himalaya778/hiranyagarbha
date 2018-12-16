@@ -288,8 +288,8 @@ class ObtainAuthToken(APIView):
                 print(str(request.user.username))
                 cur.execute("SELECT smo_id,anm_id FROM anm_level WHERE anm = %s" , (str(records[0][4]),))
                 records_officers = cur.fetchall()
-
-                cur.execute("SELECT smo FROM smo_level WHERE smo_id = %s" , (records_officers[0][0]))
+                smo_id = records_officers[0][0]
+                cur.execute("SELECT smo FROM smo_level WHERE smo_id = %s" , (smo_id))
                 records_smo = cur.fetchall()
                 smo_name = records_smo[0][0]
 

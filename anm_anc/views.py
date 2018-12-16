@@ -165,7 +165,7 @@ def anc_visit(request):
 
     gdm = []
     gdm.append(relevant_data["gdm"])
-    if (gdm>139):
+    if (gdm[0]>139):
         v_ctr+=1
         variable_factors.append("gdm")
 

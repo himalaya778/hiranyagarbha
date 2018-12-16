@@ -42,6 +42,7 @@ def patient_registry(request):
     husband_age = relevant_data["husband_age"] #4
     mobile_number = relevant_data['mobile_number'] # 5
     date_of_birth = relevant_data['date_of_birth']  # 6
+    age = relevant_data['age']
     economic_status = relevant_data['economic_status']  # 7
     cast = relevant_data['cast']  # 8
     relegion = relevant_data['relegion']  # 9
@@ -52,8 +53,8 @@ def patient_registry(request):
     #agbdi_name = relevant_data['agbdi_name'] #13
 
     cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,husband_age,mobile_number,
-                   date_of_birth, economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING patient_id """ , (state,block,division,district,officer,
-                     aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth, economic_status,cast,relegion,lmp_date,edd_date,address,))
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) RETURNING patient_id """ , (state,block,division,district,officer,
+                     aadhar_number,patient_name,husband_name,husband_age,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,))
     conn.commit()
     res = cur.fetchall()
     print(res)
@@ -77,8 +78,10 @@ def anc_visit(request):
     variable_factors = []
 
     #constant high risk factors check
-
-    age = relevant_data['age'] #1
+    cur.execute("SELECT age FROM patient_level WHERE patient_id = %s" , (p_id))
+    age_rec = cur.fetchall()
+    age = age_rec[0][0] #1
+    #age = relevant_data['age']
     if (age<18 or age>35):
         c_ctr+=1
         const_factors.append('age')

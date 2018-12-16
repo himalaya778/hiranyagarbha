@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="234" column="59" lean-forward="true" selection-start-line="234" selection-start-column="59" selection-end-line="234" selection-end-column="59" />
+              <caret line="55" column="121" selection-start-line="55" selection-start-column="121" selection-end-line="55" selection-end-column="121" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -492,7 +492,7 @@
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="234" column="59" lean-forward="true" selection-start-line="234" selection-start-column="59" selection-end-line="234" selection-end-column="59" />
+          <caret line="55" column="121" selection-start-line="55" selection-start-column="121" selection-end-line="55" selection-end-column="121" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

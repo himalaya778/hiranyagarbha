@@ -16,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="227" column="61" lean-forward="true" selection-start-line="227" selection-start-column="61" selection-end-line="227" selection-end-column="61" />
+            <state relative-caret-position="387">
+              <caret line="222" column="89" selection-start-line="222" selection-start-column="89" selection-end-line="222" selection-end-column="89" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -491,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="227" column="61" lean-forward="true" selection-start-line="227" selection-start-column="61" selection-end-line="227" selection-end-column="61" />
+        <state relative-caret-position="387">
+          <caret line="222" column="89" selection-start-line="222" selection-start-column="89" selection-end-line="222" selection-end-column="89" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

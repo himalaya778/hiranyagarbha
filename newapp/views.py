@@ -26,6 +26,8 @@ from django.contrib import messages
 cur = conn.cursor()
 
 @api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def check_update(request):
     cur.execute("SELECT * FROM patient_level WHERE high_risk_check = 'true' and notified = False")
     records = cur.fetchall()
@@ -39,6 +41,8 @@ def check_update(request):
 
 #refer to hospital
 @api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def refer_patient(request):
     relevant_data = json.loads((request.body))
     patient_id = relevant_data['patient_id']
@@ -51,6 +55,8 @@ def refer_patient(request):
 
 
 @api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def set_visit(request):
     relevant_data = json.loads(request.body)
     patient_id = relevant_data['patient_id']

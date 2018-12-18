@@ -254,18 +254,3 @@ def anc_visit(request):
     return Response({"high_risk" : hrisk_check})
 
     return Response ('data saved')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

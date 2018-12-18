@@ -74,9 +74,9 @@ def anc_visit(request):
     c_ctr = 0
     v_ctr = 0
     hrisk_check = False
-    hrisk_factors = []
-    const_factors = []
-    variable_factors = []
+    hrisk_factors = ""
+    const_factors = ""
+    variable_factors = ""
 
     #constant high risk factors check
     cur.execute("SELECT age FROM patient_level WHERE patient_id = %s" , (p_id,))
@@ -85,145 +85,145 @@ def anc_visit(request):
     #age = relevant_data['age']
     if (age<18 or age>35):
         c_ctr+=1
-        const_factors.append('age')
+        const_factors+=('age ')
 
     height = relevant_data['height'] #2
     if (height<145) :
         c_ctr+=1
-        const_factors.append('height')
+        const_factors+=('height ')
 
     previous_lscs = relevant_data['previous_lscs']#3
     if (previous_lscs == True):
         c_ctr+=1
-        const_factors.append('previous_lscs')
+        const_factors+=('previous_lscs ')
 
     bgroup = relevant_data['bgroup']#4
     if(bgroup in hrisk_bgroups):
         c_ctr+=1
-        const_factors.append('blood group')
+        const_factors+=('blood group ')
 
     disability = relevant_data['disability']#5
     if (not (disability == 'None')):
         c_ctr+=1
-        const_factors.append('disability')
+        const_factors+=('disability ')
 
     blood_disease = relevant_data['blood_disease']#6
-    if( not(blood_disease == 'Normal' )):
+    if( not(blood_disease == 'Normal ' )):
         c_ctr+=1
-        const_factors.append('blood disease')
+        const_factors+=('blood disease ')
 
     hiv = relevant_data['hiv']#7
     if( hiv == True):
         c_ctr+=1
-        const_factors.append('hiv')
+        const_factors+=('hiv ')
 
     hbsag = relevant_data['hbsag']#8
     if( hbsag == True):
         c_ctr+=1
-        const_factors.append('HbsAg')
+        const_factors+=('HbsAg ')
 
     cardiac = relevant_data['cardiac']#9
     if( cardiac == True):
         c_ctr+=1
-        const_factors.append('cardiac disease')
+        const_factors+=('cardiac_disease ')
 
     p_uterus = relevant_data['p_uterus']#10
     if( p_uterus == True):
         c_ctr+=1
-        const_factors.append('prolapse uterus')
+        const_factors+=('prolapse_uterus ')
 
     asthama = relevant_data['asthama']#11
     if( asthama == True):
         c_ctr+=1
-        const_factors.append('asthama')
+        const_factors+=('asthama ')
 
     twin_delivery = relevant_data['twin_delivery']#12
     if( twin_delivery == True):
         c_ctr+=1
-        const_factors.append('twin delivery')
+        const_factors+=('twin_delivery ')
 
     ########################################################
 
     #variable high risk factors check
     weight = []
-    weight.append(relevant_data['weight'])#13
+    weight+=(relevant_data['weight'])#13
     if (weight[0]<40 or weight[0]>90):
         v_ctr+=1
-        variable_factors.append('weight')
+        variable_factors+=('weight ')
     bp1 = []
     bp2 = []
-    bp1.append(relevant_data['bp1'])#14
-    bp2.append(relevant_data['bp2'])#15
+    bp1+=(relevant_data['bp1'])#14
+    bp2+=(relevant_data['bp2'])#15
     if (bp1[0]>90 or bp2[0]>140):
         v_ctr+=1
-        variable_factors.append('bp')
+        variable_factors+=('bp ')
 
     malrep = []
-    malrep.append(relevant_data["malrep"])
+    malrep+=(relevant_data["malrep"])
     if (not (malrep[0]==None)):
         v_ctr+=1
-        variable_factors.append('malrepresentation')
+        variable_factors+=('malrepresentation ')
 
     gdm = []
-    gdm.append(relevant_data["gdm"])
+    gdm+=(relevant_data["gdm"])
     if (gdm[0]>139):
         v_ctr+=1
-        variable_factors.append("gdm")
+        variable_factors+=("gdm ")
 
     anemia = []
-    anemia.append(relevant_data['anemia'])#18
+    anemia+=(relevant_data['anemia'])#18
     if (not(anemia[0]==None)):
         v_ctr+=1
-        variable_factors.append('anemia')
+        variable_factors+=('anemia ')
 
     hb = []
-    hb.append(relevant_data['hb'])#19
+    hb+=(relevant_data['hb'])#19
     if (hb[0]<8):
         v_ctr+=1
-        variable_factors.append('haemoglobin')
+        variable_factors+=('haemoglobin ')
 
     thyroid = []
-    thyroid.append(relevant_data['thyroid'])#20
+    thyroid+=(relevant_data['thyroid'])#20
     if (not (thyroid[0] == 'Normal')):
         v_ctr+=1
-        variable_factors.append('thyroid')
+        variable_factors+=('thyroid ')
 
     tobacohol = []
-    tobacohol.append(relevant_data['alcohol_tobacco'])#21
+    tobacohol+=(relevant_data['alcohol_tobacco'])#21
     if(tobacohol[0] == True):
         v_ctr+=1
-        variable_factors.append('alcohol/tobacco')
+        variable_factors+=('alcohol_tobacco ')
 
     vdrl = []
-    vdrl.append(relevant_data['vdrl'])#22
+    vdrl+=(relevant_data['vdrl'])#22
     if(vdrl[0] == True):
         v_ctr+=1
-        variable_factors.append('vdrl')
+        variable_factors+=('vdrl ')
 
     preg_disease = []
-    preg_disease.append(relevant_data['preg_disease'])#23
+    preg_disease+=(relevant_data['preg_disease'])#23
     if(not(preg_disease[0]=='Adequate')):
         v_ctr+=1
-        variable_factors.append('preg_disease')
+        variable_factors+=('preg_disease ')
 
     bleeding_check = []
-    bleeding_check.append(relevant_data['bleeding_check'])#24
+    bleeding_check+=(relevant_data['bleeding_check'])#24
     if(bleeding_check[0] == True):
-        variable_factors.append('bleeding')
+        variable_factors+=('bleeding ')
 
     iugr = []
-    iugr.append(relevant_data['iugr'])#25
+    iugr+=(relevant_data['iugr'])#25
     if(iugr[0] == True):
-        variable_factors.append('iugr')
+        variable_factors+=('iugr ')
 
 
     if (c_ctr>0 or v_ctr>0):
         hrisk_check = True
-        hrisk_factors.append(const_factors)
-        hrisk_factors.append(variable_factors)
+        hrisk_factors+=(const_factors)
+        hrisk_factors+=(variable_factors)
         factors = []
         factors = relevant_data['hrisk_factors']
-        hrisk_factors.append(factors)
+        hrisk_factors+=(factors)
 
     if(hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']

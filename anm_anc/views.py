@@ -146,73 +146,73 @@ def anc_visit(request):
 
     #variable high risk factors check
     weight = []
-    weight+=(relevant_data['weight'])#13
+    weight.append(relevant_data['weight'])#13
     if (weight[0]<40 or weight[0]>90):
         v_ctr+=1
         variable_factors+=('weight ')
     bp1 = []
     bp2 = []
-    bp1+=(relevant_data['bp1'])#14
-    bp2+=(relevant_data['bp2'])#15
+    bp1.append(relevant_data['bp1'])#14
+    bp2.append(relevant_data['bp2'])#15
     if (bp1[0]>90 or bp2[0]>140):
         v_ctr+=1
         variable_factors+=('bp ')
 
     malrep = []
-    malrep+=(relevant_data["malrep"])
+    malrep.append(relevant_data["malrep"])
     if (not (malrep[0]==None)):
         v_ctr+=1
         variable_factors+=('malrepresentation ')
 
     gdm = []
-    gdm+=(relevant_data["gdm"])
+    gdm.append(relevant_data["gdm"])
     if (gdm[0]>139):
         v_ctr+=1
         variable_factors+=("gdm ")
 
     anemia = []
-    anemia+=(relevant_data['anemia'])#18
+    anemia.append(relevant_data['anemia'])#18
     if (not(anemia[0]==None)):
         v_ctr+=1
         variable_factors+=('anemia ')
 
     hb = []
-    hb+=(relevant_data['hb'])#19
+    hb.append(relevant_data['hb'])#19
     if (hb[0]<8):
         v_ctr+=1
         variable_factors+=('haemoglobin ')
 
     thyroid = []
-    thyroid+=(relevant_data['thyroid'])#20
+    thyroid.append(relevant_data['thyroid'])#20
     if (not (thyroid[0] == 'Normal')):
         v_ctr+=1
         variable_factors+=('thyroid ')
 
     tobacohol = []
-    tobacohol+=(relevant_data['alcohol_tobacco'])#21
+    tobacohol.append(relevant_data['alcohol_tobacco'])#21
     if(tobacohol[0] == True):
         v_ctr+=1
         variable_factors+=('alcohol_tobacco ')
 
     vdrl = []
-    vdrl+=(relevant_data['vdrl'])#22
+    vdrl.append(relevant_data['vdrl'])#22
     if(vdrl[0] == True):
         v_ctr+=1
         variable_factors+=('vdrl ')
 
     preg_disease = []
-    preg_disease+=(relevant_data['preg_disease'])#23
+    preg_disease.append(relevant_data['preg_disease'])#23
     if(not(preg_disease[0]=='Adequate')):
         v_ctr+=1
         variable_factors+=('preg_disease ')
 
     bleeding_check = []
-    bleeding_check+=(relevant_data['bleeding_check'])#24
+    bleeding_check.append(relevant_data['bleeding_check'])#24
     if(bleeding_check[0] == True):
         variable_factors+=('bleeding ')
 
     iugr = []
-    iugr+=(relevant_data['iugr'])#25
+    iugr.append(relevant_data['iugr'])#25
     if(iugr[0] == True):
         variable_factors+=('iugr ')
 
@@ -240,21 +240,7 @@ def anc_visit(request):
     hrisk_check,const_factors, variable_factors,))
 
     conn.commit()
-
     return Response({"high_risk" : hrisk_check})
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return Response ('data saved')
 

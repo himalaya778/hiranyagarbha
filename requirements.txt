@@ -5,6 +5,7 @@ bson
 psycopg2==2.7.5
 google-cloud-storage
 django-rest-framework==0.1.0
+django-oauth-toolkit
 dj-database-url
 django-postgresql
 django-cors-headers

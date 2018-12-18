@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'notify',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,9 @@ REST_FRAMEWORK = {
 #'DEFAULT_PERMISSION_CLASSES': (
 #        'rest_framework.permissions.IsAuthenticated',
  #  ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [

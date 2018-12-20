@@ -29,6 +29,7 @@ hrisk_bgroups = ['A-','B-','AB-','O-']
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def patient_registry(request):
+    anm_id = get_anm_id(request.user)
     id = request.user.id
     relevant_data = json.loads(request.body)
     location = address_mapping(id)
@@ -53,9 +54,9 @@ def patient_registry(request):
     #agbdi_name = relevant_data['agbdi_name'] #13
 
     cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,mobile_number,
-                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
                    RETURNING patient_id """ , (state,block,division,district,officer,
-                     aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,))
+                     aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,anm_id))
     conn.commit()
     res = cur.fetchall()
     print(res)
@@ -69,6 +70,7 @@ def patient_registry(request):
 @permission_classes((IsAuthenticated,))
 def anc_visit(request):
     id = request.user.id
+    anm_id = get_anm_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
     c_ctr = 0
@@ -245,10 +247,10 @@ def anc_visit(request):
     cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
     hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
     haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
-    constant_factors, variable_factors) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+    constant_factors, variable_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
     (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
     twin_delivery,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
-    hrisk_check,const_factors, variable_factors,))
+    hrisk_check,const_factors, variable_factors,anm_id))
 
     conn.commit()
     return Response({"high_risk" : hrisk_check})
@@ -263,13 +265,14 @@ def anc_visit(request):
 def anm_app_data(request):
     cur.execute("SELECT anm_id FROM anm_level WHERE anm = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
-    smo_id = records_bmo[0]
+    anm_id = records_bmo[0]
     start = int(request.GET.get('start',1))
     patients = []
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (SELECT *,*
-         FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' 
-         INNER JOIN anm_anc ON anm_anc.patient_id = patient_level.patint_id) patient_record""",( smo_id,))
+         FROM anm_anc 
+         INNER JOIN patient_level ON patient_level.patient_id = anm_anc.patint_id) patient_record
+         WHERE anm_anc.anm_id = %s and hrisk_check = 'true' """,( anm_id,))
     records = cur.fetchall()
     for r in records:
         patients.append(r[0])

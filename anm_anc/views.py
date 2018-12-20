@@ -221,12 +221,12 @@ def anc_visit(request):
         hrisk_check = True
         hrisk_factors+=(const_factors)
         hrisk_factors+=(variable_factors)
-        anm_factors = relevant_data['hrisk_factors']
-        if( not(len(anm_factors)==0)):
-            factors = " "
-            for h in anm_factors:
-                factors+=str(h)
-                factors +=" "
+        #anm_factors = relevant_data['hrisk_factors']
+        #if( not(len(anm_factors)==0)):
+        #    factors = " "
+        #    for h in anm_factors:
+        #        factors+=str(h)
+        #        factors +=" "
 
         hrisk_factors+=(factors)
 

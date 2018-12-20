@@ -228,7 +228,7 @@ def anc_visit(request):
         #        factors+=str(h)
         #        factors +=" "
 
-        hrisk_factors+=(factors)
+        #hrisk_factors+=(factors)
 
     if(hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']
@@ -254,3 +254,30 @@ def anc_visit(request):
     return Response({"high_risk" : hrisk_check})
 
     return Response ('data saved')
+
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def anm_app_data(request):
+    cur.execute("SELECT anm_id FROM smo_level WHERE anm = %s" , (str(request.user),))
+    records_bmo = cur.fetchall()
+    smo_id = records_bmo[0]
+    start = int(request.GET.get('start',1))
+    patients = []
+    cur.execute(
+        """SELECT row_to_json(patient_record) FROM (SELECT *,*
+         FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' 
+         INNER JOIN anm_anc ON anm_anc.patient_id = patient_level.patint_id) patient_record""",( smo_id,))
+    records = cur.fetchall()
+    for r in records:
+        patients.append(r[0])
+    print(len(records))
+    end = (start+25)
+    return Response({"patients" : patients[start:end]})
+#cur.execute(""" SELECT  bmo_level.bmo_id,
+#                            smo_level.smo
+#                            FROM
+#                            bmo_level
+#                            INNER JOIN smo_level ON smo_level.bmo_id = bmo_level.bmo_id """)

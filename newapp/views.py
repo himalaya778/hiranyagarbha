@@ -229,7 +229,6 @@ def app_data(request):
     cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
     smo_id = records_bmo[0]
-    print("get " ,request.GET)
     start = int(request.GET.get('start',1))
     patients = []
     cur.execute(

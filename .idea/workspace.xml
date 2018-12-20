@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/anm_anc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="282" column="1" selection-start-line="282" selection-start-column="1" selection-end-line="282" selection-end-column="1" />
+            <state relative-caret-position="226">
+              <caret line="263" column="39" selection-start-line="263" selection-start-column="39" selection-end-line="263" selection-end-column="39" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -146,8 +144,8 @@
         <option value="$PROJECT_DIR$/newproject/settings.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
-        <option value="$PROJECT_DIR$/anm_anc/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/urls.py" />
+        <option value="$PROJECT_DIR$/anm_anc/views.py" />
       </list>
     </option>
   </component>
@@ -487,8 +485,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="282" column="1" selection-start-line="282" selection-start-column="1" selection-end-line="282" selection-end-column="1" />
+        <state relative-caret-position="226">
+          <caret line="263" column="39" selection-start-line="263" selection-start-column="39" selection-end-line="263" selection-end-column="39" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

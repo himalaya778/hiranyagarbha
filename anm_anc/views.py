@@ -261,7 +261,7 @@ def anc_visit(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_app_data(request):
-    cur.execute("SELECT anm_id FROM smo_level WHERE anm = %s" , (str(request.user),))
+    cur.execute("SELECT anm_id FROM anm_level WHERE anm = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
     smo_id = records_bmo[0]
     start = int(request.GET.get('start',1))

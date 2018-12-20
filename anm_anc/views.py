@@ -264,7 +264,7 @@ def anc_visit(request):
 @permission_classes((IsAuthenticated,))
 def anm_app_data(request):
     anm_id = get_anm_id(request.user)
-    start = int(request.GET.get('start',1))
+    start = int(request.GET.get('start',0))
     patients = []
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (

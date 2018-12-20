@@ -10,5 +10,5 @@ def address_mapping(id):
 def get_anm_id(user):
     cur.execute("SELECT anm_id FROM anm_level WHERE anm = %s", (str(user),))
     records_bmo = cur.fetchall()
-    anm_id = records_bmo[0]
+    anm_id = records_bmo[0][0]
     return anm_id

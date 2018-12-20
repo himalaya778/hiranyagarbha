@@ -276,7 +276,7 @@ def anm_app_data(request):
      ON anm_anc.patient_id = patient_level.patient_id
  WHERE anm_anc.hrisk_check = 'true'
    AND anm_id = %s """,( anm_id,))
-        
+
         #SELECT *,*
          #FROM anm_anc
          #INNER JOIN patient_level ON patient_level.patient_id = anm_anc.patient_id) patient_record

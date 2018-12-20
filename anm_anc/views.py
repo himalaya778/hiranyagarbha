@@ -269,10 +269,18 @@ def anm_app_data(request):
     start = int(request.GET.get('start',1))
     patients = []
     cur.execute(
-        """SELECT row_to_json(patient_record) FROM (SELECT *,*
-         FROM anm_anc 
-         INNER JOIN patient_level ON patient_level.patient_id = anm_anc.patient_id) patient_record
-         WHERE anm_anc.anm_id = %s and hrisk_check = 'true' """,( anm_id,))
+        """SELECT row_to_json(patient_record) FROM (
+        
+        SELECT *  FROM patient_level 
+   INNER JOIN anm_anc
+     ON anm_anc.patient_id = patient_level.patient_id
+ WHERE anm_anc.hrisk_check = 'true'
+   AND anm_id = %s """,( anm_id,))
+        
+        #SELECT *,*
+         #FROM anm_anc
+         #INNER JOIN patient_level ON patient_level.patient_id = anm_anc.patient_id) patient_record
+         #WHERE anm_anc.anm_id = %s and hrisk_check = 'true'
     records = cur.fetchall()
     for r in records:
         patients.append(r[0])

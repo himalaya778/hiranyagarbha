@@ -263,7 +263,7 @@ def anc_visit(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_app_data(request):
-    anm_id = get_anm_id()
+    anm_id = get_anm_id(request.user)
     start = int(request.GET.get('start',1))
     patients = []
     cur.execute(

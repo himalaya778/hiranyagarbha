@@ -51,11 +51,12 @@ def patient_registry(request):
     edd_date = relevant_data['edd_date']  # 11
     officer = relevant_data['officer']  # 12
     address = relevant_data["address"]
+    agbdi = relevant_data["agbdi"]
     #agbdi_name = relevant_data['agbdi_name'] #13
 
-    cur.execute("""INSERT INTO patient_level (state,block,division,district,officer,aadhar_number,patient_name,husband_name,mobile_number,
-                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
-                   RETURNING patient_id """ , (state,block,division,district,officer,
+    cur.execute("""INSERT INTO patient_level (state,block,division,district,agbdi,officer,aadhar_number,patient_name,husband_name,mobile_number,
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
+                   RETURNING patient_id """ , (state,block,division,district,agbdi,officer,
                      aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,anm_id))
     conn.commit()
     res = cur.fetchall()
@@ -71,6 +72,7 @@ def patient_registry(request):
 def anc_visit(request):
     id = request.user.id
     anm_id = get_anm_id(request.user)
+    smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
     c_ctr = 0
@@ -234,25 +236,10 @@ def anc_visit(request):
         hrisk_check = True
         hrisk_factors+=(const_factors)
         hrisk_factors+=(variable_factors)
-        #anm_factors = relevant_data['hrisk_factors']
-        #if( not(len(anm_factors)==0)):
-        #    factors = " "
-        #    for h in anm_factors:
-        #        factors+=str(h)
-        #        factors +=" "
-
-        #hrisk_factors+=(factors)
 
     if(hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']
-        #if (hrisk_check == True):
-        #    anm_factors = relevant_data['hrisk_factors']
-        #    if (not (len(anm_factors) == 0)):
-        #        factors = " "
-        #        for h in anm_factors:
-        #            factors += str(h)
-        #            factors += " "
-        #    hrisk_factors += factors
+
 
 
     cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
@@ -263,10 +250,30 @@ def anc_visit(request):
     twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
     hrisk_check,const_factors, variable_factors,anm_id))
 
+    if(hrisk_check==True):
+
+        #add record to smo_anc table as 0th visit data
+        cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+            haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
+            constant_factors, variable_factors,smo_id,visits_done) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                    (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+                     tobacohol, preg_disease, bleeding_check, iugr,
+                     hrisk_check, const_factors, variable_factors, smo_id,0))
+
+        officer = get_smo_name(smo_id)
+        notify_smo(officer)
+        text_to_smo(id, officer)
+        text_to_supervisor(anm_id,p_id)
+
+
+
+
     conn.commit()
+
     return Response({"high_risk" : hrisk_check})
 
     return Response ('data saved')
+
 
 
 

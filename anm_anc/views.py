@@ -144,6 +144,17 @@ def anc_visit(request):
         c_ctr+=1
         const_factors+=('twin_delivery ')
 
+    gravita = relevant_data['gravita']
+    para = relevant_data['para']
+    live = relevant_data['live']
+    abortion = relevant_data['abortion']
+
+    if(abortion>0):
+        c_ctr+=1
+        const_factors+=('abortion ')
+
+
+
     ########################################################
 
     #variable high risk factors check
@@ -245,11 +256,11 @@ def anc_visit(request):
 
 
     cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
-    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
     haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
-    constant_factors, variable_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+    constant_factors, variable_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
     (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
-    twin_delivery,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
+    twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
     hrisk_check,const_factors, variable_factors,anm_id))
 
     conn.commit()

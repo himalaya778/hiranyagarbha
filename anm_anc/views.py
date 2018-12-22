@@ -81,12 +81,19 @@ def anc_visit(request):
     hrisk_factors = ""
     const_factors = ""
     variable_factors = ""
+    h_f = []
+    c_f = []
+    v_f = []
+
 
     #constant high risk factors check
-    cur.execute("SELECT age FROM patient_level WHERE patient_id = %s" , (p_id,))
+    cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE FROM patient_level WHERE patient_id = %s" , (p_id,))
     age_rec = cur.fetchall()
     age = age_rec[0][0] #1
-    #age = relevant_data['age']
+    lmp = age_rec[0][1]
+    edd = age_rec[0][2]
+    reg_date = age_rec[0][3]
+
     if (age<18 or age>35):
         c_ctr+=1
         const_factors+=('age ')
@@ -240,39 +247,38 @@ def anc_visit(request):
     if(hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']
 
-
+    h_f.append(hrisk_factors)
+    c_f.append(const_factors)
+    v_f.append(variable_factors)
 
     cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
     hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
     haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
-    constant_factors, variable_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+    constant_factors, variable_factors,hrisk_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
     (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
     twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,
-    hrisk_check,const_factors, variable_factors,anm_id))
+    hrisk_check,c_f, v_f,h_f,anm_id))
 
     if(hrisk_check==True):
-
+        visit_dates = []
+        visit_dates = visit_schedule(lmp, edd, reg_date)
         #add record to smo_anc table as 0th visit data
         cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
             haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
-            constant_factors, variable_factors,smo_id,visits_done) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+            constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                     (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
-                     hrisk_check, const_factors, variable_factors, smo_id,0))
+                     hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
 
         officer = get_smo_name(smo_id)
         notify_smo(officer)
         text_to_smo(id, officer)
         text_to_supervisor(anm_id,p_id)
 
-
-
-
     conn.commit()
 
     return Response({"high_risk" : hrisk_check})
 
-    return Response ('data saved')
 
 
 
@@ -293,18 +299,9 @@ def anm_app_data(request):
  WHERE anm_anc.hrisk_check = 'true'
    AND anm_anc.anm_id = %s)patient_record """,( anm_id,))
 
-        #SELECT *,*
-         #FROM anm_anc
-         #INNER JOIN patient_level ON patient_level.patient_id = anm_anc.patient_id) patient_record
-         #WHERE anm_anc.anm_id = %s and hrisk_check = 'true'
     records = cur.fetchall()
     for r in records:
         patients.append(r[0])
     print(len(records))
     end = (start+25)
     return Response({"patients" : patients[start:end]})
-#cur.execute(""" SELECT  bmo_level.bmo_id,
-#                            smo_level.smo
-#                            FROM
-#                            bmo_level
-#                            INNER JOIN smo_level ON smo_level.bmo_id = bmo_level.bmo_id """)

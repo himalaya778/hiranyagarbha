@@ -1,6 +1,8 @@
 from accounts.views import conn
 import http.client
 from pyfcm import FCMNotification
+from datetime import date
+from datetime import timedelta
 
 cur = conn.cursor()
 
@@ -124,3 +126,46 @@ def text_to_supervisor(anm_id,p_id):
     print(data.decode("utf-8"))
 
     return True
+
+def visit_schedule(lmp, edd, reg):
+    visit_dates = []
+    d_1 = edd.split('-')
+    year_1 = d_1[0]
+    month_1 = int(d_1[1])
+    day_1 = int(d_1[2])
+    d_date = date(year_1,month_1,d_1)
+
+    d_2 = lmp.split('-')
+    year_2 = d_2[0]
+    month_2 = int(d_2[1])
+    day_2 = int(d_2[2])
+    l_date = date(year_2,month_2,d_2)
+
+    #interval = (l_date-f_date)/4
+
+    v_1_date = l_date + timedelta(days=70)
+    v_2_date = l_date + timedelta(days=168)
+    v_3_date = l_date + timedelta(days=224)
+    v_4_date = l_date + timedelta(days=242)
+
+    d_r = reg.split('-')
+    year_r = d_r[0]
+    month_r = int(d_r[1])
+    day_r = int(d_r[2])
+    r_date = date(year_r, month_r, day_r)
+
+    if(r_date<v_1_date):
+        visit_dates.append(v_1_date)
+
+    if(r_date<v_2_date):
+        visit_dates.append(v_2_date)
+
+    if(r_date<v_3_date):
+        visit_dates.append(v_3_date)
+
+    if(r_date<v_4_date):
+        visit_dates.append(v_4_date)
+
+    return visit_dates
+
+

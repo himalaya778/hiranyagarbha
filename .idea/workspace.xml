@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/anm_anc/add_on_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/add_on_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="52" column="38" lean-forward="true" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+            <state relative-caret-position="610">
+              <caret line="276" column="38" selection-start-line="276" selection-start-column="38" selection-end-line="276" selection-end-column="38" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_on_methods.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_on_methods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
+            <state relative-caret-position="70">
+              <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -48,8 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>full</find>
-      <find>ctr</find>
       <find>conn</find>
       <find>request</find>
       <find>anm</find>
@@ -78,6 +76,8 @@
       <find>thyroid</find>
       <find>officer</find>
       <find>preg</find>
+      <find>text</find>
+      <find>village</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>
@@ -105,8 +105,8 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/urls.py" />
-        <option value="$PROJECT_DIR$/anm_anc/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/add_on_methods.py" />
+        <option value="$PROJECT_DIR$/anm_anc/views.py" />
       </list>
     </option>
   </component>
@@ -440,22 +440,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
+    <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="52" column="38" lean-forward="true" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+        <state relative-caret-position="70">
+          <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
+    <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
+        <state relative-caret-position="610">
+          <caret line="276" column="38" selection-start-line="276" selection-start-column="38" selection-end-line="276" selection-end-column="38" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

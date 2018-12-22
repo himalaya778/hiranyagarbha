@@ -265,7 +265,7 @@ def anc_visit(request):
         #add record to smo_anc table as 0th visit data
         cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
             haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,hrisk_check,
-            constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+            constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                     (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                      hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))

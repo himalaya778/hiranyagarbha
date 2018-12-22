@@ -87,12 +87,13 @@ def anc_visit(request):
 
 
     #constant high risk factors check
-    cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE FROM patient_level WHERE patient_id = %s" , (p_id,))
+    cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE,patient_name FROM patient_level WHERE patient_id = %s" , (p_id,))
     age_rec = cur.fetchall()
     age = age_rec[0][0] #1
     lmp = age_rec[0][1]
     edd = age_rec[0][2]
     reg_date = age_rec[0][3]
+    patient_name = age_rec[0][3]
 
     if (age<18 or age>35):
         c_ctr+=1
@@ -272,8 +273,8 @@ def anc_visit(request):
 
         officer = get_smo_name(smo_id)
         #notify_smo(officer)
-        text_to_smo(id, officer)
-        text_to_supervisor(anm_id,p_id)
+        text_to_smo(id, officer,patient_name)
+        text_to_supervisor(anm_id,p_id,patient_name)
 
     conn.commit()
 

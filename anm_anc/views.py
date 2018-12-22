@@ -55,7 +55,7 @@ def patient_registry(request):
     #agbdi_name = relevant_data['agbdi_name'] #13
 
     cur.execute("""INSERT INTO patient_level (state,block,division,district,aadhar_number,patient_name,husband_name,mobile_number,
-                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
                    RETURNING patient_id """ , (state,block,division,district,
                      aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,anm_id))
     conn.commit()

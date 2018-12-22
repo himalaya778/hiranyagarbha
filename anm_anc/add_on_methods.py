@@ -148,22 +148,22 @@ def visit_schedule(lmp, edd, reg):
     v_3_date = lmp + timedelta(days=224)
     v_4_date = lmp + timedelta(days=242)
 
-    d_r = reg.split('-')
-    year_r = d_r[0]
-    month_r = int(d_r[1])
-    day_r = int(d_r[2])
-    r_date = date(year_r, month_r, day_r)
+    #d_r = reg.split('-')
+    #year_r = d_r[0]
+    #month_r = int(d_r[1])
+    #day_r = int(d_r[2])
+    #r_date = date(year_r, month_r, day_r)
 
-    if(r_date<v_1_date):
+    if(reg<v_1_date):
         visit_dates.append(v_1_date)
 
-    if(r_date<v_2_date):
+    if(reg<v_2_date):
         visit_dates.append(v_2_date)
 
-    if(r_date<v_3_date):
+    if(reg<v_3_date):
         visit_dates.append(v_3_date)
 
-    if(r_date<v_4_date):
+    if(reg<v_4_date):
         visit_dates.append(v_4_date)
 
     return visit_dates

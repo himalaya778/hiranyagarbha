@@ -274,7 +274,7 @@ def anc_visit(request):
         officer = get_smo_name(smo_id)
         #notify_smo(officer)
         text_to_smo(p_id, officer,patient_name)
-        text_to_supervisor(anm_id,p_id)
+        #text_to_supervisor(anm_id,p_id)
 
     conn.commit()
 

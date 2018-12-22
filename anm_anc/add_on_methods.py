@@ -63,7 +63,7 @@ def notify_smo(officer):
 
 def text_to_smo(id,officer,patient):
 
-    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s" , (id))
+    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s" , (id,))
     records_av = cur.fetchall()
     patient = records_av[0][0]
     agbdi = records_av[0][1]
@@ -91,7 +91,7 @@ def text_to_smo(id,officer,patient):
     return True
 
 def text_to_supervisor(anm_id,p_id):
-    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s", (id))
+    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s", (id,))
     records_av = cur.fetchall()
     patient = records_av[0][0]
     agbdi = records_av[0][1]

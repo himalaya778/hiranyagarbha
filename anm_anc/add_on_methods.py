@@ -63,11 +63,11 @@ def notify_smo(officer):
 
 def text_to_smo(id,officer,patient):
 
-    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s" , (id,))
+    cur.execute("SELECT patient_name, village FROM patient_level WHERE patient_id = %s" , (id,))
     records_av = cur.fetchall()
     patient = records_av[0][0]
-    agbdi = records_av[0][1]
-    village = records_av[0][2]
+    #agbdi = records_av[0][1]
+    village = records_av[0][1]
 
     conn_1 = http.client.HTTPConnection("api.msg91.com")
     # sending text message notification to smo
@@ -77,7 +77,7 @@ def text_to_smo(id,officer,patient):
 
     fix = "High Risk Identified ! " \
           ""
-    var = "Patient Name : " + patient + " from Village : " + village + " and Anganbadi : " + agbdi
+    var = "Patient Name : " + patient + " from Village : " + village + " and Anganbadi : " #+ agbdi
     message = fix + var
     conn_1.request("GET",
                    "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
@@ -91,11 +91,11 @@ def text_to_smo(id,officer,patient):
     return True
 
 def text_to_supervisor(anm_id,p_id):
-    cur.execute("SELECT patient_name,agbdi, village FROM patient_level WHERE patient_id = %s", (id,))
+    cur.execute("SELECT patient_name, village FROM patient_level WHERE patient_id = %s", (id,))
     records_av = cur.fetchall()
     patient = records_av[0][0]
-    agbdi = records_av[0][1]
-    village = records_av[0][2]
+    #agbdi = records_av[0][1]
+    village = records_av[0][1]
 
     cur.execute("SELECT sup_id FROM village_level WHERE anm_id = %s", (anm_id,))
     records = cur.fetchall()
@@ -111,7 +111,7 @@ def text_to_supervisor(anm_id,p_id):
     sup_mobile = records[0][0]
     fix = "High Risk Identified ! " \
           ""
-    var = "Patient Name : " + patient + " from Village : " + village + " and Anganbadi : " + agbdi
+    var = "Patient Name : " + patient + " from Village : " + village + " and Anganbadi : " #+ agbdi
     message = fix + var
 
     print("supervisor mobile is ", sup_mobile)

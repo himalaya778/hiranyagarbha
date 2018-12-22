@@ -129,24 +129,24 @@ def text_to_supervisor(anm_id,p_id):
 
 def visit_schedule(lmp, edd, reg):
     visit_dates = []
-    d_1 = edd.split('-')
-    year_1 = d_1[0]
-    month_1 = int(d_1[1])
-    day_1 = int(d_1[2])
-    d_date = date(year_1,month_1,d_1)
+    #d_1 = edd.split('-')
+    #year_1 = d_1[0]
+    #month_1 = int(d_1[1])
+    #day_1 = int(d_1[2])
+    #d_date = date(year_1,month_1,d_1)
 
-    d_2 = lmp.split('-')
-    year_2 = d_2[0]
-    month_2 = int(d_2[1])
-    day_2 = int(d_2[2])
-    l_date = date(year_2,month_2,d_2)
+    #d_2 = lmp.split('-')
+    #year_2 = d_2[0]
+    #month_2 = int(d_2[1])
+    #day_2 = int(d_2[2])
+    #l_date = date(year_2,month_2,d_2)
 
     #interval = (l_date-f_date)/4
 
-    v_1_date = l_date + timedelta(days=70)
-    v_2_date = l_date + timedelta(days=168)
-    v_3_date = l_date + timedelta(days=224)
-    v_4_date = l_date + timedelta(days=242)
+    v_1_date = lmp + timedelta(days=70)
+    v_2_date = lmp + timedelta(days=168)
+    v_3_date = lmp + timedelta(days=224)
+    v_4_date = lmp + timedelta(days=242)
 
     d_r = reg.split('-')
     year_r = d_r[0]

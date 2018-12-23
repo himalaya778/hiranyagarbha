@@ -2,5 +2,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-url('smo_anc' , views.smo_anc_visit),
+url('visit_data' , views.smo_anc_visit),
 ]

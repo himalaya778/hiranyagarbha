@@ -159,7 +159,7 @@ def smo_anc_visit(request):
     v_f.append(variable_factors) #16
     visit_number+=1
     v_date = []
-    date.append(datetime.date.today())
+    v_date.append(datetime.date.today())
     cur.execute("""UPDATE smo_anc SET weight=%s::TEXT[] ,bp_1=%s::TEXT[] ,bp_2=%s::TEXT[] ,malrepresentation=%s::TEXT[] ,gdm=%s::TEXT[] ,anemia=%s::TEXT[] ,
         haemoglobin=%s::TEXT[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
         

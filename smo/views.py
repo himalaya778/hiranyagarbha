@@ -209,7 +209,7 @@ def delivery_details(request):
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
-def smo_pnc_visit(request):
+def pnc_visit(request):
     id = request.user.id
     smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)

@@ -54,6 +54,7 @@ def refer_patient(request):
     print("updated")
     return Response("Patient Referred")
 
+##################smo visit data entry
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
@@ -170,6 +171,67 @@ def smo_anc_visit(request):
     conn.commit()
     return Response("Visit " + str(visit_number) +" Data Updated")
 
+
+
+##################delivery data entry
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def delivery_details(request):
+    id = request.user.id
+    smo_id = get_smo_id(request.user)
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data['patient_id']
+
+    date_of_del = relevant_data["dod"]
+    time_of_del = relevant_data["tod"]
+    place_of_del = relevant_data["place"]
+    conducted_by = relevant_data["conducted_by"]
+    delivery_type = relevant_data["del_type"]
+    complications = relevant_data["complications"]
+    discharge_date = relevant_data["disch_date"]
+    delivery_outcome = relevant_data["d_outcome"]
+    live_count = relevant_data["live"]
+    still_count = relevant_data["still"]
+    baby_weight = relevant_data["b_weight"]
+    infant_danger = relevant_data["infant_danger"]
+
+    cur.execute("""INSERT INTO delivery_details (patient_id,dod,tod,place,conducted_by,delivery_type,
+    complications, discharge_date, d_outcome, live,still, b_weight, infant_danger) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""" ,
+                (date_of_del, time_of_del, place_of_del, conducted_by, delivery_type, complications, discharge_date, delivery_outcome,live_count,
+                 still_count,baby_weight,infant_danger))
+
+    conn.commit()
+
+    return Response("Delivery Details Saved")
+
+##################pnc visit data
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def smo_pnc_visit(request):
+    id = request.user.id
+    smo_id = get_smo_id(request.user)
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data['patient_id']
+
+    visit_date = relevant_data["v_date"]
+    mother_status = relevant_data["m_status"]
+    stutch = (relevant_data["stutch"],None)
+    color_lochia = relevant_data["color_lochia"]
+    oedema = relevant_data["oedema"]
+    breast_feeding = relevant_data["breast_feed"]
+    breast_infection = relevant_data["breast_infec"]
+    infant_danger = relevant_data["danger"]
+
+    cur.execute("""INSERT INTO smo_pnc (patient_id, v_dae, mother_status, stutch, color_lochia, oedema,
+    breast_feed, breast_infec, infant_danger) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                (p_id, smo_id,visit_date,mother_status,stutch,color_lochia,oedema,
+                 breast_feeding,breast_infection, infant_danger))
+
+    conn.commit()
+
+    return Response("PNC Details Saved")
 
 @api_view(['POST'])
 def set_visit(request):

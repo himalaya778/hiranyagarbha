@@ -198,7 +198,7 @@ def delivery_details(request):
 
     cur.execute("""INSERT INTO delivery_details (patient_id,dod,tod,place,conducted_by,delivery_type,
     complications, discharge_date, d_outcome, live,still, b_weight, infant_danger) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""" ,
-                (date_of_del, time_of_del, place_of_del, conducted_by, delivery_type, complications, discharge_date, delivery_outcome,live_count,
+                (p_id,date_of_del, time_of_del, place_of_del, conducted_by, delivery_type, complications, discharge_date, delivery_outcome,live_count,
                  still_count,baby_weight,infant_danger))
 
     conn.commit()

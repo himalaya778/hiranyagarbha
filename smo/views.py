@@ -165,7 +165,7 @@ def smo_anc_visit(request):
         constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%sDATE[] WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
-                 hrisk_check, c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))
+                  c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))
     conn.commit()
     return Response("Visit " + visit_number +" Data Updated")
 

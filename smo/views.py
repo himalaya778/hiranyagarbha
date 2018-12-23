@@ -151,8 +151,8 @@ def smo_anc_visit(request):
         hrisk_factors += (const_factors)
         hrisk_factors += (variable_factors)
 
-    if (hrisk_check == False):
-        hrisk_check = relevant_data['hrisk_check']
+    #if (hrisk_check == False):
+    #    hrisk_check = relevant_data['hrisk_check']
 
     h_f.append(hrisk_factors) #14
     c_f.append(const_factors) #15
@@ -161,7 +161,7 @@ def smo_anc_visit(request):
     v_date = datetime.date.today()
     cur.execute("""UPDATE smo_anc SET weight=%s::TEXT[] ,bp_1=%s::TEXT[] ,bp_2=%s::TEXT[] ,malrepresentation=%s::TEXT[] ,gdm=%s::TEXT[] ,anemia=%s::TEXT[] ,
         haemoglobin=%s::TEXT[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
-        hrisk_check=%s::BOOLEAN[] ,
+        
         constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%sDATE[] WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,

@@ -21,6 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls) , url('^users/', include('accounts.urls')),
     url('^anm_anc/' , include('anm_anc.urls')),
+url('^smo_anc/' , include('smo.urls')),
     url(r'^notifications/', include('notify.urls', 'notifications')),
     url('add_village' , views.village_create),
     url('add_agbdi' , views.agbdi_create),

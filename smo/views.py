@@ -160,7 +160,7 @@ def smo_anc_visit(request):
     visit_number+=1
     v_date = []
     v_date.append(datetime.date.today())
-    cur.execute("""UPDATE smo_anc SET weight=%s::DOUBLE[] ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
+    cur.execute("""UPDATE smo_anc SET weight=%s::INTEGER[] ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
         haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
         
         constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%s::DATE[] WHERE patient_id = %s""",

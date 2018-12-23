@@ -18,6 +18,8 @@ from accounts.views import conn
 from pyfcm import FCMNotification
 from notify.signals import notify
 from django.contrib import messages
+from anm_anc.add_on_methods import *
+from .smo_add_ons import *
 # Create your views here.
 # mobile application all APIa
 # dashboard
@@ -51,6 +53,121 @@ def refer_patient(request):
     cur.execute("UPDATE patient_level SET refer_check = 'true', r_reason = %s, r_hospital = %s WHERE patient_id = %s",(reason,hospital,patient_id))
     print("updated")
     return Response("Patient Referred")
+
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def smo_anc_visit(request):
+    id = request.user.id
+    anm_id = get_anm_id(request.user)
+    smo_id = get_smo_id(request.user)
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data['patient_id']
+    c_ctr = 0
+    v_ctr = 0
+    hrisk_check = False
+    hrisk_factors = ""
+    const_factors = ""
+    variable_factors = ""
+    h_f = []
+    c_f = []
+    v_f = []
+
+    visit_number = get_visit_number(p_id)
+
+    weight = []
+    weight.append(relevant_data['weight'])  # 1
+    if (weight[0] < 40 or weight[0] > 90):
+        v_ctr += 1
+        variable_factors += ('weight ')
+    bp1 = []
+    bp2 = []
+    bp1.append(relevant_data['bp1'])  # 2
+    bp2.append(relevant_data['bp2'])  # 3
+    if (bp1[0] > 90 or bp2[0] > 140):
+        v_ctr += 1
+        variable_factors += ('bp ')
+
+    malrep = []                       #4
+    malrep.append(relevant_data["malrep"])
+    if (not (malrep[0] == None)):
+        v_ctr += 1
+        variable_factors += ('malrepresentation ')
+
+    gdm = []                            #5
+    gdm.append(relevant_data["gdm"])
+    if (gdm[0] > 139):
+        v_ctr += 1
+        variable_factors += ("gdm ")
+
+    anemia = []
+    anemia.append(relevant_data['anemia'])  #6
+    if (not (anemia[0] == None)):
+        v_ctr += 1
+        variable_factors += ('anemia ')
+
+    hb = []
+    hb.append(relevant_data['hb'])  # 7
+    if (hb[0] < 8):
+        v_ctr += 1
+        variable_factors += ('haemoglobin ')
+
+    thyroid = []
+    thyroid.append(relevant_data['thyroid'])  # 8
+    if (not (thyroid[0] == 'Normal')):
+        v_ctr += 1
+        variable_factors += ('thyroid ')
+
+    tobacohol = []
+    tobacohol.append(relevant_data['alcohol_tobacco'])  # 9
+    if (tobacohol[0] == True):
+        v_ctr += 1
+        variable_factors += ('alcohol_tobacco ')
+
+    vdrl = []
+    vdrl.append(relevant_data['vdrl'])  # 10
+    if (vdrl[0] == True):
+        v_ctr += 1
+        variable_factors += ('vdrl ')
+
+    preg_disease = []
+    preg_disease.append(relevant_data['preg_disease'])  # 11
+    if (not (preg_disease[0] == 'Adequate')):
+        v_ctr += 1
+        variable_factors += ('preg_disease ')
+
+    bleeding_check = []
+    bleeding_check.append(relevant_data['bleeding_check'])  # 12
+    if (bleeding_check[0] == True):
+        variable_factors += ('bleeding ')
+
+    iugr = []
+    iugr.append(relevant_data['iugr'])  # 13
+    if (iugr[0] == True):
+        variable_factors += ('iugr ')
+
+    if (c_ctr > 0 or v_ctr > 0):
+        hrisk_check = True
+        hrisk_factors += (const_factors)
+        hrisk_factors += (variable_factors)
+
+    if (hrisk_check == False):
+        hrisk_check = relevant_data['hrisk_check']
+
+    h_f.append(hrisk_factors) #14
+    c_f.append(const_factors) #15
+    v_f.append(variable_factors) #16
+    visit_number+=1
+    v_date = datetime.date.today()
+    cur.execute("""UPDATE smo_anc SET weight=%s::TEXT[] ,bp_1=%s::TEXT[] ,bp_2=%s::TEXT[] ,malrepresentation=%s::TEXT[] ,gdm=%s::TEXT[] ,anemia=%s::TEXT[] ,
+        haemoglobin=%s::TEXT[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
+        hrisk_check=%s::BOOLEAN[] ,
+        constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],visits_done,actual_vdate=%sDATE[] WHERE patient_id = %s""",
+                (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+                 tobacohol, preg_disease, bleeding_check, iugr,
+                 hrisk_check, c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))
+    conn.commit()
+    return Response("Visit " + visit_number +" Data Updated")
 
 
 @api_view(['POST'])

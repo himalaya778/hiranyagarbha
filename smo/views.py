@@ -162,7 +162,7 @@ def smo_anc_visit(request):
     cur.execute("""UPDATE smo_anc SET weight=%s::TEXT[] ,bp_1=%s::TEXT[] ,bp_2=%s::TEXT[] ,malrepresentation=%s::TEXT[] ,gdm=%s::TEXT[] ,anemia=%s::TEXT[] ,
         haemoglobin=%s::TEXT[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
         hrisk_check=%s::BOOLEAN[] ,
-        constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],visits_done,actual_vdate=%sDATE[] WHERE patient_id = %s""",
+        constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id,visits_done,actual_vdate=%sDATE[] WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
                  hrisk_check, c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))

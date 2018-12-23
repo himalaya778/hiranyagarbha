@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/smo/smo_add_ons.py" beforeDir="false" afterPath="$PROJECT_DIR$/smo/smo_add_ons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/smo/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+            <state relative-caret-position="493">
+              <caret line="164" column="99" selection-start-line="164" selection-start-column="99" selection-end-line="164" selection-end-column="99" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -79,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="smo_add_ons.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="smo_add_ons.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smo/smo_add_ons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -168,10 +168,10 @@
         <option value="$PROJECT_DIR$/anm_anc/urls.py" />
         <option value="$PROJECT_DIR$/anm_anc/add_on_methods.py" />
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
-        <option value="$PROJECT_DIR$/smo/views.py" />
         <option value="$PROJECT_DIR$/smo/urls.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/smo/smo_add_ons.py" />
+        <option value="$PROJECT_DIR$/smo/views.py" />
       </list>
     </option>
   </component>
@@ -496,16 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -518,8 +508,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/smo/smo_add_ons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="164" column="99" selection-start-line="164" selection-start-column="99" selection-end-line="164" selection-end-column="99" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

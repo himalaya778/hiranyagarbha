@@ -168,7 +168,7 @@ def smo_anc_visit(request):
                  tobacohol, preg_disease, bleeding_check, iugr,
                   c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))
     conn.commit()
-    return Response("Visit " + visit_number +" Data Updated")
+    return Response("Visit " + str(visit_number) +" Data Updated")
 
 
 @api_view(['POST'])

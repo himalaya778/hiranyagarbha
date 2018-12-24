@@ -60,7 +60,7 @@ def refer_patient(request):
 @permission_classes((IsAuthenticated,))
 def smo_anc_visit(request):
     id = request.user.id
-    anm_id = get_anm_id(request.user)
+    #anm_id = get_anm_id(request.user)
     smo_id = find_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']

@@ -226,8 +226,9 @@ def pnc_visit(request):
     breast_infection = relevant_data["breast_infec"]
     infant_danger = relevant_data["danger"]
 
+
     cur.execute("""INSERT INTO smo_pnc (patient_id, v_date, mother_status, stutch, color_lochia, oedema,
-    breast_feed, breast_infec, infant_danger) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+    breast_feed, breast_infec, infant_danger,pnc_check) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,True)""",
                 (p_id,visit_date,mother_status,stutch,color_lochia,oedema,
                  breast_feeding,breast_infection, infant_danger))
 

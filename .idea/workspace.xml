@@ -16,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="203" column="85" selection-start-line="203" selection-start-column="85" selection-end-line="203" selection-end-column="85" />
+            <state relative-caret-position="1683">
+              <caret line="159" column="35" lean-forward="true" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -29,9 +29,21 @@
         <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="305">
-              <caret line="24" selection-start-line="24" selection-end-line="30" selection-end-column="17" />
+              <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smo/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,20 +52,17 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
+            <state relative-caret-position="315">
               <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="85" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smo/urls.py">
+        <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -78,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>anm</find>
       <find>improv4</find>
       <find>update</find>
       <find>update_</find>
@@ -108,6 +116,7 @@
       <find>village</find>
       <find>add_</find>
       <find>date</find>
+      <find>= s</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>
@@ -170,6 +179,11 @@
               <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
               <item name="newproject" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
+              <item name="smo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -217,7 +231,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.25718194" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.18331054" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -421,13 +435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newproject/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -442,27 +449,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smo/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
-          <caret line="24" selection-start-line="24" selection-end-line="30" selection-end-column="17" />
+          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -476,10 +466,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/newproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smo/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/smo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="203" column="85" selection-start-line="203" selection-start-column="85" selection-end-line="203" selection-end-column="85" />
+        <state relative-caret-position="1683">
+          <caret line="159" column="35" lean-forward="true" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

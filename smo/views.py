@@ -61,7 +61,7 @@ def refer_patient(request):
 def smo_anc_visit(request):
     id = request.user.id
     anm_id = get_anm_id(request.user)
-    smo_id = get_smo_id(request.user)
+    smo_id = find_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
     c_ctr = 0
@@ -213,7 +213,7 @@ def delivery_details(request):
 @permission_classes((IsAuthenticated,))
 def pnc_visit(request):
     id = request.user.id
-    smo_id = get_smo_id(request.user)
+    smo_id = find_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
 
@@ -241,7 +241,7 @@ def pnc_visit(request):
 @permission_classes((IsAuthenticated,))
 def final_visit(request):
     id = request.user.id
-    smo_id = get_smo_id(request.user)
+    smo_id = find_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
 

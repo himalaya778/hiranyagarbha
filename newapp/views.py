@@ -232,7 +232,7 @@ def app_data(request):
     start = int(request.GET.get('start',1))
     patients = []
     cur.execute(
-        "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' and created_at>'2018-12-20' ) patient_record",( smo_id,))
+        "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' and created_at>'2018-12-22' ) patient_record",( smo_id,))
     records = cur.fetchall()
     for r in records:
         patients.append(r[0])

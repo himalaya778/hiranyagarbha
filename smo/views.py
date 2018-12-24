@@ -179,7 +179,7 @@ def smo_anc_visit(request):
 @permission_classes((IsAuthenticated,))
 def delivery_details(request):
     id = request.user.id
-    smo_id = get_smo_id(request.user)
+    smo_id = find_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
     delivery_status = True

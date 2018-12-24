@@ -16,6 +16,7 @@ from rest_framework.authtoken.models import Token
 import json
 import psycopg2
 from django.contrib.auth.models import User
+from .func_modules import *
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
 conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0 host='ec2-54-83-50-145.compute-1.amazonaws.com'")
@@ -277,9 +278,10 @@ class ObtainAuthToken(APIView):
                 return Response(content)
 
             if (records[0][11] == "smo"):
+                vill_list = village_list(records[0][4])
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
-                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4]
+                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'villages' : vill_list
                 }
 
                 return Response(content)

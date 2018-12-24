@@ -262,6 +262,8 @@ def anc_visit(request):
     hrisk_check,c_f, v_f,h_f,anm_id))
 
     if(hrisk_check==True):
+        cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
+
         visit_dates = []
         visit_dates = visit_schedule(lmp, edd, reg_date)
         #add record to smo_anc table as 0th visit data

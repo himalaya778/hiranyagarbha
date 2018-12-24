@@ -201,7 +201,7 @@ def delivery_details(request):
                 (p_id,date_of_del, time_of_del, place_of_del, conducted_by, delivery_type, complications, discharge_date, delivery_outcome,live_count,
                  still_count,baby_weight,infant_danger))
 
-    cur.execute("UPDATE patient_level SET delivery_status = TRUE WHERE patient_id = s", (p_id,))
+    cur.execute("UPDATE patient_level SET delivery_status = TRUE WHERE patient_id = %s", (p_id,))
 
     conn.commit()
 

@@ -182,7 +182,7 @@ def delivery_details(request):
     smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)
     p_id = relevant_data['patient_id']
-
+    delivery_status = True
     date_of_del = relevant_data["dod"]
     time_of_del = relevant_data["tod"]
     place_of_del = relevant_data["place"]
@@ -200,6 +200,8 @@ def delivery_details(request):
     complications, discharge_date, d_outcome, live,still, b_weight, infant_danger) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""" ,
                 (p_id,date_of_del, time_of_del, place_of_del, conducted_by, delivery_type, complications, discharge_date, delivery_outcome,live_count,
                  still_count,baby_weight,infant_danger))
+
+    cur.execute("UPDATE patient_level SET delivery_status = TRUE WHERE patient_id = s", (p_id,))
 
     conn.commit()
 
@@ -232,6 +234,23 @@ def pnc_visit(request):
     conn.commit()
 
     return Response("PNC Details Saved")
+
+##################pnc visit data
+@api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def final_visit(request):
+    id = request.user.id
+    smo_id = get_smo_id(request.user)
+    relevant_data = json.loads(request.body)
+    p_id = relevant_data['patient_id']
+
+    maternal_status = relevant_data["m_status"]
+
+    cur.execute("UPDATE smo_pnc SET maternal_status = %s WHERE patient_id = %s",(maternal_status,p_id))
+    conn.commit()
+
+    return Response("Maternal Status Saved")
 
 @api_view(['POST'])
 def set_visit(request):

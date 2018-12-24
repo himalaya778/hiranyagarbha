@@ -277,24 +277,9 @@ class ObtainAuthToken(APIView):
                 return Response(content)
 
             if (records[0][11] == "smo"):
-                user_name = records[0][4]
-                vill_list = []
-                cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s", (user_name,))
-                rec_smo = cur.fetchall()
-                smo_id = rec_smo[0][0]
-
-                cur.execute("SELECT anm_id FROM anm_level WHERE smo_id = %s", (smo_id,))
-                rec_anm = cur.fetchall()
-                anm_ids = rec_anm[0]
-                if (len(anm_ids) > 0):
-                    for a in anm_ids:
-                        cur.execute("SELECT village FROM village_level WHERE anm_id = %s", (a,))
-                        rec_village = cur.fetchall()
-                        vill = rec_village[0][0]
-                        vill_list.append(vill)
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
-                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'villages' : vill_list
+                    'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4]
                 }
 
                 return Response(content)

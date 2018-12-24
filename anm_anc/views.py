@@ -50,14 +50,15 @@ def patient_registry(request):
     lmp_date = relevant_data['lmp_date'] # 10
     edd_date = relevant_data['edd_date']  # 11
     #officer = relevant_data['officer']  # 12
+    smo_id = get_smo_id(request.user)
     address = relevant_data["address"]
     #agbdi = relevant_data["agbdi"]
     #agbdi_name = relevant_data['agbdi_name'] #13
 
     cur.execute("""INSERT INTO patient_level (state,block,division,district,aadhar_number,patient_name,husband_name,mobile_number,
-                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
+                   date_of_birth,age,economic_status,cast_type,relegion,lmp_date,edd_date,address,smo_id,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s ) 
                    RETURNING patient_id """ , (state,block,division,district,
-                     aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,anm_id))
+                     aadhar_number,patient_name,husband_name,mobile_number,date_of_birth,age,economic_status,cast,relegion,lmp_date,edd_date,address,smo_id,anm_id))
     conn.commit()
     res = cur.fetchall()
     print(res)

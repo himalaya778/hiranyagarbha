@@ -158,16 +158,18 @@ def smo_anc_visit(request):
     h_f.append(hrisk_factors) #14
     c_f.append(const_factors) #15
     v_f.append(variable_factors) #16
+    advice = []
+    advice.append(relevant_data["d_advice"])
     visit_number+=1
     v_date = []
     v_date.append(datetime.date.today())
     cur.execute("""UPDATE smo_anc SET weight=%s::INTEGER[] ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
         haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
         
-        constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%s::DATE[] WHERE patient_id = %s""",
+        constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%s::DATE[],d_advice=%s::TEXT[] WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
-                  c_f, v_f, h_f, smo_id,visit_number,v_date,p_id, ))
+                  c_f, v_f, h_f, smo_id,visit_number,v_date,advice,p_id, ))
     conn.commit()
     return Response("Visit " + str(visit_number) +" Data Updated")
 

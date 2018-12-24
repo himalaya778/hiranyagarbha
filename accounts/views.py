@@ -292,7 +292,7 @@ class ObtainAuthToken(APIView):
                         cur.execute("SELECT village FROM village_level WHERE anm_id = %s", (a,))
                         rec_village = cur.fetchall()
                         vill = rec_village[0][0]
-                        villages.append(vill)
+                        vill_list.append(vill)
                 content = {
                     'status' : 'success','token': str(token.key) , 'role' : (records[0][11]), 'state' : records[0][12], 'block' : records[0][14],
                     'district' : records[0][15] , 'division' : records[0][13] , 'name' : records[0][4] , 'villages' : vill_list

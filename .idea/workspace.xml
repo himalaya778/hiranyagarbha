@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/accounts/func_modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/func_modules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +17,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3706">
+            <state relative-caret-position="1564">
               <caret line="230" column="94" selection-start-line="230" selection-start-column="94" selection-end-line="230" selection-end-column="94" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+            <state relative-caret-position="-68">
+              <caret line="280" column="40" selection-start-line="280" selection-start-column="40" selection-end-line="280" selection-end-column="40" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -39,11 +40,7 @@
       </file>
       <file leaf-file-name="func_modules.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/accounts/func_modules.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" selection-start-column="23" selection-end-column="23" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -197,7 +194,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.38440493" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.027359782" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -442,9 +439,12 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/func_modules.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/smo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3706">
+        <state relative-caret-position="1564">
           <caret line="230" column="94" selection-start-line="230" selection-start-column="94" selection-end-line="230" selection-end-column="94" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -452,17 +452,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/func_modules.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        <state relative-caret-position="-68">
+          <caret line="280" column="40" selection-start-line="280" selection-start-column="40" selection-end-line="280" selection-end-column="40" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

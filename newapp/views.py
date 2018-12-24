@@ -229,7 +229,7 @@ def app_data(request):
     cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (str(request.user),))
     records_bmo = cur.fetchall()
     smo_id = records_bmo[0]
-    start = int(request.GET.get('start',1))
+    start = int(request.GET.get('start',0))
     patients = []
     cur.execute(
         "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' and created_at>'2018-12-22' ) patient_record",( smo_id,))

@@ -89,13 +89,14 @@ def anc_visit(request):
     #constant high risk factors check
     cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE,patient_name,height FROM patient_level WHERE patient_id = %s" , (p_id,))
     age_rec = cur.fetchall()
-    print(len(age_rec))
+    print(len(age_rec[0]))
     print(age_rec)
     age = age_rec[0][0] #1
     lmp = age_rec[0][1]
     edd = age_rec[0][2]
     reg_date = age_rec[0][3]
-    patient_name = age_rec[0][3]
+    patient_name = age_rec[0][4]
+    height = age_rec[0][5]
 
     if (age<18 or age>35):
         c_ctr+=1

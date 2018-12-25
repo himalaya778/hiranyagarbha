@@ -435,7 +435,7 @@ def smo_app_data(request):
         SELECT *  FROM patient_level 
    INNER JOIN smo_anc
      ON smo_anc.patient_id = patient_level.patient_id
- WHERE smo_anc.anm_id = %s)patient_record """, (smo_id,))
+ WHERE smo_anc.smo_id = %s)patient_record """, (smo_id,))
 
     records = cur.fetchall()
     for r in records:

@@ -421,24 +421,29 @@ def update_patient_data(request):
     conn.commit()
     return Response("Data already saved for 3 visits!!")
 
+
 @api_view(['GET'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
-def app_data(request):
-    cur.execute("SELECT smo_id FROM smo_level WHERE smo = %s" , (str(request.user),))
-    records_bmo = cur.fetchall()
-    smo_id = records_bmo[0]
-    print("get " ,request.GET)
-    start = int(request.GET.get('start',1))
+def smo_app_data(request):
+    smo_id = find_smo_id(request.user)
+    start = int(request.GET.get('start', 0))
     patients = []
     cur.execute(
-        "SELECT row_to_json(patient_record) FROM (SELECT * FROM patient_level WHERE smo_id = %s and high_risk_check = 'true' and created_at > '2018-12-20') patient_record",( smo_id,))
+        """SELECT row_to_json(patient_record) FROM (
+
+        SELECT *  FROM patient_level 
+   INNER JOIN smo_anc
+     ON smo_anc.patient_id = patient_level.patient_id
+ WHERE smo_anc.anm_id = %s)patient_record """, (smo_id,))
+
     records = cur.fetchall()
     for r in records:
         patients.append(r[0])
     print(len(records))
-    end = (start+25)
-    return Response({"patients" : patients[start:end]})
+    end = (start + 25)
+    return Response({"patients": patients[start:end]})
+
 
 @api_view(['POST'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))

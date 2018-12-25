@@ -98,176 +98,288 @@ def anc_visit(request):
     patient_name = age_rec[0][4]
     height = age_rec[0][5]
 
-    if (age<18 or age>35):
-        c_ctr+=1
-        const_factors+=('age ')
+    if(height==None):
 
-    height = relevant_data['height'] #2
-    if (height<145) :
-        c_ctr+=1
-        const_factors+=('height ')
+        if (age<18 or age>35):
+            c_ctr+=1
+            const_factors+=('age ')
 
-    previous_lscs = relevant_data['previous_lscs']#3
-    if (previous_lscs == True):
-        c_ctr+=1
-        const_factors+=('previous_lscs ')
+        height = relevant_data['height'] #2
+        if (height<145) :
+            c_ctr+=1
+            const_factors+=('height ')
 
-    bgroup = relevant_data['bgroup']#4
-    if(bgroup in hrisk_bgroups):
-        c_ctr+=1
-        const_factors+=('blood group ')
+        previous_lscs = relevant_data['previous_lscs']#3
+        if (previous_lscs == True):
+            c_ctr+=1
+            const_factors+=('previous_lscs ')
 
-    disability = relevant_data['disability']#5
-    if (not (disability == 'None')):
-        c_ctr+=1
-        const_factors+=('disability ')
+        bgroup = relevant_data['bgroup']#4
+        if(bgroup in hrisk_bgroups):
+            c_ctr+=1
+            const_factors+=('blood group ')
 
-    blood_disease = relevant_data['blood_disease']#6
-    if( not(blood_disease == 'Normal ' )):
-        c_ctr+=1
-        const_factors+=('blood disease ')
+        disability = relevant_data['disability']#5
+        if (not (disability == 'None')):
+            c_ctr+=1
+            const_factors+=('disability ')
 
-    hiv = relevant_data['hiv']#7
-    if( hiv == True):
-        c_ctr+=1
-        const_factors+=('hiv ')
+        blood_disease = relevant_data['blood_disease']#6
+        if( not(blood_disease == 'Normal ' )):
+            c_ctr+=1
+            const_factors+=('blood disease ')
 
-    hbsag = relevant_data['hbsag']#8
-    if( hbsag == True):
-        c_ctr+=1
-        const_factors+=('HbsAg ')
+        hiv = relevant_data['hiv']#7
+        if( hiv == True):
+            c_ctr+=1
+            const_factors+=('hiv ')
 
-    cardiac = relevant_data['cardiac']#9
-    if( cardiac == True):
-        c_ctr+=1
-        const_factors+=('cardiac_disease ')
+        hbsag = relevant_data['hbsag']#8
+        if( hbsag == True):
+            c_ctr+=1
+            const_factors+=('HbsAg ')
 
-    p_uterus = relevant_data['p_uterus']#10
-    if( p_uterus == True):
-        c_ctr+=1
-        const_factors+=('prolapse_uterus ')
+        cardiac = relevant_data['cardiac']#9
+        if( cardiac == True):
+            c_ctr+=1
+            const_factors+=('cardiac_disease ')
 
-    asthama = relevant_data['asthama']#11
-    if( asthama == True):
-        c_ctr+=1
-        const_factors+=('asthama ')
+        p_uterus = relevant_data['p_uterus']#10
+        if( p_uterus == True):
+            c_ctr+=1
+            const_factors+=('prolapse_uterus ')
 
-    twin_delivery = relevant_data['twin_delivery']#12
-    if( twin_delivery == True):
-        c_ctr+=1
-        const_factors+=('twin_delivery ')
+        asthama = relevant_data['asthama']#11
+        if( asthama == True):
+            c_ctr+=1
+            const_factors+=('asthama ')
 
-    gravita = relevant_data['gravita']
-    para = relevant_data['para']
-    live = relevant_data['live']
-    abortion = relevant_data['abortion']
+        twin_delivery = relevant_data['twin_delivery']#12
+        if( twin_delivery == True):
+            c_ctr+=1
+            const_factors+=('twin_delivery ')
 
-    if(abortion>0):
-        c_ctr+=1
-        const_factors+=('abortion ')
+        gravita = relevant_data['gravita']
+        para = relevant_data['para']
+        live = relevant_data['live']
+        abortion = relevant_data['abortion']
+
+        if(abortion>0):
+            c_ctr+=1
+            const_factors+=('abortion ')
 
 
 
     ########################################################
 
-    #variable high risk factors check
-    weight = []
-    weight.append(relevant_data['weight'])#13
-    if (weight[0]<40 or weight[0]>90):
-        v_ctr+=1
-        variable_factors+=('weight ')
-    bp1 = []
-    bp2 = []
-    bp1.append(relevant_data['bp1'])#14
-    bp2.append(relevant_data['bp2'])#15
-    if (bp1[0]>90 or bp2[0]>140):
-        v_ctr+=1
-        variable_factors+=('bp ')
+        #variable high risk factors check
+        weight = []
+        weight.append(relevant_data['weight'])#13
+        if (weight[0]<40 or weight[0]>90):
+            v_ctr+=1
+            variable_factors+=('weight ')
+        bp1 = []
+        bp2 = []
+        bp1.append(relevant_data['bp1'])#14
+        bp2.append(relevant_data['bp2'])#15
+        if (bp1[0]>90 or bp2[0]>140):
+            v_ctr+=1
+            variable_factors+=('bp ')
 
-    malrep = []
-    malrep.append(relevant_data["malrep"])
-    if (not (malrep[0]==None)):
-        v_ctr+=1
-        variable_factors+=('malrepresentation ')
+        malrep = []
+        malrep.append(relevant_data["malrep"])
+        if (not (malrep[0]==None)):
+            v_ctr+=1
+            variable_factors+=('malrepresentation ')
 
-    gdm = []
-    gdm.append(relevant_data["gdm"])
-    if (gdm[0]>139):
-        v_ctr+=1
-        variable_factors+=("gdm ")
+        gdm = []
+        gdm.append(relevant_data["gdm"])
+        if (gdm[0]>139):
+            v_ctr+=1
+            variable_factors+=("gdm ")
 
-    anemia = []
-    anemia.append(relevant_data['anemia'])#18
-    if (not(anemia[0]==None)):
-        v_ctr+=1
-        variable_factors+=('anemia ')
+        anemia = []
+        anemia.append(relevant_data['anemia'])#18
+        if (not(anemia[0]==None)):
+            v_ctr+=1
+            variable_factors+=('anemia ')
 
-    hb = []
-    hb.append(relevant_data['hb'])#19
-    if (hb[0]<8):
-        v_ctr+=1
-        variable_factors+=('haemoglobin ')
+        hb = []
+        hb.append(relevant_data['hb'])#19
+        if (hb[0]<8):
+            v_ctr+=1
+            variable_factors+=('haemoglobin ')
 
-    thyroid = []
-    thyroid.append(relevant_data['thyroid'])#20
-    if (not (thyroid[0] == 'Normal')):
-        v_ctr+=1
-        variable_factors+=('thyroid ')
+        thyroid = []
+        thyroid.append(relevant_data['thyroid'])#20
+        if (not (thyroid[0] == 'Normal')):
+            v_ctr+=1
+            variable_factors+=('thyroid ')
 
-    tobacohol = []
-    tobacohol.append(relevant_data['alcohol_tobacco'])#21
-    if(tobacohol[0] == True):
-        v_ctr+=1
-        variable_factors+=('alcohol_tobacco ')
+        tobacohol = []
+        tobacohol.append(relevant_data['alcohol_tobacco'])#21
+        if(tobacohol[0] == True):
+            v_ctr+=1
+            variable_factors+=('alcohol_tobacco ')
 
-    vdrl = []
-    vdrl.append(relevant_data['vdrl'])#22
-    if(vdrl[0] == True):
-        v_ctr+=1
-        variable_factors+=('vdrl ')
+        vdrl = []
+        vdrl.append(relevant_data['vdrl'])#22
+        if(vdrl[0] == True):
+            v_ctr+=1
+            variable_factors+=('vdrl ')
 
-    preg_disease = []
-    preg_disease.append(relevant_data['preg_disease'])#23
-    if(not(preg_disease[0]=='Adequate')):
-        v_ctr+=1
-        variable_factors+=('preg_disease ')
+        preg_disease = []
+        preg_disease.append(relevant_data['preg_disease'])#23
+        if(not(preg_disease[0]=='Adequate')):
+            v_ctr+=1
+            variable_factors+=('preg_disease ')
 
-    bleeding_check = []
-    bleeding_check.append(relevant_data['bleeding_check'])#24
-    if(bleeding_check[0] == True):
-        variable_factors+=('bleeding ')
+        bleeding_check = []
+        bleeding_check.append(relevant_data['bleeding_check'])#24
+        if(bleeding_check[0] == True):
+            variable_factors+=('bleeding ')
 
-    iugr = []
-    iugr.append(relevant_data['iugr'])#25
-    if(iugr[0] == True):
-        variable_factors+=('iugr ')
+        iugr = []
+        iugr.append(relevant_data['iugr'])#25
+        if(iugr[0] == True):
+            variable_factors+=('iugr ')
 
-    alb = []
-    alb.append(relevant_data['alb'])#25
-    if(not(alb[0] == "None")):
-        variable_factors+=('alb ')
+        alb = []
+        alb.append(relevant_data['alb'])#25
+        if(not(alb[0] == "None")):
+            variable_factors+=('alb ')
 
 
 
-    if (c_ctr>0 or v_ctr>0):
-        hrisk_check = True
-        hrisk_factors+=(const_factors)
-        hrisk_factors+=(variable_factors)
+        if (c_ctr>0 or v_ctr>0):
+            hrisk_check = True
+            hrisk_factors+=(const_factors)
+            hrisk_factors+=(variable_factors)
 
-    if(hrisk_check == False):
-        hrisk_check = relevant_data['hrisk_check']
+        if(hrisk_check == False):
+            hrisk_check = relevant_data['hrisk_check']
 
-    h_f.append(hrisk_factors)
-    c_f.append(const_factors)
-    v_f.append(variable_factors)
+        h_f.append(hrisk_factors)
+        c_f.append(const_factors)
+        v_f.append(variable_factors)
 
-    cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
-    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
-    haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-    constant_factors, variable_factors,hrisk_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-    (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
-    twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
-    hrisk_check,c_f, v_f,h_f,anm_id))
+        cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
+        hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+        haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
+        constant_factors, variable_factors,hrisk_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+        (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
+        twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
+        hrisk_check,c_f, v_f,h_f,anm_id))
+
+    else:
+        ########################################################
+
+        # variable high risk factors check
+        weight = []
+        weight.append(relevant_data['weight'])  # 13
+        if (weight[0] < 40 or weight[0] > 90):
+            v_ctr += 1
+            variable_factors += ('weight ')
+        bp1 = []
+        bp2 = []
+        bp1.append(relevant_data['bp1'])  # 14
+        bp2.append(relevant_data['bp2'])  # 15
+        if (bp1[0] > 90 or bp2[0] > 140):
+            v_ctr += 1
+            variable_factors += ('bp ')
+
+        malrep = []
+        malrep.append(relevant_data["malrep"])
+        if (not (malrep[0] == None)):
+            v_ctr += 1
+            variable_factors += ('malrepresentation ')
+
+        gdm = []
+        gdm.append(relevant_data["gdm"])
+        if (gdm[0] > 139):
+            v_ctr += 1
+            variable_factors += ("gdm ")
+
+        anemia = []
+        anemia.append(relevant_data['anemia'])  # 18
+        if (not (anemia[0] == None)):
+            v_ctr += 1
+            variable_factors += ('anemia ')
+
+        hb = []
+        hb.append(relevant_data['hb'])  # 19
+        if (hb[0] < 8):
+            v_ctr += 1
+            variable_factors += ('haemoglobin ')
+
+        thyroid = []
+        thyroid.append(relevant_data['thyroid'])  # 20
+        if (not (thyroid[0] == 'Normal')):
+            v_ctr += 1
+            variable_factors += ('thyroid ')
+
+        tobacohol = []
+        tobacohol.append(relevant_data['alcohol_tobacco'])  # 21
+        if (tobacohol[0] == True):
+            v_ctr += 1
+            variable_factors += ('alcohol_tobacco ')
+
+        vdrl = []
+        vdrl.append(relevant_data['vdrl'])  # 22
+        if (vdrl[0] == True):
+            v_ctr += 1
+            variable_factors += ('vdrl ')
+
+        preg_disease = []
+        preg_disease.append(relevant_data['preg_disease'])  # 23
+        if (not (preg_disease[0] == 'Adequate')):
+            v_ctr += 1
+            variable_factors += ('preg_disease ')
+
+        bleeding_check = []
+        bleeding_check.append(relevant_data['bleeding_check'])  # 24
+        if (bleeding_check[0] == True):
+            variable_factors += ('bleeding ')
+
+        iugr = []
+        iugr.append(relevant_data['iugr'])  # 25
+        if (iugr[0] == True):
+            variable_factors += ('iugr ')
+
+        alb = []
+        alb.append(relevant_data['alb'])  # 25
+        if (not (alb[0] == "None")):
+            variable_factors += ('alb ')
+
+        if (c_ctr > 0 or v_ctr > 0):
+            hrisk_check = True
+            hrisk_factors += (const_factors)
+            hrisk_factors += (variable_factors)
+
+        if (hrisk_check == False):
+            hrisk_check = relevant_data['hrisk_check']
+
+        h_f.append(hrisk_factors)
+        c_f.append(const_factors)
+        v_f.append(variable_factors)
+
+        #cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
+        #    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+        #    haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
+        #    constant_factors, variable_factors,hrisk_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+        #            (p_id, age, height, previous_lscs, bgroup, disability, blood_disease, hiv, hbsag, cardiac, p_uterus,
+        #             asthama,
+        #             twin_delivery, gravita, para, live, abortion, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+        #             tobacohol, preg_disease, bleeding_check, iugr, alb,
+        #             hrisk_check, c_f, v_f, h_f, anm_id))
+
+        cur.execute("""UPDATE anm_anc SET weight=%s::INTEGER[] ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
+                haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
+
+                constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=%s::DATE[],d_advice=%s::TEXT[] WHERE patient_id = %s""",
+                    (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+                     tobacohol, preg_disease, bleeding_check, iugr,
+                     c_f, v_f, h_f, anm_id, p_id,))
 
     if(hrisk_check==True):
         cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))

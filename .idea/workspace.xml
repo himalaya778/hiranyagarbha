@@ -16,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+            <state relative-caret-position="449">
+              <caret line="373" column="9" selection-start-line="373" selection-start-column="9" selection-end-line="373" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -34,8 +34,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
+            <state relative-caret-position="341">
+              <caret line="172" lean-forward="true" selection-start-line="165" selection-start-column="4" selection-end-line="172" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -441,6 +441,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1905">
@@ -450,25 +457,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/smo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
+        <state relative-caret-position="341">
+          <caret line="172" lean-forward="true" selection-start-line="165" selection-start-column="4" selection-end-line="172" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+        <state relative-caret-position="449">
+          <caret line="373" column="9" selection-start-line="373" selection-start-column="9" selection-end-line="373" selection-end-column="9" />
         </state>
       </provider>
     </entry>

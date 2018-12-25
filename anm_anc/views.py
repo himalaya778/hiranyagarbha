@@ -86,6 +86,8 @@ def anc_visit(request):
     c_f = []
     v_f = []
 
+    visit_number = get_visit_number_anm(p_id)
+
     #constant high risk factors check
     cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE,patient_name FROM patient_level WHERE patient_id = %s" , (p_id,))
     age_rec = cur.fetchall()
@@ -264,14 +266,15 @@ def anc_visit(request):
         h_f.append(hrisk_factors)
         c_f.append(const_factors)
         v_f.append(variable_factors)
+        visit_number+=1
 
         cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
         hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
         haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-        constant_factors, variable_factors,hrisk_factors,anm_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+        constant_factors, variable_factors,hrisk_factors,anm_id,visit_no) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
         (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
         twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
-        hrisk_check,c_f, v_f,h_f,anm_id))
+        hrisk_check,c_f, v_f,h_f,anm_id,visit_number))
 
     else:
         ########################################################
@@ -361,6 +364,7 @@ def anc_visit(request):
         if (hrisk_check == False):
             hrisk_check = relevant_data['hrisk_check']
 
+        visit_number+=1
         #h_f.append(hrisk_factors)
         #c_f.append(const_factors)
         #v_f.append(variable_factors)
@@ -383,10 +387,10 @@ def anc_visit(request):
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
         bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
-                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s) WHERE patient_id = %s""",
+                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s),visit_no WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
-                      const_factors, variable_factors, hrisk_factors, p_id,))
+                      const_factors, variable_factors, hrisk_factors, visit_number,p_id,))
 
         conn.commit()
 

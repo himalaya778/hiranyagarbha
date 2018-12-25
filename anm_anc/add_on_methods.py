@@ -169,3 +169,8 @@ def visit_schedule(lmp, edd, reg):
     return visit_dates
 
 
+def get_visit_number_anm(id):
+    cur.execute("SELECT visit_no FROM anm_anc WHERE patient_id = %s" , (id,))
+    records_v = cur.fetchall()
+    v_no = records_v[0][0]
+    return v_no

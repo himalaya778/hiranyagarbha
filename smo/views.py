@@ -163,7 +163,7 @@ def smo_anc_visit(request):
     visit_number+=1
     v_date = []
     v_date.append(datetime.date.today())
-    cur.execute("""UPDATE smo_anc SET weight=array_cat(weight, %s) ,bp_1=array_cat(bp1, %s) ,bp_2=array_cat(bp2, %s) ,malrepresentation=array_cat(malrepresentation, %s) ,gdm=array_cat(gdm, %s) ,
+    cur.execute("""UPDATE smo_anc SET weight=array_cat(weight, %s) ,bp_1=array_cat(bp_1, %s) ,bp_2=array_cat(bp_2, %s) ,malrepresentation=array_cat(malrepresentation, %s) ,gdm=array_cat(gdm, %s) ,
     anemia=array_cat(anemia, %s) ,
         haemoglobin=array_cat(haemoglobin, %s) ,thyroid=array_cat(thyroid, %s) , alcohol_tobacco_check=array_cat(alcohol_tobacco_check,%s) ,preg_related_disease=array_cat(preg_related_disease, %s) 
         ,bleeding_check=array_cat(bleeding_ceck, %s) ,iugr=array_cat(iugr, %s) ,

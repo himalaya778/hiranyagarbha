@@ -375,13 +375,23 @@ def anc_visit(request):
         #             tobacohol, preg_disease, bleeding_check, iugr, alb,
         #             hrisk_check, c_f, v_f, h_f, anm_id))
 
-        cur.execute("""UPDATE anm_anc SET weight=array_cat(weight, %s) ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
-                haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
+        cur.execute("""UPDATE smo_anc SET weight=array_cat(weight, %s) ,bp_1=array_cat(bp1, %s) ,bp_2=array_cat(bp2, %s) ,malrepresentation=array_cat(malrepresentation, %s) ,gdm=array_cat(gdm, %s) ,
+        anemia=array_cat(anemia, %s) ,
+            haemoglobin=array_cat(haemoglobin, %s) ,thyroid=array_cat(thyroid, %s) , alcohol_tobacco_check=array_cat(alcohol_tobacco_check,%s) ,preg_related_disease=array_cat(preg_related_disease, %s) 
+            ,bleeding_check=array_cat(bleeding_ceck, %s) ,iugr=array_cat(iugr, %s) ,
 
-                constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[] WHERE patient_id = %s""",
+            constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s), WHERE patient_id = %s""",
                     (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                      c_f, v_f, h_f, p_id,))
+
+        #cur.execute("""UPDATE anm_anc SET weight=array_cat(weight, %s) ,bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
+        #        haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
+
+         #       constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[] WHERE patient_id = %s""",
+         #           (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+         #            tobacohol, preg_disease, bleeding_check, iugr,
+         #            c_f, v_f, h_f, p_id,))
 
         conn.commit()
 

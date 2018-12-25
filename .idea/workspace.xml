@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/smo/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="385" column="166" selection-start-line="385" selection-start-column="166" selection-end-line="385" selection-end-column="166" />
+            <state relative-caret-position="476">
+              <caret line="388" column="53" selection-start-line="388" selection-start-column="53" selection-end-line="388" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -468,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="385" column="166" selection-start-line="385" selection-start-column="166" selection-end-line="385" selection-end-column="166" />
+        <state relative-caret-position="476">
+          <caret line="388" column="53" selection-start-line="388" selection-start-column="53" selection-end-line="388" selection-end-column="53" />
         </state>
       </provider>
     </entry>

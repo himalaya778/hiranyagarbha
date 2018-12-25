@@ -361,9 +361,9 @@ def anc_visit(request):
         if (hrisk_check == False):
             hrisk_check = relevant_data['hrisk_check']
 
-        h_f.append(hrisk_factors)
-        c_f.append(const_factors)
-        v_f.append(variable_factors)
+        #h_f.append(hrisk_factors)
+        #c_f.append(const_factors)
+        #v_f.append(variable_factors)
 
         #cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
         #    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
@@ -386,7 +386,7 @@ def anc_visit(request):
                 constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s) WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
-                     c_f, v_f, h_f, p_id,))
+                      const_factors, variable_factors, hrisk_factors, p_id,))
 
         conn.commit()
 

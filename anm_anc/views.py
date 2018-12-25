@@ -277,80 +277,80 @@ def anc_visit(request):
         ########################################################
 
         # variable high risk factors check
-        weight = []
-        weight.append(relevant_data['weight'])  # 13
-        if (weight[0] < 40 or weight[0] > 90):
+        #weight = []
+        weight=(relevant_data['weight'])  # 13
+        if (weight < 40 or weight > 90):
             v_ctr += 1
             variable_factors += ('weight ')
-        bp1 = []
-        bp2 = []
-        bp1.append(relevant_data['bp1'])  # 14
-        bp2.append(relevant_data['bp2'])  # 15
-        if (bp1[0] > 90 or bp2[0] > 140):
+        #bp1 = []
+        #bp2 = []
+        bp1=(relevant_data['bp1'])  # 14
+        bp2=(relevant_data['bp2'])  # 15
+        if (bp1 > 90 or bp2 > 140):
             v_ctr += 1
             variable_factors += ('bp ')
 
-        malrep = []
-        malrep.append(relevant_data["malrep"])
-        if (not (malrep[0] == None)):
+        #malrep = []
+        malrep=(relevant_data["malrep"])
+        if (not (malrep == None)):
             v_ctr += 1
             variable_factors += ('malrepresentation ')
 
-        gdm = []
-        gdm.append(relevant_data["gdm"])
-        if (gdm[0] > 139):
+        #gdm = []
+        gdm=(relevant_data["gdm"])
+        if (gdm > 139):
             v_ctr += 1
             variable_factors += ("gdm ")
 
-        anemia = []
-        anemia.append(relevant_data['anemia'])  # 18
-        if (not (anemia[0] == None)):
+        #anemia = []
+        anemia=(relevant_data['anemia'])  # 18
+        if (not (anemia == None)):
             v_ctr += 1
             variable_factors += ('anemia ')
 
-        hb = []
-        hb.append(relevant_data['hb'])  # 19
-        if (hb[0] < 8):
+        #hb = []
+        hb=(relevant_data['hb'])  # 19
+        if (hb < 8):
             v_ctr += 1
             variable_factors += ('haemoglobin ')
 
-        thyroid = []
-        thyroid.append(relevant_data['thyroid'])  # 20
-        if (not (thyroid[0] == 'Normal')):
+        #thyroid = []
+        thyroid=(relevant_data['thyroid'])  # 20
+        if (not (thyroid == 'Normal')):
             v_ctr += 1
             variable_factors += ('thyroid ')
 
         tobacohol = []
-        tobacohol.append(relevant_data['alcohol_tobacco'])  # 21
-        if (tobacohol[0] == True):
+        tobacohol=(relevant_data['alcohol_tobacco'])  # 21
+        if (tobacohol == True):
             v_ctr += 1
             variable_factors += ('alcohol_tobacco ')
 
-        vdrl = []
-        vdrl.append(relevant_data['vdrl'])  # 22
-        if (vdrl[0] == True):
+        #vdrl = []
+        vdrl=(relevant_data['vdrl'])  # 22
+        if (vdrl == True):
             v_ctr += 1
             variable_factors += ('vdrl ')
 
-        preg_disease = []
-        preg_disease.append(relevant_data['preg_disease'])  # 23
-        if (not (preg_disease[0] == 'Adequate')):
+        #preg_disease = []
+        preg_disease=(relevant_data['preg_disease'])  # 23
+        if (not (preg_disease == 'Adequate')):
             v_ctr += 1
             variable_factors += ('preg_disease ')
 
-        bleeding_check = []
-        bleeding_check.append(relevant_data['bleeding_check'])  # 24
-        if (bleeding_check[0] == True):
+        #bleeding_check = []
+        bleeding_check=(relevant_data['bleeding_check'])  # 24
+        if (bleeding_check == True):
             variable_factors += ('bleeding ')
 
-        iugr = []
-        iugr.append(relevant_data['iugr'])  # 25
-        if (iugr[0] == True):
+        #iugr = []
+        iugr=(relevant_data['iugr'])  # 25
+        if (iugr == True):
             variable_factors += ('iugr ')
 
-        alb = []
-        alb.append(relevant_data['alb'])  # 25
-        if (not (alb[0] == "None")):
+        #alb = []
+        alb=(relevant_data['alb'])  # 25
+        if (not (alb == "None")):
             variable_factors += ('alb ')
 
         if (c_ctr > 0 or v_ctr > 0):
@@ -375,10 +375,10 @@ def anc_visit(request):
         #             tobacohol, preg_disease, bleeding_check, iugr, alb,
         #             hrisk_check, c_f, v_f, h_f, anm_id))
 
-        cur.execute("""UPDATE smo_anc SET weight=array_cat(weight, %s) ,bp_1=array_cat(bp_1, %s) ,bp_2=array_cat(bp_2, %s) ,malrepresentation=array_cat(malrepresentation, %s) ,gdm=array_cat(gdm, %s) ,
-        anemia=array_cat(anemia, %s) ,
-            haemoglobin=array_cat(haemoglobin, %s) ,thyroid=array_cat(thyroid, %s) , alcohol_tobacco_check=array_cat(alcohol_tobacco_check,%s) ,preg_related_disease=array_cat(preg_related_disease, %s) 
-            ,bleeding_check=array_cat(bleeding_ceck, %s) ,iugr=array_cat(iugr, %s) ,
+        cur.execute("""UPDATE smo_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1, %s) ,bp_2=array_append(bp_2, %s) ,malrepresentation=array_append(malrepresentation, %s) ,gdm=array_append(gdm, %s) ,
+        anemia=array_append(anemia, %s) ,
+            haemoglobin=array_append(haemoglobin, %s) ,thyroid=array_append(thyroid, %s) , alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s) ,preg_related_disease=array_append(preg_related_disease, %s) 
+            ,bleeding_check=array_append(bleeding_ceck, %s) ,iugr=array_append(iugr, %s) ,
 
             constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s) WHERE patient_id = %s""",
                     (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,

@@ -380,7 +380,7 @@ def anc_visit(request):
             haemoglobin=array_cat(haemoglobin, %s) ,thyroid=array_cat(thyroid, %s) , alcohol_tobacco_check=array_cat(alcohol_tobacco_check,%s) ,preg_related_disease=array_cat(preg_related_disease, %s) 
             ,bleeding_check=array_cat(bleeding_ceck, %s) ,iugr=array_cat(iugr, %s) ,
 
-            constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s), WHERE patient_id = %s""",
+            constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s) WHERE patient_id = %s""",
                     (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                      c_f, v_f, h_f, p_id,))

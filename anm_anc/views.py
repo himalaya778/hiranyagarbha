@@ -378,7 +378,7 @@ def anc_visit(request):
         cur.execute("""UPDATE smo_anc SET weight=array_append(weight::INTEGER[], %s::INTEGER) ,bp_1=array_append(bp_1::INTEGER[], %s::INTEGER) ,bp_2=array_append(bp_2::INTEGER[], %s::INTEGER) ,malrepresentation=array_append(malrepresentation, %s) ,gdm=array_append(gdm, %s) ,
         anemia=array_append(anemia, %s) ,
             haemoglobin=array_append(haemoglobin::INTEGER[], %s::INTEGER) ,thyroid=array_append(thyroid, %s) , alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s) ,preg_related_disease=array_append(preg_related_disease, %s) 
-            ,bleeding_check=array_append(bleeding_ceck, %s) ,iugr=array_append(iugr, %s) ,
+            ,bleeding_check=array_append(bleeding_check, %s) ,iugr=array_append(iugr, %s) ,
 
             constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s) WHERE patient_id = %s""",
                     (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,

@@ -163,12 +163,11 @@ def smo_anc_visit(request):
     visit_number+=1
     v_date = []
     v_date.append(datetime.date.today())
-    cur.execute("""UPDATE smo_anc SET weight=array_cat(weight, %s) ,bp_1=array_cat(bp_1, %s) ,bp_2=array_cat(bp_2, %s) ,malrepresentation=array_cat(malrepresentation, %s) ,gdm=array_cat(gdm, %s) ,
-    anemia=array_cat(anemia, %s) ,
-        haemoglobin=array_cat(haemoglobin, %s) ,thyroid=array_cat(thyroid, %s) , alcohol_tobacco_check=array_cat(alcohol_tobacco_check,%s) ,preg_related_disease=array_cat(preg_related_disease, %s) 
-        ,bleeding_check=array_cat(bleeding_ceck, %s) ,iugr=array_cat(iugr, %s) ,
-        
-        constant_factors=array_cat(constant_factors, %s) , variable_factors=array_cat(variable_factors, %s) ,hrisk_factors=array_cat(hrisk_factors, %s),smo_id=%s,visits_done=%s,actual_vdate=array_cat(actual_vdate, %s),d_advice=array_cat(d_advice, %s) WHERE patient_id = %s""",
+    cur.execute("""UPDATE anm_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
+        malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
+        thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
+        bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
+                constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[],smo_id=%s,visits_done=%s,actual_vdate=array_cat(actual_vdate, %s),d_advice=array_cat(d_advice, %s) WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
                   c_f, v_f, h_f, smo_id,visit_number,v_date,advice,p_id, ))

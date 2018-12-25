@@ -379,7 +379,7 @@ def anc_visit(request):
                 haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
 
                 constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[] WHERE patient_id = %s""",
-                    (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+                    ( bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                      c_f, v_f, h_f, p_id,))
 

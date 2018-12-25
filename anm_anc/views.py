@@ -98,6 +98,7 @@ def anc_visit(request):
     patient_name = age_rec[0][4]
     cur.execute("SELECT height FROM anm_anc WHERE patient_id = %s", (p_id,))
     rec_height = cur.fetchall()
+    print(rec_height)
     height = rec_height[0][0]
 
     if(height==None):

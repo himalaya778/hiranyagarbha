@@ -453,6 +453,7 @@ def link_smo_anm(request):
     for i in range(0,len(anm)):
         cur.execute("SELECT smo_id FROM anm_level WHERE anm = %s", (anm[i],))
         rec_anm = cur.fetchall()
+        print(rec_anm)
         if(len(rec_anm)==0):
             cur.execute("UPDATE anm_level SET smo_id = %s WHERE anm = %s", (smo_id, anm[i],))
             conn.commit()

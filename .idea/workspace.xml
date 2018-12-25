@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/smo/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,20 +22,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
+            <state relative-caret-position="1905">
               <caret line="459" column="33" selection-start-line="459" selection-start-column="33" selection-end-line="459" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="437" column="37" selection-start-line="437" selection-start-column="37" selection-end-line="437" selection-end-column="37" />
+            <state relative-caret-position="409">
+              <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -63,7 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>schedule</find>
       <find>hrisk_factors</find>
       <find>b_</find>
       <find>constant_</find>
@@ -93,6 +92,7 @@
       <find>app</find>
       <find>visit_dates</find>
       <find>app_data</find>
+      <find>link</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>
@@ -122,9 +122,9 @@
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/smo/urls.py" />
-        <option value="$PROJECT_DIR$/smo/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
+        <option value="$PROJECT_DIR$/smo/views.py" />
       </list>
     </option>
   </component>
@@ -427,16 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="437" column="37" selection-start-line="437" selection-start-column="37" selection-end-line="437" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newproject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -453,8 +443,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
+        <state relative-caret-position="1905">
           <caret line="459" column="33" selection-start-line="459" selection-start-column="33" selection-end-line="459" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

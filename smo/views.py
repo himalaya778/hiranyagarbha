@@ -170,6 +170,10 @@ def smo_anc_visit(request):
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
                   c_f, v_f, h_f, smo_id,visit_number,v_date,advice,p_id, ))
+
+    cur.execute(
+        "UPDATE patient_level SET schedule_status = True WHERE patient_id = %s ",
+        ( p_id,))
     conn.commit()
     return Response("Visit " + str(visit_number) +" Data Updated")
 
@@ -267,7 +271,7 @@ def set_visit(request):
     print(array_date)
     #s_time = relevant_data['time']
 
-    cur.execute("UPDATE patient_level  SET visit_schedule = visit_schedule || %s::DATE[] , v_scheduled = 'true' WHERE patient_id = %s ", (array_date, patient_id,))
+    cur.execute("UPDATE patient_level  SET visit_schedule = visit_schedule || %s::DATE[] , schedule_status = True WHERE patient_id = %s ", (array_date, patient_id,))
 
     cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()

@@ -442,6 +442,8 @@ def link_smo_anm(request):
     relevant_data = json.loads(request.body)
     smo = relevant_data['smo']
     anm = relevant_data['anm']
+    print(smo)
+    print(anm)
     #smo = 'Dr. Maha Shankar'
     #anm = ['sunita', 'Bharti Devi']
     cur.execute("SELECT smo_id FROM smo_level WHERE smo=%s", (smo,))

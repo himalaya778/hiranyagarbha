@@ -241,7 +241,7 @@ def anc_visit(request):
         variable_factors+=('iugr ')
 
     alb = []
-    iugr.append(relevant_data['alb'])#25
+    alb.append(relevant_data['alb'])#25
     if(not(alb[0] == "None")):
         variable_factors+=('alb ')
 

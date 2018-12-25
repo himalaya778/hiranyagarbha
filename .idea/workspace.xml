@@ -95,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/smo/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="437" column="18" selection-start-line="437" selection-start-column="18" selection-end-line="437" selection-end-column="18" />
+              <caret line="437" column="14" selection-start-line="437" selection-start-column="14" selection-end-line="437" selection-end-column="14" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -507,7 +507,7 @@
     <entry file="file://$PROJECT_DIR$/smo/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="437" column="18" selection-start-line="437" selection-start-column="18" selection-end-line="437" selection-end-column="18" />
+          <caret line="437" column="14" selection-start-line="437" selection-start-column="14" selection-end-line="437" selection-end-column="14" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

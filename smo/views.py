@@ -433,6 +433,8 @@ def smo_app_data(request):
         """SELECT row_to_json(patient_record) FROM (
 
         SELECT *  FROM patient_level 
+   INNER JOIN smo_pnc
+   ON smo_pnc.patient_id = patient_level.patient_id
    INNER JOIN smo_anc
      ON smo_anc.patient_id = patient_level.patient_id
  WHERE smo_anc.smo_id = %s)patient_record """, (smo_id,))

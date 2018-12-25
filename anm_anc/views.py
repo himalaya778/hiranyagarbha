@@ -375,7 +375,7 @@ def anc_visit(request):
         #             tobacohol, preg_disease, bleeding_check, iugr, alb,
         #             hrisk_check, c_f, v_f, h_f, anm_id))
 
-        cur.execute("""UPDATE smo_anc SET weight=array_append(weight, %s::DOUBLE PRECISION) ,bp_1=array_append(bp_1, %s) ,bp_2=array_append(bp_2, %s) ,malrepresentation=array_append(malrepresentation, %s) ,gdm=array_append(gdm, %s) ,
+        cur.execute("""UPDATE smo_anc SET weight=array_append(weight, %s::INTEGER) ,bp_1=array_append(bp_1, %s) ,bp_2=array_append(bp_2, %s) ,malrepresentation=array_append(malrepresentation, %s) ,gdm=array_append(gdm, %s) ,
         anemia=array_append(anemia, %s) ,
             haemoglobin=array_append(haemoglobin, %s) ,thyroid=array_append(thyroid, %s) , alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s) ,preg_related_disease=array_append(preg_related_disease, %s) 
             ,bleeding_check=array_append(bleeding_ceck, %s) ,iugr=array_append(iugr, %s) ,

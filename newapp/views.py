@@ -442,8 +442,6 @@ def link_smo_anm(request):
     relevant_data = json.loads(request.body)
     smo = relevant_data['smo']
     anm = relevant_data['anm']
-    print(smo)
-    print(anm)
     #smo = 'Dr. Maha Shankar'
     #anm = ['sunita', 'Bharti Devi']
     cur.execute("SELECT smo_id FROM smo_level WHERE smo=%s", (smo,))
@@ -459,6 +457,7 @@ def link_smo_anm(request):
             cur.execute("UPDATE anm_level SET smo_id = %s WHERE anm = %s", (smo_id, anm[i],))
             conn.commit()
         else:
+            print("already linked")
             return Response(str(anm[i]) + "already linked with smo")
     return Response('Anm Linked With Smo')
 

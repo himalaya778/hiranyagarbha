@@ -381,10 +381,11 @@ def anc_visit(request):
 
         cur.execute("""UPDATE anm_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
-        thyroid=array_append(thyroid,%s),       
+        thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
+        bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
                 constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[] WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
-                     #tobacohol, preg_disease, bleeding_check, iugr,
+                     tobacohol, preg_disease, bleeding_check, iugr,
                      c_f, v_f, h_f, p_id,))
 
         conn.commit()

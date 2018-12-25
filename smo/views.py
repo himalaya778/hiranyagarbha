@@ -234,6 +234,8 @@ def pnc_visit(request):
                 (p_id,visit_date,mother_status,stutch,color_lochia,oedema,
                  breast_feeding,breast_infection, infant_danger))
 
+    cur.execute("UPDATE patient_level SET pnc_check=True WHERE patient_id=%s", (p_id,))
+
     conn.commit()
 
     return Response("PNC Details Saved")
@@ -427,6 +429,7 @@ def update_patient_data(request):
 @permission_classes((IsAuthenticated,))
 def smo_app_data(request):
     smo_id = find_smo_id(request.user)
+    print(smo_id)
     start = int(request.GET.get('start', 0))
     patients = []
     cur.execute(

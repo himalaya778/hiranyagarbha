@@ -383,6 +383,8 @@ def anc_visit(request):
                      tobacohol, preg_disease, bleeding_check, iugr,
                      c_f, v_f, h_f, p_id,))
 
+        conn.commit()
+
     if(hrisk_check==True):
         cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
 

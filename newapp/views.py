@@ -447,11 +447,17 @@ def link_smo_anm(request):
     cur.execute("SELECT smo_id FROM smo_level WHERE smo=%s", (smo,))
     records = cur.fetchall()
     smo_id = records[0][0]
-    print(smo_id)
-    # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
+
+
+
     for i in range(0,len(anm)):
-        cur.execute("UPDATE anm_level SET smo_id = %s WHERE anm = %s", (smo_id, anm[i],))
-    conn.commit()
+        cur.execute("SELECT smo_id FROM anm_level WHERE anm = %s", (anm[i]))
+        rec_anm = cur.fetchall()
+        if(len(rec_anm)==0):
+            cur.execute("UPDATE anm_level SET smo_id = %s WHERE anm = %s", (smo_id, anm[i],))
+            conn.commit()
+        else:
+            return Response(str(anm[i]) + "already linked with smo")
     return Response('Anm Linked With Smo')
 
 @api_view(['POST'])

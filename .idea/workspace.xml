@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="205">
               <caret line="243" column="7" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/newapp/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="459" column="66" selection-start-line="459" selection-start-column="66" selection-end-line="459" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -111,11 +120,11 @@
         <option value="$PROJECT_DIR$/smo/smo_add_ons.py" />
         <option value="$PROJECT_DIR$/accounts/func_modules.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
-        <option value="$PROJECT_DIR$/newapp/views.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/smo/urls.py" />
         <option value="$PROJECT_DIR$/smo/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
+        <option value="$PROJECT_DIR$/newapp/views.py" />
       </list>
     </option>
   </component>
@@ -140,7 +149,7 @@
             <path>
               <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
               <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
-              <item name="newproject" type="462c0819:PsiDirectoryNode" />
+              <item name="newapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,13 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="234" column="81" selection-start-line="234" selection-start-column="81" selection-end-line="234" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smo/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
@@ -446,6 +448,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="243" column="7" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="459" column="66" selection-start-line="459" selection-start-column="66" selection-end-line="459" selection-end-column="66" />
         </state>
       </provider>
     </entry>

@@ -380,7 +380,7 @@ def anc_visit(request):
         #        haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
 
         cur.execute("""UPDATE anm_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
-        malrepresentation=array_append(malrepresentation,%s::VARCHAR),gdm=array_append(gdm,%s),
+        malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),
        
                 constant_factors=%s::TEXT[] , variable_factors=%s::TEXT[] ,hrisk_factors=%s::TEXT[] WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm,# anemia, hb, thyroid,

@@ -173,7 +173,7 @@ def get_visit_number_anm(id):
     cur.execute("SELECT visit_no FROM anm_anc WHERE patient_id = %s" , (id,))
     records_v = cur.fetchall()
     if(len(records_v)==0):
-        v_no = -1
+        v_no = 0
     else:
         v_no = records_v[0][0]
     return v_no

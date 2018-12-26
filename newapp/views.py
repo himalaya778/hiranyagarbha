@@ -19,6 +19,7 @@ from accounts.views import conn
 from pyfcm import FCMNotification
 from notify.signals import notify
 from django.contrib import messages
+
 ############################################################################################################################################################################3
 #Establishing conection with Database
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")

@@ -394,7 +394,7 @@ def anc_visit(request):
 
         conn.commit()
 
-    if(hrisk_check==False):
+    if(hrisk_check==True):
         cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
 
         visit_dates = []

@@ -408,16 +408,13 @@ def anc_visit(request):
                      hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
 
         officer = get_smo_name(smo_id)
-        #notify_smo(officer)
+        notify_smo(officer)
         text_to_smo(p_id, officer,patient_name)
         #text_to_supervisor(anm_id,p_id)
 
     conn.commit()
 
     return Response({"high_risk" : hrisk_check})
-
-
-
 
 
 @api_view(['GET'])

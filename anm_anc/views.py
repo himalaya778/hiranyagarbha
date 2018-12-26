@@ -387,7 +387,7 @@ def anc_visit(request):
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
         bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
-                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s),visit_no WHERE patient_id = %s""",
+                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s),visit_no=%s WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                       const_factors, variable_factors, hrisk_factors, visit_number,p_id,))

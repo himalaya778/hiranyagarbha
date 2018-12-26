@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,49 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="389" column="177" selection-start-line="389" selection-start-column="177" selection-end-line="389" selection-end-column="177" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_on_methods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="303" column="38" selection-start-line="303" selection-start-column="38" selection-end-line="303" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newapp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7497">
-              <caret line="461" column="25" selection-start-line="461" selection-start-column="25" selection-end-line="461" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smo/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="41" />
+            <state relative-caret-position="-799">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -64,29 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="smo_add_ons.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smo/smo_add_ons.py">
+      <file leaf-file-name="add_on_methods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="8" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/anm_anc/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newproject/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="85" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -157,13 +100,13 @@
         <option value="$PROJECT_DIR$/anm_anc/urls.py" />
         <option value="$PROJECT_DIR$/smo/smo_add_ons.py" />
         <option value="$PROJECT_DIR$/accounts/func_modules.py" />
-        <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/smo/urls.py" />
         <option value="$PROJECT_DIR$/smo/views.py" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/add_on_methods.py" />
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
+        <option value="$PROJECT_DIR$/accounts/views.py" />
       </list>
     </option>
   </component>
@@ -190,6 +133,11 @@
               <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
               <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
               <item name="accounts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
+              <item name="anm_anc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
@@ -483,27 +431,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/views.py">
+    <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="303" column="38" selection-start-line="303" selection-start-column="38" selection-end-line="303" selection-end-column="38" />
+        <state relative-caret-position="459">
+          <caret line="389" column="177" selection-start-line="389" selection-start-column="177" selection-end-line="389" selection-end-column="177" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/add_on_methods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
+    <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="389" column="177" selection-start-line="389" selection-start-column="177" selection-end-line="389" selection-end-column="177" />
+        <state relative-caret-position="-799">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

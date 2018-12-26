@@ -119,7 +119,7 @@ class UserCreate(APIView):
 
                     url = "http://api.msg91.com/api/sendhttp.php"  # API URL
 
-                    postdata = urllib.urlencode(values)  # URL encoding the data here.
+                    postdata = urllib.parse.urlencode(values)  # URL encoding the data here.
 
                     req = urllib.Request(url, postdata)
 

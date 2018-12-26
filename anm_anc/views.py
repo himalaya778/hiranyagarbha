@@ -407,6 +407,8 @@ def anc_visit(request):
                      tobacohol, preg_disease, bleeding_check, iugr,alb,
                      hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
 
+        print("smo_id" + str(smo_id))
+
         officer = get_smo_name(smo_id)
         notify_smo(officer)
         text_to_smo(p_id, officer,patient_name)

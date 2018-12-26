@@ -75,26 +75,25 @@ class UserCreate(APIView):
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
 
-                        conn_1 = http.client.HTTPConnection("api.msg91.com")
-                        # sending text message notification to smo
-                        #cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (officer,))
-                        #records = cur.fetchall()
-                        mobile = relevant_data['mobile']
-                        role = relevant_data['role']
-                        fix = """Welcome to Hiranyagarbha Smart portal.
-You've successfully been registered. """ \
+                    conn_1 = http.client.HTTPConnection("api.msg91.com")
+                    # sending text message notification to smo
+                    #cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (officer,))
+                    #records = cur.fetchall()
+                    #print(records)
+                    mobile = relevant_data["mobile"]
 
-                        var = " username : " + relevant_data["username"] + " Password : " + relevant_data["password"]   # + agbdi
-                        message = fix + var
-                        conn_1.request("GET",
-                                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                                           mobile, message,))
+                    fix = "Welcome to Hiranyagarbha Smart portal. You've successfully been registered. " \
+                          ""
+                    var = "username : " + relevant_data["username"] + " password : " + relevant_data["password"]
+                    message = fix + var
+                    conn_1.request("GET",
+                                   "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                                       mobile, message,))
 
-                        print(message)
-                        res = conn_1.getresponse()
-                        data = res.read()
+                    res = conn_1.getresponse()
+                    data = res.read()
 
-                        print(data.decode("utf-8"))
+                    print(data.decode("utf-8"))
 
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
                         cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s' , (user_id,))

@@ -17,6 +17,8 @@ import json
 import psycopg2
 from django.contrib.auth.models import User
 import http.client
+import urllib  # Python URL functions
+ # Python URL functions
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
 conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0 host='ec2-54-83-50-145.compute-1.amazonaws.com'")
@@ -75,7 +77,7 @@ class UserCreate(APIView):
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
 
-                    conn_1 = http.client.HTTPConnection("api.msg91.com")
+                   # conn_1 = http.client.HTTPConnection("api.msg91.com")
                     # sending text message notification to smo
                     #cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (officer,))
                     #records = cur.fetchall()
@@ -86,14 +88,50 @@ class UserCreate(APIView):
                           ""
                     var = "username : " + relevant_data["username"] + " password : " + relevant_data["password"]
                     message = fix + var
-                    conn_1.request("GET",
-                                   "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                                       mobile, message,))
+                    #conn_1.request("GET","/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                    #                   mobile, message,))
 
-                    res = conn_1.getresponse()
-                    data = res.read()
+                    #res = conn_1.getresponse()
+                    #data = res.read()
 
-                    print(data.decode("utf-8"))
+                    #print(data.decode("utf-8"))
+
+
+
+                    authkey = "243753Ak8EPySu7Jnp5bcbeaaf"  # Your authentication key.
+
+                    #mobiles =mobile  # Multiple mobiles numbers separated by comma.
+
+                    #message =   # Your message to send.
+
+                    sender = "MSGIND"  # Sender ID,While using route4 sender id should be 6 characters long.
+
+                    route = "4"  # Define route
+
+                    # Prepare you post parameters
+                    values = {
+                        'authkey': authkey,
+                        'mobiles': mobile,
+                        'message': message,
+                        'sender': sender,
+                        'route': route
+                    }
+
+                    url = "http://api.msg91.com/api/sendhttp.php"  # API URL
+
+                    postdata = urllib.urlencode(values)  # URL encoding the data here.
+
+                    req = urllib.Request(url, postdata)
+
+                    #response = urllib2.urlopen(req)
+
+                    #output = response.read()  # Get Response
+
+                    #print
+                    #output  # Print Response
+
+
+
 
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
                         cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s' , (user_id,))

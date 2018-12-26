@@ -84,12 +84,13 @@ class UserCreate(APIView):
                         fix = """Welcome to Hiranyagarbha Smart portal.
 You've successfully been registered. """ \
 
-                        var = " username:" + " " + " Password " + " "   # + agbdi
+                        var = " username : " + relevant_data["username"] + " Password : " + relevant_data["password"]   # + agbdi
                         message = fix + var
                         conn_1.request("GET",
                                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
                                            mobile, message,))
 
+                        print(message)
                         res = conn_1.getresponse()
                         data = res.read()
 

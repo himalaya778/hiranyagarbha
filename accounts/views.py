@@ -123,12 +123,12 @@ class UserCreate(APIView):
 
                     req = urllib.request.Request(url, postdata)
 
+                    response = urllib.request.urlopen(req)
                     #response = urllib2.urlopen(req)
 
-                    #output = response.read()  # Get Response
+                    output = response.read()  # Get Response
 
-                    #print
-                    #output  # Print Response
+                    print(output)  # Print Response
 
 
 

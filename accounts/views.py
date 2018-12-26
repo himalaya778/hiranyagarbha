@@ -121,7 +121,7 @@ class UserCreate(APIView):
 
                     postdata = urllib.parse.urlencode(values)  # URL encoding the data here.
 
-                    req = urllib.request(url, postdata)
+                    urllib.request(url, postdata)
 
                     #response = urllib2.urlopen(req)
 

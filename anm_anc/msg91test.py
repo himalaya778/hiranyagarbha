@@ -9,7 +9,7 @@ var = "Patient Name : " +  " and Anganbadi : "
 message = fix+var
 conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                       '8766288377', message,))
+                       '9079876270', message,))
 
 res = conn_1.getresponse()
 data = res.read()

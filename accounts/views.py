@@ -15,8 +15,9 @@ from .serializers import AuthCustomTokenSerializer
 from rest_framework.authtoken.models import Token
 import json
 import psycopg2
-from django.contrib.auth.models import User
 import http.client
+conn_text = http.client.HTTPConnection("api.msg91.com")
+from django.contrib.auth.models import User
 import urllib  # Python URL functions
  # Python URL functions
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
@@ -77,58 +78,21 @@ class UserCreate(APIView):
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
 
-                   # conn_1 = http.client.HTTPConnection("api.msg91.com")
-                    # sending text message notification to smo
-                    #cur.execute("SELECT mobile FROM auth_user WHERE username = %s", (officer,))
-                    #records = cur.fetchall()
-                    #print(records)
-                    mobile = relevant_data["mobile"]
+                        fix = "Welcome to Hiranyagarbha " \
+                              ""
+                        var = "Username : " + " Password : "
+                        message = fix + var
+                        conn_text.request("GET",
+                                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                                           '9079876270', message,))
 
-                    fix = "Welcome to Hiranyagarbha Smart portal. You've successfully been registered. " \
-                          ""
-                    var = "username : " + relevant_data["username"] + " password : " + relevant_data["password"]
-                    message = fix + var
-                    #conn_1.request("GET","/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                    #                   mobile, message,))
-
-                    #res = conn_1.getresponse()
-                    #data = res.read()
-
-                    #print(data.decode("utf-8"))
+                        res = conn_text.getresponse()
+                        data = res.read()
+                        print(data.decode("utf-8"))
 
 
 
-                    authkey = "243753Ak8EPySu7Jnp5bcbeaaf"  # Your authentication key.
 
-                    #mobiles =mobile  # Multiple mobiles numbers separated by comma.
-
-                    #message =   # Your message to send.
-
-                    sender = "MSGIND"  # Sender ID,While using route4 sender id should be 6 characters long.
-
-                    route = "4"  # Define route
-
-                    # Prepare you post parameters
-                    values = {
-                        'authkey': authkey,
-                        'mobiles': mobile,
-                        'message': message,
-                        'sender': sender,
-                        'route': route
-                    }
-
-                    url = "http://api.msg91.com/api/sendhttp.php"  # API URL
-
-                    postdata = urllib.parse.urlencode(values)  # URL encoding the data here.
-
-                    req = urllib.request.Request(url, postdata)
-
-                    #response = urllib.request.urlopen(req)
-                    #response = urllib2.urlopen(req)
-
-                    #output = response.read()  # Get Response
-
-                    #print(output)  # Print Response
 
 
 

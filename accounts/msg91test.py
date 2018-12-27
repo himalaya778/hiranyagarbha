@@ -4,11 +4,9 @@ conn_1 = http.client.HTTPConnection("api.msg91.com")
 
 def text_to_user(name,password,role):
 
-
-
-    fix =  """ Welcome to Hiranyagarbha Smart portal \n You've successfully been registered.""" \
+    fix =  "High Risk Identified !" \
                ""
-    var = "Username : " + str(name) + " Password : " + str(password)
+    var = "Patient Name : " +  " and Anganbadi : "
     message = fix+var
     conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (

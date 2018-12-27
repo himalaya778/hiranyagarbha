@@ -448,8 +448,6 @@ def anm_app_data_with_anc(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_app_data_without_anc(request):
-    cur.execute("ALTER TABLE patient_level ALTER COLUMN anc_check SET DEFAULT false;")
-    conn.commit()
     anm_id = get_anm_id(request.user)
     start = int(request.GET.get('start', 0))
     patients = []

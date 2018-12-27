@@ -2,15 +2,15 @@ import http.client
 conn_1 = http.client.HTTPConnection("api.msg91.com")
 # sending text message notification to smo
 
-def text_to_user(name,password):
-
-    fix =  "High Risk Identified !" \
+def text_to_user(name,password,mobile):
+    print(mobile)
+    fix =  "High Risk Ident !" \
                ""
     var = "username : " + name + " password : " + password
     message = fix+var
     conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                       '9079876270', message,))
+                       mobile, message,))
 
     res = conn_1.getresponse()
     data = res.read()

@@ -48,15 +48,13 @@ class UserCreate(APIView):
             if user:
 
                 ###############################
-                cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
-                h_records = cur.fetchall()
-                block = h_records[0][0]
-                cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s",(block,))
+
+                cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s",(str(request.user),))
                 records = cur.fetchall()
-                if (len(records) > 0) and (role=="deo_health" or role=="bmo") :
+                if len(records) > 0:
                     bmo_id = records[0][0]
-                elif (role=="deo_icds" or role=="cdpo"):
-                    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s",(block,))
+                else:
+                    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s",(str(request.user),))
                     records = cur.fetchall()
                     if(len(records)>0):
                         cdpo_id = records[0][0]
@@ -65,7 +63,7 @@ class UserCreate(APIView):
 
                 json_data = serializer.data
                 json_data['token'] = token.key
-                if(relevant_data['role'] == 'bmo' or relevant_data['role'] == 'cdpo' or relevant_data['role']=='deo_icds' or relevant_data['role']=="deo_health"):
+                if(relevant_data['role'] == 'bmo' or relevant_data['role'] == 'cdpo'):
                     cur.execute("UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
                             (   relevant_data['role'],relevant_data['block'] ,relevant_data['division'] , relevant_data['district'], relevant_data['state'],relevant_data['mobile'],relevant_data['name'],json_data['id'] ))
 
@@ -130,11 +128,10 @@ class UserCreate(APIView):
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
-                    cur.execute("INSERT INTO bmo_level(bmo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block']))
+                    cur.execute("INSERT INTO bmo_level(bmo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block]))
                     text_to_user(name,password,mobile)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):
-
                     cur.execute("INSERT INTO smo_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
                     text_to_user(name, password,mobile)
                 #entry to anm_level
@@ -148,7 +145,7 @@ class UserCreate(APIView):
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):
-                    cur.execute("INSERT INTO cdpo_level(cdpo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block']))
+                    cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))
                 #entry to supervisor level
                 if (relevant_data['role'] == 'supervisor'):
                     cur.execute("INSERT INTO supervisor_level(supervisor,cdpo_id) VALUES(%s,%s)",(relevant_data['username'],cdpo_id))
@@ -195,9 +192,9 @@ class ObtainAuthToken(APIView):
             records = list(set(cur.fetchall()))
             print(records)
 
-            if (records[0][11] == 'bmo' or records[0][11]=='deo_health'):
+            if (records[0][11] == 'bmo'):
 
-                cur.execute("""SELECT * FROM bmo_level WHERE block = %s""" , (str(records[0][14]),))
+                cur.execute("""SELECT * FROM bmo_level WHERE bmo = %s""" , (str(records[0][4]),))
                 records_candidate = cur.fetchall()
                 bmo_id = records_candidate[0][0]
                 cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -255,7 +252,7 @@ class ObtainAuthToken(APIView):
 
             if(records[0][11] == "cdpo"):
 
-                cur.execute("""SELECT * FROM cdpo_level WHERE block = %s""" , (str(records[0][14]),))
+                cur.execute("""SELECT * FROM cdpo_level WHERE cdpo = %s""" , (str(records[0][4]),))
                 records_candidate = cur.fetchall()
                 cdpo_id = records_candidate[0][0]
                 cur.execute(""" SELECT  cdpo_level.cdpo_id,

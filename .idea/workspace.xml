@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newapp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="148" column="30" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="30" />
+            <state relative-caret-position="345">
+              <caret line="130" column="128" selection-start-line="130" selection-start-column="128" selection-end-line="130" selection-end-column="128" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -47,8 +46,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="2230" column="11" selection-start-line="2230" selection-start-column="4" selection-end-line="2230" selection-end-column="11" />
+            <state relative-caret-position="153">
+              <caret line="1374" column="35" lean-forward="true" selection-start-line="1374" selection-start-column="35" selection-end-line="1374" selection-end-column="35" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -84,19 +83,19 @@
       <find>anm</find>
       <find>delete_data</find>
       <find>delete_at</find>
-      <find>delete</find>
       <find>get_App</find>
       <find>true</find>
       <find>app_</find>
-      <find>bmo</find>
       <find>create</find>
       <find>bmo_level</find>
       <find>role</find>
       <find>dropdown</find>
-      <find>cdpo</find>
       <find>bmo =</find>
       <find>bmo = %s</find>
       <find>cdpo =</find>
+      <find>delete</find>
+      <find>cdpo</find>
+      <find>bmo</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>
@@ -129,8 +128,8 @@
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
         <option value="$PROJECT_DIR$/accounts/msg91test.py" />
         <option value="$PROJECT_DIR$/anm_anc/urls.py" />
-        <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
+        <option value="$PROJECT_DIR$/accounts/views.py" />
       </list>
     </option>
   </component>
@@ -465,8 +464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="148" column="30" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="30" />
+        <state relative-caret-position="345">
+          <caret line="130" column="128" selection-start-line="130" selection-start-column="128" selection-end-line="130" selection-end-column="128" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -475,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="2230" column="11" selection-start-line="2230" selection-start-column="4" selection-end-line="2230" selection-end-column="11" />
+        <state relative-caret-position="153">
+          <caret line="1374" column="35" lean-forward="true" selection-start-line="1374" selection-start-column="35" selection-end-line="1374" selection-end-column="35" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

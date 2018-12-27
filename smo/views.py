@@ -182,7 +182,7 @@ def smo_anc_visit(request):
     #             tobacohol, preg_disease, bleeding_check, iugr,
     #             const_factors, variable_factors, hrisk_factors, smo_id,visit_number,v_date,advice,p_id, ))
 
-    cur.execute("""UPDATE smo_anc SET weight=array_append(weight, 60) , WHERE patient_id = %s""",( p_id,))
+    cur.execute("""UPDATE smo_anc SET weight=array_append(weight, 60) WHERE patient_id = %s""",( p_id,))
 
     cur.execute(
         "UPDATE patient_level SET schedule_status = True WHERE patient_id = %s ",

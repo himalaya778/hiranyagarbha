@@ -1332,7 +1332,7 @@ def delete_user(request):
 
 
 
-
+    conn.commit()
     from django.contrib.auth.models import User
     user = User.objects.filter(id = id_del)
     user.delete()
@@ -2292,7 +2292,7 @@ def delete_data(request):
             cur.execute("DELETE FROM supervisor_level WHERE supervisor=%s", (name,))
             print("supervisor deleted")
 
-
+        conn.commit()
         from django.contrib.auth.models import User
         user = User.objects.filter(id=id_del)
         user.delete()

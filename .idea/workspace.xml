@@ -72,11 +72,10 @@
       <find>thyroid</find>
       <find>officer</find>
       <find>preg</find>
-      <find>text</find>
       <find>village</find>
       <find>add_</find>
       <find>date</find>
-      <find />
+      <find>= s</find>
       <find>anm_id</find>
       <find>app</find>
       <find>visit_dates</find>
@@ -86,8 +85,9 @@
       <find>visit_number</find>
       <find>msg91</find>
       <find>hrisk_check</find>
-      <find />
+      <find>SELECT *  FROM patient_level INNER JOIN smo_anc ON smo_anc.patient_id = patient_level.patient_id WHERE smo_anc.smo_id = %s</find>
       <find>actual</find>
+      <find>text</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>

@@ -6,8 +6,7 @@ def text_to_user(name,password,role,mobile):
 
     if(role=="anm"):
 
-        fix =  """ Welcome to Hiranyagarbha Smart portal \n You've successfully been registered. \n Download app from here- XXXX (ANM App)
-For guide follow this link- XXXX \n Helpline- 9789XXXX8970\n""" \
+        fix =  """ Welcome to Hiranyagarbha Smart portal """ \
                    ""
         var = "Username : " + str(name) + " Password : " + str(password)
         message = fix+var
@@ -20,8 +19,7 @@ For guide follow this link- XXXX \n Helpline- 9789XXXX8970\n""" \
         print(data.decode("utf-8"))
 
     if (role=="smo"):
-        fix = """ Welcome to Hiranyagarbha Smart portal \n You've successfully been registered. \n Download app from here- XXXX (ANM App)
-        For guide follow this link- XXXX \n Helpline- 9789XXXX8970\n""" \
+        fix = """ Welcome to Hiranyagarbha Smart portal """ \
               ""
         var = "Username : " + str(name) + " Password : " + str(password)
         message = fix + var
@@ -46,9 +44,6 @@ For guide follow this link- XXXX \n Helpline- 9789XXXX8970\n""" \
         res = conn_1.getresponse()
         data = res.read()
         print(data.decode("utf-8"))
-
-
-
 
 
     return ("Text Sent")

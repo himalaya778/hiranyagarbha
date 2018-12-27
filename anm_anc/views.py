@@ -75,6 +75,7 @@ def anc_visit(request):
     anm_id = get_anm_id(request.user)
     smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)
+    print((relevant_data))
     p_id = relevant_data['patient_id']
     c_ctr = 0
     v_ctr = 0
@@ -100,7 +101,6 @@ def anc_visit(request):
     patient_name = age_rec[0][4]
     cur.execute("SELECT height FROM anm_anc WHERE patient_id = %s", (p_id,))
     rec_height = cur.fetchall()
-    print(rec_height)
 
     if(len(rec_height)==0):
 

@@ -186,7 +186,7 @@ def anc_visit(request):
         bp2 = []
         bp1.append(relevant_data['bp1'])#14
         bp2.append(relevant_data['bp2'])#15
-        if (bp1[0]>90 or bp2[0]>140):
+        if (bp1[0]>140 or bp2[0]>90):
             v_ctr+=1
             variable_factors+=('bp ')
 

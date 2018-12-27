@@ -53,9 +53,9 @@ class UserCreate(APIView):
                 block = h_records[0][0]
                 cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s",(block,))
                 records = cur.fetchall()
-                if len(records) > 0:
+                if (len(records) > 0) and (role=="deo_health" or role=="bmo") :
                     bmo_id = records[0][0]
-                else:
+                elif (role=="deo_icds" or role=="cdpo"):
                     cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s",(block,))
                     records = cur.fetchall()
                     if(len(records)>0):
@@ -65,7 +65,7 @@ class UserCreate(APIView):
 
                 json_data = serializer.data
                 json_data['token'] = token.key
-                if(relevant_data['role'] == 'bmo' or relevant_data['role'] == 'cdpo'):
+                if(relevant_data['role'] == 'bmo' or relevant_data['role'] == 'cdpo' or relevant_data['role']=='deo_icds' or relevant_data['role']=="deo_health"):
                     cur.execute("UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
                             (   relevant_data['role'],relevant_data['block'] ,relevant_data['division'] , relevant_data['district'], relevant_data['state'],relevant_data['mobile'],relevant_data['name'],json_data['id'] ))
 

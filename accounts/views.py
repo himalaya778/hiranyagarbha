@@ -143,7 +143,6 @@ class UserCreate(APIView):
                     text_to_user(name, password,mobile)
                     print("function executed successfully")
 
-
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):
                     cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))
@@ -250,7 +249,6 @@ class ObtainAuthToken(APIView):
                 'block': 'gazipur',
                 'district': 'Bhopal', 'division': 'hoshangabad', 'name': records[0][4]
             }
-
 
             if(records[0][11] == "cdpo"):
 

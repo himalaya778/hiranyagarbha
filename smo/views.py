@@ -187,7 +187,7 @@ def smo_anc_visit(request):
             thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
             bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
                     constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s),
-                    visits_done=%s, WHERE patient_id = %s""",
+                    visits_done=%s WHERE patient_id = %s""",
                 (weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                  tobacohol, preg_disease, bleeding_check, iugr,
                  const_factors, variable_factors, hrisk_factors, visit_number, p_id,))

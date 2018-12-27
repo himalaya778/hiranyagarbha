@@ -18,7 +18,7 @@ import psycopg2
 import http.client
 conn_text = http.client.HTTPConnection("api.msg91.com")
 from django.contrib.auth.models import User
-import urllib  # Python URL functions
+from .msg91test import *
  # Python URL functions
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
@@ -145,18 +145,9 @@ class UserCreate(APIView):
                 if (relevant_data['role'] == 'anm'):
                     print('anm in creation')
                     print(user_id)
-                    cur.execute("INSERT INTO anm_level(anm,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
-                    fix = "Welcome to Hiranyagarbha " \
-                          ""
-                    var = "Username : " + " Password : "
-                    message = fix + var
-                    conn_text.request("GET",
-                                      "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                                          mobile, message,))
+                    text_to_user(relevant_data["username"],relevant_data["password"])
+                    print("function executed successfully")
 
-                    res = conn_text.getresponse()
-                    data = res.read()
-                    print(data.decode("utf-8"))
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):

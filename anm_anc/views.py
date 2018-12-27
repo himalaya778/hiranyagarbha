@@ -276,6 +276,7 @@ def anc_visit(request):
         twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
         hrisk_check,c_f, v_f,h_f,anm_id,visit_number,))
 
+        cur.execute("UPDATE patient_level SET anc_check=true WHERE patient_id=%s", (p_id,))
     else:
         ########################################################
 
@@ -388,11 +389,12 @@ def anc_visit(request):
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
         bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
-                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,hrisk_factors=array_append(hrisk_factors,%s),
-                visit_no=%s,hrisk_check WHERE patient_id = %s""",
+                constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,
+                hrisk_factors=array_append(hrisk_factors,%s),
+                visit_no=%s,hrisk_check=%s WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
-                      const_factors, variable_factors, hrisk_factors, visit_number,p_id,hrisk_check))
+                      const_factors, variable_factors, hrisk_factors, visit_number,hrisk_check,p_id,))
 
         conn.commit()
 
@@ -424,14 +426,15 @@ def anc_visit(request):
 @api_view(['GET'])
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
-def anm_app_data(request):
+def anm_app_data_with_anc(request):
     anm_id = get_anm_id(request.user)
     start = int(request.GET.get('start',0))
     patients = []
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (
         
-        SELECT *  FROM patient_level WHERE anm_id=%s  )patient_record """,( anm_id,))
+        SELECT *  FROM patient_level 
+         INNER JOIN anm_anc WHERE patient_level.anm_id=%s)patient_record """,( anm_id,))
 
     records = cur.fetchall()
     for r in records:
@@ -439,3 +442,25 @@ def anm_app_data(request):
     print(len(records))
     end = (start+25)
     return Response({"patients" : patients[start:end]})
+
+
+@api_view(['GET'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
+def anm_app_data_without_anc(request):
+    anm_id = get_anm_id(request.user)
+    start = int(request.GET.get('start', 0))
+    patients = []
+    cur.execute(
+        """SELECT row_to_json(patient_record) FROM (
+
+        SELECT *  FROM patient_level WHERE anm_id=%s and anc_check=false)patient_record """, (anm_id,))
+
+    records = cur.fetchall()
+    for r in records:
+        patients.append(r[0])
+    print(len(records))
+    end = (start + 25)
+    return Response({"patients": patients[start:end]})
+
+

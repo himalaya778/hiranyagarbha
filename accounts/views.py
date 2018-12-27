@@ -34,6 +34,10 @@ class UserCreate(APIView):
     """
     def post(self, request, format='json'):
         relevant_data = json.loads(request.body)
+        name=relevant_data['username']
+        password = relevant_data['password']
+        role = relevant_data['role']
+        mobile = relevant_data['mobile']
         print(relevant_data)
         serializer = UserSerializer(data=relevant_data)
 
@@ -77,19 +81,6 @@ class UserCreate(APIView):
                             (relevant_data['role'], block, division,
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
-                        mobile = relevant_data["mobile"]
-                        print("mobile is ", mobile)
-                        fix = "Welcome to Hiranyagarbha " \
-                              ""
-                        var = "Username : " + " Password : "
-                        message = fix + var
-                        conn_text.request("GET",
-                                       "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                                           mobile, message,))
-
-                        res = conn_text.getresponse()
-                        data = res.read()
-                        print(data.decode("utf-8"))
 
 
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
@@ -138,14 +129,16 @@ class UserCreate(APIView):
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
                     cur.execute("INSERT INTO bmo_level(bmo) VALUES(%s)",(relevant_data['username'],))
+                    text_to_user(name,password,role,mobile)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):
                     cur.execute("INSERT INTO smo_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
+                    text_to_user(name, password, role, mobile)
                 #entry to anm_level
                 if (relevant_data['role'] == 'anm'):
                     print('anm in creation')
                     print(user_id)
-                    text_to_user(relevant_data["username"],relevant_data["password"])
+                    text_to_user(name, password, role, mobile)
                     print("function executed successfully")
 
 

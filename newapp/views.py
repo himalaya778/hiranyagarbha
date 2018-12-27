@@ -2271,8 +2271,8 @@ def delete_data(request):
 
 
 
-    if (type == "anm" or type=="smo" or type == "supervisor"):
-
+    if (type == "user"):
+        print("type is " + type)
         cur.execute("SELECT username,role FROM auth_user WHERE id=%s", (id_del,))
         rec_del = cur.fetchall()
         name = rec_del[0][0]

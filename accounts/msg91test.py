@@ -6,7 +6,7 @@ def text_to_user(name,password):
 
     fix =  "High Risk Identified !" \
                ""
-    var = "Patient Name : " +  " and Anganbadi : "
+    var = "username : " + name + " password : " + password
     message = fix+var
     conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (

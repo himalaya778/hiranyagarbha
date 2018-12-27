@@ -2281,7 +2281,7 @@ def delete_data(request):
             cur.execute("DELETE FROM bmo_level WHERE bmo=%s", (name,))
 
         if (role == "smo"):
-            cur.execute("DELETE FROM smo_level WHERE anm=%s", (name,))
+            cur.execute("DELETE FROM smo_level WHERE smo=%s", (name,))
 
         if (role == "anm"):
             cur.execute("DELETE FROM anm_level WHERE anm=%s", (name,))

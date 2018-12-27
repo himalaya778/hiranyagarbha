@@ -2277,24 +2277,26 @@ def delete_data(request):
         rec_del = cur.fetchall()
         name = rec_del[0][0]
         role = rec_del[0][1]
-        if (role == "bmo"):
-            cur.execute("DELETE FROM bmo_level WHERE bmo=%s", (name,))
+        print("name : " + name)
+        print ("role : " + role)
 
         if (role == "smo"):
             cur.execute("DELETE FROM smo_level WHERE smo=%s", (name,))
+            print("smo deleted")
 
         if (role == "anm"):
             cur.execute("DELETE FROM anm_level WHERE anm=%s", (name,))
+            print("anm deleted")
 
         if (role == "supervisor"):
             cur.execute("DELETE FROM supervisor_level WHERE supervisor=%s", (name,))
+            print("supervisor deleted")
 
-        if (role == "cdpo"):
-            cur.execute("DELETE FROM cdpo_level WHERE cdpo=%s", (name,))
 
         from django.contrib.auth.models import User
         user = User.objects.filter(id=id_del)
         user.delete()
+        print("user deleted")
 
         return Response("User Deleted")
 

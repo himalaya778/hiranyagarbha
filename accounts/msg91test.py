@@ -2,7 +2,7 @@ import http.client
 conn_1 = http.client.HTTPConnection("api.msg91.com")
 # sending text message notification to smo
 
-def text_to_user(name,password)
+def text_to_user(name,password):
 
     fix =  "High Risk Identified ! " \
                ""

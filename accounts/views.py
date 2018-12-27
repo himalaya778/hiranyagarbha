@@ -136,7 +136,7 @@ class UserCreate(APIView):
                     text_to_user(name, password,mobile)
                 #entry to anm_level
                 if (relevant_data['role'] == 'anm'):
-                    cur.execute("INSERT INTO anm_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",
+                    cur.execute("INSERT INTO anm_level(anm,mobile_number,bmo_id) VALUES(%s,%s,%s)",
                                 (relevant_data['username'], relevant_data['mobile'], bmo_id))
                     print('anm in creation')
                     print(user_id)

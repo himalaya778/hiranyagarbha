@@ -1329,7 +1329,7 @@ def delete_user(request):
     if(role == "cdpo"):
         cur.execute("DELETE FROM cdpo_level WHERE cdpo=%s",(name,))
 
-    
+
 
 
 

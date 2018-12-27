@@ -431,9 +431,7 @@ def anm_app_data(request):
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (
         
-        SELECT *  FROM patient_level 
-   INNER JOIN anm_anc
-     ON anm_anc.patient_id = patient_level.patient_id )patient_record """,( anm_id,))
+        SELECT *  FROM patient_level WHERE anm_id=%s  )patient_record """,( anm_id,))
 
     records = cur.fetchall()
     for r in records:

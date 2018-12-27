@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="" />
+    <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/accounts/msg91test.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/msg91test.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +40,8 @@
       <file leaf-file-name="msg91test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/accounts/msg91test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+            <state relative-caret-position="136">
+              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -72,7 +74,7 @@
       <find>village</find>
       <find>add_</find>
       <find>date</find>
-      <find />
+      <find>= s</find>
       <find>anm_id</find>
       <find>app</find>
       <find>visit_dates</find>
@@ -82,7 +84,7 @@
       <find>visit_number</find>
       <find>msg91</find>
       <find>hrisk_check</find>
-      <find />
+      <find>SELECT *  FROM patient_level INNER JOIN smo_anc ON smo_anc.patient_id = patient_level.patient_id WHERE smo_anc.smo_id = %s</find>
       <find>actual</find>
       <find>text</find>
     </findStrings>
@@ -474,8 +476,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/accounts/msg91test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+        <state relative-caret-position="136">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
         </state>
       </provider>
     </entry>

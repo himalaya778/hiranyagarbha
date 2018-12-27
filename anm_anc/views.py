@@ -448,6 +448,7 @@ def anm_app_data_with_anc(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_app_data_without_anc(request):
+
     anm_id = get_anm_id(request.user)
     start = int(request.GET.get('start', 0))
     patients = []

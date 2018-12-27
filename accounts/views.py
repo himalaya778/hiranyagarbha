@@ -128,7 +128,7 @@ class UserCreate(APIView):
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
-                    cur.execute("INSERT INTO bmo_level(bmo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block]))
+                    cur.execute("INSERT INTO bmo_level(bmo) VALUES(%s)",(relevant_data['username'],))
                     text_to_user(name,password,mobile)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):

@@ -4,7 +4,7 @@ conn_1 = http.client.HTTPConnection("api.msg91.com")
 
 def text_to_user(name,password,mobile):
     print(mobile)
-    fix =  "Welcome to Hiranyagarbha " \
+    fix =  "Welcome to Hiranyagarbha" \
                ""
     var = "username : " + name + " password : " + password
     message = fix+var

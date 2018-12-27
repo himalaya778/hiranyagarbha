@@ -147,6 +147,7 @@ class UserCreate(APIView):
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):
+                    print(relevant_data)
                     deo_mobile = relevant_data['deo_mobile']
                     mobile_string = mobile + "," + deo_mobile
                     cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))

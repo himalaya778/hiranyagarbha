@@ -405,7 +405,7 @@ def anc_visit(request):
             constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                     (p_id, [weight], [bp1], [bp2], [malrep], [gdm], [anemia], [hb], [thyroid],
                      [tobacohol], [preg_disease], [bleeding_check], [iugr],[alb],
-                     [hrisk_check], c_f, v_f,h_f, smo_id,0,visit_dates))
+                     hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
 
         print("smo_id" + str(smo_id))
 

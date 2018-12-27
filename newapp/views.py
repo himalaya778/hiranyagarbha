@@ -267,9 +267,6 @@ def village_create(request):
     print(v_name)
     print( " data is  : " ,request.data)
     user_id = request.user.id
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
-    records_1 = cur.fetchall()
-    bmo_id = records_1[0][0]
     cur.execute('SELECT state, division, block, district FROM auth_user WHERE id = %s', (user_id,))
     h_records = cur.fetchall()
     print(h_records)
@@ -277,6 +274,10 @@ def village_create(request):
     division = h_records[0][1]
     block = h_records[0][2]
     district = h_records[0][3]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (str(block),))
+    records_1 = cur.fetchall()
+    bmo_id = records_1[0][0]
+
 
     cur.execute("INSERT INTO village_level(village,bmo_id,state,division,block,district,population) VALUES(%s,%s,%s,%s,%s,%s,%s)",(v_name ,bmo_id,state,division,block,district,v_pop) )
     conn.commit()
@@ -294,7 +295,11 @@ def agbdi_create(request):
     print(request.user)
     print( " data is  : " ,request.data)
     user_id = request.user.id
-    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    cur.execute('SELECT  block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block = h_records[0][0]
+
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s", (str(block),))
     records_1 = cur.fetchall()
     cdpo_id = records_1[0][0]
 

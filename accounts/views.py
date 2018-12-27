@@ -48,13 +48,15 @@ class UserCreate(APIView):
             if user:
 
                 ###############################
-
-                cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s",(str(request.user),))
+                cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+                h_records = cur.fetchall()
+                block = h_records[0][0]
+                cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s",(block,))
                 records = cur.fetchall()
                 if len(records) > 0:
                     bmo_id = records[0][0]
                 else:
-                    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s",(str(request.user),))
+                    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s",(block,))
                     records = cur.fetchall()
                     if(len(records)>0):
                         cdpo_id = records[0][0]
@@ -128,10 +130,11 @@ class UserCreate(APIView):
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
-                    cur.execute("INSERT INTO bmo_level(bmo) VALUES(%s)",(relevant_data['username'],))
+                    cur.execute("INSERT INTO bmo_level(bmo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block']))
                     text_to_user(name,password,mobile)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):
+
                     cur.execute("INSERT INTO smo_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
                     text_to_user(name, password,mobile)
                 #entry to anm_level
@@ -145,7 +148,7 @@ class UserCreate(APIView):
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):
-                    cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))
+                    cur.execute("INSERT INTO cdpo_level(cdpo,block) VALUES(%s,%s)",(relevant_data['username'],relevant_data['block']))
                 #entry to supervisor level
                 if (relevant_data['role'] == 'supervisor'):
                     cur.execute("INSERT INTO supervisor_level(supervisor,cdpo_id) VALUES(%s,%s)",(relevant_data['username'],cdpo_id))

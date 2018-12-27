@@ -8,7 +8,7 @@ def text_to_user(name,password,role,mobile):
 
         fix =  """ Welcome to Hiranyagarbha Smart portal """ \
                    ""
-        var = "Username : " + str(name) + " Password : " + str(password)
+        var = "Username : "  + " Password : " 
         message = fix+var
         conn_1.request("GET",
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (

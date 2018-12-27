@@ -77,24 +77,19 @@ class UserCreate(APIView):
                             (relevant_data['role'], block, division,
                              district,state, relevant_data['mobile'],
                              relevant_data['name'], json_data['id']))
-
+                        mobile = relevant_data["mobile"]
+                        print("mobile is ", mobile)
                         fix = "Welcome to Hiranyagarbha " \
                               ""
                         var = "Username : " + " Password : "
                         message = fix + var
                         conn_text.request("GET",
                                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                                           '9079876270', message,))
+                                           mobile, message,))
 
                         res = conn_text.getresponse()
                         data = res.read()
                         print(data.decode("utf-8"))
-
-
-
-
-
-
 
 
                     if(relevant_data['role'] == 'supervisor' or relevant_data['role'] == 'worker'):
@@ -151,6 +146,17 @@ class UserCreate(APIView):
                     print('anm in creation')
                     print(user_id)
                     cur.execute("INSERT INTO anm_level(anm,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
+                    fix = "Welcome to Hiranyagarbha " \
+                          ""
+                    var = "Username : " + " Password : "
+                    message = fix + var
+                    conn_text.request("GET",
+                                      "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
+                                          mobile, message,))
+
+                    res = conn_text.getresponse()
+                    data = res.read()
+                    print(data.decode("utf-8"))
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):

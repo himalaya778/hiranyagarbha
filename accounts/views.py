@@ -129,16 +129,16 @@ class UserCreate(APIView):
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
                     cur.execute("INSERT INTO bmo_level(bmo) VALUES(%s)",(relevant_data['username'],))
-                    text_to_user(name,password,role,mobile)
+                    text_to_user(name,password)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):
                     cur.execute("INSERT INTO smo_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
-                    text_to_user(name, password, role, mobile)
+                    text_to_user(name, password)
                 #entry to anm_level
                 if (relevant_data['role'] == 'anm'):
                     print('anm in creation')
                     print(user_id)
-                    text_to_user(name, password, role, mobile)
+                    text_to_user(name, password)
                     print("function executed successfully")
 
 

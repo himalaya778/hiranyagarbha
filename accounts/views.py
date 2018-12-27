@@ -128,8 +128,10 @@ class UserCreate(APIView):
 
                 #entry to bmo_level
                 if (relevant_data['role'] == 'bmo'):
+                    deo_mobile = relevant_data['deo_mobile']
+                    mobile_string = mobile + "," +deo_mobile
                     cur.execute("INSERT INTO bmo_level(bmo) VALUES(%s)",(relevant_data['username'],))
-                    text_to_user(name,password,mobile)
+                    text_to_user(name,password,mobile_string)
                 #entry to smo_level
                 if (relevant_data['role'] == 'smo'):
                     cur.execute("INSERT INTO smo_level(smo,mobile_number,bmo_id) VALUES(%s,%s,%s)",(relevant_data['username'],relevant_data['mobile'],bmo_id))
@@ -145,6 +147,8 @@ class UserCreate(APIView):
 
                 #entry to cdpo
                 if (relevant_data['role'] == 'cdpo'):
+                    deo_mobile = relevant_data['deo_mobile']
+                    mobile_string = mobile + "," + deo_mobile
                     cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))
                 #entry to supervisor level
                 if (relevant_data['role'] == 'supervisor'):

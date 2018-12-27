@@ -318,7 +318,11 @@ def agbdi_create(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def smo_dropdown(request):
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block = h_records[0][0]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (str(request.user),))
     records_1 = cur.fetchall()
     bmo_id = records_1[0][0]
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -342,7 +346,11 @@ def smo_dropdown(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_dropdown(request):
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     bmo_id = records_1[0][0]
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -366,7 +374,11 @@ def anm_dropdown(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def village_dropdown(request):
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     bmo_id = records_1[0][0]
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -391,7 +403,11 @@ def village_dropdown(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def all_drop_down(request):
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     bmo_id = records_1[0][0]
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -496,7 +512,11 @@ def link_anm_village(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def check_link(request):
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     bmo_id = records_1[0][0]
     cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -587,7 +607,10 @@ def link_agbdi_worker(request):
 @permission_classes((IsAuthenticated,))
 def drop_down_icds(request):
     user_id = request.user.id
-    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     cdpo_id = records_1[0][0]
     cur.execute(""" SELECT  cdpo_level.cdpo_id,
@@ -638,7 +661,11 @@ def drop_down_icds(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def check_link_icds(request):
-    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE cdpo = %s", (str(request.user),))
+    user_id = request.user.id
+    cur.execute('SELECT block FROM auth_user WHERE id = %s', (user_id,))
+    h_records = cur.fetchall()
+    block=h_records[0][0]
+    cur.execute("SELECT cdpo_id FROM cdpo_level WHERE block = %s", (block,))
     records_1 = cur.fetchall()
     cdpo_id = records_1[0][0]
     cur.execute(""" SELECT  cdpo_level.cdpo_id,

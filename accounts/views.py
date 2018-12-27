@@ -195,9 +195,9 @@ class ObtainAuthToken(APIView):
             records = list(set(cur.fetchall()))
             print(records)
 
-            if (records[0][11] == 'bmo'):
+            if (records[0][11] == 'bmo' or records[0][11]=='deo_health'):
 
-                cur.execute("""SELECT * FROM bmo_level WHERE bmo = %s""" , (str(records[0][4]),))
+                cur.execute("""SELECT * FROM bmo_level WHERE block = %s""" , (str(records[0][14]),))
                 records_candidate = cur.fetchall()
                 bmo_id = records_candidate[0][0]
                 cur.execute(""" SELECT  bmo_level.bmo_id,
@@ -255,7 +255,7 @@ class ObtainAuthToken(APIView):
 
             if(records[0][11] == "cdpo"):
 
-                cur.execute("""SELECT * FROM cdpo_level WHERE cdpo = %s""" , (str(records[0][4]),))
+                cur.execute("""SELECT * FROM cdpo_level WHERE block = %s""" , (str(records[0][14]),))
                 records_candidate = cur.fetchall()
                 cdpo_id = records_candidate[0][0]
                 cur.execute(""" SELECT  cdpo_level.cdpo_id,

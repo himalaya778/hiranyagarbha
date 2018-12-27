@@ -1310,9 +1310,34 @@ def dashboard_data(request) :
 def delete_user(request):
     relevant_data = json.loads(request.body)
     id_del = relevant_data["id"]
+    cur.execute("SELECT username,role FROM auth_user WHERE id=%s", (id_del,))
+    rec_del = cur.fetchall()
+    name = rec_del[0][0]
+    role = rec_del[0][1]
+    if(role == "bmo"):
+        cur.execute("DELETE FROM bmo_level WHERE bmo=%s",(name,))
+
+    if(role == "smo"):
+        cur.execute("DELETE FROM smo_level WHERE anm=%s",(name,))
+
+    if(role == "anm"):
+        cur.execute("DELETE FROM anm_level WHERE anm=%s",(name,))
+
+    if(role == "supervisor"):
+        cur.execute("DELETE FROM supervisor_level WHERE supervisor=%s",(name,))
+
+    if(role == "cdpo"):
+        cur.execute("DELETE FROM cdpo_level WHERE cdpo=%s",(name,))
+
+    
+
+
+
     from django.contrib.auth.models import User
     user = User.objects.filter(id = id_del)
     user.delete()
+
+
     print(request)
     print(request.body)
     return Response("User Deleted")

@@ -182,7 +182,7 @@ def smo_anc_visit(request):
     #    variable_factors, % s), hrisk_factors = array_append(hrisk_factors, % s),
     #smo_id = % s, visits_done = % s, actual_vdate = array_append(actual_vdate, % s), d_advice = array_append(
     #    d_advice, % s)
-    cur.execute("""UPDATE smo_anc SET weight=array_append(weight, %s) ,
+    cur.execute("""UPDATE smo_anc SET weight=array_append(weight, %s) 
     WHERE patient_id = %s""",
             (weight,
              #bp1, bp2, malrep, gdm, anemia, hb, thyroid,

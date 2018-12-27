@@ -433,9 +433,7 @@ def anm_app_data(request):
         
         SELECT *  FROM patient_level 
    INNER JOIN anm_anc
-     ON anm_anc.patient_id = patient_level.patient_id
- WHERE anm_anc.hrisk_check = 'true'
-   AND anm_anc.anm_id = %s)patient_record """,( anm_id,))
+     ON anm_anc.patient_id = patient_level.patient_id )patient_record """,( anm_id,))
 
     records = cur.fetchall()
     for r in records:

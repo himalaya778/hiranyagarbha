@@ -432,9 +432,9 @@ def anm_app_data_with_anc(request):
     patients = []
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (
-        
-        SELECT *  FROM patient_level 
-         INNER JOIN anm_anc WHERE patient_level.anm_id=%s)patient_record """,( anm_id,))
+        SELECT *  FROM anm_anc 
+         INNER JOIN patient_level ON anm_anc.patient_id=patient_level.patient_id 
+         WHERE patient_level.anm_id=%s and patient_level.anc_check=true)patient_record """,( anm_id,))
 
     records = cur.fetchall()
     for r in records:
@@ -448,13 +448,15 @@ def anm_app_data_with_anc(request):
 @authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
 @permission_classes((IsAuthenticated,))
 def anm_app_data_without_anc(request):
+    cur.execute("ALTER TABLE patient_level ALTER COLUMN anc_check SET DEFAULT false;")
+    conn.commit()
     anm_id = get_anm_id(request.user)
     start = int(request.GET.get('start', 0))
     patients = []
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (
 
-        SELECT *  FROM patient_level WHERE anm_id=%s and anc_check=false)patient_record """, (anm_id,))
+        SELECT *  FROM patient_level WHERE anm_id=%s and anc_check IS NULL)patient_record """, (anm_id,))
 
     records = cur.fetchall()
     for r in records:

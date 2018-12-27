@@ -365,6 +365,7 @@ def anc_visit(request):
             hrisk_check = relevant_data['hrisk_check']
 
         visit_number+=1
+        print( "high risk value " + hrisk_check)
         #h_f.append(hrisk_factors)
         #c_f.append(const_factors)
         #v_f.append(variable_factors)
@@ -414,7 +415,7 @@ def anc_visit(request):
         text_to_smo(p_id, officer,patient_name)
         #text_to_supervisor(anm_id,p_id)
 
-    conn.commit()
+        conn.commit()
 
     return Response({"high_risk" : hrisk_check})
 

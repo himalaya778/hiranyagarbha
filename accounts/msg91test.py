@@ -6,13 +6,14 @@ def text_to_user(name,password,role,mobile):
 
     if(role=="anm"):
 
-        fix =  """Welcome to Hiranyagarbha Smart portal""" \
+
+        fix =  "Welcome to Hiranyagarbha Smart portal" \
                    ""
         var = "User : "  + " Pass : "
         message = fix+var
         conn_1.request("GET",
                            "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                           mobile, message,))
+                           '9521466943', message,))
 
         res = conn_1.getresponse()
         data = res.read()

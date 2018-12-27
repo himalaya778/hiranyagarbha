@@ -267,7 +267,7 @@ def anc_visit(request):
         c_f.append(const_factors)
         v_f.append(variable_factors)
         visit_number+=1
-        print("high risk value " + hrisk_check)
+        print("high risk value " + str(hrisk_check))
         cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
         hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
         haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
@@ -365,7 +365,7 @@ def anc_visit(request):
             hrisk_check = relevant_data['hrisk_check']
 
         visit_number+=1
-        print( "high risk value " + hrisk_check)
+        print( "high risk value " + str(hrisk_check))
         #h_f.append(hrisk_factors)
         #c_f.append(const_factors)
         #v_f.append(variable_factors)

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9682bea2-f45f-4def-a988-868fa4ee3a57" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/anm_anc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/anm_anc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/smo/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="269" column="47" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="47" />
+            <state relative-caret-position="34">
+              <caret line="371" lean-forward="true" selection-start-line="371" selection-end-line="371" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/smo/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="179" column="16" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>array_</find>
-      <find>weight</find>
       <find>malrep</find>
       <find>gdm</find>
       <find>husb</find>
@@ -120,6 +131,8 @@
       <find>height</find>
       <find>visit_number</find>
       <find>msg91</find>
+      <find>hrisk_check</find>
+      <find>SELECT *  FROM patient_level INNER JOIN smo_anc ON smo_anc.patient_id = patient_level.patient_id WHERE smo_anc.smo_id = %s</find>
     </findStrings>
     <replaceStrings>
       <replace>+=</replace>
@@ -147,12 +160,12 @@
         <option value="$PROJECT_DIR$/accounts/func_modules.py" />
         <option value="$PROJECT_DIR$/newproject/urls.py" />
         <option value="$PROJECT_DIR$/smo/urls.py" />
-        <option value="$PROJECT_DIR$/smo/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/add_on_methods.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/newapp/views.py" />
         <option value="$PROJECT_DIR$/anm_anc/msg91test.py" />
         <option value="$PROJECT_DIR$/anm_anc/views.py" />
+        <option value="$PROJECT_DIR$/smo/views.py" />
       </list>
     </option>
   </component>
@@ -178,6 +191,11 @@
               <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
               <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
               <item name="newproject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hiranyagarbha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hiranyagarbha" type="462c0819:PsiDirectoryNode" />
+              <item name="smo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -423,13 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smo/smo_add_ons.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -484,8 +495,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anm_anc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="269" column="47" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="47" />
+        <state relative-caret-position="34">
+          <caret line="371" lean-forward="true" selection-start-line="371" selection-end-line="371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="179" column="16" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

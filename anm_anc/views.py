@@ -333,7 +333,7 @@ def anc_visit(request):
 
         #malrep = []
         malrep=(relevant_data["malrep"])
-        if (not (malrep == None)):
+        if (not (malrep == 'None')):
             v_ctr += 1
             variable_factors += ('malrepresentation ')
 
@@ -346,7 +346,7 @@ def anc_visit(request):
         #anemia = []
         anemia=(relevant_data['anemia'])  # 18
         print("anemia is " + str(anemia))
-        if (not (anemia == None)):
+        if (not (anemia == 'None')):
             v_ctr += 1
             variable_factors += ('anemia ')
 

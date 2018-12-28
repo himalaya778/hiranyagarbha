@@ -139,7 +139,7 @@ def anc_visit(request):
             print("disablity is reason")
 
         blood_disease = relevant_data['blood_disease']#6
-        if( not(blood_disease == 'Normal ' )):
+        if( not(blood_disease == 'Normal' )):
             c_ctr+=1
             const_factors+=('blood disease ')
             print("blood disease is reason")
@@ -213,7 +213,7 @@ def anc_visit(request):
 
         malrep = []
         malrep.append(relevant_data["malrep"])
-        if (not (malrep[0]==None)):
+        if (not (malrep[0]=="Normal")):
             v_ctr+=1
             variable_factors+=('malrepresentation ')
             print("malrepresentation is reason")
@@ -342,6 +342,7 @@ def anc_visit(request):
 
         #anemia = []
         anemia=(relevant_data['anemia'])  # 18
+        print("anemia is " + str(anemia))
         if (not (anemia == None)):
             v_ctr += 1
             variable_factors += ('anemia ')

@@ -112,61 +112,73 @@ def anc_visit(request):
         if (age<18 or age>35):
             c_ctr+=1
             const_factors+=('age ')
+            print( "age is reason")
 
         height = relevant_data['height'] #2
         if (height<145) :
             c_ctr+=1
             const_factors+=('height ')
+            print("height is reason")
 
         previous_lscs = relevant_data['previous_lscs']#3
         if (previous_lscs == True):
             c_ctr+=1
             const_factors+=('previous_lscs ')
+            print( "p_lscs is reason")
 
         bgroup = relevant_data['bgroup']#4
         if(bgroup in hrisk_bgroups):
             c_ctr+=1
             const_factors+=('blood group ')
+            print("blood group is reason")
 
         disability = relevant_data['disability']#5
         if (not (disability == 'None')):
             c_ctr+=1
             const_factors+=('disability ')
+            print("disablity is reason")
 
         blood_disease = relevant_data['blood_disease']#6
         if( not(blood_disease == 'Normal ' )):
             c_ctr+=1
             const_factors+=('blood disease ')
+            print("blood disease is reason")
 
         hiv = relevant_data['hiv']#7
         if( hiv == True):
             c_ctr+=1
             const_factors+=('hiv ')
+            print("HIV is reason")
 
         hbsag = relevant_data['hbsag']#8
         if( hbsag == True):
             c_ctr+=1
             const_factors+=('HbsAg ')
+            print("Hbsag is reason")
 
         cardiac = relevant_data['cardiac']#9
         if( cardiac == True):
             c_ctr+=1
             const_factors+=('cardiac_disease ')
+            print("cardiac is reason")
 
         p_uterus = relevant_data['p_uterus']#10
         if( p_uterus == True):
             c_ctr+=1
             const_factors+=('prolapse_uterus ')
+            print("prolapse uterus is reason")
 
         asthama = relevant_data['asthama']#11
         if( asthama == True):
             c_ctr+=1
             const_factors+=('asthama ')
+            print("asthama is reason")
 
         twin_delivery = relevant_data['twin_delivery']#12
         if( twin_delivery == True):
             c_ctr+=1
             const_factors+=('twin_delivery ')
+            print("twin delivery is reason")
 
         gravita = relevant_data['gravita']
         para = relevant_data['para']
@@ -176,6 +188,7 @@ def anc_visit(request):
         if(abortion>0):
             c_ctr+=1
             const_factors+=('abortion ')
+            print("abortion is reason")
 
 
 
@@ -187,6 +200,8 @@ def anc_visit(request):
         if (weight[0]<40 or weight[0]>90):
             v_ctr+=1
             variable_factors+=('weight ')
+            print("weight is reason")
+
         bp1 = []
         bp2 = []
         bp1.append(relevant_data['bp1'])#14
@@ -194,69 +209,81 @@ def anc_visit(request):
         if (bp1[0]>140 or bp2[0]>90):
             v_ctr+=1
             variable_factors+=('bp ')
+            print("BP is reason")
 
         malrep = []
         malrep.append(relevant_data["malrep"])
         if (not (malrep[0]==None)):
             v_ctr+=1
             variable_factors+=('malrepresentation ')
+            print("malrepresentation is reason")
 
         gdm = []
         gdm.append(relevant_data["gdm"])
         if (gdm[0]>139):
             v_ctr+=1
             variable_factors+=("gdm ")
+            print("gdm is reason")
 
         anemia = []
         anemia.append(relevant_data['anemia'])#18
         if (not(anemia[0]==None)):
             v_ctr+=1
             variable_factors+=('anemia ')
+            print("anemia is reason")
 
         hb = []
         hb.append(relevant_data['hb'])#19
         if (hb[0]<8):
             v_ctr+=1
             variable_factors+=('haemoglobin ')
+            print("HB is reason")
 
         thyroid = []
         thyroid.append(relevant_data['thyroid'])#20
         if (not (thyroid[0] == 'Normal')):
             v_ctr+=1
             variable_factors+=('thyroid ')
+            print("thyroid is reason")
 
         tobacohol = []
         tobacohol.append(relevant_data['alcohol_tobacco'])#21
         if(tobacohol[0] == True):
             v_ctr+=1
             variable_factors+=('alcohol_tobacco ')
+            print("tobacohol is reason")
 
         vdrl = []
         vdrl.append(relevant_data['vdrl'])#22
         if(vdrl[0] == True):
             v_ctr+=1
             variable_factors+=('vdrl ')
+            print("vdrl is reason")
 
         preg_disease = []
         preg_disease.append(relevant_data['preg_disease'])#23
         if(not(preg_disease[0]=='Adequate')):
             v_ctr+=1
             variable_factors+=('preg_disease ')
+            print("preg related disease is reason")
 
         bleeding_check = []
         bleeding_check.append(relevant_data['bleeding_check'])#24
         if(bleeding_check[0] == True):
             variable_factors+=('bleeding ')
+            print("bleeding is reason")
 
         iugr = []
         iugr.append(relevant_data['iugr'])#25
         if(iugr[0] == True):
             variable_factors+=('iugr ')
+            print("iugr is reason")
 
         alb = []
         alb.append(relevant_data['alb'])#25
         if(not(alb[0] == "None")):
             variable_factors+=('alb ')
+            print("ALB is reason")
 
 
 

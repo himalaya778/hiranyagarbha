@@ -150,9 +150,11 @@ class UserCreate(APIView):
                     print(relevant_data)
                     deo_mobile = relevant_data['deo_mobile']
                     mobile_string = mobile + "," + deo_mobile
+                    text_to_user(name, password, mobile_string)
                     cur.execute("INSERT INTO cdpo_level(cdpo) VALUES(%s)",(relevant_data['username'],))
                 #entry to supervisor level
                 if (relevant_data['role'] == 'supervisor'):
+                    text_to_user(name, password, mobile)
                     cur.execute("INSERT INTO supervisor_level(supervisor,cdpo_id) VALUES(%s,%s)",(relevant_data['username'],cdpo_id))
                 #entry to anganbadi_worker level
                 if (relevant_data['role'] == 'anganbadi_worker'):

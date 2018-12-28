@@ -299,6 +299,7 @@ def anc_visit(request):
         c_f.append(const_factors)
         v_f.append(variable_factors)
         visit_number+=1
+        print("visit number is  : " + str(visit_number))
         print("high risk value " + str(hrisk_check))
         cur.execute("""INSERT INTO anm_anc (patient_id,anm_anc_date,age,height, previous_lscs, blood_group,disability,blood_disease,
         hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,

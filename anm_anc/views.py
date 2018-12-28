@@ -75,7 +75,7 @@ def anc_visit(request):
     anm_id = get_anm_id(request.user)
     smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)
-    #print("request data is :  " + (relevant_data))
+    print( (relevant_data))
     p_id = relevant_data['patient_id']
     c_ctr = 0
     v_ctr = 0

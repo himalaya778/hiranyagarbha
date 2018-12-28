@@ -455,7 +455,7 @@ def anm_app_data_without_anc(request):
     cur.execute(
         """SELECT row_to_json(patient_record) FROM (
 
-        SELECT *  FROM patient_level WHERE anm_id=%s and anc_check IS NULL)patient_record """, (anm_id,))
+        SELECT *  FROM patient_level WHERE anm_id=%s and anc_check =false)patient_record """, (anm_id,))
 
     records = cur.fetchall()
     for r in records:

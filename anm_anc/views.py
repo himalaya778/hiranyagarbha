@@ -75,7 +75,7 @@ def anc_visit(request):
     anm_id = get_anm_id(request.user)
     smo_id = get_smo_id(request.user)
     relevant_data = json.loads(request.body)
-    print((relevant_data))
+    print("request data is :  " + (relevant_data))
     p_id = relevant_data['patient_id']
     c_ctr = 0
     v_ctr = 0
@@ -91,6 +91,7 @@ def anc_visit(request):
 
     #constant high risk factors check
     cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE,patient_name FROM patient_level WHERE patient_id = %s" , (p_id,))
+    print(p_id)
     age_rec = cur.fetchall()
     print(len(age_rec))
     print(age_rec)

@@ -4,13 +4,13 @@ conn_1 = http.client.HTTPConnection("api.msg91.com")
 
 def text_to_user(name,password,mobile):
     print(mobile)
-    fix =  "Namaskar" \
+    fix =  "Hiranyagarbha %0a" \
                ""
-    var = "username : " + name + " password : " + password
+    var = "USER: " + name + " PASS : " + password
     message = fix+var
     conn_1.request("GET",
                        "/api/sendhttp.php?country=91&sender=MSGIND&route=4&mobiles=%s&authkey=243753Ak8EPySu7Jnp5bcbeaaf&encrypt=&message=%s" % (
-                       (mobile), message,))
+                       mobile, message,))
 
     res = conn_1.getresponse()
     data = res.read()

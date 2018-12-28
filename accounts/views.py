@@ -65,7 +65,7 @@ class UserCreate(APIView):
                 json_data['token'] = token.key
                 if(relevant_data['role'] == 'bmo' or relevant_data['role'] == 'cdpo'):
                     cur.execute("UPDATE auth_user SET role = %s, block = %s, district = %s, division = %s, state = %s, mobile = %s,first_name = %s WHERE id = %s",
-                            (   relevant_data['role'],relevant_data['block'] ,relevant_data['division'] , relevant_data['district'], relevant_data['state'],relevant_data['mobile'],relevant_data['name'],json_data['id'] ))
+                            (   relevant_data['role'],relevant_data['block'] ,relevant_data['district'] , relevant_data['division'], relevant_data['state'],relevant_data['mobile'],relevant_data['name'],json_data['id'] ))
 
                 else:
                     if(relevant_data['role'] == 'smo' or relevant_data['role'] == 'anm'):

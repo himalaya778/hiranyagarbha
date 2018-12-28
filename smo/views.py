@@ -78,6 +78,7 @@ def smo_anc_visit(request):
 
     # variable high risk factors check
     # weight = []
+
     weight = (relevant_data['weight'])  # 13
     if (weight < 40 or weight > 90):
         v_ctr += 1

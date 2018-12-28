@@ -89,6 +89,8 @@ def anc_visit(request):
 
     visit_number = get_visit_number_anm(p_id)
 
+
+
     #constant high risk factors check
     cur.execute("SELECT age,lmp_date,edd_date,created_at::DATE,patient_name FROM patient_level WHERE patient_id = %s" , (p_id,))
     print(p_id)
@@ -104,6 +106,8 @@ def anc_visit(request):
     rec_height = cur.fetchall()
 
     if(len(rec_height)==0):
+        anm_anc_date = []
+        anm_anc_date.append(relevant_data["anm_anc_date"])
 
         if (age<18 or age>35):
             c_ctr+=1
@@ -269,11 +273,11 @@ def anc_visit(request):
         v_f.append(variable_factors)
         visit_number+=1
         print("high risk value " + str(hrisk_check))
-        cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
+        cur.execute("""INSERT INTO anm_anc (patient_id,anm_anc_date,age,height, previous_lscs, blood_group,disability,blood_disease,
         hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
         haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-        constant_factors, variable_factors,hrisk_factors,anm_id,visit_no) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-        (p_id,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
+        constant_factors, variable_factors,hrisk_factors,anm_id,visit_no) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+        (p_id,anm_anc_date,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
         twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
         hrisk_check,c_f, v_f,h_f,anm_id,visit_number,))
 
@@ -282,6 +286,8 @@ def anc_visit(request):
         ########################################################
 
         # variable high risk factors check
+        anm_anc_date = relevant_data["anm_anc_date"]
+
         #weight = []
         weight=(relevant_data['weight'])  # 13
         if (weight < 40 or weight > 90):
@@ -386,14 +392,14 @@ def anc_visit(request):
         # bp_1=%s::INTEGER[] ,bp_2=%s::INTEGER[] ,malrepresentation=%s::TEXT[] ,gdm=%s::INTEGER[] ,anemia=%s::TEXT[] ,
         #        haemoglobin=%s::INTEGER[] ,thyroid=%s::TEXT[] , alcohol_tobacco_check=%s::BOOLEAN[] ,preg_related_disease=%s::BOOLEAN[] ,bleeding_check=%s::BOOLEAN[] ,iugr=%s::BOOLEAN[] ,
 
-        cur.execute("""UPDATE anm_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
+        cur.execute("""UPDATE anm_anc SET anm_anc_date=array_append(anm_anc_date, %s) weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
         bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),      
                 constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,
                 hrisk_factors=array_append(hrisk_factors,%s),
                 visit_no=%s,hrisk_check=%s WHERE patient_id = %s""",
-                    ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
+                    ( anm_anc_date,weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,
                       const_factors, variable_factors, hrisk_factors, visit_number,hrisk_check,p_id,))
 

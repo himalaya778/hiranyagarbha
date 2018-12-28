@@ -227,7 +227,7 @@ def anc_visit(request):
 
         anemia = []
         anemia.append(relevant_data['anemia'])#18
-        if (not(anemia[0]==None)):
+        if (not(anemia[0]=='None')):
             v_ctr+=1
             variable_factors+=('anemia ')
             print("anemia is reason")

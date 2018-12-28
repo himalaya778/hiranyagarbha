@@ -309,6 +309,8 @@ def anc_visit(request):
         hrisk_check,c_f, v_f,h_f,anm_id,visit_number,))
 
         cur.execute("UPDATE patient_level SET anc_check=true WHERE patient_id=%s", (p_id,))
+        conn.commit()
+        print(("anc_check set true done"))
     else:
         ########################################################
 

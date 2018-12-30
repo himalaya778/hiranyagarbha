@@ -179,9 +179,31 @@ def smo_anc_visit(request):
                 (weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol,preg_disease,bleeding_check,iugr,const_factors,variable_factors,hrisk_factors,v_date,visit_number,p_id,))
 
-    cur.execute(
-        "UPDATE patient_level SET schedule_status = True WHERE patient_id = %s ",
-        ( p_id,))
+    cur.execute("SELECT edd_date FROM patient_level WHERE patient_id=%s", (p_id))
+    rec_edd = cur.fetchall()
+    edd_date = rec_edd[0][0]
+
+    cur.execute("SELECT visit_dates FROM smo_anc WHERE patient_id=%s",(p_id))
+    rec_dates = cur.fetchall()
+    dates = rec_dates[0][0]
+    length = len(dates)
+    last_date = dates[length]
+
+    days_left_ldate = (last_date-v_date).days
+
+
+    days_left_edd = (edd_date-v_date).days
+
+    if (days_left_edd<15 or visit_number==4 or days_left_ldate<15):
+        cur.execute(
+            "UPDATE patient_level SET delivery_status=True WHERE patient_id = %s ",
+            ( p_id,))
+    else:
+        cur.execute(
+            "UPDATE patient_level SET schedule_status=False WHERE patient_id = %s ",
+            ( p_id,))
+
+
     conn.commit()
     return Response("Visit " + str(visit_number) +" Data Updated")
 
@@ -265,6 +287,7 @@ def final_visit(request):
     maternal_status = relevant_data["m_status"]
 
     cur.execute("UPDATE smo_pnc SET maternal_status = %s WHERE patient_id = %s",(maternal_status,p_id))
+    cur.execute("UPDATE TABLE patient_level SET pnc_42_check=True WHERE patient_id=%s", (p_id))
     conn.commit()
 
     return Response("Maternal Status Saved")
@@ -282,6 +305,7 @@ def set_visit(request):
     #s_time = relevant_data['time']
 
     cur.execute("UPDATE smo_anc  SET doctor_schedule_date = doctor_schedule_date || %s::DATE[] , schedule_status = True WHERE patient_id = %s ", (array_date, patient_id,))
+    cur.execute("UPDATE patient_level SET schedule_status=True WHERE patient_id=%s", (patient_id))
     conn.commit()
     cur.execute(" SELECT doctor_schedule_date FROM smo_anc WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()
@@ -289,10 +313,6 @@ def set_visit(request):
     l = len(records[0][0])
 
     resp = str(l) + " visit scheduled"
-
-
-
-
     return Response(resp)
 
 

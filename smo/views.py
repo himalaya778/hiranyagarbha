@@ -270,6 +270,8 @@ def final_visit(request):
     return Response("Maternal Status Saved")
 
 @api_view(['POST'])
+@authentication_classes((SessionAuthentication, TokenAuthentication, BasicAuthentication))
+@permission_classes((IsAuthenticated,))
 def set_visit(request):
     relevant_data = json.loads(request.body)
     patient_id = relevant_data['patient_id']
@@ -279,17 +281,19 @@ def set_visit(request):
     print(array_date)
     #s_time = relevant_data['time']
 
-    cur.execute("UPDATE patient_level  SET visit_schedule = visit_schedule || %s::DATE[] , schedule_status = True WHERE patient_id = %s ", (array_date, patient_id,))
-
-    cur.execute(" SELECT visit_schedule FROM patient_level WHERE patient_id = %s", (patient_id,))
-    records = cur.fetchall()
-    print("records length : " , len(records))
-    print("records[0] length : " , len(records[0]))
-    print("records [0][0] length " , len(records[0][0]))
-    print("dates array ", records[0][0])
-
+    cur.execute("UPDATE smo_anc  SET doctor_schedule_date = doctor_schedule_date || %s::DATE[] , schedule_status = True WHERE patient_id = %s ", (array_date, patient_id,))
     conn.commit()
-    return Response("3 visits already sceduled")
+    cur.execute(" SELECT doctor_schedule_date FROM smo_anc WHERE patient_id = %s", (patient_id,))
+    records = cur.fetchall()
+    print("dates array length : " , len(records[0][0]))
+    l = len(records[0][0])
+
+    resp = str(l) + " visit scheduled"
+
+
+
+
+    return Response(resp)
 
 
 @api_view(['POST'])

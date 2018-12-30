@@ -460,12 +460,12 @@ def anc_visit(request):
         cur.execute("""UPDATE anm_anc SET weight=array_append(weight, %s) ,bp_1=array_append(bp_1,%s),bp_2=array_append(bp_2,%s),
         malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease=array_append(preg_related_disease,%s),
-        bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),
+        bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),alb=array_append(alb,%s),
                 constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,
                 hrisk_factors=array_append(hrisk_factors,%s),
                 visit_no=%s,hrisk_check=%s, anm_anc_date=array_append(anm_anc_date, %s) WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
-                     tobacohol, preg_disease, bleeding_check, iugr,
+                     tobacohol, preg_disease, bleeding_check, iugr,alb,
                       const_factors, variable_factors, hrisk_factors, visit_number,hrisk_check,anm_anc_date,p_id,))
         #cur.execute("UPDATE anm_anc SET weight=array_append(weight, %s) WHERE patient_id=%s",(weight,p_id,))
         conn.commit()

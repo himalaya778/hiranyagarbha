@@ -87,13 +87,13 @@ def smo_anc_visit(request):
     # bp2 = []
     bp1 = (relevant_data['bp1'])  # 14
     bp2 = (relevant_data['bp2'])  # 15
-    if (bp1 > 90 or bp2 > 140):
+    if (bp1 > 140 or bp2 > 90):
         v_ctr += 1
         variable_factors += ('bp ')
 
     # malrep = []
     malrep = (relevant_data["malrep"])
-    if (not (malrep == 'None')):
+    if (not (malrep == 'Normal')):
         v_ctr += 1
         variable_factors += ('malrepresentation ')
 

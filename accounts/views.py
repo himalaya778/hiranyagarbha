@@ -22,7 +22,7 @@ from .msg91test import *
  # Python URL functions
 #conn = psycopg2.connect("dbname=lewjwtyv user=lewjwtyv password=mQJ6jIVit_1IR0vhvauSh7Bi9-kTZqe5 host='baasu.db.elephantsql.com'")
 #conn = psycopg2.connect("dbname=hiranya user=postgres password=1234 host=localhost")
-conn = psycopg2.connect("dbname = d6033pklmp2aij user=kchzgyvpypnnkk password=b421cad27d99754ad0771149a573f61f28b03da630bba71b6c7510c67b8515d0 host='ec2-54-83-50-145.compute-1.amazonaws.com'")
+conn = psycopg2.connect("dbname = dfkj1lkglat6mk user=iawnbgcbnwgwjw password=e01a16637ff3acf9f09168ebf7f5ced0969e16f2fa3bcd21dac2daf759498248 host='ec2-54-225-150-216.compute-1.amazonaws.com'")
 cur = conn.cursor()
 
 

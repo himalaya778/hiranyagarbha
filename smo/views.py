@@ -93,7 +93,7 @@ def smo_anc_visit(request):
 
     # malrep = []
     malrep = (relevant_data["malrep"])
-    if (not (malrep == None)):
+    if (not (malrep == 'None')):
         v_ctr += 1
         variable_factors += ('malrepresentation ')
 
@@ -105,7 +105,7 @@ def smo_anc_visit(request):
 
     # anemia = []
     anemia = (relevant_data['anemia'])  # 18
-    if (not (anemia == None)):
+    if (not (anemia == 'None')):
         v_ctr += 1
         variable_factors += ('anemia ')
 
@@ -162,28 +162,22 @@ def smo_anc_visit(request):
     if (hrisk_check == False):
         hrisk_check = relevant_data['hrisk_check']
 
-    visit_number += 1
     print("high risk value " + str(hrisk_check))
-
-
     advice=(relevant_data["d_advice"])
     visit_number+=1
 
     v_date=(datetime.date.today())
 
-    #preg_related_disease = array_append(preg_related_disease, % s),
-    #bleeding_check = array_append(bleeding_check, % s), iugr = array_append(iugr, % s), constant_factors = array_append(
-    #    constant_factors, % s), variable_factors = array_append(variable_factors, % s)
-    #, hrisk_factors = array_append(hrisk_factors, % s),
-    #visits_done = % s, actual_vdate = array_append(actual_vdate, % s) WHERE
 
-    #preg_disease, bleeding_check, iugr, const_factors, variable_factors, hrisk_factors, visit_number, v_date,
     cur.execute("""UPDATE smo_anc SET weight = array_append(weight, %s), bp_1 = array_append(bp_1, %s),bp_2=array_append(bp_2,%s),
     malrepresentation=array_append(malrepresentation,%s),gdm=array_append(gdm,%s),anemia=array_append(anemia,%s),haemoglobin=array_append(haemoglobin,%s),
-        thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s)
-         WHERE patient_id=%s""",
+        thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease = array_append(preg_related_disease, %s),
+        bleeding_check = array_append(bleeding_check, %s), iugr = array_append(iugr, %s),constant_factors = array_append(constant_factors, %s),
+        variable_factors = array_append(variable_factors, %s),hrisk_factors = array_append(hrisk_factors, %s),actual_vdate = array_append(actual_vdate, %s),
+        visits_done = %s 
+        WHERE patient_id=%s""",
                 (weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
-                     tobacohol,p_id,))
+                     tobacohol,preg_disease,bleeding_check,iugr,const_factors,variable_factors,hrisk_factors,v_date,visit_number,p_id,))
 
     cur.execute(
         "UPDATE patient_level SET schedule_status = True WHERE patient_id = %s ",

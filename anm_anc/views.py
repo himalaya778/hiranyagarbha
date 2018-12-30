@@ -312,17 +312,47 @@ def anc_visit(request):
         cur.execute("UPDATE patient_level SET anc_check=true WHERE patient_id=%s", (p_id,))
         conn.commit()
         print(("anc_check set true done"))
+
+        if (hrisk_check == True):
+            cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
+
+            visit_dates = []
+            visit_dates = visit_schedule(lmp, edd, reg_date)
+            # add record to smo_anc table as 0th visit data
+
+            cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+                    haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
+                    constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                        (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
+                         tobacohol, preg_disease, bleeding_check, iugr, alb,
+                         hrisk_check, c_f, v_f, h_f, smo_id, 0, visit_dates))
+
+            print("smo_id" + str(smo_id))
+
+            officer = get_smo_name(smo_id)
+            notify_smo(officer)
+            text_to_smo(p_id, officer, patient_name)
+            # text_to_supervisor(anm_id,p_id)
+
+            conn.commit()
+
+        return Response({"high_risk": hrisk_check})
+
+
     else:
         ########################################################
+        print("hrisk value before checks is " + str(hrisk_check))
 
         # variable high risk factors check
         anm_anc_date = relevant_data["anm_anc_date"]
+
 
         #weight = []
         weight=(relevant_data['weight'])  # 13
         if (weight < 40 or weight > 90):
             v_ctr += 1
             variable_factors += ('weight ')
+            print("weight is true")
         #bp1 = []
         #bp2 = []
         bp1=(relevant_data['bp1'])  # 14
@@ -330,70 +360,74 @@ def anc_visit(request):
         if (bp1 > 90 or bp2 > 140):
             v_ctr += 1
             variable_factors += ('bp ')
+            print("bp is true")
 
         #malrep = []
         malrep=(relevant_data["malrep"])
         if (not (malrep == 'None')):
             v_ctr += 1
             variable_factors += ('malrepresentation ')
-
+            print("malrep is true")
         #gdm = []
         gdm=(relevant_data["gdm"])
         if (gdm > 139):
             v_ctr += 1
             variable_factors += ("gdm ")
-
+            print("gdm is true")
         #anemia = []
         anemia=(relevant_data['anemia'])  # 18
         print("anemia is " + str(anemia))
         if (not (anemia == 'None')):
             v_ctr += 1
             variable_factors += ('anemia ')
+            print("anemia is true")
 
         #hb = []
         hb=(relevant_data['hb'])  # 19
         if (hb < 8):
             v_ctr += 1
             variable_factors += ('haemoglobin ')
+            print("HB is true")
 
         #thyroid = []
         thyroid=(relevant_data['thyroid'])  # 20
         if (not (thyroid == 'Normal')):
             v_ctr += 1
             variable_factors += ('thyroid ')
-
+            print("thyroid is true")
         tobacohol = []
         tobacohol=(relevant_data['alcohol_tobacco'])  # 21
         if (tobacohol == True):
             v_ctr += 1
             variable_factors += ('alcohol_tobacco ')
-
+            print("alcohol is true")
         #vdrl = []
         vdrl=(relevant_data['vdrl'])  # 22
         if (vdrl == True):
             v_ctr += 1
             variable_factors += ('vdrl ')
-
+            print("vdrl is true")
         #preg_disease = []
         preg_disease=(relevant_data['preg_disease'])  # 23
         if (not (preg_disease == 'Adequate')):
             v_ctr += 1
             variable_factors += ('preg_disease ')
-
+            print("preg_disease is true")
         #bleeding_check = []
         bleeding_check=(relevant_data['bleeding_check'])  # 24
         if (bleeding_check == True):
             variable_factors += ('bleeding ')
-
+            print("bleeding is true")
         #iugr = []
         iugr=(relevant_data['iugr'])  # 25
         if (iugr == True):
             variable_factors += ('iugr ')
-
+            print("iugr is true")
         #alb = []
         alb=(relevant_data['alb'])  # 25
         if (not (alb == "None")):
             variable_factors += ('alb ')
+            print("alb is true")
 
         if (c_ctr > 0 or v_ctr > 0):
             hrisk_check = True
@@ -404,10 +438,11 @@ def anc_visit(request):
             hrisk_check = relevant_data['hrisk_check']
 
         visit_number+=1
+        print("visit number is now "+str(visit_number))
         print( "high risk value " + str(hrisk_check))
-        #h_f.append(hrisk_factors)
-        #c_f.append(const_factors)
-        #v_f.append(variable_factors)
+        h_f.append(hrisk_factors)
+        c_f.append(const_factors)
+        v_f.append(variable_factors)
 
         #cur.execute("""INSERT INTO anm_anc (patient_id,age,height, previous_lscs, blood_group,disability,blood_disease,
         #    hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
@@ -436,31 +471,31 @@ def anc_visit(request):
         #cur.execute("UPDATE anm_anc SET weight=array_append(weight, %s) WHERE patient_id=%s",(weight,p_id,))
         conn.commit()
 
-    if(hrisk_check==True):
-        cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
+        if(hrisk_check==True):
+            cur.execute("UPDATE patient_level SET high_risk_check=True WHERE patient_id = %s", (p_id,))
 
-        visit_dates = []
-        visit_dates = visit_schedule(lmp, edd, reg_date)
-        #add record to smo_anc table as 0th visit data
+            visit_dates = []
+            visit_dates = visit_schedule(lmp, edd, reg_date)
+            #add record to smo_anc table as 0th visit data
 
 
-        #cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
-        #    haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-        #    constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-        #            (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
-        #             tobacohol, preg_disease, bleeding_check, iugr,alb,
-        #             hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
+            cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
+                haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
+                constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                        (p_id, [weight], [bp1], [bp2], [malrep], [gdm], [anemia], [hb], [thyroid],
+                         [tobacohol], [preg_disease], [bleeding_check], [iugr],[alb],
+                     hrisk_check, c_f, v_f,h_f, smo_id,0,visit_dates))
 
-        print("smo_id" + str(smo_id))
+            print("smo_id" + str(smo_id))
 
-        officer = get_smo_name(smo_id)
-        notify_smo(officer)
-        text_to_smo(p_id, officer,patient_name)
-        #text_to_supervisor(anm_id,p_id)
+            officer = get_smo_name(smo_id)
+            notify_smo(officer)
+            text_to_smo(p_id, officer,patient_name)
+            #text_to_supervisor(anm_id,p_id)
 
-        conn.commit()
+            conn.commit()
 
-    return Response({"high_risk" : hrisk_check})
+        return Response({"high_risk" : hrisk_check})
 
 
 @api_view(['GET'])

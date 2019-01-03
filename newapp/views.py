@@ -475,6 +475,10 @@ def link_anm_village(request):
     relevant_data = json.loads(request.body)
     villages = relevant_data['village']
     anm = relevant_data['anm']
+    bmo = request.user
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo=%s",(str(bmo)))
+    rec_bmo = cur.fetchall()
+    bmo_id = rec_bmo[0][0]
     #smo = 'Dr. Maha Shankar'
     #anm = ['sunita', 'Bharti Devi']
     cur.execute("SELECT anm_id FROM anm_level WHERE anm=%s", (anm,))
@@ -483,7 +487,7 @@ def link_anm_village(request):
     print(anm_id)
     # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
     for i in range(0,len(villages)):
-        cur.execute("UPDATE village_level SET anm_id = %s WHERE village = %s", (anm_id, villages[i],))
+        cur.execute("UPDATE village_level SET anm_id = %s WHERE village = %s and bmo_id=%s", (anm_id, villages[i],bmo_id))
     conn.commit()
     return Response('Villages Linked With Anm')
 

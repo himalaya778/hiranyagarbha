@@ -287,7 +287,7 @@ def final_visit(request):
     maternal_status = relevant_data["m_status"]
 
     cur.execute("UPDATE smo_pnc SET maternal_status = %s WHERE patient_id = %s",(maternal_status,p_id))
-    cur.execute("UPDATE TABLE patient_level SET pnc_42_check=True WHERE patient_id=%s", (p_id))
+    cur.execute("UPDATE TABLE patient_level SET pnc_42_check=True WHERE patient_id=%s", (p_id,))
     conn.commit()
 
     return Response("Maternal Status Saved")

@@ -476,7 +476,7 @@ def link_anm_village(request):
     villages = relevant_data['village']
     anm = relevant_data['anm']
     bmo = request.user
-    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo=%s",(str(bmo)))
+    cur.execute("SELECT bmo_id FROM bmo_level WHERE bmo=%s",(str(bmo),))
     rec_bmo = cur.fetchall()
     bmo_id = rec_bmo[0][0]
     #smo = 'Dr. Maha Shankar'

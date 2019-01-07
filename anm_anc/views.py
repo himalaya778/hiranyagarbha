@@ -192,6 +192,7 @@ def anc_visit(request):
 
 
 
+
     ########################################################
 
         #variable high risk factors check
@@ -285,6 +286,10 @@ def anc_visit(request):
             variable_factors+=('alb ')
             print("ALB is reason")
 
+        dietary_advice = []
+        dietary_advice.append(relevant_data["dietary_advice"])
+
+
 
 
         if (c_ctr>0 or v_ctr>0):
@@ -304,10 +309,10 @@ def anc_visit(request):
         cur.execute("""INSERT INTO anm_anc (patient_id,anm_anc_date,age,height, previous_lscs, blood_group,disability,blood_disease,
         hiv_check,hbsag,cardiac_disease,prolapse_uterus,asthama,twin_delivery,gravita,para,live,abortion,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
         haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-        constant_factors, variable_factors,hrisk_factors,anm_id,visit_no) VALUES (%s,%s::DATE[],%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+        constant_factors, variable_factors,hrisk_factors,anm_id,visit_no,d_advice) VALUES (%s,%s::DATE[],%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
         (p_id,anm_anc_date,age,height, previous_lscs, bgroup,disability,blood_disease,hiv,hbsag,cardiac,p_uterus,asthama,
         twin_delivery,gravita,para,live,abortion,weight,bp1,bp2,malrep,gdm,anemia,hb,thyroid, tobacohol,preg_disease,bleeding_check,iugr,alb,
-        hrisk_check,c_f, v_f,h_f,anm_id,visit_number,))
+        hrisk_check,c_f, v_f,h_f,anm_id,visit_number,dietary_advice,))
 
         cur.execute("UPDATE patient_level SET anc_check=true WHERE patient_id=%s", (p_id,))
         conn.commit()
@@ -322,10 +327,10 @@ def anc_visit(request):
 
             cur.execute("""INSERT INTO smo_anc (patient_id,weight,bp_1,bp_2,malrepresentation,gdm,anemia,
                     haemoglobin,thyroid, alcohol_tobacco_check,preg_related_disease,bleeding_check,iugr,alb,hrisk_check,
-                    constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                    constant_factors, variable_factors,hrisk_factors,smo_id,visits_done,visit_dates,d_advice) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                         (p_id, weight, bp1, bp2, malrep, gdm, anemia, hb, thyroid,
                          tobacohol, preg_disease, bleeding_check, iugr, alb,
-                         hrisk_check, c_f, v_f, h_f, smo_id, 0, visit_dates))
+                         hrisk_check, c_f, v_f, h_f, smo_id, 0, visit_dates,dietary_advice))
 
             print("smo_id" + str(smo_id))
 
@@ -428,6 +433,8 @@ def anc_visit(request):
             variable_factors += ('alb ')
             print("alb is true")
 
+        dietary_advice = relevant_data["dietary_advice"]
+
         if (c_ctr > 0 or v_ctr > 0):
             hrisk_check = True
             hrisk_factors += (const_factors)
@@ -463,10 +470,10 @@ def anc_visit(request):
         bleeding_check=array_append(bleeding_check,%s),iugr=array_append(iugr,%s),alb=array_append(alb,%s),
                 constant_factors=array_append(constant_factors,%s) , variable_factors=array_append(variable_factors,%s) ,
                 hrisk_factors=array_append(hrisk_factors,%s),
-                visit_no=%s,hrisk_check=%s, anm_anc_date=array_append(anm_anc_date, %s) WHERE patient_id = %s""",
+                visit_no=%s,hrisk_check=%s, anm_anc_date=array_append(anm_anc_date, %s),d_advice=array_append(d_advice, %s) WHERE patient_id = %s""",
                     ( weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol, preg_disease, bleeding_check, iugr,alb,
-                      const_factors, variable_factors, hrisk_factors, visit_number,hrisk_check,anm_anc_date,p_id,))
+                      const_factors, variable_factors, hrisk_factors, visit_number,hrisk_check,anm_anc_date,dietary_advice,p_id,))
         #cur.execute("UPDATE anm_anc SET weight=array_append(weight, %s) WHERE patient_id=%s",(weight,p_id,))
         conn.commit()
 

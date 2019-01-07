@@ -305,7 +305,7 @@ def set_visit(request):
     #s_time = relevant_data['time']
 
     cur.execute("UPDATE smo_anc  SET doctor_schedule_date = doctor_schedule_date || %s::DATE[] , schedule_status = True WHERE patient_id = %s ", (array_date, patient_id,))
-    cur.execute("UPDATE patient_level SET schedule_status=True WHERE patient_id=%s", (patient_id,))
+    #cur.execute("UPDATE patient_level SET schedule_status=True WHERE patient_id=%s", (patient_id,))
     conn.commit()
     cur.execute(" SELECT doctor_schedule_date FROM smo_anc WHERE patient_id = %s", (patient_id,))
     records = cur.fetchall()

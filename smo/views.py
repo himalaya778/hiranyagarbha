@@ -154,8 +154,7 @@ def smo_anc_visit(request):
     if (not (alb == "None")):
         variable_factors += ('alb ')
 
-    dietary_advice = relevant_data["dietary_advice"]
-
+    #dietary_advice = relevant_data["dietary_advice"]
 
     if (c_ctr > 0 or v_ctr > 0):
         hrisk_check = True
@@ -177,10 +176,10 @@ def smo_anc_visit(request):
         thyroid=array_append(thyroid,%s), alcohol_tobacco_check=array_append(alcohol_tobacco_check,%s),preg_related_disease = array_append(preg_related_disease, %s),
         bleeding_check = array_append(bleeding_check, %s), iugr = array_append(iugr, %s),constant_factors = array_append(constant_factors, %s),
         variable_factors = array_append(variable_factors, %s),hrisk_factors = array_append(hrisk_factors, %s),actual_vdate = array_append(actual_vdate, %s),
-        visits_done = %s,d_advice=array_append(d_advice,%s) 
+        visits_done = %s 
         WHERE patient_id=%s""",
                 (weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
-                     tobacohol,preg_disease,bleeding_check,iugr,const_factors,variable_factors,hrisk_factors,v_date,visit_number,dietary_advice,p_id,))
+                     tobacohol,preg_disease,bleeding_check,iugr,const_factors,variable_factors,hrisk_factors,v_date,visit_number,p_id,))
 
     cur.execute("SELECT edd_date FROM patient_level WHERE patient_id=%s", (p_id))
     rec_edd = cur.fetchall()

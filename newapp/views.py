@@ -528,6 +528,10 @@ def link_sup_village(request):
     relevant_data = json.loads(request.body)
     villages = relevant_data['villages']
     sup = relevant_data['sup']
+    cdpo=request.user
+    cur.execute("SELECT block FROM auth_user WHERE username=%s",(cdpo,))
+    rec_block = cur.fetchall()
+    block = rec_block[0][0]
     #smo = 'Dr. Maha Shankar'
     #anm = ['sunita', 'Bharti Devi']
     cur.execute("SELECT sup_id FROM supervisor_level WHERE supervisor=%s", (sup,))
@@ -536,7 +540,7 @@ def link_sup_village(request):
     print(sup_id)
     # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
     for i in range(0,len(villages)):
-        cur.execute("UPDATE village_level SET sup_id = %s WHERE village = %s", (sup_id, villages[i],))
+        cur.execute("UPDATE village_level SET sup_id = %s WHERE village = %s AND block=%s", (sup_id, villages[i],block,))
     conn.commit()
     return Response('Villages Linked With supervisor')
 
@@ -548,6 +552,10 @@ def link_village_agbdi(request):
     relevant_data = json.loads(request.body)
     agbdis = relevant_data['agbdis']
     village = relevant_data['village']
+    cdpo = request.user
+    cur.execute("SELECT block FROM auth_user WHERE username=%s", (cdpo,))
+    rec_block = cur.fetchall()
+    block = rec_block[0][0]
     #smo = 'Dr. Maha Shankar'
     #anm = ['sunita', 'Bharti Devi']
     cur.execute("SELECT village_id FROM village_level WHERE village=%s", (village,))
@@ -556,7 +564,7 @@ def link_village_agbdi(request):
     print(village_id)
     # cur.execute("SELECT anm FROM anm_level WHERE anm = %s" , ('Sunita'))
     for i in range(0,len(agbdis)):
-        cur.execute("UPDATE anganbadi_level SET village_id = %s WHERE agbdi = %s", (village_id, agbdis[i],))
+        cur.execute("UPDATE anganbadi_level SET village_id = %s WHERE agbdi = %s and block=%s", (village_id, agbdis[i],block,))
     conn.commit()
     return Response('Anganbadi Linked With Village')
 

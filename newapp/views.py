@@ -529,7 +529,7 @@ def link_sup_village(request):
     villages = relevant_data['villages']
     sup = relevant_data['sup']
     cdpo=request.user
-    cur.execute("SELECT block FROM auth_user WHERE username=%s",(cdpo,))
+    cur.execute("SELECT block FROM auth_user WHERE username=%s",(str(cdpo),))
     rec_block = cur.fetchall()
     block = rec_block[0][0]
     #smo = 'Dr. Maha Shankar'
@@ -553,7 +553,7 @@ def link_village_agbdi(request):
     agbdis = relevant_data['agbdis']
     village = relevant_data['village']
     cdpo = request.user
-    cur.execute("SELECT block FROM auth_user WHERE username=%s", (cdpo,))
+    cur.execute("SELECT block FROM auth_user WHERE username=%s", (str(cdpo),))
     rec_block = cur.fetchall()
     block = rec_block[0][0]
     #smo = 'Dr. Maha Shankar'

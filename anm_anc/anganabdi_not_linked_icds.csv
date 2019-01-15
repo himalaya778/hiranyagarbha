@@ -1,0 +1,3285 @@
+,0,1
+0,pabal 1,39
+1,pabal 2,39
+2,savari,39
+3,sukhakhedi,20
+4,pandri,39
+5,nayakheda,20
+6,naya gov,20
+7,dudadeh,20
+8,dudakhapa,20
+9,kukra,20
+10,sitiyagohna,20
+11,godikheri mal,20
+12,turakhapa,20
+13,gohnadehmal,20
+14,vineka,20
+15,rengakheda,20
+16,nandner,20
+17,navalgov,20
+18,sukarikala,20
+19,mankwada,20
+20,gundrai,20
+21,godimarkadhana,20
+22,khedikort1,38
+23,ghana ,39
+24,khadki,39
+25,kondar,39
+26,kundai ,39
+27,gadra ,39
+28,ghatbiroli 1 ,39
+29,ghatbiroli 2,39
+30,chichanda,39
+31,chilhati 1,39
+32,khedikort2,38
+33,Khambara,39
+34,birolijhilpa ,39
+35,lihda,38
+36,moharkheda,38
+37,khursangdhana,39
+38,malhara,39
+39,khedidevnala,39
+40,kowdiyadhana,39
+41,somgarh,39
+42,salaidhana,39
+43,macha 2,20
+44,tighda,20
+45,birulbazar 1,39
+46,chanderi,20
+47,ajneri 1,20
+48,ajneri 2,20
+49,mahu ajneri ,20
+50,beganiya,20
+51,birulbazar 3,39
+52,niwari,20
+53,barwani,20
+54,chanderi tola,20
+55,badiyakhedi ,20
+56,rani pipariya 2,20
+57,sabdi,38
+58,bmari,20
+59,baruadhana 1,20
+60,baruadhana 2,20
+61,birulbazar 4,39
+62,godi kalmeshra ,20
+63,sabdi dhana,38
+64,hirapur,20
+65,sonkhedi,38
+66,nagtra,20
+67,nagtra mini,20
+68,naktua,20
+69,talakhedi,20
+70,repura,20
+71,khapriya,20
+72,sukari khurd,20
+73,semri 1,20
+74,semri 2,20
+75,semri 3,20
+76,semri 4,20
+77,budhni,21
+78,semri 6,20
+79,semri 7,20
+80,semri 8,20
+81,semri 9,20
+82,jaminiya 1,20
+83,gadaghant,21
+84,jaminiya 2,20
+85,bandhichodpipariya,20
+86,samnapur,20
+87,gohnadehrayat,20
+88,siyarkheda,20
+89,chitodpattn,20
+90,char gov,20
+91,bhajiyadhana,20
+92,jijwada,20
+93,subhash ward 1,20
+94,subhash ward 2,20
+95,gandhi ward 1,20
+96,gandhi ward 2,20
+97,tilak ward 1,20
+98,tilak ward 2,20
+99,shashtri ward 1,20
+100,shashtri ward 2,20
+101,indra ward 1,20
+102,indra ward 2,20
+103,kilapura ward 1,20
+104,kilapura ward 2,20
+105,umri ,39
+106,sardar ward 1,20
+107,sardar ward 2,20
+108,bichuva,39
+109,ramganj ,20
+110,matapura ward ,20
+111,rajendra ward,20
+112,gotam ward,20
+113,ramprasad ward,20
+114,ambedkar ward,20
+115,raghuwanshipura ward,20
+116,jawhar ward,20
+117,bodi,20
+118,markadhana sheri,20
+119,chichli,20
+120,lagha 1,20
+121,lagha 2,20
+122,mamto chichli,20
+123,billoud,30
+124,chhipaner,30
+125,tajpura1,30
+126,kathadi,30
+127,bhavras,30
+128,tajpura2,30
+129,kartana,30
+130,gondaganv kala1,30
+131,sanyasa,30
+132,kuhigwadi,30
+133,gondaganv khurd,30
+134,jalauda,30
+135,gadamod kala,30
+136,nayaganv1,30
+137,nayaganv2,30
+138,lakhakhedi,30
+139,birjakhedi,30
+140,shamshabad,30
+141,gondaganv kala2,30
+142,kartana2,30
+143,chhipaner2,30
+144,godadi,30
+145,lachhora,30
+146,dhaulpur khurd,30
+147,ariyabedi,30
+148,rundlay2,30
+149,gullas,30
+150,ratamati 2,30
+151,bitiya,30
+152,bori,30
+153,borpani,30
+154,chandiyapura,30
+155,dehariya,30
+156,dhenga,30
+157,gohti,30
+158,keli,30
+159,ponsadhana,30
+160,rajabarari 1,30
+161,nimboti ,39
+162,macha 1,20
+163,macha 3,20
+164,macha 4,20
+165,birulbazar 2,39
+166,bhokhedi khurd,20
+167,bhatti,20
+168,mokalwadi,20
+169,akola ,20
+170,akola tola ,20
+171,panjra,20
+172,bareli,20
+173,nimanwada,38
+174,jhirmta,20
+175,pauni1,38
+176,badiyakhedi tola,20
+177,jaminiya mini,20
+178,temjhira a,38
+179,paldevri ,20
+180,borna gujar,20
+181,ritalkhapa,20
+182,katiyakhapa,20
+183,khapariya  kishor,21
+184,telsir,20
+185,khera,21
+186,mahuakheda semri ,20
+187,pamli ,20
+188,mathni-1,21
+189,hathnawad,20
+190,mathni-2,21
+191,pachlawra_1,21
+192,pachuaa,21
+193,jhitudhana2,36
+194,sahlwada,21
+195,kamti,20
+196,nimdhana ,36
+197,sandiya_2,21
+198,aamdhana ,36
+199,sandiya_3,21
+200,balegaov,39
+201,sarra kishor,21
+202,jhitudhana 1,36
+203,kharpawad,20
+204,bihargaov 1,39
+205,pathai,20
+206,bandidhana ,36
+207,semrikishor,21
+208,semritala,21
+209,magriya,20
+210,bhandva,36
+211,renipani,20
+212,nibhora,20
+213,dariyavdhana ,36
+214,siwni,21
+215,devrabandi,30
+216,didamda,30
+217,jadkau,30
+218,jhirna,30
+219,mudiyakheda,21
+220,kachnaar2,30
+221,kachnaar1,30
+222,lodhidhana,30
+223,maleganv 1,30
+224,maleganv 2,30
+225,patiyakua,30
+226,rajabarari 2,30
+227,ratamati 1,30
+228,ravang 2,30
+229,ravang 1,30
+230,salaitheka,30
+231,temrubahar 1,30
+232,temrubahar 2,30
+233,unchabarari,30
+234,nimbudhana,30
+235,rundlay 1,30
+236,pauni2,38
+237,rawa,38
+238,kalmeshra ,20
+239,gopalpur,20
+240,gujarkhedi,20
+241,gujarkhapa,20
+242,karnpur,20
+243,kishanpur,20
+244,kishanpur tola,20
+245,nimanmuda,20
+246,sonora,38
+247,amdehi,20
+248,ajabgov,20
+249,sonpur,20
+250,jamni tola,20
+251,semri 5,20
+252,sopai,38
+253,dhanashri,21
+254,jhalon,21
+255,ramnagr,20
+256,seni ,20
+257,borna mittha,20
+258,kanthi,21
+259,barangi,20
+260,khadadevri,20
+261,lakhanpur semri,20
+262,pachlawra_2,21
+263,punour-1,21
+264,punour-2,21
+265,birulbazar 5,39
+266,bijakhari,20
+267,gummudhana ,36
+268,sandiya_1,21
+269,tekapar,20
+270,sendurjana,39
+271,chhindkheda ,39
+272,sehra,20
+273,ghogri,20
+274,singarchavadi ,36
+275,urdon,20
+276,singhwada,20
+277,baskhapa 2,20
+278,sohjani,21
+279,pathrai 1,20
+280,pathrai 2,20
+281,dhaba,20
+282,ratamati,20
+283,aamdhana ,40
+284,chedka,20
+285,untiyakishor,21
+286,shreerangpur,20
+287,yenkheda2,38
+288,ghogradhana ,36
+289,yenkheda1,38
+290,tekadidhana ,36
+291,banjaridhana ,36
+292,bodalpathar,38
+293,bhumkadhana,36
+294,baskhapa 1,20
+295,schooldhana ,36
+296,kiwlari,20
+297,guramkhedi,20
+298,jamundhana ,36
+299,surela kishor,21
+300,jamundhana ,36
+301,keradhana ,36
+302,kajri,20
+303,jiran,20
+304,barbatpur 1,40
+305,dongarpur,38
+306,pipaldhana,36
+307,barbatpur 2,40
+308,haldudhana ,36
+309,haldudhana ,36
+310,bhayawadi 1,40
+311,patadhana ,36
+312,manakdand,36
+313,gaula2,38
+314,semaldhana,36
+315,kechudhana,36
+316,gaula1,38
+317,jamgav,38
+318,kanha khapa,38
+319,pateldhana ,36
+320,harravangram,36
+321,anhoni,21
+322,bindakheda,21
+323,bornathakur,21
+324,chandan pipariya,21
+325,chandan pipariya,21
+326,churka,21
+327,dapka,21
+328,dhargaw,21
+329,dokrikheda,21
+330,ghoghri,21
+331,hathnikhapa,21
+332,bhayawadi 2,40
+333,jhiriya,21
+334,bhayawadi 3,40
+335,kursikhapa,21
+336,mailipathai,21
+337,matkuli_1,21
+338,matkuli_3,21
+339,mohgaw-1,21
+340,deshawadi 1,40
+341,bihargaov 2,39
+342,dohlan,39
+343,deshawadi 2,40
+344,sangai,21
+345,simara,21
+346,deshawadi 3,40
+347,deshawadi 4,40
+348,suaakhapa,21
+349,baretha 1,40
+350,baretha 2,40
+351,matkuli_2,21
+352,chikhldakhurd,40
+353,mohgaw tola-2,21
+354,muharikala,21
+355,muharikhurd,21
+356,naankot,21
+357,pisuaa,21
+358,samnapur,21
+359,eklahra ,39
+360,simara tola,21
+361,malisilpati,40
+362,mokharaiyat ,40
+363,mokhamal,40
+364,motidhana ,40
+365,palaspani 2,40
+366,palaspani 1,40
+367,patowapura ,40
+368,shahpur 1,40
+369,shahpur 2,40
+370,shahpur 3,40
+371,bagholibujurg,38
+372,jileribuddi mini aganvadi,40
+373,bandiyakhapa,38
+374,barkhed1,38
+375,barkhed2,38
+376,dahua1,38
+377,dahua3,38
+378,dahua2,38
+379,aazad ward pipariya,21
+380,ambedkar ward pipariya,21
+381,dob,38
+382,ashok ward pipariya,21
+383,hatnapur,38
+384,bhagatsingh ward pipariya,21
+385,andhiyar babdi_bankhedi,22
+386,hiwra,38
+387,vinoba ward pipariya,21
+388,gandhi ward_1 pipariya,21
+389,jam 1,38
+390,gandhi ward_2 pipariya,21
+391,bachawani-2_bankhedi,22
+392,indra gandhi ward pipariya,21
+393,jakir husain ward pipariya,21
+394,jam 2,38
+395,jaiprakash ward pipariya,21
+396,kasturwa ward_1 pipariya,21
+397,kasturwa ward_2 pipariya,21
+398,kapasiya,38
+399,lohiya ward_1 pipariya,21
+400,lohiya ward_2 pipariya,21
+401,maharana_1 pipariya,21
+402,lakhapur,38
+403,khairwani,38
+404,bachawani-1_bankhedi,22
+405,maharana_pratap ward _2 pipariya,21
+406,bankhedi-2_bankhedi,22
+407,nandbohi,38
+408,bankhedi-6_bankhedi,22
+409,rajeev gandhi ward_1 pipariya,21
+410,rajeev gandhi ward_2 pipariya,21
+411,bankhedi ward-07_bankhedi,22
+412,parbiroli,38
+413,shastri ward pipariya,21
+414,semriya,38
+415,whi whi giri ward _2 pipariya,21
+416,bankhedi-4_bankhedi,22
+417,lendagondi,38
+418,nehru  ward pipariya,21
+419,bankhedi-5_bankhedi,22
+420,radhkrishna  ward pipariya,21
+421,rajendra ward_1 pipariya,21
+422,pandhri,38
+423,bankhedi-1_bankhedi,22
+424,rajendra ward_2 pipariya,21
+425,sardar ward_1 pipariya,21
+426,sardar ward_2 pipariya,21
+427,sardar ward_3 pipariya,21
+428,pipariya,38
+429,sawanga,38
+430,tilak ward pipariya,21
+431,sawari,38
+432,whi whi giri ward _1 pipariya,21
+433,siladehi,38
+434,dahargav,38
+435,jamundhana,38
+436,bankhedi ward-09_bankhedi,22
+437,dudaborgaon-1,34
+438,chillaud_bankhedi,22
+439,dudaborgaon-2,34
+440,jamthi-1,34
+441,jamthi-2,34
+442,dahalwada kala_bankhedi,22
+443,jhadegaon-1,34
+444,thaini_bankhedi,22
+445,jhadegaon-2,34
+446,gardha_bankhedi,22
+447,jhagadiya,34
+448,kadhaiya_bankhedi,22
+449,kadai,34
+450,kodaroti,34
+451,kalkuhi_bankhedi,22
+452,kosami,34
+453,kosami-1,34
+454,kem dhana_bankhedi,22
+455,khamriya_bankhedi,22
+456,lapajhiri-1,34
+457,lamta_bankhedi,22
+458,lapajhiri-2,34
+459,rahatwada_bankhedi,22
+460,mandaibujurga,34
+461,mandaikhurd-1,34
+462,mandaikhurd-2,34
+463,aajad ward,38
+464,parsodi,39
+465,maramjhiri,34
+466,pagara,34
+467,mirapur,39
+468,dhabla,39
+469,temni-1,34
+470,temni-2,34
+471,bhagatsingh ward,38
+472,chauthiya 1,38
+473,gurusahab ward,38
+474,kamath 1,38
+475,ghisibagala 1,40
+476,kanehgaw 2,40
+477,mahavir ward,38
+478,kesiya 2,40
+479,kesiya 3,40
+480,mandai 2,40
+481,rajiv gandhi ward,38
+482,mandai 3,40
+483,ramnagar,38
+484,sehra 1,40
+485,hirdi,39
+486,ambedkar ward,38
+487,tigariya,34
+488,uddan,34
+489,chauthiya 2,38
+490,chikhalikhurd,38
+491,indira gandhi ward,38
+492,kamath 2,38
+493,awariya 1,40
+494,awariya 2,40
+495,awariya 3,40
+496,ghisibagala 2,40
+497,ghisibagala 3,40
+498,karajgav,38
+499,kanehgaw 1,40
+500,khadaamla,38
+501,kesiya 1,40
+502,nehru ward,38
+503,mandai 1,40
+504,patel ward,38
+505,sehra 2,40
+506,shastri ward,38
+507,sehra 3,40
+508,sehra 4,40
+509,tara 1,40
+510,sonoraa,38
+511,tara 2,40
+512,tara 3,40
+513,subhash ward,38
+514,tapti ward,38
+515,chandorakala 1,39
+516,badegaov,39
+517,taikheda 1,39
+518,tilak ward,38
+519,taikheda 2,39
+520,raiamla 1,39
+521,BOKARIKHAPA,35
+522,raiamla 2,39
+523,vivekanad ward,38
+524,aashta 1,39
+525,beejanwada-3,21
+526,aashta 2 ,39
+527,beejanwada-4,21
+528,sawalmenda,39
+529,beejanwada-1,21
+530,beejanwada-2,21
+531,hathwans 3,21
+532,satwasa 1,23
+533,hathwansh-4,21
+534,hathwansh-5,21
+535,hathwansh-6,21
+536,badegav,38
+537,semrirandhir,21
+538,barai 1,38
+539,Ratwada,23
+540,chandorakhurd 1,38
+541,dadiya,21
+542,bichawa dhana,38
+543,hathwans 1,21
+544,kharsali,38
+545,kolhiya,38
+546,satwasa 2,23
+547,hathwansh-7,21
+548,barai 2,38
+549,dharamkundi ,23
+550,silari _3,21
+551,chandorakhurd 2,38
+552,surelakala,21
+553,thengawani,21
+554,sonkhedi,23
+555,hathwansh-2,21
+556,devri,38
+557,hathwansh-8,21
+558,baghwada1,23
+559,gopaltalai,38
+560,jamada,21
+561,baghwada2,23
+562,hardoli,38
+563,baghwada3,23
+564,jheel pipariya,21
+565,jam gav,38
+566,fasidhana_mahuakheda,22
+567,hirankheda1,23
+568,fatehpur_mahuakheda,22
+569,karpa 1,38
+570,hirankheda2,23
+571,ghoghri maththa_mahuakheda,22
+572,hirankheda3,23
+573,hanautiya_mahuakheda,22
+574,jhiriyajhora_mahuakheda,22
+575,somalwada1,23
+576,nayagaonv-1_mahuakheda,22
+577,nayaganve-2_mahuakheda,22
+578,karpa 2,38
+579,khadkwar,38
+580,khedi,23
+581,CHILKAPUR 01,35
+582,padrai thakur_mahuakheda,22
+583,chhaparkheda,23
+584,maharajganj_mahuakheda,22
+585,mahuwakheda_mahuakheda,22
+586,maidakheda_mahuakheda,22
+587,CHILKAPUR,35
+588,marapadol,30
+589,aamsagar,30
+590,aamdhana,30
+591,badjhiri,30
+592,badjhiri2,30
+593,badwani,30
+594,banspani,30
+595,bapcha,30
+596,banshipura,30
+597,bobda,30
+598,chandrakhaal,30
+599,churani,30
+600,dhanpada,30
+601,domra,30
+602,gagradhana,30
+603,gorakhaal,30
+604,indrapura,30
+605,kasarani,30
+606,kayada,30
+607,keljhiri,30
+608,khodebode,30
+609,khumi,30
+610,kumrum,30
+611,kumrum,30
+612,lakhadeh,30
+613,rahatganv 1,30
+614,rahatganv 2,30
+615,rahatganv 3,30
+616,rahatganv 4,30
+617,rahatganv 5,30
+618,rutubarra,30
+619,singoda,30
+620,singanpur,30
+621,najarpura 1,30
+622,najarpura 2,30
+623,najarpura 3,30
+624,dhanganv,30
+625,fuladi 1,30
+626,fuladi 2,30
+627,chhidganv tamoli 1,30
+628,chhidganv tamoli 2,30
+629,kanganv,30
+630,khamganv,30
+631,sindhkheda,30
+632,chhirpura,30
+633,nimyaganv,30
+634,kalpi,30
+635,gadamod khurd,30
+636,khatmakheda,30
+637,bothi,30
+638,kayari,30
+639,mahukhaal ,30
+640,mannasa,30
+641,aamba,30
+642,jhaadvida,30
+643,jhaadvida 2,30
+644,pandarmati,30
+645,pandarmati dhana,30
+646,umardha ,30
+647,javardha,30
+648,dong ,30
+649,timarni  awc 15.2,30
+650,timarni  awc 9,30
+651,timarni  awc 6.1,30
+652,charkheda,30
+653,nimacha khurd,30
+654,timarni  awc 5,30
+655,malauna,30
+656,timarni  awc 2.1,30
+657,timarni  awc 7,30
+658,timarni  awc 3,30
+659,timarni  awc 10.1,30
+660,timarni  awc 2.2,30
+661,timarni  awc 14,30
+662,timarni  awc 6.2,30
+663,timarni  awc 11,30
+664,timarni  awc 1,30
+665,timarni  awc 13,30
+666,timarni  awc 10.2,30
+667,timarni  awc 12,30
+668,malauna,30
+669,timarni  awc 8,30
+670,saamarda,30
+671,khidkiwala,30
+672,barkala,30
+673,timarni  awc 15.1,30
+674,nausar,30
+675,nausar1,30
+676,nausar2,30
+677,chhidganv mail 1,30
+678,chhidganv mail 2,30
+679,piplya kala,30
+680,sauntada,30
+681,raybor,30
+682,ahalbada,30
+683,bichchhapur 1,30
+684,bhayli ,30
+685,bajaniya 2,30
+686,gadrapur,30
+687,pokharani 2,30
+688,nausar 1,30
+689,lahadpur,30
+690,pokharni 1,30
+691,baghwad 1,30
+692,nimacha kala,30
+693,pokharani 4,30
+694,barja,30
+695,bichchaapur 2,30
+696,bajaniya 1,30
+697,baghwad 2,30
+698,sohagpur,30
+699,pantalai 2,30
+700,temaganv 2,30
+701,dhaulpur kala 1,30
+702,andherikheda,30
+703,bhaduganv 1,30
+704,dhaulpur kala 2,30
+705,uskalli,30
+706,sodalpur 4,30
+707,pandwa,30
+708,kapasi,30
+709,dudhkachha 1,30
+710,sodalpur 2,30
+711,baharaganv,30
+712,paantalai 1,30
+713,jogikheda,30
+714,undrakachh,30
+715,nandwa,30
+716,baharakhedi,30
+717,aalampur 2,30
+718,temaganv 1,30
+719,jinvani,30
+720,sirkamba,30
+721,barudghat,30
+722,jhirikheda,30
+723,sodalpur 3,30
+724,sodalpur 1,30
+725,aalampur 1,30
+726,bhaduganv 2,30
+727,rundlay 1,30
+728,maniyakhedi,30
+729,dolariya,30
+730,bhaisadand,38
+731,bualkhapa,38
+732,chhindi 1,38
+733,chhindi 2,38
+734,pajra_mahuakheda,22
+735,singpur_mahuakheda,22
+736,aamgaonv_malhanwada,22
+737,anhai_malhanwada,22
+738,anhai-2_malhanwada,22
+739,bahrawan_malhanwada,22
+740,chikhalikala 1,38
+741,barchhi_malhanwada,22
+742,chargaonv_malhanwada,22
+743,dumar_malhanwada,22
+744,chikhalikala 2,38
+745,jaitwada_malhanwada,22
+746,jasarwani_malhanwada,22
+747,kapuri-1_malhanwada,22
+748,kapuri-2_malhanwada,22
+749,CHOPAN,35
+750,macchera kala-2_malhanwada,22
+751,machhera kala-1_malhanwada,22
+752,machhera khurd_malhanwada,22
+753,dunawa 1,38
+754,hirankhed3,23
+755,DHAMANGAON,35
+756,mahuakheda kala_malhanwada,22
+757,dunawa 2,38
+758,somalwada1,23
+759,malhanwada-1_malhanwada,22
+760,malhanwada-2_malhanwada,22
+761,dunawa 3,38
+762,nandna_malhanwada,22
+763,dunawa 4,38
+764,padriya_malhanwada,22
+765,paraswada_malhanwada,22
+766,gangai,38
+767,richhaida_malhanwada,22
+768,salaiyafajju_malhanwada,22
+769,surela randhir_malhanwada,22
+770,tindwada_malhanwada,22
+771,ghatpipariya 1,38
+772,bijnhari_piparpani,22
+773,chhirpani_piparpani,22
+774,ghatpipariya 2,38
+775,dangarhai_piparpani,22
+776,khedi,23
+777,dhadaw_piparpani,22
+778,chhaparkheda,23
+779,dolni_piparpani,22
+780,ghatpipariya 3,38
+781,jogiwada_piparpani,22
+782,khutwasa,23
+783,junheta_piparpani,22
+784,kamti-1_piparpani,22
+785,THEMGAON,35
+786,makodiya,23
+787,kamti-2_piparpani,22
+788,khalla,38
+789,khapakala_piparpani,22
+790,khal,23
+791,GOBARGONDI,35
+792,kharda1,23
+793,kharda2,23
+794,kothri_piparpani,22
+795,murgidhana_piparpani,22
+796,mathani 1,38
+797,nagwada_piparpani,22
+798,JAMUNDOL,35
+799,rakhidhana,39
+800,padaw_piparpani,22
+801,paliyapipriya 1_piparpani,22
+802,KOUDI,35
+803,amhaura_umardha,22
+804,banwari_umardha,22
+805,bedar_umardha,22
+806,mayawadi,38
+807,jamuniya randhir_umardha,22
+808,ridhora 1,38
+809,karpa_umardha,22
+810,malkajra_umardha,22
+811,paraina kala_umardha,22
+812,masod 3,39
+813,patha_umardha,22
+814,puraina randhir_umardha,22
+815,raja pipriya_umardha,22
+816,salaiya kishor_umardha,22
+817,tatra_umardha,22
+818,tinsri_umardha,22
+819,sirdi 1,39
+820,kajli 1,39
+821,kajli 2,39
+822,jamgaov,39
+823,sivanpani,39
+824,hivarkhed 1,39
+825,hivarkhed 3,39
+826,sodiya,38
+827,umardha-4_umardha,22
+828,ratamati 2,36
+829,umardha-1_umardha,22
+830,umardha-2_umardha,22
+831,Sahangaov,39
+832,itava 1,39
+833,padarudhana ,36
+834,jijalwada,23
+835,itava 2,39
+836,baghedi (mini)_bankhedi,22
+837,gaulagondi ,36
+838,kajiyakhedi (mini)_bankhedi,22
+839,pipaliyakala1,23
+840,manakwada (mini)_bankhedi,22
+841,mandvakol,36
+842,majri 1,39
+843,pipaliyakala3,23
+844,kharsali_piparpani,22
+845,malolkhapa,38
+846,GUDGAON,35
+847,bhadangchikali1,23
+848,bhadangchikali2,23
+849,mathani 2,38
+850,datwasa,23
+851,paliyapipriya-2_piparpani,22
+852,ghumaddev,23
+853,patharkuhi_piparpani,22
+854,piparpani_piparpani,22
+855,bhat pipriya_umardha,22
+856,gadarwada khurd_umardha,22
+857,guma_umardha,22
+858,imliya_umardha,22
+859,junawani_umardha,22
+860,masod 1,39
+861,ridhora 2,38
+862,nibhaura_umardha,22
+863,masod 2 ,39
+864,paraswada tha._umardha,22
+865,sarrai,38
+866,samnapur_umardha,22
+867,sendrya,38
+868,semkheda_umardha,22
+869,masod 4,39
+870,vaygaov,39
+871,prabhudhana 1,36
+872,sipawa,38
+873,prabhudhana 2,36
+874,hivarkhed 2,39
+875,hivarkhed 4,39
+876,ratamati 1,36
+877,MANUPADAV,35
+878,umardha-3_umardha,22
+879,PALASPANI 02,35
+880,sonegav,38
+881,dhamani,23
+882,lamta tola (mini)_bankhedi,22
+883,PALASPANI 01,35
+884,markadhana (mini)_bankhedi,22
+885,pipaliyakala2,23
+886,rahatwada (mini)_bankhedi,22
+887,jhalmau,39
+888,saikhedakhurd 1,39
+889,seludhana ,36
+890,chakora 1,39
+891,chunaloma ,36
+892,naharkolakalan2,23
+893,naharkolakalan3,23
+894,sonajhar,36
+895,chakora 2,39
+896,pipaldhana,39
+897,kotmi ,36
+898,dumar (mini)_malhanwada,22
+899,teliya,39
+900,mahuakheda kala (mini)_malhanwada,22
+901,devjhiri,39
+902,naharkolakalan1,23
+903,bargaudi (mini)_mahuakheda,22
+904,dewri (mini)_mahuakheda,22
+905,babai,34
+906,simori ,36
+907,fatehpur (nadipur)_mahuakheda,22
+908,kodapadrai (mini)_mahuakheda,22
+909,mahwa kheda (mini)_mahuakheda,22
+910,najarkheda (mini)_mahuakheda,22
+911,singpur (mini)_mahuakheda,22
+912,dongarpur,39
+913,bhayawadi,34
+914,duni ,36
+915,khaparkheda_1,21
+916,malhanwada (mini)_malhanwada,22
+917,tindwada (mini)_malhanwada,22
+918,chouki -1,34
+919,mahudhana ,36
+920,chichadhana,34
+921,jhiriya (mini)_piparpani,22
+922,majri 2,39
+923,khabara (mini)_piparpani,22
+924,ragadgaov 1,39
+925,khapa khurd (mini)_piparpani,22
+926,dahargaon,34
+927,morand 1,39
+928,khidiya,21
+929,kharirandhir (mini)_piparpani,22
+930,charsi 1,39
+931,PATALDHANA,35
+932,maliyadhana ,36
+933,dodawada,34
+934,raiyyatvadi,36
+935,jamnya,36
+936,iklani,23
+937,kumbhi ,36
+938,gangajidhana ,36
+939,hiwarkhedi-3,34
+940,kanara-1,34
+941,POHAR 02,35
+942,gona,39
+943,kundaraiyat,39
+944,korkudhana ,36
+945,gondidhanori,39
+946,valni,39
+947,gehubarsa 1,39
+948,RAJANI 02,35
+949,togadhana ,36
+950,borpend 1,39
+951,bisnoor 1,39
+952,SIHAR 01,35
+953,garvha,39
+954,khaparkheda_2,21
+955,buthiya tola (mini)_piparpani,22
+956,chouki -2,34
+957,bhurudhana ,36
+958,khaparkheda_3,21
+959,pohadhana,36
+960,saikhedakhurd 2,39
+961,dabheri,34
+962,khaparkheda_4,21
+963,ragadgaov 2,39
+964,pipariyadhana ,36
+965,devgaon,34
+966,piparpani (mini)_piparpani,22
+967,PIPARIYA 01,35
+968,podi,21
+969,dokya,34
+970,PIPARIYA 02,35
+971,gada,34
+972,hiwarkhedi-2,34
+973,hiwarkhedi-1,34
+974,POHAR 01,35
+975,hiwarkhedi-1,34
+976,batki,23
+977,chikhalimal,39
+978,bee jamani 1,23
+979,devgao_jambada,32
+980,pachdhar,39
+981,balhora,39
+982,RAJANI 01,35
+983,rajapur,39
+984,dhannudhana_jambada,32
+985,bhaduganv,36
+986,bee jamani 2,23
+987,gehubarsa 2,39
+988,gehubarsa 3,39
+989,bainganiya,23
+990,bisnoor 2,39
+991,bisnoor 3,39
+992,dodawani1_jambada,32
+993,harijandhana ,36
+994,jamthi,39
+995,SIHAR 02,35
+996,dudar,39
+997,chikhaliraiyat,39
+998,nandkudi,39
+999,dodawani2_jambada,32
+1000,kanara-2,34
+1001,devdongari,39
+1002,topidhana,39
+1003,SITADHANA,35
+1004,sawasan,39
+1005,borgaov,39
+1006,ajabgarh,39
+1007,khedisawaligad-1,34
+1008,charsi 2,39
+1009,hardouli_jambada,32
+1010,morand dol 2,39
+1011,khedisawaligad-2,34
+1012,dhandiwada,23
+1013,jambada1_jambada,32
+1014,ghorpend,39
+1015,jhunkari,39
+1016,chohta 1,36
+1017,kumbhikheda,39
+1018,kumudra,39
+1019,mangonakhurd 1,39
+1020,khedisawaligad-4,34
+1021,chicholi1,37
+1022,amravatighat 1,39
+1023,amravatighat 3,39
+1024,jambada2_jambada,32
+1025,bankabedi1,23
+1026,jhadbida1,23
+1027,sirkhed,39
+1028,jhadbida2,23
+1029,mahadgaon,34
+1030,tiwarkhed 2,39
+1031,tiwarkhed 1,39
+1032,kedarkheda_jambada,32
+1033,beeltalai,23
+1034,pachumari,39
+1035,salbardi,39
+1036,kalichhapar,23
+1037,selgaon,34
+1038,vandli 1,39
+1039,khanapur_jambada,32
+1040,gangapur,39
+1041,prabhat pattan 1,39
+1042,shivpur2,23
+1043,prabhat pattan 4,39
+1044,shivpur4,23
+1045,korkudhana ,36
+1046,narkhed 2,39
+1047,shivpur6,23
+1048,chimaipur,36
+1049,athner 1,33
+1050,shivpur7,23
+1051,patan ,36
+1052,shivpur8,23
+1053,athner 2,33
+1054,aamadeh,21
+1055,gotakhandi,36
+1056,shivpur9,23
+1057,bhaisadeh 1,23
+1058,ward 9 ka kendra 109  02,25
+1059,bhaisadeh 2,23
+1060,borpend 2,39
+1061,mahuaadhana,23
+1062,SIVANI,35
+1063,chohta 2,36
+1064,khedisawaligad-3,34
+1065,tekdidhana,36
+1066,mangonakhurd 2,39
+1067,baijanpur,23
+1068,khedisawaligad-5,34
+1069,khedisawaligad-5,34
+1070,bori ,36
+1071,amravatighat 2,39
+1072,surajpur,23
+1073,khediramosi,39
+1074,malegaov,39
+1075,jambada3_jambada,32
+1076,bankabedi2,23
+1077,kunkhedi,36
+1078,jambadikhurd_jambada,32
+1079,chicholi2,37
+1080,mahadgaon,34
+1081,tiwarkhed 3,39
+1082,kanskhedi,23
+1083,silari_1,21
+1084,padharkhurd,34
+1085,panjhiri,39
+1086,silari_2,21
+1087,pachmau,39
+1088,sarad,34
+1089,sawanga,34
+1090,dabka,39
+1091,sihar,34
+1092,vandli karaspani 2,39
+1093,charud,39
+1094,shivpur1,23
+1095,Tigariya,18
+1096,gonapure,39
+1097,chicholi3,37
+1098,prabhat pattan 2,39
+1099,prabhat pattan 3,39
+1100,kharpadakhedi_jambada,32
+1101,chicholi4,37
+1102,shivpur3,23
+1103,godhni kaloni 5,39
+1104,narkhed 1,39
+1105,chicholi5,37
+1106,narkhed 3,39
+1107,shivpur5,23
+1108,chandora 2,39
+1109,kondarkhapa_jambada,32
+1110,sirsawadi,39
+1111,athner 9,33
+1112,DHAMANGAON 02,35
+1113,devbhilai,39
+1114,chicholi7,37
+1115,palanga 2,36
+1116,chicholi8,37
+1117,kutkhedi_jambada,32
+1118,athner 3,33
+1119,takjhiri,36
+1120,bamhorikala,21
+1121,athner 4,33
+1122,devgaov,39
+1123,mohta,36
+1124,mangonakala,39
+1125,athner 5,33
+1126,shergad,39
+1127,godhni  ,39
+1128,bori,21
+1129,potla,36
+1130,savangi 1,39
+1131,reechhi2,23
+1132,savangi 2,39
+1133,baghoda 1,39
+1134,baghoda 2,39
+1135,hamidpur,23
+1136,baghoda 3,39
+1137,athner 8,33
+1138,dodajam ,36
+1139,chichkheda,39
+1140,barkhed 1,33
+1141,archanagaon1,23
+1142,bhatbori ,36
+1143,tingariya 2,36
+1144,luchgano2,23
+1145,palanga vangram,36
+1146,bijori,36
+1147,dhamori 1,33
+1148,banwari,21
+1149,chicholi9,37
+1150,tingariya 1,36
+1151,reechi1,23
+1152,lalawadi1_jambada,32
+1153,athner 6,33
+1154,athner 7,33
+1155,ghodida ,36
+1156,buchal,21
+1157,ambori,39
+1158,bhiladiyakhurd,23
+1159,bhalkudhana ,36
+1160,lalawadi2_jambada,32
+1161,archanagaon2,23
+1162,barkhed 2,33
+1163,uttari ,36
+1164,archanagaon3,23
+1165,maholi_jambada,32
+1166,bhivapur,33
+1167,bhuskumbh,33
+1168,luchgaon 1,23
+1169,hirankhudi ,36
+1170,charghati,33
+1171,umariya,23
+1172,parsoda_jambada,32
+1173,ramgarh,23
+1174,dhamori 2,33
+1175,karida 1,36
+1176,papan,23
+1177,rambhakhedi_jambada,32
+1178,ghodga,33
+1179,chilhati 2 ,39
+1180,kalukhapa,21
+1181,godighoghra 1,33
+1182,karabhuru,36
+1183,khairikala-2,21
+1184,sirdi 2,39
+1185,bhiladiyakhurd1,23
+1186,godighoghra 2,33
+1187,ranidongari_jambda,32
+1188,bhiladiyakhurd2,23
+1189,jamapati,33
+1190,khairikala-1,21
+1191,bheemgaon,23
+1192,wadali 2,33
+1193,kolgaon,23
+1194,kumawad,21
+1195,mahatpur 1,38
+1196,wadali 1,33
+1197,semariya_jambada,32
+1198,chapadeodi ,23
+1199,popati,36
+1200,lanjhi,21
+1201,mando,21
+1202,medha chindwad 2,33
+1203,mokalwada_2,21
+1204,BARHAPUR 02,35
+1205,pandol,33
+1206,naharwada,21
+1207,rabdya,33
+1208,nandwada,21
+1209,mahatpur 2,38
+1210,panri,21
+1211,panari tola,21
+1212,mahilawadi,38
+1213,sontalai_jambada,32
+1214,BORGAON,35
+1215,raiyatwadi,21
+1216,sonolibundala,32
+1217,richheda,21
+1218,malegav,38
+1219,sarra,21
+1220,CHICHOLIDHANA 02,35
+1221,taronkala_1,21
+1222,CHICHOLIDHANA 01,35
+1223,DHODAPOKHARANI,35
+1224,banskheda,21
+1225,paradsinga 1,38
+1226,budhni,21
+1227,DHOKANA,35
+1228,tirmahu2_jambada,32
+1229,amdar,34
+1230,badori,34
+1231,bagdari,34
+1232,parswada,20
+1233,bichua,20
+1234,bothi,34
+1235,raniipipariya 1,20
+1236,lokhartalai1,23
+1237,semariyajoshi_jambada,32
+1238,diwancharshi-2,34
+1239,belkund 1,33
+1240,ranipur,23
+1241,bopalwadi_jambada,32
+1242,diwancharshi-2,34
+1243,ghutigad,34
+1244,bothiyamaal,33
+1245,koyalari,33
+1246,kundkalan,23
+1247,medha chindwad 1,33
+1248,shalyedhana_jambada,32
+1249,chandrapura,23
+1250,mokalwada_1,21
+1251,somlapur_jambada,32
+1252,BARRASAYGOHAN,35
+1253,suki,33
+1254,BELDHANA,35
+1255,raikhedi_1,21
+1256,raikhedi _2,21
+1257,tirmahu1_jambada,32
+1258,taronkala_2,21
+1259,taronkhurd,21
+1260,CHICHOLIDHANA 03,35
+1261,CHOPANIKHURD,35
+1262,bakanj,21
+1263,parasthani,38
+1264,DHODAPOKHARANI,35
+1265,bor,21
+1266,paradsinga 2,38
+1267,sandiya 2,38
+1268,GOULIDHANA,35
+1269,anikhedi,33
+1270,sandiya 1,38
+1271,sonoli,38
+1272,GOREGAON 01,35
+1273,jamunjhiri_jambada,32
+1274,borikash,34
+1275,anderbavadi,33
+1276,temjhira b,38
+1277,anderbavadi dhana,33
+1278,churni,34
+1279,diwancharshi-1,34
+1280,balkheda,33
+1281,lokhartalai2,23
+1282,belkund dhana,33
+1283,satai,23
+1284,gadwa,34
+1285,bothiyarayyat,33
+1286,gangiya,23
+1287,gorakhar-2,34
+1288,amladakalan1,23
+1289,dabhona,33
+1290,gorakhar-1,34
+1291,hathanajhiri,34
+1292,dharul,33
+1293,jashodi,34
+1294,gokhlapur,33
+1295,hiradehi,33
+1296,kolgaon-2,34
+1297,kolgaon-3,34
+1298,kelbehra,33
+1299,chicholi11,37
+1300,mani 1,33
+1301,muchagohan,34
+1302,pipaldhari,33
+1303,nadha,33
+1304,chicholi14,37
+1305,belmandai_gramin,32
+1306,baranwadi,37
+1307,Ghanabad (Mini),18
+1308,sasabad1_gramin,32
+1309,bigwa2,37
+1310,birpur,37
+1311,sasabad3_gramin,32
+1312,andhariya1_gramin,32
+1313,gondumandai2,37
+1314,khairuaa,21
+1315,devpurkotmi1,37
+1316,andhariya3_gramni,32
+1317,khairikhurd,21
+1318,MASOD,35
+1319,devpurkomi2,37
+1320,hasalpur1_gramin,32
+1321,devpurkomi3,37
+1322,posera,21
+1323,NAWAPUR01,35
+1324,pipariya kala,21
+1325,hasalpur2_gramin,32
+1326,NAVAPUR 02,35
+1327,kolgaon-1,34
+1328,chicholi10,37
+1329,chicholi12,37
+1330,mani 2,33
+1331,mandwa,34
+1332,chicholi13,37
+1333,nayakcharshi,34
+1334,pipla,34
+1335,sonora,33
+1336,salaarjun,34
+1337,chichkumbh,33
+1338,sehra-1,34
+1339,sehra-2,34
+1340,sehra-3,34
+1341,tapshriwardchicholi,37
+1342,tamiyagad,34
+1343,pat,33
+1344,GOREGAON 02,35
+1345,nasirabad1,37
+1346,GOREGAON 03,35
+1347,nasirabad2,37
+1348,BARHAPUR 01,35
+1349,bigwa1,37
+1350,sasabad2_gramin,32
+1351,hiralal dhana,33
+1352,KORAKUDHANA,35
+1353,jinora,21
+1354,gondumandai1,37
+1355,kanhaar_1,21
+1356,andhariya2_gramin,32
+1357,kanhaar_2,21
+1358,MAJARWANI01,35
+1359,MAJARWANI 02,35
+1360,mahalwada,21
+1361,padrakha,21
+1362,pali,21
+1363,pparkhi,21
+1364,rajola ,21
+1365,rampur tola_2,21
+1366,rampur_1,21
+1367,singhoda,21
+1368,laxmantola_gramin,32
+1369,singhodi,21
+1370,NAVAPUR 03,35
+1371,sirpan,21
+1372,tada,21
+1373,ramli1_gramin,32
+1374,PATELDHANA,35
+1375,thutha dahalwada tola _2,21
+1376,ramli2_gramin,32
+1377,thutha dahalwada _1,21
+1378,shiplai ,37
+1379,udaypura,21
+1380,nandpur1_gramin,32
+1381,aamdhana,33
+1382,chakar,21
+1383,Khojanpur,18
+1384,khairi1,37
+1385,bicchua_bankhedi,22
+1386,chhirai,21
+1387,bankhedi-3_bankhedi,22
+1388,churni,21
+1389,nandpur2_gramin,32
+1390,khairi3,37
+1391,mahudhana ,36
+1392,ghana ,21
+1393,aasti 4,33
+1394,devthan_gramin,32
+1395,kokadhana ,36
+1396,shingraikhapa,37
+1397,sasundra1_gramin,32
+1398,chicholi6,37
+1399,pachmardi_4,21
+1400,pachmardi_6,21
+1401,bairamdhana,33
+1402,atari1,37
+1403,pachmardi_8,21
+1404,sasundra3_gramin,32
+1405,chindwad vangram,33
+1406,atari2,37
+1407,behdadhana ,36
+1408,dangrapatha,33
+1409,pagara,21
+1410,varedhana 1,36
+1411,tekapar,21
+1412,jogli4,37
+1413,bothiyabramhanwada_gramin,32
+1414,malajpur1,37
+1415,hidli 1,33
+1416,hidli 2,33
+1417,malajpur4,37
+1418,malajpur5,37
+1419,RAKSI,35
+1420,SARANDI,35
+1421,asadi2,37
+1422,anjandana,21
+1423,UMDLA,35
+1424,bariaam,21
+1425,asadi1,37
+1426,aasti 1,33
+1427,bairagar,36
+1428,khairi2,37
+1429,chillod,21
+1430,khatapani ,36
+1431,garadehi aasti 2,33
+1432,aasti 3,33
+1433,palaspani ,36
+1434,jamandhonga,21
+1435,bagvani,33
+1436,khari,21
+1437,mongra,21
+1438,nadiya ,21
+1439,bori1,37
+1440,pachmardi_1,21
+1441,umardha-5_umardha,22
+1442,gvadidhana,36
+1443,bori2,37
+1444,pachmardi_3,21
+1445,sasundra2_gramin,32
+1446,aadersh pipariya ,36
+1447,pachmardi_7,21
+1448,muslimdhana ,36
+1449,semaldhana,36
+1450,pachmardi_2,21
+1451,atari2,37
+1452,pachmardi_5,21
+1453,lohardhana,36
+1454,raikheda,21
+1455,nayegav_gramin,32
+1456,jogli1,37
+1457,singanama,21
+1458,gargud,33
+1459,jogli2,37
+1460,supdongar,21
+1461,kumhardhana ,36
+1462,jhitapati_gramin,32
+1463,jogli3,37
+1464,pateldhana ,36
+1465,vinoura,21
+1466,hidli 3,33
+1467,pateldhana ,36
+1468,hidli 4,33
+1469,kawla 1,33
+1470,kawla 2,33
+1471,malajpur2,37
+1472,malajpur3,37
+1473,varedhana 2,36
+1474,katkuhi3,37
+1475,naharpur2,37
+1476,bajrang colony ,36
+1477,chhindikhapa ,36
+1478,khadkadhana ,36
+1479,niwari2,37
+1480,KAKARIYA,27
+1481,rojhda1,37
+1482,fhogriya,37
+1483,KAMTADA1,27
+1484,jamti,37
+1485,KAMTADA2,27
+1486,kanaujiya2_gramin,32
+1487,khairi,33
+1488,morudhana,33
+1489,ROLGAOV,27
+1490,buchakheda ,36
+1491,kanaujiya1_gramin,32
+1492,mandidhana ,36
+1493,TANDAVASTI,27
+1494,panbehra 2,33
+1495,satkund 1,33
+1496,seridhana,33
+1497,theska,33
+1498,katkuhi1,37
+1499,katkuhi2,37
+1500,MASANGAOV1,27
+1501,jamundhana ,36
+1502,bajardhana ,36
+1503,naharpur1,37
+1504,imlidhana ,36
+1505,hidli ,36
+1506,MASANGAOV2,27
+1507,pachudhana ,36
+1508,MASANGAOV3,27
+1509,bondri 1,40
+1510,pachudhana ,36
+1511,niwari1,37
+1512,niwari3,37
+1513,madanidhana_gramin,32
+1514,rojhda2,37
+1515,medha dhana,33
+1516,SULTANPUR,27
+1517,harijanvard ,36
+1518,palaspani,33
+1519,panbehra 1,33
+1520,satkund 2,33
+1521,akkalvadi 1,33
+1522,akkalvadi 2,33
+1523,bhaisaghat,33
+1524,chaugad 1,33
+1525,bondri 2,40
+1526,chaugad 2,33
+1527,dhodkheda,33
+1528,hivra 1,33
+1529,hivra 2,33
+1530,jamgavo,33
+1531,jamthi,33
+1532,kopra,33
+1533,lalkhedi,33
+1534,mandvi 1,33
+1535,churni1,37
+1536,churni2,37
+1537,bijadehi 1,40
+1538,bordraiyat,37
+1539,kurkudhana,37
+1540,BADGAON,35
+1541,bijadehi 3,40
+1542,bhurbhur ,37
+1543,BHONDIYAKUND,35
+1544,tandha,37
+1545,BOTHIYA,35
+1546,CHIKHALAJHODI 02,35
+1547,Khoksar,18
+1548,CHIKHALAJHODI 01,35
+1549,DHAR 02,35
+1550,aalamgarh2,37
+1551,aamapura,37
+1552,GOULIDHANA,35
+1553,kurshna1,37
+1554,GHOGAL,35
+1555,raidas ward2_shahri,32
+1556,kajali 2,40
+1557,tilak ward1_shahri,32
+1558,khokhrakheda,37
+1559,gullardhana ,36
+1560,tilak ward2_shahri,32
+1561,gawashen ,37
+1562,shashtri ward1_shahri,32
+1563,KABRAMAL,35
+1564,golidhanagawashen ,37
+1565,KASAI,35
+1566,harai1,37
+1567,jamu ,36
+1568,KHAMLA 02,35
+1569,baladongri,37
+1570,chirapatla1,37
+1571,chirapatla2,37
+1572,chirapatla3,37
+1573,chirapatla4,37
+1574,chirapatla5,37
+1575,barjorpur,40
+1576,BADGAON,35
+1577,bijadehi 2,40
+1578,golidhanabord,37
+1579,BARAMACHA,35
+1580,patalda ,37
+1581,BORKHEDI,35
+1582,dariyawganj ,37
+1583,jhiradhoh1,37
+1584,jhiriyadhoh2,37
+1585,jhiriyadhoh3,37
+1586,DEDPANI,35
+1587,aalamgarh1,37
+1588,kanjitalab,40
+1589,DOLDHANA,35
+1590,raidas ward1_shahri,32
+1591,kajali 1 ,40
+1592,kurshna2,37
+1593,HARIMAU,35
+1594,JAMUKHEDA,35
+1595,JAMUNDHANA,35
+1596,shashtri ward2_shahri,32
+1597,KHAMLA 01,35
+1598,utti ,36
+1599,harai2,37
+1600,gorkidhana ,36
+1601,dhamnya 1,36
+1602,tokdhana ,36
+1603,kavlikheda ,40
+1604,nevralondu,36
+1605,buretha ,36
+1606,chhatrashal ward5_shahri,32
+1607,KOUDIYA,35
+1608,KUKARU,35
+1609,devpurkomi4,37
+1610,LOKALDARI,35
+1611,subhash ward6_shahri,32
+1612,aalampur2,37
+1613,motipur,37
+1614,MEGHNATHDHANA02,35
+1615,laxmibai ward1_shahri,32
+1616,pathakheda1,37
+1617,MEGHNATHDHANA 01,35
+1618,pathakheda3,37
+1619,PATAKHEDA KABRA RAYYEAT,35
+1620,badhaichal ward_shahri,32
+1621,pathakheda5,37
+1622,pathakheda7,37
+1623,dhaniyajam3,37
+1624,dhaniyajam4,37
+1625,nandra1,37
+1626,aalampur1,37
+1627,zakir husain ward7_shahri,32
+1628,laxmibai ward2_shahri,32
+1629,pathakheda2,37
+1630,bhagatsingh ward_shahri,32
+1631,pathakheda4,37
+1632,pathakheda6,37
+1633,patel ward_shahri,32
+1634,DHAR 01,35
+1635,aazad ward_shahri,32
+1636,dhaniyajam1,37
+1637,dhaniyajam2,37
+1638,ward 1 kendra kramank 2,26
+1639,ward 1 kendra kramank 3,26
+1640,nandra2,37
+1641,bela1,37
+1642,bela2,37
+1643,godhna1,37
+1644,godhna2,37
+1645,kamtamal1,37
+1646,LALMATI,27
+1647,kamtamal2,37
+1648,ambedkar ward_shahri,32
+1649,bisighat_narera,32
+1650,kamtamal3,37
+1651,piplbarra1,37
+1652,narera_narera,32
+1653,piplbarra2,37
+1654,DAGAWASHANKAR1,27
+1655,mahudhanaaalmpur,37
+1656,belalohardhana,37
+1657,Harishchandradhana,32
+1658,mandvi 2,33
+1659,aamabagholi,38
+1660,mandvi 3,33
+1661,mandvi 4,33
+1662,diyamahu_narera,32
+1663,mandvi 5,33
+1664,aamadoh,38
+1665,nayegaov,33
+1666,MOHANPUR,27
+1667,bhilai,38
+1668,divtiya,38
+1669,barangwadi1_narera,32
+1670,heti,38
+1671,rajola 1,33
+1672,rambha ,36
+1673,chudiya2,37
+1674,jambadi,38
+1675,DULIYA ,27
+1676,rajola 2,33
+1677,chudiya3,37
+1678,salai dhana,33
+1679,jaulkheda 1,38
+1680,ringdhana ,36
+1681,jaulkheda 2,38
+1682,chudiya5,37
+1683,umari,33
+1684,ballaur1,37
+1685,kanhabagholi,38
+1686,babrya,33
+1687,chandu 2,36
+1688,chindikhapa,37
+1689,dhodra ,36
+1690,bhumkadhana_narera,32
+1691,khapariya,37
+1692,mohi,38
+1693,harijan dhana ,36
+1694,nagarkot,38
+1695,kasmar,37
+1696,gaadagohan ,36
+1697,dadarimal,37
+1698,parmandal 2,38
+1699,dadariraiyat,37
+1700,paregav,38
+1701,kanari1,37
+1702,taigaur ward_shahri,32
+1703,sarra,38
+1704,DHURGADA,27
+1705,behadi_narera,32
+1706,sukakhedi,38
+1707,kasyabarra ,36
+1708,bhodiyakhap,37
+1709,palsya,36
+1710,bhimnagar2_shahri,32
+1711,mohanpura,37
+1712,bhimnagar3_shahri,32
+1713,barkheda,37
+1714,lohardhana ,36
+1715,panchi,37
+1716,gurunank ward_shahri,32
+1717,sonajidhana,36
+1718,NEEMGAOV1,27
+1719,tokra,37
+1720,palaspani 2,33
+1721,dharni,38
+1722,pandurna,33
+1723,patra,33
+1724,chudiya1,37
+1725,hetikhapa,38
+1726,barangwadi2_narera,32
+1727,goddiyadhana,36
+1728,chudiya4,37
+1729,barangwadi3_narera,32
+1730,KHAMAPADWA,27
+1731,chandu 1,36
+1732,ballaur2,37
+1733,khapaumariya,38
+1734,khatedakala,38
+1735,parsda,37
+1736,bhurkaldhana_narera,32
+1737,lakhajhiri ,36
+1738,nirgud,38
+1739,BAMNHGAOV,27
+1740,parmandal 1,38
+1741,mendha ,36
+1742,kasya ,36
+1743,taigaur ward_shahri,32
+1744,kanari2,37
+1745,semjhira,38
+1746,bhimnagar1_shahri,32
+1747,valni,38
+1748,mangara_narera,32
+1749,devthan,37
+1750,jamnagri,37
+1751,GAHAL1,27
+1752,GAHAL2,27
+1753,badakhari_narera,32
+1754,sitapur,36
+1755,NEEMGAOV2,27
+1756,behdadhana,36
+1757,shivaji ward_shahri,32
+1758,rikhadi1_narera,32
+1759,MIRJAPUR,27
+1760,gandhi ward1_shahri,32
+1761,rikhadi2_narera,32
+1762,roadgav bodkhi_shari,32
+1763,khidkikhurd_shahri,32
+1764,chhipaniyapipariya1_narera,32
+1765,chhipaniyapipariya2_narera,32
+1766,sagwani,37
+1767,shivaji ward_shahri,32
+1768,dokya ,36
+1769,gandhi ward2_shahri,32
+1770,dhousra_shahri,32
+1771,chhipaniyapipariya3_narera,32
+1772,babarboh1_khedlibazar,32
+1773,bamhani_khedlibazar,32
+1774,barchhi1_khedlibazar,32
+1775,GANGLA,27
+1776,chunahajuri4,37
+1777,GHOGHDAMAFI,27
+1778,chunagosai1,37
+1779,balaimal,37
+1780,kundara_narera,32
+1781,bhuyari_khedlibazar,32
+1782,sitadongri1,37
+1783,sitadongri2,37
+1784,dudhiya2,37
+1785,hardu1,37
+1786,borgav_khedlibazar,32
+1787,badadhana,37
+1788,umariya1_khedlibazar,32
+1789,bijori_narera,32
+1790,sonolibundala_jambada,32
+1791,bramhanwada_khedlibazar,32
+1792,kajali_gramin,32
+1793,muvariya_narera,32
+1794,chunahajuri1,37
+1795,DOMANMAOO,27
+1796,chunahajuri2,37
+1797,chunahajuri3,37
+1798,surnadehi_narera,32
+1799,barchhi2_khedlibazar,32
+1800,chikhlar_narera,32
+1801,chunagosai2,37
+1802,gawajhdap,37
+1803,barchhi3_khedlibazar,32
+1804,harrawadi,37
+1805,kondhar,37
+1806,tekaridhana,37
+1807,kothiya_narera,32
+1808,dudhiya1,37
+1809,dudhiya3,37
+1810,bichhua_khedlibazar,32
+1811,dudhiya4,37
+1812,bamla_narera,32
+1813,hardu2,37
+1814,harnya,37
+1815,jamli,37
+1816,unchagohan1,37
+1817,unchagohan2,37
+1818,unchagohan3,37
+1819,dehalwada_narera,32
+1820,umariya2_khedlibazar,32
+1821,unchagohan4,37
+1822,Bandrabhan,18
+1823,Barkhedi,18
+1824,BALNER,35
+1825,BASNERKALA,35
+1826,BASNERKHURD 01,35
+1827,BASNERKHURD 02,35
+1828,BASNERKHURD 03,35
+1829,GARPAGARIDHANA,35
+1830,GAYKHAM,35
+1831,JAMJHIRI 01,35
+1832,JHIRNADHANA,35
+1833,JHIRNADHANA,35
+1834,gandhi ward,38
+1835,KALDONGARI 02,35
+1836,KOLGAON,35
+1837,KOYLARI,35
+1838,MALEGAON 02,35
+1839,amladakala2,23
+1840,NEEMDHANA,35
+1841,dangariya_khedlibazar,32
+1842,borpani,33
+1843,chindwad sawasan,33
+1844,NAKTIDHANA ,35
+1845,SAYGOHAN,35
+1846,khedlibazar2_khedlibazar,32
+1847,SIRAJGAON,35
+1848,TAMSAR,35
+1849,VIJAYGRAM 02,35
+1850,rajegav_khedlibazar,32
+1851,tarodakala_khedlibazar,32
+1852,dhanori 2,33
+1853,khajari_khedlibazar,32
+1854,gohanda,33
+1855,dehari_khedlibazar,32
+1856,gunkhed 1,33
+1857,jawra 2,33
+1858,BADGAON 02,35
+1859,junawani,33
+1860,faridpur,23
+1861,JAMJHIRI 02,35
+1862,KALDONGARI 01,35
+1863,KOYLARI,35
+1864,MALEGAON 01,35
+1865,MOHANLALDHANA,35
+1866,anikheda,33
+1867,bijasani,33
+1868,amladakhurd,23
+1869,NIPANYA,35
+1870,paraswada,23
+1871,pastlaimal_khedlibazar,32
+1872,khedlibazar1_khedlibazar,32
+1873,dhanora 2,33
+1874,khedlibazar3_khedlibazar,32
+1875,mandai_khedlibazar,32
+1876,harijandhana_khedlibazar,32
+1877,VIJAYGRAM 01,35
+1878,sonegav_khedlibazar,32
+1879,dhanora 1,33
+1880,dhanori 1,33
+1881,pastlai raiyat__khedlibazar,32
+1882,gujarmal,33
+1883,AMBEDKAR WARD,35
+1884,kehlpur_khedlibazar,32
+1885,gunkhed 2,33
+1886,BADGAON,35
+1887,jawra 1,33
+1888,bandarkho,23
+1889,BAGDARA,35
+1890,khatgad,33
+1891,guranjghat1,23
+1892,BHIVKUND,35
+1893,musakhedi,33
+1894,CHURNADHANA ,35
+1895,pusli 2,33
+1896,pusli 3,33
+1897,sawangi 2,33
+1898,morghat,23
+1899,DHUDIYA MINI,35
+1900,samardha,23
+1901,temurani 2,33
+1902,dhekna,23
+1903,turaborgav_khedlibazar,32
+1904,majre ghoghra,33
+1905,badgav_khedlibazar,32
+1906,morkha1_morkha,32
+1907,guranjghat2,23
+1908,pusli 1,33
+1909,DEVI WARD,35
+1910,choukimafi,23
+1911,DHUDIYANAI,35
+1912,liladiya,23
+1913,sawangi 1,33
+1914,sivanpat,33
+1915,GODIDHANA,35
+1916,temurani 1,33
+1917,GOULANDHANA ,35
+1918,HANUMANWARD,35
+1919,morkha3_morkha,32
+1920,tipnapur,33
+1921,morkha3_morkha,32
+1922,JAWAHAR NEHARU WARD,35
+1923,KOUDIDHANA ,35
+1924,babjai,33
+1925,khari_morkha,32
+1926,bakud 1,33
+1927,bakud 2,33
+1928,ghana,23
+1929,bhojudhana,33
+1930,chichpati,33
+1931,KORADI,35
+1932,dhawadi,33
+1933,dhayavani,33
+1934,khairwada 2,33
+1935,MA PURNA WARD,35
+1936,GANDHI WARD,35
+1937,naththudhana,33
+1938,MAHAVIR WARD,35
+1939,pathadha 1,33
+1940,pathadha 2,33
+1941,POKHARANI,35
+1942,thani,33
+1943,ghana,23
+1944,morkha2_morkha,32
+1945,nirgud dhana,33
+1946,ENDIRA WARD,35
+1947,kujba1_morkha,32
+1948,kujba2_morkha,32
+1949,kohpani_morkha,32
+1950,ambada,33
+1951,kekadiya_morkha,32
+1952,ghana,23
+1953,bakud 3,33
+1954,kathi1_morkha,32
+1955,bothi 1,33
+1956,bothi 2,33
+1957,kathi2_morkha,32
+1958,LAHAS,35
+1959,khairwada 1,33
+1960,kokadhana,33
+1961,banga_morkha,32
+1962,aamakatara,23
+1963,matka,33
+1964,pindarai_morkha,32
+1965,dudariya1_morkha,32
+1966,dudariya2_morkha,32
+1967,leelajhar1_morkha,32
+1968,MOULANA AJAD WARD,35
+1969,leelajhar2_morkha,32
+1970,PIPARIDHANA ,35
+1971,biskhan1_morkha,32
+1972,renuka khapa,33
+1973,jaitadhana_morkha,32
+1974,tarodabujurg1_morkha,32
+1975,SUBHAS WARD,35
+1976,satner 4,33
+1977,tarodabujurg2_morkha,32
+1978,satner 5,33
+1979,TRIVENI WARD,35
+1980,tarodabujurg3_morkha,32
+1981,biskhan2_morkha,32
+1982,SARAI,35
+1983,satner 1,33
+1984,lahi,23
+1985,CIVIL LINE,35
+1986,satner 2,33
+1987,satner 3,33
+1988,taki,33
+1989,nawalgauo,23
+1990,plasi,23
+1991,temni,33
+1992,hardoli_morkha,32
+1993,ward 26 ka kendra 50   03,25
+1994,sirupura,23
+1995,gubrail1_morkha,32
+1996,moriya,23
+1997,AMLA ,35
+1998,gubrail2_morkha,32
+1999,khapa sirkund_morkha,32
+2000,jhinnapura,23
+2001,shahpur,23
+2002,AMBORI,35
+2003,BORGAON,35
+2004,bordehi1_bordehi,32
+2005,bordehi2_bordehi,32
+2006,BOTHIYA,35
+2007,CHICHOLADHANA,35
+2008,chtarkheda_1,23
+2009,DADUDHANA ,35
+2010,chtarkheda_2,23
+2011,GODIDHANA ,35
+2012,HANUMANDHANA ,35
+2013,bordehi3_bordehi,32
+2014,harniya2_bordehi,32
+2015,nazarpur_bordehi,32
+2016,bhiladiyakala_2,23
+2017,khamra_bordehi,32
+2018,bhiladiyakala_3,23
+2019,Gadriya,23
+2020,taparvani_bordehi,32
+2021,kalmeshwara1_bordehi,32
+2022,kalmeshwara2_bordehi,32
+2023,KAMIDA,35
+2024,kachhar_bordehi,32
+2025,KERPANI,35
+2026,Rupadeh,23
+2027,Mudiyakhedi,23
+2028,sahajkui,23
+2029,banada,23
+2030,Babri_1,23
+2031,ghatawadikala_bordehi,32
+2032,Babri_2,23
+2033,pathada,23
+2034,malegav_bordehi,32
+2035,kacharboh_bordehi,32
+2036,Amladadoger,23
+2037,Lodhdi_1,23
+2038,bochanwadi_ratedakala,32
+2039,chtarkheda_3,23
+2040,chtarkheda_3,23
+2041,Toraniya,23
+2042,harniya1_bordehi,32
+2043,bhiladiyakala_1,23
+2044,jamunbichhuva_bordehi,32
+2045,jamundhana_bordehi,32
+2046,tikabarri_bordehi,32
+2047,khandepipariya_bordehi,32
+2048,karopani_bordehi,32
+2049,jamunbichhuva raiyat__bordehi,32
+2050,INDIRA COLONY,35
+2051,JAMUDHANA ,35
+2052,JHALLAR,35
+2053,ramnagar_bordehi,32
+2054,Rmpura,23
+2055,SONTALAI02,28
+2056,bhayawadi_bordehi,32
+2057,vasniyakeer,23
+2058,depamandai_bordehi,32
+2059,itawa_bordehi,32
+2060,banskhapa_bordehi,32
+2061,hatnora_bordehi,32
+2062,chopna_bordehi,32
+2063,Aaypa,23
+2064,bodud raiyat_bordehi,32
+2065,ghatawadikhurd_bordehi,32
+2066,Rasi,23
+2067,amni_ratedakala,32
+2068,aavariya_ratedakala,32
+2069,bichchhukhan_ratedakala,32
+2070,Lodhdi_2,23
+2071,borikhurd_ratedakala,32
+2072,Rjorakurmi,23
+2073,chhaval_ratedakala,32
+2074,devpipariya_ratedakala,32
+2075,Dimaver,23
+2076,Jamuniyaharji,23
+2077,Borat,23
+2078,kharigayawani_ratedakala,32
+2079,khateda_ratedakala,32
+2080,parsodi_ratedakala,32
+2081,SUKHRAS1,27
+2082,Pagdhal_1,23
+2083,SUKHRAS2,27
+2084,Babdiyabhau_2,23
+2085,DAGAWASHANKAR2,27
+2086,Ravanpipal_1,23
+2087,Jeeraveh,23
+2088,Kothra_1,23
+2089,Kothra_3,23
+2090,Bheropur_1,23
+2091,Bheropur_2,23
+2092,Tinsya,23
+2093,Bisonikala_2,23
+2094,Bisonikhurd,23
+2095,Soyat,23
+2096,Bhangiya_1,23
+2097,Bhangiya_2,23
+2098,Harpalpur,23
+2099,Kalyakhedi,23
+2100,Rehda_2,23
+2101,BALAGAOV1,27
+2102,Chotlay_1,23
+2103,BALAGAOV2,27
+2104,Chotlay_2,23
+2105,BALAGAOV3,27
+2106,Chotlay_3,23
+2107,Bundarakala,23
+2108,Gwadi,23
+2109,KANARDA,27
+2110,KANARDA,27
+2111,Kotlakhedi_1,23
+2112,KUKRAWAD1,27
+2113,Rjorajat,23
+2114,dutmur_ratedakala,32
+2115,Chbora,23
+2116,thani_ratedakala,32
+2117,ghisi_ratedakala,32
+2118,Kajli,23
+2119,jamdehikhurd_ratedakala,32
+2120,kharimal_ratedakala,32
+2121,khapakhateda1_ratedakala,32
+2122,khapakhateda2_ratedakala,32
+2123,Lohariyakhurd,23
+2124,ladi1_ratedakala,32
+2125,ladi2_ratedakala,32
+2126,Paretiya,23
+2127,ratedakala_ratedakala,32
+2128,ratedakhurd_ratedakala,32
+2129,shivpuridhana_ratedakala,32
+2130,toranwada1_ratedakala,32
+2131,Pagdhal_2,23
+2132,toranwada2_ratedakala,32
+2133,jamdehikala_ratedakala,32
+2134,Babdiyabhau_1,23
+2135,Babdiyabhau_3,23
+2136,Ravanpipal_2,23
+2137,Nirkhi_1,23
+2138,Nirkhi_2,23
+2139,Kothra_2,23
+2140,Dethi,23
+2141,Chokigwah,23
+2142,Berkhedi,23
+2143,Bisonikala_1,23
+2144,Bisonikala_3,23
+2145,Khapriya_1,23
+2146,Khapriya_2,23
+2147,Jhillay,23
+2148,Rehda_1,23
+2149,Bhela,23
+2150,Chanbad,23
+2151,KHARPA,27
+2152,Kotlakhedi_2,23
+2153,Kotlakhedi_3,23
+2154,KUKRAWAD2,27
+2155,Dhmasa_1,23
+2156,BUNDDRA,27
+2157,Hathnapur,23
+2158,JIJGAOVKHURD,27
+2159,NAKWADA,27
+2160,SIRKAMBA1,27
+2161,SIRKAMBA2,27
+2162,JHADPA1,27
+2163,JHADPA2,27
+2164,JHUNDGAOVMEN,27
+2165,Temlakala,23
+2166,JHUNDGAOVMINI,27
+2167,Dhmasa_2,23
+2168,ward  ka kendra 113   05,25
+2169,ward 13  ka kendra 111   05,25
+2170,JHADPA3,27
+2171,MAGARDHA1,27
+2172,ward 10  ka kendra 110   05,25
+2173,BARKHEDI,27
+2174,ward 24  ka kendra 75   05,25
+2175,MURLIKHEDA,27
+2176,JHALLAR,27
+2177,JHIRI,27
+2178,GUTHANIYA,27
+2179,ward 30  ka kendra 128   05,25
+2180,ward 12  ka kendra 26   05,25
+2181,ward 11  ka kendra 23   05,25
+2182,ward 25  ka kendra 124   05,25
+2183,ward 25  ka kendra 49   05,25
+2184,MAGARDHA2,27
+2185,MAGARDHA3,27
+2186,ward 24  ka kendra 48   05,25
+2187,RESALPUR1,27
+2188,RESALPUR2,27
+2189,ward 30  ka kendra 55   05,25
+2190,ABGAOVKHURD1,27
+2191,BANDIMALOR,27
+2192,ABGAOVKHURD2,27
+2193,ward 25  ka kendra 123   05,25
+2194,ABGAOVKHURD3,27
+2195,ward 32  ka kendra 57   05,25
+2196,ward 30  ka kendra 129   05,25
+2197,ABGAOVKHURD4,27
+2198,ward 30  ka kendra 78   05,25
+2199,DAGAWANIMA,27
+2200,ward 13  ka kendra 112   05,25
+2201,ward 11  ka kendra 21   05,25
+2202,ward 31  ka kendra 56   05,25
+2203,ward 10  ka kendra 20   05,25
+2204,ward 12  ka kendra 25   05,25
+2205,ward 12  ka kendra 24   05,25
+2206,ward 11  ka kendra 22   05,25
+2207,SONKHEDI,27
+2208,BHUWANKHEDI,27
+2209,BHUNNAS1,27
+2210,BHUNNAS2,27
+2211,RAHTAKHURD1,27
+2212,RAHTAKHURD2,27
+2213,BICHHOLAMAL ,28
+2214,RUPIPARETIYA,27
+2215,BHATPARETIYA,27
+2216,MANJHLI,27
+2217,AALANPUR,27
+2218,BICHHOLARAIYAT ,28
+2219,RANAHAIKALA1,27
+2220,RANAHAIKALA2,27
+2221,KOTLIYAKHEDIMINI,27
+2222,NAHALKHEDAMINI,27
+2223,GADRAPUR ,28
+2224,JIJGAOVKALAMINI,27
+2225,RANIYAKHEDIMINI,27
+2226,JAMLI,28
+2227,KADOLAUBARI,27
+2228,dehri 22,24
+2229,KARNPURA ,28
+2230,jujharpur 23,24
+2231,LOTIYA,28
+2232,PALASNER2,27
+2233,KELANPUR,27
+2234,BEED,27
+2235,bhoura 4,40
+2236,PEEPALGHATA,28
+2237,jhujharpur 26,24
+2238,SENGUD,28
+2239,BAIDAGAONV,28
+2240,KALISARAY,28
+2241,MINIJAMALI,28
+2242,jhagar ,23
+2243,bhatna ,40
+2244,bhoura 1,40
+2245,bhoura 3,40
+2246,bhoura 5,40
+2247,chhimadi raiyat,40
+2248,dendupura ,40
+2249,dhapada 1,40
+2250,dhapadamaal  2,40
+2251,gurgunda 1,40
+2252,guwadi 1,40
+2253,guwadi 2,40
+2254,salimet 1,40
+2255,salimet 2,40
+2256,SAMARDHA,27
+2257,PALASNER1,27
+2258,jujharpur 24,24
+2259,JHADPA,28
+2260,KACHBAIDI ,28
+2261,HANIFABAD,28
+2262,KAYAGAONV,28
+2263,EDABAIDA,28
+2264,MINILOTIYA,28
+2265,pipalber,23
+2266,chirmantekari,40
+2267,dhapadaraiyat ,40
+2268,dhar 1,40
+2269,dhar 2,40
+2270,dhasaee,40
+2271,gurgunda 2,40
+2272,mansingura ,40
+2273,ranapura ,40
+2274,salimet 3,40
+2275,timarni awc 4,30
+2276,KHAPA,35
+2277,KHODARI,35
+2278,KIRAD DHANA,35
+2279,LAYWANI 02,35
+2280,LAYWANI 01,35
+2281,MACHHI,35
+2282,MAHARPANI,35
+2283,MENDHA,35
+2284,NANDRA,35
+2285,PULDHANA ,35
+2286,RAMJIDHANA ,35
+2287,SIVANPAT,35
+2288,TEMURANI,35
+2289,THESKA,35
+2290,BAIDI1,28
+2291,BAIDI2,28
+2292,DHANGAONV,28
+2293,BUNDRA,28
+2294,JHALVA2,28
+2295,AJNASKHURD,28
+2296,AJNASRAIYAT,28
+2297,MINIRELWA,28
+2298,DEVTALAW,28
+2299,ATARSAMA,28
+2300,KHEDA,28
+2301,BHAVARTALAW,28
+2302,gondikhrar,23
+2303,BHADUGAONV,28
+2304,surgi,23
+2305,RATATALAI1,28
+2306,RATATALAI2,28
+2307,Nandrwada_3,23
+2308,Gajnpur_1,23
+2309,Gajnpur_2,23
+2310,HEMAPUR,28
+2311,Narri,23
+2312,Pipalgota,23
+2313,AADALPURRAYAT,28
+2314,DEWAS,28
+2315,Bhavnda,23
+2316,jondhal,23
+2317,ghoghra,23
+2318,napupura,23
+2319,tiliaavli,23
+2320,DHONDI,35
+2321,bhmedi_1,23
+2322,bhmedi_2,23
+2323,jatamau,23
+2324,GARPATHAR 03,35
+2325,baint,23
+2326,GHOGAMA,35
+2327,ward no.1 kendra 2,23
+2328,GUNGHATI,35
+2329,ward no.1 kendra 3,23
+2330,HANUMANDHANA,35
+2331,JUNAPANI,35
+2332,ward no.2 kendra 1,23
+2333,makdai,23
+2334,uradi,23
+2335,dhedi,23
+2336,Aagrakhurd,23
+2337,Manwada,23
+2338,Nandrwada_1,23
+2339,Nandrwada_2,23
+2340,KHARDANA,28
+2341,UWAA,28
+2342,Sota_chikhli,23
+2343,Mala_pat,23
+2344,barasel,23
+2345,kevlajhir,23
+2346,gotabrri,23
+2347,bandi,23
+2348,chandakhd,23
+2349,baspani,23
+2350,nyagaon,23
+2351,ghoghra,23
+2352,salai,23
+2353,GADRAJHIRI,35
+2354,GARPATHAR 01,35
+2355,GHUGHARI 01,35
+2356,ward no.1 kendra 1,23
+2357,GHUGHARI 02,35
+2358,ward no.2 kendra 2,23
+2359,KATOL,35
+2360,ward no.3 kendra 1,23
+2361,KHAPA,35
+2362,ward no.4 kendra 1,23
+2363,ward no.4 kendra 2,23
+2364,ward no.5 kendra 1,23
+2365,ward no.5 kendra 2,23
+2366,ward no.6 kendra 1,23
+2367,ward no.6 kendra 2,23
+2368,ward no.6 kendra 3,23
+2369,ward no.7 kendra 1,23
+2370,ward no.7 kendra 2,23
+2371,ward no.8 kendra 1,23
+2372,ward no.8 kendra 2,23
+2373,ward no.9 kendra 2,23
+2374,ward no.9 kendra 3,23
+2375,babritoli ,36
+2376,ward no.10 kendra 1,23
+2377,kamod,36
+2378,ward no.10 kendra 2,23
+2379,ward no.10 kendra 3,23
+2380,bhavaipur,36
+2381,aathva,36
+2382,ward no.11 kendra 1,23
+2383,MATHANI 01,35
+2384,bhattidhana,36
+2385,kiding,36
+2386,ward no.11 kendra 2,23
+2387,ward no.12 kendra 1,23
+2388,barradhana,36
+2389,ward no.12 kendra 2,23
+2390,basinda ,36
+2391,ward no.13 kendra 2,23
+2392,sukhadhana ,36
+2393,bela ,36
+2394,ward no.13 kendra 3,23
+2395,dol ,36
+2396,gadhakhar ,36
+2397,ward no.14 kendra 1,23
+2398,imlidhana 1,36
+2399,imlidhana 2,36
+2400,ward no.14 kendra 2,23
+2401,ward no.14 kendra 3,23
+2402,ward no.14 kendra 3,23
+2403,imlidoh ,36
+2404,jamunpani ,36
+2405,ward no.15 kendra 1,23
+2406,nanda ,36
+2407,ward no.15 kendra 2,23
+2408,nishana ,36
+2409,paat 1,36
+2410,ward no.15 kendra 3,23
+2411,paat 2,36
+2412,jhaklay-1,23
+2413,MATHANI 02,35
+2414,pipaldhana ,36
+2415,jhaklay-2,23
+2416,PATAKHEDA,35
+2417,nimbudhana ,36
+2418,semaldol,36
+2419,RAMGHATI,35
+2420,shikaridhana ,36
+2421,siyardhana,36
+2422,sotkheda ,36
+2423,RAMGHATI 02,35
+2424,ghutiya ,36
+2425,jhaklay-3,23
+2426,mandirdhana ,36
+2427,RAMGHATI 02,35
+2428,mandirdhana ,36
+2429,ghogra ,36
+2430,thuaa_1,23
+2431,thuaa_2,23
+2432,kusumkui,23
+2433,guradiyajat_1,23
+2434,guradiyajat_2,23
+2435,chapdagrahen_1,23
+2436,chapdagrahen_2,23
+2437,golgaon,23
+2438,myaugaon,23
+2439,SALAIBHATA,35
+2440,SAWALMENDHA 01,35
+2441,SAWALMENDHA 02,35
+2442,SAWALMENDHA 03,35
+2443,DEWALWADA,35
+2444,aaki ,36
+2445,balu ,36
+2446,chillor,36
+2447,jamundhana ,36
+2448,dharagohan ,36
+2449,labada ,36
+2450,dhengna ,36
+2451,bhondlakheda ,36
+2452,bhondlakheda ,36
+2453,colony dhana ,36
+2454,colony dhana ,36
+2455,naharpur ,36
+2456,dabida ,36
+2457,imlidhana,36
+2458,chatupadi ,36
+2459,tipring,36
+2460,bajardhana ,36
+2461,khaira ,36
+2462,dhodra ,36
+2463,titvi ,36
+2464,mahudha,36
+2465,dehri 22,24
+2466,taronda 27,24
+2467,taronda 28,24
+2468,taronda 29,24
+2469,chirpani 30,24
+2470,bhavdakhar 1,36
+2471,ghodkidhana ,36
+2472,bhadridhana 2,36
+2473,fci 201,24
+2474,bhadridhana 1,36
+2475,nayakheda 50,24
+2476,guradiya 2,36
+2477,khadkadhana ,36
+2478,pathrota 51,24
+2479,aadersh dhanora ,36
+2480,aamdhana ,36
+2481,kumeendhana ,36
+2482,kharar,23
+2483,bildi,23
+2484,mendhana ,36
+2485,mohanpur,23
+2486,ghanaraipur ,36
+2487,patwaridhana ,36
+2488,pipalthon,23
+2489,bakka 1,36
+2490,bakka 2,36
+2491,babdiyabapu,23
+2492,makda ,36
+2493,kahariya,23
+2494,babarboh2_khedlibazar,32
+2495,bhamedidev,23
+2496,bharlay1,23
+2497,bharlay2,23
+2498,bharlay3,23
+2499,dhamaniya1,23
+2500,dhamaniya2,23
+2501,basniyakalan1,23
+2502,karanjidol ,36
+2503,banapurashesh,23
+2504,gaulidhana ,36
+2505,kund ,36
+2506,koludhana ,36
+2507,behdadhana ,36
+2508,barakhadkhurd1,23
+2509,kajri ,36
+2510,DEDVAKUND 01,35
+2511,dhavdakhar 2,36
+2512,pathrota 52,24
+2513,DHABA 01,35
+2514,pathrota mini 245,24
+2515,pathrota 246,24
+2516,tawanagar 79,24
+2517,tawanagar 80,24
+2518,tawanagar 81,24
+2519,tawanagar 82,24
+2520,GHOGHRADHNA,35
+2521,naya chicha 84,24
+2522,khakrapura,23
+2523,JAMULANI 02,35
+2524,purana chicha 85,24
+2525,JANONA,35
+2526,pipariya kala 86,24
+2527,28 nambar chicha 212,24
+2528,harvanshchouki ,23
+2529,nimanpur,23
+2530,jhinganpur,23
+2531,KAKADPANI,35
+2532,satpura,23
+2533,KORAKUDHANA ,35
+2534,gadaripura,23
+2535,KOTHALKUND,35
+2536,charkheda,23
+2537,MALEGAON,35
+2538,ganjalthedi,23
+2539,MALNI,35
+2540,sukaldhana,23
+2541,UDAMA,35
+2542,T T nagar ,23
+2543,noniya,23
+2544,ward no. 13 kendra 1,23
+2545,somalwada2,23
+2546,basaniyakalan2,23
+2547,nipaniya1,23
+2548,nipaniya,23
+2549,guradiya 1,36
+2550,barakhadkalan,23
+2551,bakajan ,36
+2552,BANJARIDHANA,35
+2553,CHICHDHANA,35
+2554,barakhadkhurd 2,23
+2555,DEDVAKUND 02,35
+2556,barakhadkurd 3 ,23
+2557,pathrota 53,24
+2558,bairakhedi ,23
+2559,DHABA 02,35
+2560,pathrota 54,24
+2561,bihari colony 203,24
+2562,tawanagar 78,24
+2563,ghogranala 83,24
+2564,JAMULANI 01,35
+2565,JHIRI,35
+2566,tawanagar rait dem mini 229,24
+2567,yard mini 227,24
+2568,harsul ,23
+2569,bhamedideo naka,23
+2570,davida,23
+2571,NIRUNGI,35
+2572,RAIYYATWADI,35
+2573,ghoghra,23
+2574,ward no.3 kendra 2,23
+2575,badora_1,34
+2576,badora_2,34
+2577,badora_3,34
+2578,badora_3,34
+2579,hathnora,34
+2580,vishanu ward-6,34
+2581,RELWA1,28
+2582,RELWA2,28
+2583,UTHPADAV,28
+2584,MINIBHADUGAONV,28
+2585,damjipura 1,36
+2586,damjipura 2,36
+2587,kalyanpur 1,36
+2588,kalyanpur 2,36
+2589,hidli 1,36
+2590,hidli 2,36
+2591,batlakala ,36
+2592,korkudhana ,36
+2593,rehtiya ,36
+2594,bhurbhur ,36
+2595,kekadiyakala ,36
+2596,kekadiyakala ,36
+2597,rohanikheda ,36
+2598,chival ,36
+2599,jhakas,36
+2600,hardadadu ,36
+2601,pali ,36
+2602,umarghat ,36
+2603,partapura ,36
+2604,borkund ,36
+2605,dhamdehi ,36
+2606,malor ,36
+2607,bichchutekadi ,36
+2608,behda ,36
+2609,bhargar ,36
+2610,birpura ,36
+2611,daulatpura ,36
+2612,ranikheda ,36
+2613,dori ,36
+2614,tavdi ,36
+2615,aamapathar ,36
+2616,raiyyatvadi ,36
+2617,chakdhana ,36
+2618,subhash ward-1,41
+2619,subhash ward-2,41
+2620,arjun ward-1,41
+2621,arjun ward-2,41
+2622,arjun ward-3,41
+2623,malviya ward-1,41
+2624,malviya ward-2,41
+2625,JHALVA1,28
+2626,malviya ward-3,41
+2627,durga ward-1,41
+2628,durga ward-2,41
+2629,durga ward-3,41
+2630,shivaji ward-1,41
+2631,shivaji ward-2,41
+2632,shivaji ward-3,41
+2633,gandhi ward-1,41
+2634,gandhi ward-2,41
+2635,gandhi ward-3,41
+2636,kidwai ward-1,41
+2637,kidwai ward-2,41
+2638,kidwai ward-3,41
+2639,PACHOLA ,28
+2640,aazad ward-1,41
+2641,aazad ward-2,41
+2642,ADAUMBER,35
+2643,aazad ward-3,41
+2644,BANJARIDHANA,35
+2645,deshbandhu ward-1,41
+2646,BANUR,35
+2647,BURHANPUR,35
+2648,DHOTARADHANA ,35
+2649,JANONA BERIYAR,35
+2650,KHATGAD,35
+2651,deshbandhu ward-2,41
+2652,KHOMAI,35
+2653,KHOMAI,35
+2654,deshbandhu ward-3,41
+2655,ambedkar ward-1,41
+2656,KHOMAI 02,35
+2657,ambedkar ward-2,41
+2658,ambedkar ward-3,41
+2659,NEEMDHANA ,35
+2660,PALASKHEDI 01,35
+2661,subhash ward-3,41
+2662,patel ward-1,41
+2663,shashrti ward-1,41
+2664,shashrti ward-3,41
+2665,bhagatsingh ward-2,41
+2666,bhagatsingh ward-3,41
+2667,mahavir ward-1,41
+2668,arya ward-1,41
+2669,arya ward-2,41
+2670,indira ward-1,41
+2671,indira ward-2,41
+2672,taigor ward-1,41
+2673,taigor ward-2,41
+2674,taigor ward-3,41
+2675,jayprakash ward-1,41
+2676,jayprakash ward-2,41
+2677,jakir hussain ward-1,41
+2678,jakir hussain ward-2,41
+2679,jakir hussain ward-3,41
+2680,ramnagar ward-1,41
+2681,ramnagar ward-2,41
+2682,ramnagar ward-3,41
+2683,LAMGHATI,35
+2684,MAJARI,35
+2685,pratap ward-1,41
+2686,pratap ward-2,41
+2687,NIMBORA,35
+2688,PATAKHEDA,35
+2689,chandrashekhar ward-1,41
+2690,chandrashekhar ward-2,41
+2691,patel ward-2,41
+2692,patel ward-3,41
+2693,shashrti ward-2,41
+2694,bhagatsingh ward-1,41
+2695,mahavir ward-2,41
+2696,mahavir ward-3,41
+2697,jawahar ward-1,41
+2698,jawahar ward-2,41
+2699,jawahar ward-3,41
+2700,ganesh ward-1,41
+2701,lohiya ward-1,41
+2702,lohiya ward-2,41
+2703,lohiya ward-3,41
+2704,rajendra ward-1,41
+2705,rajendra ward-2,41
+2706,rajendra ward-3,41
+2707,ganesh ward-2,41
+2708,aamkhachar 202,24
+2709,shankar ward-1,41
+2710,shankar ward-2,41
+2711,vivekanand ward-1,41
+2712,badibhid 209,24
+2713,vivekanand ward-2,41
+2714,vikas ward-1,41
+2715,chandon 65,24
+2716,vikas ward-2,41
+2717,vinoba ward-1,41
+2718,vinoba ward-2,41
+2719,chandon 66,24
+2720,tilak ward-3,41
+2721,krishna ward-2,41
+2722,dob 62,24
+2723,krishna ward-3,41
+2724,ghatli 70,24
+2725,kiratpur 47,24
+2726,vinoba ward-3,41
+2727,tilak ward-1,41
+2728,tilak ward-2,41
+2729,krishna ward-1,41
+2730,ghatli 69,24
+2731,moti ward-1,41
+2732,moti ward-2,41
+2733,ghatli 71,24
+2734,chipikhapa 204,24
+2735,jamai damami 208,24
+2736,jamai kala 57,24
+2737,jhimahu 64,24
+2738,kandai kala 68,24
+2739,kandai kala 67,24
+2740,kiratpur 48,24
+2741,kubda khedi 49,24
+2742,mohla 205,24
+2743,nagpur kala 58,24
+2744,nagpur kala 59,24
+2745,nagpur kala 60,24
+2746,najarpur 46,24
+2747,nanapura 61,24
+2748,pandri 63,24
+2749,pandri 206,24
+2750,pandukhedi 55,24
+2751,pandukhedi 56,24
+2752,shiv nagar chadon 207,24
+2753,SONTATALI ,28
+2754,NAHADIYA ,28
+2755,NEELGAD ,28
+2756,DOMRIKALA,28
+2757,DOMRIKHURD,28
+2758,NAVRANGPURA ,28
+2759,PACHATALAI ,28
+2760,CHHIDGAONV,28
+2761,bankakhodri 1,40
+2762,bankakhodri 2,40
+2763,chapdaraiyat ,40
+2764,doudi 1,40
+2765,doudi 2,40
+2766,gounapur,40
+2767,jamnagri,40
+2768,kamthi,40
+2769,kotmi 1,40
+2770,kotmi 2,40
+2771,kundi 1,40
+2772,kundi 1,40
+2773,kundi 2,40
+2774,kundi 3,40
+2775,kundi 3,40
+2776,kusmari ,40
+2777,mardanpur,40
+2778,pahawadi ,40
+2779,pahawadi 1,40
+2780,pahawadi 2,40
+2781,pahawarjhanda 2,40
+2782,pahawarjhanda 1,40
+2783,pahawarjhanda 1,40
+2784,raipur 1,40
+2785,raipur 2,40
+2786,silpati 1,40
+2787,semarpura 1,40
+2788,semarpura 2,40
+2789,silpati 2,40
+2790,silpati 3,40
+2791,sohagpurdhana ,40
+2792,bod,40
+2793,chaksangwani ,40
+2794,dabri 2,40
+2795,dabri 3,40
+2796,dabri 4,40
+2797,dabri 4,40
+2798,dabri 5,40
+2799,dhanwar ,40
+2800,dhodhramau 1,40
+2801,dhodhramau 2,40
+2802,malvi ward-9,34
+2803,dhodhramau 3,40
+2804,krishna ward-5,34
+2805,shashtri ward-10,34
+2806,kailash ward-3,34
+2807,dhodhramau 4,40
+2808,jawahar ward-11,34
+2809,foflya 1,40
+2810,azad ward-14,34
+2811,foflya 2,40
+2812,azad ward-14,34
+2813,kharwar,40
+2814,tilak ward-7,34
+2815,tilak ward-7,34
+2816,nimiya ,40
+2817,shivaji ward-1,34
+2818,jagdar,34
+2819,pandajhiri,40
+2820,jagdar,34
+2821,singanwadi,34
+2822,pat,40
+2823,hanotya,34
+2824,taramkheda,40
+2825,subhash ward-4,34
+2826,timarni 1,40
+2827,arul -1,34
+2828,timarni 2,40
+2829,arul -2,34
+2830,gadhi ward,34
+2831,rajendra ward -12,34
+2832,ambedkar ward -15,34
+2833,bhawani ward -8,34
+2834,badora-4,34
+2835,shohagpur -2,34
+2836,shohagpur -3,34
+2837,nahiya-1,34
+2838,nahiya-2,34
+2839,nahiya-3,34
+2840,jawara -1,34
+2841,jawara -2,34
+2842,jawara -3,34
+2843,roudha-1,34
+2844,roudha-2,34
+2845,milanpur,34
+2846,ankawadi,34
+2847,khapa,34
+2848,saikhandara-1,34
+2849,saikhandara-2,34
+2850,jaitapur,34
+2851,ratanpur,34
+2852,bundala,34
+2853,bajpur,34
+2854,malkapur,34
+2855,kilod,34
+2856,nagjhiri,34
+2857,parsodi,34
+2858,junawani,34
+2859,partapur,34
+2860,PATOLI,35
+2861,PIPALNAKHURD,35
+2862,chatua 104,24
+2863,PALASKHEDI 02,35
+2864,amjhira 105,24
+2865,SAKHALI,35
+2866,jhalikheda 106,24
+2867,SUPALA,35
+2868,dhansai 107,24
+2869,THAPODA,35
+2870,gomtipura 108,24
+2871,maryarpura,24
+2872,morpani 110,24
+2873,morpani 111,24
+2874,RAIYYATWADI KHATGAD,35
+2875,mandikhoh 113,24
+2876,kesla 114,24
+2877,nadipura 115,24
+2878,bhumkhapura 116,24
+2879,ahirpura 117,24
+2880,taku 118,24
+2881,suiya 119,24
+2882,belawada 120,24
+2883,saheli 121,24
+2884,saheli 122,24
+2885,ojhapura 127,24
+2886,gehurash,34
+2887,mathani,34
+2888,kumhariya,34
+2889,kumhariya,34
+2890,godara-1,34
+2891,godara-2,34
+2892,gajpur,34
+2893,dhoul,34
+2894,dhoul-mini,34
+2895,sakadehi,34
+2896,sakadehi-mini,34
+2897,baspani,34
+2898,baspani,34
+2899,thani,34
+2900,umarwani,34
+2901,umarwani,34
+2902,umarwani-mini,34
+2903,umarwani-mini,34
+2904,gohachi,34
+2905,kalyanpur,34
+2906,nyegaon,34
+2907,badagi bujurg,34
+2908,lawaniya,34
+2909,silout-1,34
+2910,silout-2,34
+2911,silout-3,34
+2912,silout-3,34
+2913,silout-4,34
+2914,badagi khurd-1,34
+2915,badagi khurd-2,34
+2916,rawanwadi,34
+2917,bagholi-1,34
+2918,bagholi-2,34
+2919,bharvi-1,34
+2920,bharvi-2,34
+2921,bharvi-3,34
+2922,sarandai,34
+2923,bayawadi,34
+2924,charban,34
+2925,dodaramowad,34
+2926,ghogari,34
+2927,godigoula-1,34
+2928,godigoula-2,34
+2929,gudi,34
+2930,hathidingar,34
+2931,jodkya,34
+2932,junawani,34
+2933,junawani,34
+2934,sunarkhapa-1,34
+2935,sunarkhapa-2,34
+2936,redwa,34
+2937,chhata,34
+2938,ghogari,34
+2939,gudi,34
+2940,lohariya,34
+2941,selgaon,34
+2942,thawadi,34
+2943,thawadi,34
+2944,arjunwadi,34
+2945,Bhadus-1,34
+2946,Bhadus-2,34
+2947,gouthana-2,34
+2948,bhawaniteda,34
+2949,bhawaniteda,34
+2950,danora,34
+2951,parsodi,34
+2952,rondha-2,34
+2953,rondha-1,34
+2954,karajgaon,34
+2955,bhopali,34
+2956,chikhalar,34
+2957,mundateda,34
+2958,gouthana mini,34
+2959,goutha-1,34
+2960,surgaon-2,34
+2961,bharkawadi-1,34
+2962,nayegaon-betul,34
+2963,sonaghati mini,34
+2964,sonaghati,34
+2965,gouthana-1,34
+2966,surgaon-1,34
+2967,bharkawadi-2,34
+2968,khadala,34
+2969,bhogiteda,34
+2970,chakaroad ,34
+2971,bad chapda 163,24
+2972,bhardha 169,24
+2973,bhardha 170,24
+2974,bhadbhud 235,24
+2975,bharagda 157,24
+2976,bharagda 156,24
+2977,bharagda 156,24
+2978,bharagda 158,24
+2979,borkheda 165,24
+2980,choukipura 144 ,24
+2981,nayapura 168,24
+2982,dandiwada 166,24
+2983,dandiwada colony 167,24
+2984,khamda 242,24
+2985,kotmi rayyat 160,24
+2986,kotmimal 161,24
+2987,ladimohu 162,24
+2988,maruapura 216,24
+2989,nakapura 217,24
+2990,pipalpura 136,24
+2991,ratibandar 237,24
+2992,silwani 159,24
+2993,somukheda 164,24
+2994,sukhtawa 141,24
+2995,sukhtawa 142,24
+2996,sukhtawa 143,24
+2997,suplai 239,24
+2998,veerguhadi 220,24
+2999,bashaniya 215,24
+3000,harapura 230,24
+3001,khakrapura 228,24
+3002,mallupura 241,24
+3003,dohri 128,24
+3004,jhunkar 129,24
+3005,jhunkar 130,24
+3006,chanagad 131,24
+3007,hathikheda 214,24
+3008,semri khurd 1,24
+3009,semri khurd 2,24
+3010,semri khurd 4,24
+3011,dhurgada 5,24
+3012,dhurgada 6,24
+3013,dhaba khurd 7,24
+3014,dhaba khurd 8,24
+3015,dhaba khurd 9,24
+3016,patlai kala 10,24
+3017,nayaganve 12,24
+3018,nayaghanve 13,24
+3019,kalmesra 14,24
+3020,dhurpan 15,24
+3021,bhatti 16,24
+3022,bhatti 17,24
+3023,bhatti 19,24
+3024,bhatti 20,24
+3025,kukdi 21,24
+3026,lalwani 41 ,24
+3027,TIKHAD 42 ,24
+3028,TIKHAD 43,24
+3029,TIKHAD 44,24
+3030,TIKHAD 44,24
+3031,PATLAI KALA 226,24
+3032,PATLAI KALA 226,24
+3033,HIRANCHAPDA 124,24
+3034,ABADIPURA 153,24
+3035,CHARTEKRA 150,24
+3036,CHINDAPANI 140,24
+3037,CHIPKHEDA 155,24
+3038,GAJANIYA BEDA 218,24
+3039,GENDA KABAD 219,24
+3040,GOGRA RAYYAT 126,24
+3041,JAM 234,24
+3042,NAYA JAMUNDOL 151,24
+3043,NAYA JAMUNDOL 151,24
+3044,sobhapur 27-1,42
+3045,sobhapur 27-2,42
+3046,sobhapur 28-1,42
+3047,sobhapur 29-1,42
+3048,sobhapur 29-1,42
+3049,sobhapur 29-2,42
+3050,sobhapur 30-1,42
+3051,sobhapur 30-2,42
+3052,sobhapur 30-3,42
+3053,sobhapur 31-2,42
+3054,sobhapur 31-3,42
+3055,sobhapur 31-1,42
+3056,sobhapur 32-1,42
+3057,sobhapur 32-1,42
+3058,sobhapur 32-2,42
+3059,sobhapur 32-3,42
+3060,sobhapur 33-1,42
+3061,sobhapur 33-2,42
+3062,sobhapur 34-1,42
+3063,sobhapur 34-2,42
+3064,sobhapur 34-3,42
+3065,sobhapur 35-1,42
+3066,sobhapur 35-2,42
+3067,sobhapur 35-3,42
+3068,sobhapur 35-4,42
+3069,sobhapur 36-1,42
+3070,sobhapur 36-2,42
+3071,sobhapur 36-3,42
+3072,JHALPURA 145,24
+3073,JHIRNAPURA 154,24
+3074,KALAAKHAR 147,24
+3075,KALAAKHAR 149,24
+3076,KALARI PAT BANDI 134,24
+3077,KASDA KHURD 139,24
+3078,KHAKRAPURA 125,24
+3079,KASDA KHURD 138,24
+3080,NIMKHEDA 137,24
+3081,NAYA JAMUNDOL 152,24
+3082,PODAR 236,24
+3083,PURANI BANDI 135,24
+3084,RESHALPATA  132,24
+3085,RESHALPATA  133,24
+3086,SHAKTIPURA 146,24
+3087,SEMALWADA 72,24
+3088,SEMALWADA 73,24
+3089,SANKHEDA 75,24
+3090,SANKHEDA 76,24
+3091,GAJPUR 89,24
+3092,SHAKTIPURA 146,24
+3093,SEMALWADA 72,24
+3094,SANKHEDA 74,24
+3095,GOGRI 90,24
+3096,DOBI KHAPA 91,24
+3097,BELAWADA 92,24
+3098,BELAWADA 93,24
+3099,BATKUI 94,24
+3100,SONTALAI 95,24
+3101,SONTALAI 96,24
+3102,SONTALAI 97,24
+3103,KOTA 98,24
+3104,BICHVA 99,24
+3105,BICHVA 100,24
+3106,MARODA 101,24
+3107,MARODA 102,24
+3108,GUVADI 103,24
+3109,GAJPUR 210,24
+3110,BELAWADA TAPPAR 211,24
+3111,BHOBDA RAYYAT 178,24
+3112,sarni 1-1,42
+3113,sarni 1-2,42
+3114,BHOBDA RAYYAT 233,24
+3115,SANKHEDA 77,24
+3116,sarni 1-1,42
+3117,CHIPI KHAPA 88,24
+3118,sarni 1-2,42
+3119,sarni 2-1,42
+3120,sarni 2-2,42
+3121,sarni 2-3,42
+3122,sarni 3-1,42
+3123,sarni 3-2,42
+3124,sarni 4-1,42
+3125,sarni 4-1,42
+3126,sarni 4-2,42
+3127,sarni 5-1,42
+3128,sarni 5-2,42
+3129,sarni 5-3,42
+3130,sarni 6-1,42
+3131,sarni 6-3,42
+3132,AMADA 45,24
+3133,sarni 7-1,42
+3134,BABAI KHURD 37,24
+3135,sarni 8-1,42
+3136,BANDRI 191,24
+3137,sarni 9-1,42
+3138,sarni 11-1,42
+3139,sarni 12-1,42
+3140,CHIPAPURA 199,24
+3141,sarni 13-1,42
+3142,sarni 14-2,42
+3143,sarni 15-2,42
+3144,sarni 10-1,42
+3145,sarni 12-2,42
+3146,DHAI KHURD 35,24
+3147,sarni 14-1,42
+3148,sarni 15-1,42
+3149,subhash ward 1,20
+3150,sarni 1-1,42
+3151,pathakheda 16-1,42
+3152,pathakheda 16-2,42
+3153,pathakheda 16-3,42
+3154,JAMANI 38,24
+3155,pathakheda 17-1,42
+3156,pathakheda 17-2,42
+3157,pathakheda 18-1,42
+3158,pathakheda 18-2,42
+3159,JAMANI 40,24
+3160,pathakheda 19-1,42
+3161,pathakheda 19-2,42
+3162,pathakheda 20-1,42
+3163,pathakheda 20-2,42
+3164,pathakheda 21-1,42
+3165,pathakheda 21-2,42
+3166,pathakheda 22-1,42
+3167,pathakheda 22-2,42
+3168,pathakheda 22-3,42
+3169,pathakheda 23-1,42
+3170,pathakheda 23-2,42
+3171,pathakheda 23-3,42
+3172,pathakheda 24-1,42
+3173,pathakheda 24-2,42
+3174,pathakheda 25-1,42
+3175,pathakheda 25-2,42
+3176,pathakheda 26-1,42
+3177,pathakheda 26-2,42
+3178,JHALPA 223,24
+3179,JHALAI 240,24
+3180,KHATAMA 197,24
+3181,KHORIPURA 222,24
+3182,LODHRI KHURD 34,24
+3183,MANDIKHOH 200,24
+3184,MALNI 244,24
+3185,MALOTHAR 189,24
+3186,MALOTHAR 190,24
+3187,MANA 243,24
+3188,MATAPURA 221,24
+3189,NAYAPURA 36,24
+3190,PARCHA 195,24
+3191,PIPALDANA 32,24
+3192,PIPALDANA 31,24
+3193,PIPALDANA 31,24
+3194,TALPURA 192,24
+3195,TALPURA 192,24
+3196,JAMANI 39,24
+3197,TANGNA 193,24
+3198,TANGNA 194,24
+3199,TEMLA KHURD 198,24
+3200,PARCHA NADIPURA 231,24
+3201,bodijunawani mini,34
+3202,sedurjana-1,34
+3203,sedurjana-2,34
+3204,bodijunawani-2,34
+3205,bodijunawani-1,34
+3206,bodijunawani-3,34
+3207,borgaon-1,34
+3208,borgaon-3,34
+3209,kumhali,34
+3210,ratamati khurd,34
+3211,amla,34
+3212,mahupani,34
+3213,ratamati bujurga,34
+3214,jeen-1,34
+3215,jeen-2,34
+3216,ratamati bujurga-2,34
+3217,danora-2,34
+3218,gounighat-2,34
+3219,baghwad-2,34
+3220,bodi-1,34
+3221,bodi-2,34
+3222,khedala-1,34
+3223,khedala mini,34
+3224,somwaripeth,34
+3225,kumhartek,34
+3226,bhaisdehi,34
+3227,kelapur,34
+3228,umrijagir,34
+3229,barshali,34
+3230,thanimal,34
+3231,lakhapur,34
+3232,sajpur mini,34
+3233,mordongri,34
+3234,borgaon-2,34
+3235,karpa,34
+3236,khokara,34
+3237,ratamati bujurga,34
+3238,bitiya,34
+3239,danora-1,34
+3240,gounighat-1,34
+3241,chanbehada,34
+3242,khandara-1,34
+3243,khandara-2,34
+3244,baghwad-1,34
+3245,khedali,34
+3246,rathipur,34
+3247,gyarspur,34
+3248,bhilawadi,34
+3249,kajijamthi,34
+3250,mowad,34
+3251,thanimal,34
+3252,kanahadgaon,34
+3253,bodana,34
+3254,nimjhiri,34
+3255,ward 05 ka kendra65,25
+3256,ward 06 ka kendra 104  02,25
+3257,ward 29 ka kendra 126,25
+3258,ward 15 ka kendra 30  03,25
+3259,Sangakhedakhurd,19
+3260,hathikund,40
+3261,kalapani 1 jhilpa ,40
+3262,khokhra 1,40
+3263,nishana ,40
+3264,rampurmaal 2,40
+3265,sitaljhiri 1,40
+3266,sitaljhiri 2,40
+3267,sitaljhiri 3,40
+3268,temraraiyat ,40
+3269,ward 11 kendra 69  05,25
+3270,bhaktandhana ,40
+3271,dhappa 1,40
+3272,dhappa 2,40
+3273,jhilpa ,40
+3274,kalapani 2  jhilpa ,40
+3275,kantawadi ,40
+3276,khokhra 2,40
+3277,pathai 1,40
+3278,pathai 2,40
+3279,rampurmaal 1,40
+3280,rampur raiyat ,40
+3281,sitaljhiri 3,40
+3282,temramaal ,40
+3283,temramaal ,40

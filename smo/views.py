@@ -181,11 +181,11 @@ def smo_anc_visit(request):
                 (weight,bp1, bp2,malrep, gdm, anemia, hb, thyroid,
                      tobacohol,preg_disease,bleeding_check,iugr,const_factors,variable_factors,hrisk_factors,v_date,visit_number,p_id,))
 
-    cur.execute("SELECT edd_date FROM patient_level WHERE patient_id=%s", (p_id))
+    cur.execute("SELECT edd_date FROM patient_level WHERE patient_id=%s", (p_id,))
     rec_edd = cur.fetchall()
     edd_date = rec_edd[0][0]
 
-    cur.execute("SELECT visit_dates FROM smo_anc WHERE patient_id=%s",(p_id))
+    cur.execute("SELECT visit_dates FROM smo_anc WHERE patient_id=%s",(p_id,))
     rec_dates = cur.fetchall()
     dates = rec_dates[0][0]
     length = len(dates)

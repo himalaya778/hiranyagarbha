@@ -1,0 +1,728 @@
+,0,1
+0,village1,61
+1,BHATNA,86
+2,Junawani,69
+3,ward no 12,70
+4,Ranigohan,67
+5,Gorigaon,67
+6,kondharkhapa,78
+7,kharpadakhedi,78
+8,Gondalwada,69
+9,Koshkarpa,69
+10,Keshla,69
+11,Raghuwanshipura Sohagpur,67
+12,Sonpur,67
+13,Sarangpur,67
+14,Beejakharı,67
+15,Kamtı,67
+16,Tekapar,67
+17,Sehra,67
+18,URDON,67
+19,KHAPA,67
+20,KHADPAWAD,67
+21,NAYAGOAN,67
+22,ward no 13,70
+23,Banskhapa,67
+24,pahanwarii,65
+25,NAYAKHEDA,67
+26,Jawahar Ward Sohagpur,67
+27,Subhash Ward Sohagpur,67
+28,Indra Ward Sohagpur,67
+29,Kilapura Ward Sohagpur,67
+30,Sardar Ward Sohagpur,67
+31,Ramganj Ward Sohagpur,67
+32,Matapura Ward Sohagpur,67
+33,Rajendra Ward Sohagpur,67
+34,Bodı,67
+35,PATHAI,67
+36,Langha Bamhorı,67
+37,MAGARIYA,67
+38,Aamdehı,67
+39,Nıbhora,67
+40,Dundadeh,67
+41,Sıngwada,67
+42,DHABA,67
+43,RATAMATI,67
+44,Dundakhapa,67
+45,Kukra,67
+46,SITIYAGOHNA,67
+47,Chhedka,67
+48,Jarran,67
+49,ward no 14,70
+50,Navalgaon,67
+51,Dhapada,67
+52,Rewabankhedi,67
+53,Rewamuhari,67
+54,Daringa,67
+55,Madkadhana Banskhapa,67
+56,Baniyakhedi,69
+57,Bamhorikishore,69
+58,Gundrai,69
+59,Singpur,69
+60,Fashidhana,69
+61,Nayagaon,69
+62,Dahalwadakhurd,69
+63,Mahuakheda,69
+64,Theekri,67
+65,Berkhedi,69
+66,bildhi,70
+67,Ghoghrimatha,69
+68,Maharajganj,69
+69,Sodra,67
+70,Kohani,67
+71,Barbatpur,67
+72,Chandikhedi,67
+73,Paraswada,69
+74,Bhairopur,69
+75,Kalangwa,69
+76,Dungariya,69
+77,Bamhanwada,69
+78,ward no. 15,89
+79,ward no. 3,89
+80,ward no. 30,89
+81,ward no. 17,89
+82,ward no. 23,89
+83,ward no. 22,89
+84,ward no. 4,89
+85,Bothiya,84
+86,Banoor,84
+87,Datora,84
+88,Dehgud,84
+89,ward no. 20,89
+90,Yenas,84
+91,Pohari,84
+92,Saikheda,84
+93,ward no. 26,89
+94,ward no. 10,89
+95,ward no. 27,89
+96,jhillai,70
+97,luhariya khurd,70
+98,surangi,70
+99,Guramkhedi,67
+100,Pathrai,67
+101,Paraswada,67
+102,Lakhanpur  isherpur,67
+103,Jamuniya AW 01,67
+104,PALADEVRI,67
+105,Borna Mittha,67
+106,Gujarkhedi,67
+107,Borna Gujar,67
+108,Dhana,67
+109,Isherpur,67
+110,Ritalkhapa,67
+111,Gujarkhapa,67
+112,Nagtra,67
+113,Ajabgaon,67
+114,Khapariya,67
+115,Mudiyakheda,67
+116,Madkadhana khiriyamandir,67
+117,Katiya,67
+118,Telsir,67
+119,Barrangi,67
+120,Pamli,67
+121,KHADADEVRI,67
+122,LAKHANPUR,67
+123,Shobhapur AW 01,67
+124,Nakatua,67
+125,Talakhedi,67
+126,Raipura,67
+127,bhiladiya kala,70
+128,rajora khurd,70
+129,Mokalwadi,67
+130,Akola,67
+131,Bareli,67
+132,Jhirmata,67
+133,choutlai,70
+134,Machha,67
+135,Tighda,67
+136,Chanderi,67
+137,Bhoukhedikhurd,67
+138,Niwari,67
+139,Baraiyakhedi,67
+140,Ranipipariya,67
+141,gunoura,65
+142,Kandrakhedi,65
+143,Ajera,67
+144,Bhanpur,67
+145,Dikwada,67
+146,Baikhedi,65
+147,makdai,70
+148,hathnapur,70
+149,misrod,65
+150,Ward 1,73
+151,Ward 2,73
+152,Ward 3,73
+153,Sekakhedi,67
+154,Bhatgaon,67
+155,Sosarkheda,67
+156,Gajnai,67
+157,Sankala,67
+158,Bhilariya,67
+159,Parsai Pipariya,67
+160,Gurari,67
+161,Bhoukhedikalan,67
+162,Khimara,67
+163,Ward 4,73
+164,Ward 5,73
+165,Hirapur Janmitola,67
+166,Karanpur,67
+167,barandua,65
+168,palanpur,65
+169,sawalkheda,65
+170,Mahuakheda kalan,67
+171,Kajalkhedi,67
+172,Ghoorkhedi,67
+173,new_db_village,61
+174,mahragaon,65
+175,Kurshidhana,69
+176,Poudi,69
+177,Ward 13,73
+178,Ward 19,73
+179,Ward 17,73
+180,Ward 26,73
+181,Ward 10,73
+182,Ward 11,73
+183,Ward 12,73
+184,Ward 18,73
+185,Ward 22,73
+186,Ward 20,73
+187,Ward 21,73
+188,Ward 23,73
+189,Ward 24,73
+190,Ward 25,73
+191,Chhater,69
+192,Ward 27,73
+193,Ward 28,73
+194,Ward 29,73
+195,Ward 30,73
+196,Ward 31,73
+197,Ward 32,73
+198,Ward 33,73
+199,GHANDHI WARD SOHAGPUR,67
+200,Tilak Ward Sohagpur,67
+201,KHAPA,71
+202,Manakwada,67
+203,Samnapur,69
+204,BICHUA,67
+205,Sıyarkheda,67
+206,Shastri Ward Sohagpur,67
+207,Goutam Ward Sohagpur,67
+208,Ramprasad Ward Sohagpur,67
+209,Ambedkar Ward Sohagpur,67
+210,Ajneri,67
+211,Beganiya,67
+212,Bhatti,67
+213,Barwani,67
+214,Bamari,67
+215,Baruadhana,67
+216,Kalmesra,67
+217,Gopalpur,67
+218,Kishanpur,67
+219,Semri AW 01,67
+220,Semri AW 03,67
+221,Semri AW 02,67
+222,Semri AW 04,67
+223,Semri AW 05,67
+224,Semri AW 06,67
+225,Sarangpur,75
+226,GHOGHRI,67
+227,Keoları,67
+228,Rangpur,67
+229,Kajri,67
+230,Utiyashankar,67
+231,jhadbida,76
+232,jhadbida,70
+233,kajli,78
+234,sonali bundala,78
+235,devgaon,78
+236,dhousra,78
+237,khidakikhurd,78
+238,khanapur,78
+239,kedarkheda,78
+240,guwadi,70
+241,palasi,65
+242,khedi,70
+243,undrakhedi,65
+244,nitaya,65
+245,tarondadhana,65
+246,dhoukheda,65
+247,tararoda,65
+248,saket,65
+249,ridhouda,65
+250,makodiya,70
+251,jhagar,70
+252,pipalber,70
+253,chillai,65
+254,gurra,65
+255,bamhangaon kala,65
+256,aonri,65
+257,kajlas,65
+258,pawarkheda basti,65
+259,pawarkheda farm,65
+260,raisalpur,65
+261,chandrapura,65
+262,biora,65
+263,kulamdi,65
+264,kandai himmat,65
+265,rampur,65
+266,silari,65
+267,somalwada,65
+268,bamhori khurd,65
+269,bheelakhedi,65
+270,pipariya khurd,65
+271,bamuriya,65
+272,khoksar,65
+273,soyat,70
+274,Ramnagar,67
+275,kalyakhedi,70
+276,Ramnagar,65
+277,jasalpur,65
+278,raipur,65
+279,agrakala,65
+280,budhwada,65
+281,diwlakhedi,65
+282,nimsadiya,65
+283,Panjrakala,65
+284,bamhangaon khurd,65
+285,andhiyari,65
+286,damdam,65
+287,kolhda,65
+288,badodiya khurd,65
+289,hasalpur,78
+290,horiyapipar,65
+291,desmohini,65
+292,Sonpur,83
+293,gwadikhurd,65
+294,randhal,65
+295,khedla,65
+296,mahraghat,65
+297,roopapur,65
+298,sonasawnri,65
+299,kandai khurd,65
+300,lohariya kala,65
+301,somalwada,70
+302,bortalai,65
+303,dudugaon,65
+304,bairakhedi,65
+305,jaitapur,65
+306,mungwari,65
+307,ghugwasa,65
+308,beesaroda,65
+309,baiganiya,65
+310,bhadangchikli,70
+311,hasalpur,65
+312,naharkola kala,70
+313,dongarwada,65
+314,khediahir,65
+315,parradeh,65
+316,bundara kala,70
+317,chandwad,70
+318,pathoudi,65
+319,kahariya,70
+320,bhamedideo,70
+321,kotlakhedi,70
+322,nandarwada,70
+323,narri,70
+324,datwasa,70
+325,jijalwada,70
+326,pipalgota,70
+327,malapat,70
+328,bundara,65
+329,rojhda,65
+330,patlai,65
+331,dhamni,70
+332,bhela,70
+333,ward no 01,78
+334,bhiladiya khurd,70
+335,ward no 02,78
+336,hardoli_2,78
+337,ward no 04,78
+338,gajanpur,70
+339,khal,70
+340,damadiya,70
+341,sotachikli,70
+342,nimanpur,70
+343,rajorajat,70
+344,ghoghra_k,70
+345,kharda,70
+346,myaungaon,70
+347,borat,70
+348,basaniya keer,70
+349,pathada,70
+350,khutwasa,70
+351,lodhdi kala,70
+352,bhainsadeh,70
+353,banada,70
+354,chabora,70
+355,dimawar,70
+356,bhamedi,70
+357,umariya,70
+358,bhimgaon,70
+359,ward no 14,78
+360,ward no 15,78
+361,ward no 17,78
+362,guradiya,70
+363,ward no 03,78
+364,ward no 05,78
+365,ward no 06,78
+366,ayepa,70
+367,rupadeh,70
+368,ward no 07,78
+369,ward no 08,78
+370,ward no 11,78
+371,amlada dongar,70
+372,bisoni kala,70
+373,bisoni khurd,70
+374,rampura,70
+375,babri,70
+376,bhaironpur,70
+377,choukigava,70
+378,ravanpipal,70
+379,babadiya bhau,70
+380,pagdhal,70
+381,jeeradeh,70
+382,rehda,70
+383,keolajhir,70
+384,dethi,70
+385,jhaklay,70
+386,thua,70
+387,kusumkui,70
+388,golgaon,70
+389,shivpur,70
+390,luchgaon,70
+391,papan,70
+392,archanagaon,70
+393,richhi,70
+394,shahpur,70
+395,choukimafi,70
+396,faridpur,70
+397,amlada khurd,70
+398,amlada kala,70
+399,ramgarh,70
+400,Dharpura,69
+401,lokhartalai,70
+402,pipalthone,70
+403,pipaliya kala,70
+404,Devri_1,69
+405,babadiya bapu,70
+406,mahuadhana,70
+407,kanskhedi,70
+408,nawalgaon,70
+409,surajpur,70
+410,bankabedi,70
+411,mohanpur,70
+412,bharlay,70
+413,basaniya kala,70
+414,barakhad khurd,70
+415,Chadaun,69
+416,Ghungawadi,69
+417,Kudari,69
+418,sirupura,70
+419,morghat,70
+420,beganiya,70
+421,barasel,70
+422,temlakala,70
+423,jambada,78
+424,somlapur,78
+425,ranidongari,78
+426,semariyakhurd,78
+427,ward no 04,70
+428,tugariya,65
+429,banspani,70
+430,salai,70
+431,jatamau,70
+432,kharar,70
+433,dhamasa,70
+434,uradi,70
+435,dahedi,70
+436,manwada,70
+437,dhamaniya,70
+438,dhekna,70
+439,barakhad kala,70
+440,nohar,65
+441,jhinganpur,70
+442,ward no 02,70
+443,ward no 03,70
+444,palasdoh,65
+445,suparli,65
+446,Bothiya_1,81
+447,Turakhapa,67
+448,Gohnadeh Mal,67
+449,Vıneka,67
+450,Nander,67
+451,BandhıChhor Pıparıya,67
+452,Sukrıkalan,67
+453,bhopalwadi,78
+454,dodawani,78
+455,LALPANI / CHICHWANI,71
+456,Manakwada,69
+457,Gundraı,67
+458,Samnapur,67
+459,Godıkhedı Madkadhana,67
+460,Gohnadeh raıyat,67
+461,Chıtto Pattan,67
+462,Chargaon,67
+463,Chargaon,69
+464,Bhajıyadhana,67
+465,Jıjwada,67
+466,kutkhedi,78
+467,NAYAKHEDA,71
+468,Shobhapur AW 03,67
+469,Shobhapur AW 05,67
+470,Shobhapur AW 06,67
+471,Galcha,67
+472,Khamkhedi,69
+473,Kolwa,74
+474,Chirakhan,74
+475,Uchan,74
+476,Bhimpura,75
+477,MAINDA,74
+478,ward no 05,70
+479,hardoli_1,78
+480,Ward 6,73
+481,Ward 7,73
+482,Ward 8,73
+483,Ward 9,73
+484,Sonori,84
+485,sontalai,78
+486,maholi,78
+487,Ward 15,73
+488,Ward 14,73
+489,Ward 16,73
+490,jambadakhurd,78
+491,ward no 13,78
+492,badodiyakala,65
+493,Maidakheda,69
+494,Undhal,74
+495,Saliya khedi,74
+496,ward no 16,78
+497,Devri_2,69
+498,Kakarda,74
+499,semariya joshi,78
+500,harsool,70
+501,rohna,65
+502,Nayapura,74
+503,Bhimpura,74
+504,CHHITAPURA,71
+505,rampur,85
+506,rohna,85
+507,BHATNA,71
+508,ward no. 2,89
+509,harpalpur,70
+510,SADHPURA,71
+511,jamani,70
+512,KHOHRA,71
+513,Segone,74
+514,Sagoda,74
+515,Mangrul,74
+516,Rijgaon,74
+517,Bheropur,74
+518,Adampur,74
+519,Kunjargaon,74
+520,Handia,74
+521,Dheki,74
+522,Beswa,74
+523,Joga Vangram,74
+524,Kolipura,74
+525,Nandra,74
+526,Gogiya,74
+527,Gangiya khedi,74
+528,Ghodakund,74
+529,Abgaonkala,74
+530,ward no. 13,89
+531,Pathakheda,83
+532,Niwari,83
+533,ward no. 19,89
+534,ward no. 1,89
+535,ward no. 21,89
+536,ward no. 11,89
+537,ward no. 14,89
+538,ward no. 16,89
+539,ward no. 25,89
+540,kajli,85
+541,Bothiya_2,81
+542,Jhirikhapa,84
+543,Khapa,84
+544,Khapa,81
+545,Bhutaikhedi,84
+546,Kundai,84
+547,Pathakheda,84
+548,Pisata,84
+549,Raiseda,84
+550,Somlapur,84
+551,Ubhariya,84
+552,Humabehra,84
+553,Umanpath,84
+554,Junapani s,84
+555,Gaula,74
+556,ward no. 5,89
+557,ward no. 7,89
+558,Malpon,74
+559,Khedinima,74
+560,ward no. 31,89
+561,silari,68
+562,ward no. 34,89
+563,ward no. 33,89
+564,Surjana,74
+565,umariya,68
+566,Manoharpura,74
+567,ward no. 6,89
+568,rampur,68
+569,ward no 09,78
+570,ward no 10,78
+571,ward no 12,78
+572,ward no 07,70
+573,ward no 09,70
+574,ward no 08,70
+575,ward no 10,70
+576,ward no 11,70
+577,Bagrul,74
+578,Kusia,74
+579,CHIKLI,67
+580,Sukrikhurd,67
+581,Semri AW 07,67
+582,Semri AW 08,67
+583,Semri AW 09,67
+584,Jamuniya AW 02,67
+585,Saini,67
+586,Hathnawad,67
+587,Ajnai,74
+588,shahpur,86
+589,Goyat,74
+590,Jugariya,74
+591,ward no 18,78
+592,lalawadi,78
+593,tirmahu,78
+594,rambhakhedi,78
+595,parsoda,78
+596,paretiya,70
+597,ward no 15,70
+598,keslakhurd,65
+599,khapariya,70
+600,ward no. 24,89
+601,ward no 01,70
+602,ward no 06,70
+603,dolariya,65
+604,amupura,65
+605,mohari,65
+606,nanpa,65
+607,kharkhedi,65
+608,kharar,65
+609,mofada,65
+610,sail,65
+611,umariya,78
+612,chatarkheda,70
+613,torniya,70
+614,bhangiya,70
+615,bhavnda,70
+616,Talnagari,65
+617,WARD NO.01,77
+618,WARD NO.12,77
+619,WARD NO.13,77
+620,WARD NO.14,77
+621,WARD NO.15,77
+622,WARD NO.16,77
+623,WARD NO.17,77
+624,WARD NO.18,77
+625,WARD NO.19,77
+626,WARD NO.20,77
+627,WARD NO.21,77
+628,WARD NO.22,77
+629,WARD NO.23,77
+630,WARD NO.24,77
+631,WARD NO.25,77
+632,WARD NO.26,77
+633,WARD NO.27,77
+634,WARD NO.28,77
+635,WARD NO.29,77
+636,WARD NO.30,77
+637,WARD NO.34,77
+638,WARD NO.35,77
+639,chauki,80
+640,Shobhapur AW 02,67
+641,Shobhapur AW 04,67
+642,Shobhapur AW 07,67
+643,Aatashri,67
+644,Sounthar,67
+645,Madanpur,67
+646,Ranmoutha,67
+647,Khiriyamandir,67
+648,Palakhedi,67
+649,gorakhpur,61
+650,Isharpur,69
+651,Kherikishore,69
+652,Mahangawa,69
+653,Rajthari,69
+654,Sirawada,69
+655,ward no. 28,89
+656,RANJHI,71
+657,BHOVDA,71
+658,SARADEH,71
+659,PIPARIYA KHURD,71
+660,CHANDKIYA,71
+661,KOHDA ,71
+662,BORKHEDA,71
+663,ward no. 8,89
+664,ward no. 9,89
+665,ward no. 29,89
+666,nipaniya,70
+667,Phathapur,69
+668,Kodapadrai,69
+669,Najarkheda,69
+670,Panjara,69
+671,Hanotiya,69
+672,Junawani,80
+673,Junawani,80
+674,WARD NO.09,77
+675,WARD NO.10,77
+676,ward no. 18,89
+677,chauki,74
+678,Dumlai,74
+679,WARD NO.02,77
+680,WARD NO.03,77
+681,WARD NO.04,77
+682,WARD NO.05,77
+683,WARD NO.06,77
+684,WARD NO.07,77
+685,WARD NO.08,77
+686,WARD NO.11,77
+687,WARD NO.31,77
+688,WARD NO.32,77
+689,kamtha,70
+690,samardha,70
+691,guranjghat,70
+692,banderkho,70
+693,santai,70
+694,paraswada,70
+695,moriya,70
+696,lahi,70
+697,gidkheda,70
+698,amarkatara,70
+699,liladiya,70
+700,kundkala,70
+701,kolgaon,70
+702,naharkola khurd,70
+703,chandpura,70
+704,kajli,70
+705,gotavarri,70
+706,hamidpur,70
+707,batki iklani,70
+708,palasi,70
+709,mudiya khedi,70
+710,jamuniyaharji,70
+711,rashi,70
+712,nirkhi,70
+713,kothra,70
+714,Pidgaon,74
+715,bandi,70
+716,ranipur,70
+717,gangiya,70
+718,ward no. 32,89
+719,gondikharar,70
+720,jondal,70
+721,chandakhad,70
+722,nayagaon,70
+723,tilianwali,70
+724,bent,70
+725,chapadeodi,70
+726,ward no. 12,89
